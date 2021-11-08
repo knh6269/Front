@@ -1,5 +1,7 @@
 import React from 'react';
 import Input from "./main";
+import HOME_region from './Home_region';
+import Navigator from "./routes/home_navigation.js";
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -47,7 +49,7 @@ const Section = ({children, title}): Node => {
 
 const App: () => Node = () => {
   
-  return <Input />;
+  return <Navigator/>;
 
 };
 
