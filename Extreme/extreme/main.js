@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Image, ScrollView } from 'react-native';
+//import Icon from 'react-native-vector-icons/AntDesign';
 
 import {
   View,
@@ -24,7 +25,7 @@ class Inputs extends Component {
         <View style={styles.container}>
 
           <View style={styles.topmenu}>
-            <Text>Topmenu</Text>
+            <Text>Top</Text>
           </View>
 
           <View style={styles.searchcontainer}>
@@ -34,14 +35,19 @@ class Inputs extends Component {
               placeholder="Search"
               placeholderTextColor="black"
               autoCapitalize="none"
-              onChangeText={this.handleSearch}
+              onChangeText={ (text) => searchData(text)}
             />
 
             <TouchableOpacity
               style={styles.submitButton}
-              onPress={() => this.search(this.state.search)}
-            >
-              <Text style={styles.submitButtonText}>Submit</Text>
+              onPress={() => this.search(this.state.search)}>
+              <Text style={styles.submitButtonText}>질문</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.cartButton}
+              onPress={() => this.cart(this.state.cart)}>
+              <Text style={styles.cartButtonText}>장바구니</Text>
             </TouchableOpacity>
           </View>
 
@@ -97,7 +103,6 @@ class Inputs extends Component {
               />
             </View>
           </View>
-
           
           <Text style={styles.activitydtext}>추천 액티비티</Text>
           <View style={styles.recommendactivitycontainer}>
@@ -111,6 +116,9 @@ class Inputs extends Component {
             />
             <Image style={styles.activityimages}
               resizeMode="cover"
+              source={require('./images/1.jpg')}
+            />
+            <Image style={styles.nextimages}
               source={require('./images/1.jpg')}
             />
           </View>
@@ -135,6 +143,9 @@ class Inputs extends Component {
               resizeMode="cover"
               source={require('./images/1.jpg')}
             />
+            <Image style={styles.nextimages}
+              source={require('./images/1.jpg')}
+            />
           </View>
           <TouchableOpacity
             style={styles.morerhotButton}
@@ -157,6 +168,9 @@ class Inputs extends Component {
               resizeMode="cover"
               source={require('./images/1.jpg')}
             />
+            <Image style={styles.nextimages}
+              source={require('./images/1.jpg')}
+            />
           </View>
           <TouchableOpacity
             style={styles.morernewButton}
@@ -172,6 +186,23 @@ class Inputs extends Component {
 }
  
 export default Inputs;
+
+const searchData = async(text) => {
+
+  try {
+    const res = await fetch('실행할 함수', {
+      method: "POST",
+      body: JSON.stringify({
+        "keyword": text
+      })
+    });
+    const resJson = await res.json();
+    const newResJson = resJson
+    SVGMetadataElement(newResJson.products)
+  } catch (e) {
+    console.log("패치에 실패")
+    }
+}
  
 const styles = StyleSheet.create({
   container: {
@@ -179,7 +210,8 @@ const styles = StyleSheet.create({
   },
 
   searchcontainer: {
-    flexDirection:'row-reverse'
+    flexDirection: 'row',
+    flex: 1
   },
 
   search: {
@@ -187,9 +219,8 @@ const styles = StyleSheet.create({
     height: 40,
     borderColor: "#7a42f4",
     borderWidth: 1,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    width : '70%',
+    borderRadius: 20
   },
 
   submitButton: {
@@ -198,8 +229,7 @@ const styles = StyleSheet.create({
     margin: 15,
     height: 40,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    width : '30%'
   },
 
   submitButtonText: {
@@ -210,6 +240,14 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent: 'center',
     textAlign : 'center'
+  },
+
+  nextimages: {
+    marginTop: "40%",
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 20,
+    height: 20
   },
 
   morerecommendButton: {
@@ -267,9 +305,9 @@ const styles = StyleSheet.create({
 
   activitydtext: {
     marginTop : 30,
-    alignItems:'center',
     justifyContent: 'center',
-    textAlign : 'center'
+    fontSize: 20,
+    marginBottom : 10
   },
 
   mainactivityimages1: {
