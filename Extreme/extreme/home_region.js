@@ -17,6 +17,9 @@ export default function Home_region({navigation}){
         const pressHandler=()=>{
             navigation.navigate('main');
         }
+        const pressHandler2=()=>{
+            navigation.navigate('Home_recommend');
+        }
     return (
         <NativeBaseProvider>
             <Box marginTop={10}>
@@ -37,7 +40,7 @@ export default function Home_region({navigation}){
                     />
                 </HStack>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={pressHandler2}>
                 <HStack>
                 <Box width={24}  borderWidth={1}>
                 <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >강원</Text>

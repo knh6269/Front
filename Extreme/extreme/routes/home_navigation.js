@@ -2,12 +2,17 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 
 import Home_region from "../home_region";
+import Home_recommend from "../Home_recommend";
 import main from "../main";
 const screens={
    Home_region:{
        screen:Home_region,
        navigationOptions:()=>({headerShown:false,})
    },
+   Home_recommend:{
+    screen:Home_recommend,
+    navigationOptions:()=>({headerShown:false,})
+},
   main:{
        screen:main,
        navigationOptions:()=>({headerShown:false,})

@@ -1,6 +1,6 @@
 import React from 'react';
 import Input from "./main";
-import HOME_region from './Home_region';
+import HOME_region from './home_region';
 import Navigator from "./routes/home_navigation.js";
 import type {Node} from 'react';
 import {
