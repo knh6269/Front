@@ -36,7 +36,7 @@ export default class Recommend extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.activity}>
-                            <Activity name="액티비티 이름" />
+                            <Activity name="액티비티 이름111" />
                             <Activity name="액티비티 이름" />
                             <Activity name="액티비티 이름" />
                         </View>

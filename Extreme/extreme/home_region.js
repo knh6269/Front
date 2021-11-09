@@ -13,12 +13,12 @@ import { TouchableOpacity,ScrollView } from "react-native";
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
-export default function Home_region({navigation}){
+export default function home_region({navigation}){
         const pressHandler=()=>{
-            navigation.navigate('Home_activity');
+            navigation.navigate('home_activity');
         }
         const pressHandler2=()=>{
-            navigation.navigate('Home_recommend');
+            navigation.navigate('home_recommend');
         }
     return (
         <NativeBaseProvider>
@@ -177,7 +177,7 @@ export default function Home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠111111</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
