@@ -20,6 +20,16 @@ export default function home_region({navigation}){
         const pressHandler2=()=>{
             navigation.navigate('home_recommend');
         }
+        const pressHandler3 = () => {
+            navigation.navigate('my_page')
+        }
+        const pressHandler4 = () => {
+                navigation.navigate('coupon')
+        }
+        const pressHandler5 = () => {
+                navigation.navigate('heart')
+        }
+    
     return (
         <NativeBaseProvider>
             <Box marginTop={10}>
@@ -59,7 +69,7 @@ export default function home_region({navigation}){
 
             </HStack>
             <HStack>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={pressHandler3}>
                 <HStack>
                 <Box width={24}  borderWidth={1}>
                 <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >충북</Text>
@@ -75,7 +85,7 @@ export default function home_region({navigation}){
                     />
                 </HStack>
              </TouchableOpacity>  
-             <TouchableOpacity> 
+             <TouchableOpacity onPress={pressHandler4}> 
                 <HStack>
                 <Box width={24}  borderWidth={1}>
                 <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >충남</Text>
@@ -92,7 +102,7 @@ export default function home_region({navigation}){
                 </TouchableOpacity>
             </HStack>
             <HStack>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={pressHandler5}>
                 <HStack>
                 <Box width={24}  borderWidth={1}>
                 <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경북</Text>
