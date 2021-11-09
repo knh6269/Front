@@ -5,8 +5,7 @@ import home_region from "../home_region";
 import home_recommend from "../home_recommend";
 import home_activity from "../home_activity";
 import my_page from "../my_page";
-import coupon from "../coupon";
-import heart from "../heart";
+
 
 const screens = {
     home_region: {
@@ -23,14 +22,6 @@ const screens = {
     },
     my_page: {
         screen: my_page,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    coupon: {
-        screen: coupon,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    heart: {
-        screen: heart,
         navigationOptions: () => ({ headerShown: false, })
     }
 }

@@ -1,379 +1,80 @@
-import React from 'react'
+import React, { Component } from "react";
+import { Image, ScrollView } from 'react-native';
+//import Icon from 'react-native-vector-icons/AntDesign';
+
 import {
-    Dimensions,} from "react-native"
-import{
-    NativeBaseProvider,
-    Box,
-    HStack,
+    View,
     Text,
-    VStack,
-    Image,
-}from 'native-base';
-import { TouchableOpacity,ScrollView } from "react-native";
-const Width = Dimensions.get('window').width;
-const Height = Dimensions.get('window').height;
+    TouchableOpacity,
+    TextInput,
+    StyleSheet
+} from "react-native";
 
-export default function Home_region({navigation}){
-    const pressHandler=()=>{
-        console.log("a");
+
+class Activity extends Component {
+    render() {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{ height: 30, width: 30, backgroundColor: 'gray' }}></View>
+                <Text style={{ marginTop: 5, color: '#A0A0A0' }}>{this.props.name}</Text>
+            </View>
+        )
     }
-    return (
-        <NativeBaseProvider>
-            <Box marginTop={10}>
-           
-            <HStack>
-            <TouchableOpacity onpress={pressHandler}>
-                <HStack>
-                    <Box width={24}  borderWidth={1}>
-                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >ssssssssssssssss</Text>
-                    </Box>
-               
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{ width: 120, height:60, }}
-                    alt="trans_1"
-                   
-                    />
-                </HStack>
-            </TouchableOpacity>
-            <TouchableOpacity>
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >강원</Text>
-                </Box>
-               
-                    <Image
-                        source={{
-                            uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                        }}
-                        style={{ width: 120, height:60, }}
-                        alt="trans_1"
-                       
-                        />
-                </HStack>
-            </TouchableOpacity>
-
-            </HStack>
-            <HStack>
-            <TouchableOpacity>
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >충북</Text>
-                </Box>
-               
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{ width: 120, height:60, }}
-                    alt="trans_1"
-                    
-                    />
-                </HStack>
-             </TouchableOpacity>  
-             <TouchableOpacity> 
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >충남</Text>
-                </Box>
-                    <Image
-                        source={{
-                            uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                        }}
-                        style={{ width: 120, height:60, }}
-                        alt="trans_1"
-                      
-                        />
-                </HStack>
-                </TouchableOpacity>
-            </HStack>
-            <HStack>
-                <TouchableOpacity>
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경북</Text>
-                </Box>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{ width: 120, height:60, }}
-                    alt="trans_1"
-                   
-                    />
-                </HStack>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <HStack>
-                    <Box width={24}  borderWidth={1}>
-                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경남</Text>
-                    </Box>
-                        <Image
-                            source={{
-                                uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                            }}
-                            style={{ width: 120, height:60, }}
-                            alt="trans_1"
-                            
-                            />
-                    </HStack>
-                </TouchableOpacity>
-            </HStack>
-            <HStack>
-                <TouchableOpacity>
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >전북</Text>
-                </Box>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{ width: 120, height:60, }}
-                    alt="trans_1"
-                   
-                    />
-                </HStack>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <HStack>
-                    <Box width={24}  borderWidth={1}>
-                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >전남</Text>
-                    </Box>
-                        <Image
-                            source={{
-                                uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                            }}
-                            style={{ width: 120, height:60, }}
-                            alt="trans_1"
-                            
-                            />
-                    </HStack>
-                </TouchableOpacity>
-            </HStack>
-            </Box>
-        
-            <ScrollView>
-                <HStack>
-               <Box style={{
-                   marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2-20,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-               <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-                </TouchableOpacity>
-               </Box>
-               <Box style={{
-                 marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-            <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-            </TouchableOpacity>
-            </Box>
-            </HStack>
-            <HStack>
-               <Box style={{
-                   marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2-20,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-               <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-                </TouchableOpacity>
-               </Box>
-               <Box style={{
-                 marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-            <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-            </TouchableOpacity>
-            </Box>
-            </HStack>
-            <HStack>
-               <Box style={{
-                   marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2-20,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-               <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-                </TouchableOpacity>
-               </Box>
-               <Box style={{
-                 marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-            <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-            </TouchableOpacity>
-            </Box>
-            </HStack>
-            <HStack>
-               <Box style={{
-                   marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2-20,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-               <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-                </TouchableOpacity>
-               </Box>
-               <Box style={{
-                 marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-            <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-            </TouchableOpacity>
-            </Box>
-            </HStack>
-            </ScrollView>
-            
-        </NativeBaseProvider>
-    )
 }
+export default class Recommend extends Component {
+    render() {
+        return (
+            <ScrollView>
+                <View style={styles.container}>
+                    <View style={styles.category}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+                            <Text>지역별 여행지</Text>
+                            <TouchableOpacity
+                                onPress={() => this.morehot(this.state.more)}
+                            >
+                                <Text>지역 선택</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.activity}>
+                            <Activity name="액티비티 이름111" />
+                            <Activity name="액티비티 이름" />
+                            <Activity name="액티비티 이름" />
+                        </View>
+                        <Text>내 주변 여행지</Text>
+                        <View style={styles.activity}>
+                            <Activity name="액티비티 이름" />
+                            <Activity name="액티비티 이름" />
+                            <Activity name="액티비티 이름" />
+                        </View>
+                        <Text>예약지 주변 여행지</Text>
+                        <View style={styles.activity}>
+                            <Activity name="액티비티 이름" />
+                            <Activity name="액티비티 이름" />
+                            <Activity name="액티비티 이름" />
+                        </View>
+                    </View>
+                </View>
+            </ScrollView >
+        );
+
+    }
+}
+
+const styles = StyleSheet.create({
+    container: {
+        paddingTop: 50
+    },
+    category: {
+        backgroundColor: 'white',
+        flexDirection: 'column',
+    },
+    activity: {
+        height: 200,
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderTopWidth: 0.5,
+        borderColor: '#A0A0A0',
+    }
+});
