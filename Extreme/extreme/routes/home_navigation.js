@@ -1,6 +1,5 @@
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-
 import home_region from "../home_region";
 import home_recommend from "../home_recommend";
 import home_activity from "../home_activity";
@@ -9,6 +8,7 @@ import coupon from "../coupon";
 //import my_page from "../my_page";
 
 const screens = {
+   
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -20,11 +20,10 @@ const screens = {
     home_activity: {
         screen: home_activity,
         navigationOptions: () => ({ headerShown: false, })
+    }, coupon: {
+        screen: coupon,
+        navigationOptions: () => ({ headerShown: false, })
     },
-    coupon: {
-         screen: coupon,
-         navigationOptions: () => ({ headerShown: false, })
-     },
     // heart: {
     //     screen: heart,
     //     navigationOptions: () => ({ headerShown: false, })
