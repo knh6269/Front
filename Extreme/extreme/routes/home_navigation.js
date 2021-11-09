@@ -10,6 +10,10 @@ import heart from "../heart";
 import cart from "../cart";
 
 const screens = {
+    my_page: {
+        screen: my_page,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -22,10 +26,7 @@ const screens = {
         screen: home_activity,
         navigationOptions: () => ({ headerShown: false, })
     },
-    // my_page: {
-    //     screen: my_page,
-    //     navigationOptions: () => ({ headerShown: false, })
-    // },
+    
     // coupon: {
     //     screen: coupon,
     //     navigationOptions: () => ({ headerShown: false, })
