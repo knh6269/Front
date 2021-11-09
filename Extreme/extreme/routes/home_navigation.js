@@ -23,7 +23,7 @@ const screens = {
     },
     coupon: {
          screen: coupon,
-        navigationOptions: () => ({ headerShown: false, })
+         navigationOptions: () => ({ headerShown: false, })
      },
     // heart: {
     //     screen: heart,
