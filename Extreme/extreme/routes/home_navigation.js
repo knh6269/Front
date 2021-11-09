@@ -1,19 +1,14 @@
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-
 import home_region from "../home_region";
 import home_recommend from "../home_recommend";
 import home_activity from "../home_activity";
-import my_page from "../my_page";
 import coupon from "../coupon";
-import heart from "../heart";
-import cart from "../cart";
+//import heart from "../heart";
+//import my_page from "../my_page";
 
 const screens = {
-    my_page: {
-        screen: my_page,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -25,21 +20,18 @@ const screens = {
     home_activity: {
         screen: home_activity,
         navigationOptions: () => ({ headerShown: false, })
+    }, coupon: {
+        screen: coupon,
+        navigationOptions: () => ({ headerShown: false, })
     },
-    
-    // coupon: {
-    //     screen: coupon,
+    // heart: {
+    //     screen: heart,
     //     navigationOptions: () => ({ headerShown: false, })
     // },
-    heart: {
-        screen: heart,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    cart: {
-        screen: cart,
-        navigationOptions: () => ({ headerShown: false, })
-    }
-
+    // my_page: {
+    //     screen: my_page,
+    //     navigationOptions: () => ({ headerShown: false, })
+    // },
 }
 
 const trans_stack = createStackNavigator(screens);
