@@ -15,7 +15,7 @@ const Height = Dimensions.get('window').height;
 
 export default function Home_region({navigation}){
         const pressHandler=()=>{
-            navigation.navigate('main');
+            navigation.navigate('Home_activity');
         }
         const pressHandler2=()=>{
             navigation.navigate('Home_recommend');

@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import Input from "./main";
+=======
+import Input from "./home_activity";
+>>>>>>> 95b00abdb39731bba6df7bd419e80e31b7eb4b74
 import HOME_region from './home_region';
 import Navigator from "./routes/home_navigation.js";
 import type {Node} from 'react';
