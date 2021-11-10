@@ -35,6 +35,9 @@ export default function home_region({navigation}){
         const pressHandler7 = () => {
             navigation.navigate('login')
         }
+        const pressHandler8 = () => {
+            navigation.navigate('weather_map')
+        }
     
     return (
         <NativeBaseProvider>
@@ -155,7 +158,7 @@ export default function home_region({navigation}){
                     />
                 </HStack>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={pressHandler8}>
                     <HStack>
                     <Box width={24}  borderWidth={1}>
                     <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >전남</Text>

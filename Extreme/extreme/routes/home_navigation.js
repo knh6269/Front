@@ -6,13 +6,9 @@ import home_activity from "../home_activity";
 import coupon from "../coupon";
 import heart from "../heart";
 import my_page from "../my_page";
-<<<<<<< HEAD
-import cart from "../cart"
-// import weather_map from "../weather_map"
-=======
 import cart from "../cart";
 import login from "../login"
->>>>>>> f8d434ab9afa7012964c902e62096b9f6ec6276a
+import weather_map from "../weather_map"
 
 const screens = {
     home_region: {
@@ -42,17 +38,14 @@ const screens = {
         screen: cart,
         navigationOptions: () => ({ headerShown: false, })
     },
-<<<<<<< HEAD
-    // weather_map: {
-    //     screen: weather_map,
-    //     navigationOptions: () => ({ headerShown: false, })
-    // }
-=======
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
->>>>>>> f8d434ab9afa7012964c902e62096b9f6ec6276a
+    weather_map: {
+        screen: weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
 }
 
 const trans_stack = createStackNavigator(screens);
