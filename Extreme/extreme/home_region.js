@@ -32,9 +32,9 @@ export default function home_region({navigation}){
         const pressHandler6 = () => {
                 navigation.navigate('cart')
         }
-        const pressHandler7 = () => {
-            navigation.navigate('weather_map')
-        }
+        // const pressHandler7 = () => {
+        //     navigation.navigate('weather_map')
+        // }
     
     return (
         <NativeBaseProvider>
@@ -140,7 +140,7 @@ export default function home_region({navigation}){
                 </TouchableOpacity>
             </HStack>
             <HStack>
-                <TouchableOpacity onPress={pressHandler7}>
+                {/* <TouchableOpacity onPress={pressHandler7}> */}
                 <HStack>
                 <Box width={24}  borderWidth={1}>
                 <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >전북</Text>
@@ -154,7 +154,7 @@ export default function home_region({navigation}){
                    
                     />
                 </HStack>
-                </TouchableOpacity>
+                {/* </TouchableOpacity> */}
                 <TouchableOpacity>
                     <HStack>
                     <Box width={24}  borderWidth={1}>

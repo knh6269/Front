@@ -7,7 +7,7 @@ import coupon from "../coupon";
 import heart from "../heart";
 import my_page from "../my_page";
 import cart from "../cart"
-import weather_map from "../weather_map"
+// import weather_map from "../weather_map"
 
 const screens = {
     home_region: {
@@ -37,10 +37,10 @@ const screens = {
         screen: cart,
         navigationOptions: () => ({ headerShown: false, })
     },
-    weather_map: {
-        screen: weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    }
+    // weather_map: {
+    //     screen: weather_map,
+    //     navigationOptions: () => ({ headerShown: false, })
+    // }
 }
 
 const trans_stack = createStackNavigator(screens);
