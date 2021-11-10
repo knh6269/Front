@@ -21,8 +21,7 @@ class Activity extends Component {
         )
     }
 }
-export default class Recommend extends Component {
-    render() {
+export default function Recommend(){
         return (
             <ScrollView>
                 <View style={styles.container}>
@@ -36,7 +35,7 @@ export default class Recommend extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.activity}>
-                            <Activity name="액티비티 이름111" />
+                            <Activity name="액티비티 이름" />
                             <Activity name="액티비티 이름" />
                             <Activity name="액티비티 이름" />
                         </View>
@@ -57,7 +56,6 @@ export default class Recommend extends Component {
             </ScrollView >
         );
 
-    }
 }
 
 const styles = StyleSheet.create({

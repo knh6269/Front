@@ -6,7 +6,8 @@ import home_activity from "../home_activity";
 import coupon from "../coupon";
 import heart from "../heart";
 import my_page from "../my_page";
-import cart from "../cart"
+import cart from "../cart";
+import login from "../login"
 
 const screens = {
     home_region: {
@@ -35,7 +36,11 @@ const screens = {
     cart: {
         screen: cart,
         navigationOptions: () => ({ headerShown: false, })
-    }
+    },
+    login: {
+        screen: login,
+        navigationOptions: () => ({ headerShown: false, })
+    },
 }
 
 const trans_stack = createStackNavigator(screens);
