@@ -11,10 +11,7 @@ import register_user from "../register_user";
 
 const screens = {
     
-    register_user:{
-        screen:register_user,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -41,6 +38,10 @@ const screens = {
     },
     cart: {
         screen: cart,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    register_user:{
+        screen:register_user,
         navigationOptions: () => ({ headerShown: false, })
     },
 }
