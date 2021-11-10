@@ -40,7 +40,7 @@ export default function home_region({navigation}){
             <TouchableOpacity onPress={pressHandler}>
                 <HStack>
                     <Box width={24}  borderWidth={1}>
-                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경기1</Text>
+                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경기</Text>
                     </Box>
                
                 <Image
@@ -190,7 +190,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠111111</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>

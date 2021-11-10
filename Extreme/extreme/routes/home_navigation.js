@@ -7,8 +7,14 @@ import coupon from "../coupon";
 import heart from "../heart";
 import my_page from "../my_page";
 import cart from "../cart"
+import register_user from "../register_user";
 
 const screens = {
+    
+    register_user:{
+        screen:register_user,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -20,7 +26,8 @@ const screens = {
     home_activity: {
         screen: home_activity,
         navigationOptions: () => ({ headerShown: false, })
-    }, coupon: {
+    }, 
+    coupon: {
         screen: coupon,
         navigationOptions: () => ({ headerShown: false, })
     },
@@ -35,7 +42,7 @@ const screens = {
     cart: {
         screen: cart,
         navigationOptions: () => ({ headerShown: false, })
-    }
+    },
 }
 
 const trans_stack = createStackNavigator(screens);
