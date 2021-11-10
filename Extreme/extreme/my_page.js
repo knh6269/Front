@@ -7,54 +7,45 @@ import {
     Text,
     TouchableOpacity,
     TextInput,
+    Dimensions,
     StyleSheet
 } from "react-native";
+const Width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
 
-
-class Activity extends Component {
+class User extends Component {
     render() {
         return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <View style={{ height: 30, width: 30, backgroundColor: 'gray' }}></View>
-                <Text style={{ marginTop: 5, color: '#A0A0A0' }}>{this.props.name}</Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', height: 150}}>
+                <View style={{ height: 100, width: 100, backgroundColor: 'gray', marginLeft: 50}}></View>
+                <Text style={{ marginLeft: 50, color: '#A0A0A0' }}>{this.props.name}</Text>
             </View>
         )
     }
 }
+
 export default class Recommend extends Component {
     render() {
         return (
+            <View style={{flex:1}}>
             <ScrollView>
                 <View style={styles.container}>
-                    <View style={styles.category}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
-                            <Text>지역별 여행지</Text>
-                            <TouchableOpacity
-                                onPress={() => this.morehot(this.state.more)}
-                            >
-                                <Text>지역 선택</Text>
-                            </TouchableOpacity>
-                        </View>
-                        <View style={styles.activity}>
-                            <Activity name="액티비티 이름111" />
-                            <Activity name="액티비티 이름" />
-                            <Activity name="액티비티 이름" />
-                        </View>
-                        <Text>내 주변 여행지</Text>
-                        <View style={styles.activity}>
-                            <Activity name="액티비티 이름" />
-                            <Activity name="액티비티 이름" />
-                            <Activity name="액티비티 이름" />
-                        </View>
-                        <Text>예약지 주변 여행지</Text>
-                        <View style={styles.activity}>
-                            <Activity name="액티비티 이름" />
-                            <Activity name="액티비티 이름" />
-                            <Activity name="액티비티 이름" />
-                        </View>
-                    </View>
+                    <User name="닉네임">
+                    </User>
+                    <TouchableOpacity style={styles.menu}>
+                        <Text>회원 정보 수정</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.menu}>
+                        <Text>주문 내역</Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView >
+            <View style={{flex:0.2, borderWidth:0.5, marginLeft:50}}>
+                    <Text>문의</Text>
+                    <Text>E-mail : aaa@aaa.com</Text>
+                    <Text>Tel : 000-0000-0000</Text>
+                    </View>
+            </View>
         );
 
     }
@@ -62,19 +53,11 @@ export default class Recommend extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 50
+        paddingTop: 50,
+        flex: 0.8
     },
-    category: {
-        backgroundColor: 'white',
-        flexDirection: 'column',
-    },
-    activity: {
-        height: 200,
-        backgroundColor: 'white',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderTopWidth: 0.5,
-        borderColor: '#A0A0A0',
+    menu: {
+        paddingLeft: 40,
+        padding: 10
     }
 });

@@ -43,7 +43,7 @@ export default function home_region({navigation}){
             <TouchableOpacity onPress={pressHandler}>
                 <HStack>
                     <Box width={24}  borderWidth={1}>
-                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경기</Text>
+                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경기1</Text>
                     </Box>
                
                 <Image

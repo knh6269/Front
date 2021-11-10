@@ -10,7 +10,6 @@ import cart from "../cart"
 import weather_map from "../weather_map"
 
 const screens = {
-   
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
