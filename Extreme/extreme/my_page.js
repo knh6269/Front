@@ -40,7 +40,7 @@ export default class Recommend extends Component {
                     </TouchableOpacity>
                 </View>
             </ScrollView >
-            <View style={{flex:0.2, borderWidth:0.5}}>
+            <View style={{flex:0.2, borderWidth:0.5, marginLeft:50}}>
                     <Text>문의</Text>
                     <Text>E-mail : aaa@aaa.com</Text>
                     <Text>Tel : 000-0000-0000</Text>
