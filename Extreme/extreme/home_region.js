@@ -41,7 +41,9 @@ export default function home_region({navigation}){
         const pressHandler9=()=>{
             navigation.navigate('register_company')
         }
-    
+        const pressHandler8 = () => {
+            navigation.navigate('weather_map')
+        }
     
     return (
         <NativeBaseProvider>

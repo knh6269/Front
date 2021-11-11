@@ -1,339 +1,297 @@
-import React, { Component } from "react";
-import { Image, ScrollView } from 'react-native';
-//import Icon from 'react-native-vector-icons/AntDesign';
+import React from 'react'
+import {Dimensions,} from "react-native"
+import{
+    NativeBaseProvider,
+    Box,
+    HStack,
+    Text,
+    Image,
+    View
+}from 'native-base';
+import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
 
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  StyleSheet
-} from "react-native";
- 
-class Inputs extends Component {
-  state = {
-    search: "",
-  };
- 
-  handleSearch = text => {
-    this.setState({ search: text });
-  };
- 
-  render() {
-    return (
+import IconF from 'react-native-vector-icons/Feather';
+import IconA from 'react-native-vector-icons/AntDesign';
+import IconM from 'react-native-vector-icons/MaterialIcons';
+
+const Width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
+
+export default function home_activity({ navigation }) {
+  // const suffing = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+  // const suffing = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+  // const rafting = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+  // const paragliding = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+  // const bungee_jumping = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+  // const water_leisure = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+  // const ski = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+  // const snowboard = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+  // const sky_diving = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+  // const zip_wire = () => {
+  //   navigation.navigate('각 페이지로 이동');
+  // }
+
+  return (
+    <NativeBaseProvider>
       <ScrollView>
-        <View style={styles.container}>
-
-          <View style={styles.topmenu}>
-            <Text>Top</Text>
-          </View>
-
-          <View style={styles.searchcontainer}>
-            <TextInput
-              style={styles.search}
-              underlineColorAndroid="transparent"
-              placeholder="Search"
-              placeholderTextColor="black"
-              autoCapitalize="none"
-              onChangeText={ (text) => searchData(text)}
-            />
-
-            <TouchableOpacity
-              style={styles.submitButton}
-              onPress={() => this.search(this.state.search)}>
-              <Text style={styles.submitButtonText}>질문</Text>
+        {/* 검색바 */}
+        <Box marginTop={50}>
+          <HStack space={3}>
+            <View>
+              <TextInput style={{ marginLeft: '5%', width:Width-Width/4, height: Height / 20, borderWidth: 3, borderRadius: 8, alignItems: 'center', justifyContent: 'center', }} />
+            </View>
+            <TouchableOpacity>
+              <IconF name="search" size={25} style={{flex:1,}}></IconF>
             </TouchableOpacity>
+            <TouchableOpacity>
+                <IconA name="shoppingcart" size={25} style={{flex:1,}}></IconA>
+              </TouchableOpacity>
+          </HStack>
+        </Box>
 
-            <TouchableOpacity
-              style={styles.cartButton}
-              onPress={() => this.cart(this.state.cart)}>
-              <Text style={styles.cartButtonText}>장바구니</Text>
-            </TouchableOpacity>
-          </View>
+        {/* 액티비티 종류 아이콘 */}
+        <Box marginLeft={'10%'}>
+          <Box marginTop={5}>
+            <HStack space={10}>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+            </HStack>
+          </Box>
 
-          <View style={styles.mainactivitycontainer}>
-            <View style={styles.mainactivitycontainer1}>
-              <Image style={styles.mainactivityimages1}
-                scale="cover"
-                source={require('./images/1.jpg')}
-                
-              />
-              <Image style={styles.mainactivityimages1}
-                resizeMode="cover"
-                source={require('./images/1.jpg')}
-              />
+          <Box marginTop={5}>
+            <HStack space={10}>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+            </HStack>
+          </Box>
 
-              <Image style={styles.mainactivityimages1}
-                resizeMode="cover"
-                source={require('./images/1.jpg')}
-              />
-            </View>
+          <Box marginTop={5}>
+            <HStack space={10}>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+            </HStack>
+          </Box>
+        </Box>
 
-            <View style={styles.mainactivitycontainer1}>
-              <Image style={styles.mainactivityimages2}
-                scale="cover"
-                source={require('./images/1.jpg')}
-                
-              />
-              <Image style={styles.mainactivityimages2}
-                resizeMode="cover"
-                source={require('./images/1.jpg')}
-              />
-
-              <Image style={styles.mainactivityimages2}
-                resizeMode="cover"
-                source={require('./images/1.jpg')}
-              />
-            </View>
-
-            <View style={styles.mainactivitycontainer1}>
-              <Image style={styles.mainactivityimages3}
-                scale="cover"
-                source={require('./images/1.jpg')}
-                
-              />
-              <Image style={styles.mainactivityimages3}
-                resizeMode="cover"
-                source={require('./images/1.jpg')}
-              />
-
-              <Image style={styles.mainactivityimages3}
-                resizeMode="cover"
-                source={require('./images/1.jpg')}
-              />
-            </View>
-          </View>
-          
-          <Text style={styles.activitydtext}>추천 액티비티</Text>
-          <View style={styles.recommendactivitycontainer}>
-            <Image style={styles.activityimages}
-              resizeMode="cover"
-              source={require('./images/1.jpg')}
-            />
-            <Image style={styles.activityimages}
-              resizeMode="cover"
-              source={require('./images/1.jpg')}
-            />
-            <Image style={styles.activityimages}
-              resizeMode="cover"
-              source={require('./images/1.jpg')}
-            />
-            <Image style={styles.nextimages}
-              source={require('./images/1.jpg')}
-            />
-          </View>
-          <TouchableOpacity
-            style={styles.morerecommendButton}
-            onPress={() => this.morerecommend(this.state.more)}
-          >
-            <Text style={styles.moreText}>더보기</Text>
+        {/* 추천 액티비티 */}
+        <Box marginTop={5} marginLeft={'5%'}>
+          <Text>추천 액티비티</Text>
+          <Box marginTop={5}>
+            <HStack space={10}>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 80, height: 90, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 80, height: 90, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 80, height: 90, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <IconM name="navigate-next" size={25} style={{marginTop: 30, flex: 1, }}></IconM>
+              </TouchableOpacity>
+            </HStack>
+          </Box>
+          <TouchableOpacity>
+            <Text textAlign={'center'} fontSize={20} marginRight={'5%'} marginTop={5} borderWidth={1} alignItems={'center'} justifyContent={'center'}>더보기</Text>
           </TouchableOpacity>
+        </Box>
 
-          <Text style={styles.activitydtext}>인기 액티비티</Text>
-          <View style={styles.hotactivitycontainer}>
-            <Image style={styles.activityimages}
-              resizeMode="cover"
-              source={require('./images/1.jpg')}
-            />
-            <Image style={styles.activityimages}
-              resizeMode="cover"
-              source={require('./images/1.jpg')}
-            />
-            <Image style={styles.activityimages}
-              resizeMode="cover"
-              source={require('./images/1.jpg')}
-            />
-            <Image style={styles.nextimages}
-              source={require('./images/1.jpg')}
-            />
-          </View>
-          <TouchableOpacity
-            style={styles.morerhotButton}
-            onPress={() => this.morehot(this.state.more)}
-          >
-            <Text style={styles.moreText}>더보기</Text>
+        {/* 인기 액티비티 */}
+        <Box marginTop={5} marginLeft={'5%'}>
+          <Text>인기 액티비티</Text>
+          <Box marginTop={5}>
+            <HStack space={10}>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 80, height: 90, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 80, height: 90, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 80, height: 90, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <IconM name="navigate-next" size={25} style={{marginTop: 30, flex: 1, }}></IconM>
+              </TouchableOpacity>
+            </HStack>
+          </Box>
+          <TouchableOpacity>
+            <Text textAlign={'center'} fontSize={20} marginRight={'5%'} marginTop={5} borderWidth={1} alignItems={'center'} justifyContent={'center'}>더보기</Text>
           </TouchableOpacity>
+        </Box>
 
-          <Text style={styles.activitydtext}>최신 액티비티</Text>
-          <View style={styles.newactivitycontainer}>
-            <Image style={styles.activityimages}
-              resizeMode="cover"
-              source={require('./images/1.jpg')}
-            />
-            <Image style={styles.activityimages}
-              resizeMode="cover"
-              source={require('./images/1.jpg')}
-            />
-            <Image style={styles.activityimages}
-              resizeMode="cover"
-              source={require('./images/1.jpg')}
-            />
-            <Image style={styles.nextimages}
-              source={require('./images/1.jpg')}
-            />
-          </View>
-          <TouchableOpacity
-            style={styles.morernewButton}
-            onPress={() => this.morenew(this.state.more)}
-          >
-            <Text style={styles.moreText}>더보기</Text>
+        {/* 최신 액티비티 */}
+        <Box marginTop={5} marginLeft={'5%'}>
+          <Text>최신 액티비티</Text>
+          <Box marginTop={5}>
+            <HStack space={10}>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 80, height: 90, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 80, height: 90, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 80, height: 90, }}
+                    alt="trans_1"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <IconM name="navigate-next" size={25} style={{marginTop: 30, flex: 1, }}></IconM>
+              </TouchableOpacity>
+            </HStack>
+          </Box>
+          <TouchableOpacity>
+            <Text textAlign={'center'} fontSize={20} marginRight={'5%'} marginTop={5} borderWidth={1} alignItems={'center'} justifyContent={'center'}>더보기</Text>
           </TouchableOpacity>
-        </View>
+        </Box>
       </ScrollView>
-    );
-
-  }
+    </NativeBaseProvider>
+  )
 }
- 
-export default Inputs;
-
-const searchData = async(text) => {
-
-  try {
-    const res = await fetch('실행할 함수', {
-      method: "POST",
-      body: JSON.stringify({
-        "keyword": text
-      })
-    });
-    const resJson = await res.json();
-    const newResJson = resJson
-    SVGMetadataElement(newResJson.products)
-  } catch (e) {
-    console.log("패치에 실패")
-    }
-}
- 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 10
-  },
-
-  searchcontainer: {
-    flexDirection: 'row',
-    flex: 1
-  },
-
-  search: {
-    margin: 15,
-    height: 40,
-    borderColor: "#7a42f4",
-    borderWidth: 1,
-    width : '70%',
-    borderRadius: 20
-  },
-
-  submitButton: {
-    backgroundColor: "#7a42f4",
-    padding: 10,
-    margin: 15,
-    height: 40,
-    flex: 1,
-    width : '30%'
-  },
-
-  submitButtonText: {
-    color: "white"
-  },
-
-  moreText: {
-    alignItems:'center',
-    justifyContent: 'center',
-    textAlign : 'center'
-  },
-
-  nextimages: {
-    marginTop: "40%",
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 20,
-    height: 20
-  },
-
-  morerecommendButton: {
-    backgroundColor: "#7a42f4",
-    padding: 10,
-    margin: 15,
-    height: 40
-  },
-
-  morerhotButton: {
-    backgroundColor: "#7a42f4",
-    padding: 10,
-    margin: 15,
-    height: 40
-  },
-
-  morernewButton: {
-    backgroundColor: "#7a42f4",
-    padding: 10,
-    margin: 15,
-    height: 40
-  },
-
-  mainactivitycontainer: {
-    backgroundColor: "green",
-    flexDirection:'column'
-  },
-
-  mainactivitycontainer1: {
-    flexDirection:'row'
-  },
-
-  mainactivitycontainer2: {
-    flexDirection:'row'
-  },
-
-  mainactivitycontainer3: {
-    flexDirection:'row'
-  },
-
-  recommendactivitycontainer: {
-    backgroundColor: "blue",
-    flexDirection: 'row'
-  },
-
-  hotactivitycontainer: {
-    backgroundColor: "green",
-    flexDirection: 'row'
-  },
-
-  newactivitycontainer: {
-    backgroundColor: "green",
-    flexDirection: 'row'
-  },
-
-  activitydtext: {
-    marginTop : 30,
-    justifyContent: 'center',
-    fontSize: 20,
-    marginBottom : 10
-  },
-
-  mainactivityimages1: {
-    height: 100,
-    flex: 1,
-    justifyContent: 'center',
-    margin : 10
-  },
-
-  mainactivityimages2: {
-    height: 100,
-    flex: 1,
-    justifyContent: 'center',
-    margin : 10
-  },
-
-  mainactivityimages3: {
-    height: 100,
-    flex: 1,
-    justifyContent: 'center',
-    margin : 10
-  },
-  
-  activityimages: {
-    height: 350,
-    flex: 1,
-    justifyContent: 'center'
-  }
-});
