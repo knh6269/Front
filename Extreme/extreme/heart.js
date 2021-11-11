@@ -13,6 +13,8 @@ import { TouchableOpacity,ScrollView } from "react-native";
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
+import IconA from 'react-native-vector-icons/AntDesign';
+
 export default function heart({navigation}){
         const pressHandler=()=>{
             navigation.navigate('각 페이지로 이동');
@@ -20,8 +22,14 @@ export default function heart({navigation}){
     
     return (
         <NativeBaseProvider>
+            <Box marginTop={30} flexDirection={'row'} justifyContent={'center'} alignItems={'center'} >
+                <HStack>
+                    <IconA name="shoppingcart" size={45} style={{flex:1,}}></IconA>
+                    <Text fontSize={30} style={{fontWeight:'bold',}} >장바구니</Text>
+                </HStack>
+            </Box>  
             <ScrollView>
-                <Box marginTop={100} marginLeft={'10%'}>
+                <Box marginTop={30} marginLeft={'10%'}>
                     <HStack space={5}>
                         <TouchableOpacity onPress={pressHandler}>
                             <HStack>

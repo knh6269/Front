@@ -38,46 +38,46 @@ const App = () => {
     }
   }
 
-  const createMarker = () => {
-    const { kakao } = window
-    const tempArr = []
-    locationArr.forEach(e => {
-      tempArr.push(
-        new kakao.maps.Marker({
-          map: map,
-          position: new kakao.maps.LatLng(e.mapY, e.mapX),
-        })
-      )
-    })
-    setMarkerArr(tempArr)
-  }
+//   const createMarker = () => {
+//     const { kakao } = window
+//     const tempArr = []
+//     locationArr.forEach(e => {
+//       tempArr.push(
+//         new kakao.maps.Marker({
+//           map: map,
+//           position: new kakao.maps.LatLng(e.mapY, e.mapX),
+//         })
+//       )
+//     })
+//     setMarkerArr(tempArr)
+//   }
 
-  const deleteMarker = () => markerArr.forEach(e => e.setMap(null))
+//   const deleteMarker = () => markerArr.forEach(e => e.setMap(null))
 
-  useEffect(() => {
-    getLocation(1) // location 정보 fetch
-    createMap()
-  }, [])
+//   useEffect(() => {
+//     getLocation(1) // location 정보 fetch
+//     createMap()
+//   }, [])
 
-  // marker 생성 + 표시
-  useEffect(() => map && locationArr.length && createMarker(), [
-    map,
-    locationArr,
-  ])
+//   // marker 생성 + 표시
+//   useEffect(() => map && locationArr.length && createMarker(), [
+//     map,
+//     locationArr,
+//   ])
 
-  return (
-    <div className="App">
-      <div
-        onClick={() => getLocation(2)}
-        style={{ ...divBtnOpt, backgroundColor: 'red', left: '100px' }}
-      />
-      <div
-        onClick={deleteMarker}
-        style={{ ...divBtnOpt, backgroundColor: 'blue', left: '150px' }}
-      />
-      <div id="Mymap" style={{ width: '100vw', height: '100vh' }}></div>
-    </div>
-  )
+//   return (
+//     <div className="App">
+//       <div
+//         onClick={() => getLocation(2)}
+//         style={{ ...divBtnOpt, backgroundColor: 'red', left: '100px' }}
+//       />
+//       <div
+//         onClick={deleteMarker}
+//         style={{ ...divBtnOpt, backgroundColor: 'blue', left: '150px' }}
+//       />
+//       <div id="Mymap" style={{ width: '100vw', height: '100vh' }}></div>
+//     </div>
+//   )
 }
 
 export default App

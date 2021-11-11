@@ -10,6 +10,7 @@ import {
     StyleSheet
 } from "react-native";
 
+import IconM from 'react-native-vector-icons/MaterialIcons';
 
 class Activity extends Component {
     render() {
@@ -35,21 +36,41 @@ export default function Recommend(){
                             </TouchableOpacity>
                         </View>
                         <View style={styles.activity}>
+                            <TouchableOpacity>
+                                <IconM name="navigate-before" size={25} style={{marginTop: 80, flex: 1, }}></IconM>
+                            </TouchableOpacity>
                             <Activity name="액티비티 이름" />
                             <Activity name="액티비티 이름" />
                             <Activity name="액티비티 이름" />
+                            <TouchableOpacity>
+                                <IconM name="navigate-next" size={25} style={{marginTop: 80, flex: 1, }}></IconM>
+                            </TouchableOpacity>
                         </View>
+                        
                         <Text>내 주변 여행지</Text>
                         <View style={styles.activity}>
+                            <TouchableOpacity>
+                                <IconM name="navigate-before" size={25} style={{marginTop: 80, flex: 1, }}></IconM>
+                            </TouchableOpacity>
                             <Activity name="액티비티 이름" />
                             <Activity name="액티비티 이름" />
                             <Activity name="액티비티 이름" />
+                            <TouchableOpacity>
+                                <IconM name="navigate-next" size={25} style={{marginTop: 80, flex: 1, }}></IconM>
+                            </TouchableOpacity>
                         </View>
+
                         <Text>예약지 주변 여행지</Text>
                         <View style={styles.activity}>
+                            <TouchableOpacity>
+                                <IconM name="navigate-before" size={25} style={{marginTop: 80, flex: 1, }}></IconM>
+                            </TouchableOpacity>
                             <Activity name="액티비티 이름" />
                             <Activity name="액티비티 이름" />
                             <Activity name="액티비티 이름" />
+                            <TouchableOpacity>
+                                <IconM name="navigate-next" size={25} style={{marginTop: 80, flex: 1, }}></IconM>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
