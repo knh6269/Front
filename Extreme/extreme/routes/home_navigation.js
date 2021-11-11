@@ -17,11 +17,6 @@ import weather_map from "../weather_map"
 
 const screens = {
     
-    register_company:{
-        screen:register_company,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -63,6 +58,11 @@ const screens = {
         screen: weather_map,
         navigationOptions: () => ({ headerShown: false, })
     },
+    register_company:{
+        screen:register_company,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
 }
 
 const trans_stack = createStackNavigator(screens);
