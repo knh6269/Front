@@ -8,9 +8,14 @@ import heart from "../heart";
 import my_page from "../my_page";
 import cart from "../cart"
 import register_user from "../register_user";
-
+import login from "../login"
+import register_company  from "../register_company";
 const screens = {
     
+    register_company:{
+        screen:register_company,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     
     home_region: {
         screen: home_region,
@@ -42,6 +47,11 @@ const screens = {
     },
     register_user:{
         screen:register_user,
+        navigationOptions: () => ({ headerShown: false, })
+
+    },
+    login: {
+        screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
 }

@@ -32,6 +32,16 @@ export default function home_region({navigation}){
         const pressHandler6 = () => {
                 navigation.navigate('cart')
         }
+        const pressHandler7 = () => {
+            navigation.navigate('login')
+        }
+        const pressHandler8=()=>{
+            navigation.navigate('register_user')
+        }
+        const pressHandler9=()=>{
+            navigation.navigate('register_company')
+        }
+    
     
     return (
         <NativeBaseProvider>
@@ -137,7 +147,7 @@ export default function home_region({navigation}){
                 </TouchableOpacity>
             </HStack>
             <HStack>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={pressHandler7}>
                 <HStack>
                 <Box width={24}  borderWidth={1}>
                 <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >전북</Text>
@@ -152,7 +162,7 @@ export default function home_region({navigation}){
                     />
                 </HStack>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={pressHandler8}>
                     <HStack>
                     <Box width={24}  borderWidth={1}>
                     <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >전남</Text>
@@ -180,7 +190,7 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
-               <TouchableOpacity>
+               <TouchableOpacity onPress={pressHandler9}>
                <HStack>
                <Image
                 source={{
