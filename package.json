@@ -2,6 +2,7 @@
   "dependencies": {
     "@react-native-community/checkbox": "^0.5.9",
     "expo-location": "^13.0.4",
+    "expo-task-manager": "^10.0.3",
     "react-native-multi-selectbox": "^1.5.0"
   }
 }
