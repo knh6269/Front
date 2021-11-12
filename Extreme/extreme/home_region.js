@@ -44,6 +44,9 @@ export default function home_region({navigation}){
         const pressHandler10 = () => {
             navigation.navigate('weather_map')
         }
+        const pressHandler11 = () => {
+            navigation.navigate('order_list_detail')
+        }
     
     return (
         <NativeBaseProvider>
@@ -246,7 +249,7 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
-               <TouchableOpacity>
+               <TouchableOpacity onPress={pressHandler11}>
                <HStack>
                <Image
                 source={{

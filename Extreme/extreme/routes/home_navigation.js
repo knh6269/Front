@@ -9,6 +9,7 @@ import my_page from "../my_page";
 import cart from "../cart"
 import register_user from "../register_user";
 import login from "../login"
+import order_list_detail from "../order_list_detail"
 
 import register_company  from "../register_company";
 
@@ -16,7 +17,6 @@ import weather_map from "../weather_map"
 
 
 const screens = {
-    
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -60,6 +60,10 @@ const screens = {
     },
     register_company:{
         screen:register_company,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    order_list_detail: {
+        screen: order_list_detail,
         navigationOptions: () => ({ headerShown: false, })
     },
     

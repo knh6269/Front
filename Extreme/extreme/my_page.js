@@ -16,18 +16,17 @@ const Height = Dimensions.get('window').height;
 class User extends Component {
     render() {
         return (
-            <View style={{ flexDirection: 'row', alignItems: 'center', height: 150}}>
-                <View style={{ height: 100, width: 100, backgroundColor: 'gray', marginLeft: 50}}></View>
+            <View style={{ flexDirection: 'row', alignItems: 'center', height: 150 }}>
+                <View style={{ height: 100, width: 100, backgroundColor: 'gray', marginLeft: 50 }}></View>
                 <Text style={{ marginLeft: 50, color: '#A0A0A0' }}>{this.props.name}</Text>
             </View>
         )
     }
 }
 
-export default class Recommend extends Component {
-    render() {
-        return (
-            <View style={{flex:1}}>
+export default function My_page() {
+    return (
+        <View style={{ flex: 1 }}>
             <ScrollView>
                 <View style={styles.container}>
                     <User name="닉네임">
@@ -40,15 +39,14 @@ export default class Recommend extends Component {
                     </TouchableOpacity>
                 </View>
             </ScrollView >
-            <View style={{flex:0.2, borderWidth:0.5, marginLeft:50}}>
-                    <Text>문의</Text>
-                    <Text>E-mail : aaa@aaa.com</Text>
-                    <Text>Tel : 000-0000-0000</Text>
-                    </View>
+            <View style={{ flex: 0.2, borderWidth: 0.5, marginLeft: 50 }}>
+                <Text>문의</Text>
+                <Text>E-mail : aaa@aaa.com</Text>
+                <Text>Tel : 000-0000-0000</Text>
             </View>
-        );
+        </View>
+    );
 
-    }
 }
 
 const styles = StyleSheet.create({

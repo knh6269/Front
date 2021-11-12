@@ -28,9 +28,7 @@ export default function Recommend(){
                     <View style={styles.category}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
                             <Text>지역별 여행지</Text>
-                            <TouchableOpacity
-                                onPress={() => this.morehot(this.state.more)}
-                            >
+                            <TouchableOpacity>
                                 <Text>지역 선택</Text>
                             </TouchableOpacity>
                         </View>
