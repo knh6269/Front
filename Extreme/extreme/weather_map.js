@@ -7,6 +7,7 @@ const divBtnOpt = {
   top: '100px',
   zIndex: '10',
 }
+import {StyleSheet,View} from "react-native" ;
 
 const App = () => {
   const [map, setMap] = useState(null)
@@ -66,17 +67,17 @@ const App = () => {
   ])
 
   return (
-    <div className="App">
-      <div
+    <View className="App">
+      <View
         onClick={() => getLocation(2)}
         style={{ ...divBtnOpt, backgroundColor: 'red', left: '100px' }}
       />
-      <div
+      <View
         onClick={deleteMarker}
         style={{ ...divBtnOpt, backgroundColor: 'blue', left: '150px' }}
       />
-      <div id="Mymap" style={{ width: '100vw', height: '100vh' }}></div>
-    </div>
+      <View id="Mymap" style={{ width: '100vw', height: '100vh' }}></View>
+    </View>
   )
 }
 

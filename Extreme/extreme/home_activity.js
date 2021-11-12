@@ -63,7 +63,7 @@ export default function home_activity({ navigation }) {
             </TouchableOpacity>
             <TouchableOpacity>
                 <IconA name="shoppingcart" size={25} style={{flex:1,}}></IconA>
-              </TouchableOpacity>
+            </TouchableOpacity>
           </HStack>
         </Box>
 

@@ -8,8 +8,9 @@ import{
     Text,
     VStack,
     Image,
+    View,
 }from 'native-base';
-import { TouchableOpacity,ScrollView } from "react-native";
+import { TouchableOpacity,ScrollView,TextInput } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -49,27 +50,14 @@ export default function coupon({navigation}){
                 justifyContent:'center',
              }}>
                 
-                <Box style={{
-                    
-                    width:Width-Width/4,
-                    height:Height/20,
-                    borderWidth:3,
-                    borderRadius:8,
-                    alignItems:'center',
-                    justifyContent:'center',
-                    
-                }}><HStack style={{marginTop:3}} >
-                    <Text style={{
-                        height:30,
-                        fontSize:18,
-                        paddingTop:4,
-                        flex:8,
-                        marginLeft:Width/4+13, 
-                    
-                    }}>쿠폰 조회</Text>
-                    <TouchableOpacity>
-                    <Icon name="search" size={24} style={{flex:1,paddingRight:3,}}></Icon>
-                    </TouchableOpacity>
+                <Box>
+                    <HStack style={{ marginTop: 3, marginLeft: '5%',}} >
+                        <View>
+                            <TextInput style={{ width:Width-Width/4, height: Height / 20, borderWidth: 3, borderRadius: 8, alignItems: 'center', justifyContent: 'center', }} />
+                        </View>
+                        <TouchableOpacity>
+                        <Icon name="search" size={24} style={{flex:1,paddingRight:3,}}></Icon>
+                        </TouchableOpacity>
                     </HStack>
                 </Box>
                 <Box style={{
