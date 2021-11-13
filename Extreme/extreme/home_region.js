@@ -47,6 +47,24 @@ export default function home_region({navigation}){
         const pressHandler11 = () => {
             navigation.navigate('order_list_detail')
         }
+        const pressHandler12 = () => {
+                navigation.navigate('activity_detail')
+        }
+        const pressHandler13 = () => {
+                navigation.navigate('order_list')
+        }
+        const pressHandler14 = () => {
+                navigation.navigate('purchase')
+        }
+        const pressHandler15 = () => {
+                navigation.navigate('reservation_calender')
+        }
+        const pressHandler16 = () => {
+                navigation.navigate('review')
+        }
+        const pressHandler17 = () => {
+                navigation.navigate('user_info')
+            }
     
     return (
         <NativeBaseProvider>
@@ -275,7 +293,7 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={pressHandler12}>
                <HStack>
                <Image
                 source={{
@@ -303,7 +321,7 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
-               <TouchableOpacity>
+               <TouchableOpacity onPress={pressHandler13}>
                <HStack>
                <Image
                 source={{
@@ -329,7 +347,7 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={pressHandler14}>
                <HStack>
                <Image
                 source={{
@@ -357,7 +375,7 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
-               <TouchableOpacity>
+               <TouchableOpacity onPress={pressHandler15}>
                <HStack>
                <Image
                 source={{
@@ -383,7 +401,7 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={pressHandler16}>
                <HStack>
                <Image
                 source={{
@@ -412,7 +430,7 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
-               <TouchableOpacity>
+               <TouchableOpacity onPress={pressHandler17}>
                <HStack>
                <Image
                 source={{
