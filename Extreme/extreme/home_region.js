@@ -223,7 +223,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠1</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
@@ -249,7 +249,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠2</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
@@ -277,7 +277,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠3</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
@@ -303,7 +303,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠4</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
@@ -331,7 +331,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠5</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
@@ -357,7 +357,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠6</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
@@ -385,7 +385,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠7</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
@@ -411,7 +411,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠8</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
@@ -440,7 +440,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠9</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
@@ -466,7 +466,7 @@ export default function home_region({navigation}){
                 alt="trans_1"
                 />
                 <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠10</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
                     <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
                 </VStack>
