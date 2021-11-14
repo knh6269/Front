@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Styled from 'styled-components/native';
 import MapView ,{PROVIDER_GOOGLE} from 'react-native-maps';
-import Geolocation from 'react-native-geolocation-service';
 import { NativeBaseProvider,Box,Text } from 'native-base';
 import {
   Dimensions,} from "react-native";
@@ -46,6 +45,7 @@ const AppleMap = () => {
             longitudeDelta: 3,
             
           }} >
+            
              <MapView.Marker
             coordinate={{latitude:36.62917303057579, 
             longitude: 127.45632936923715}}
