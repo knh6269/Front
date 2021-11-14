@@ -41,9 +41,9 @@ export default function home_region({navigation}){
         const pressHandler9=()=>{
             navigation.navigate('register_company')
         }
-        const pressHandler10 = () => {
-            navigation.navigate('weather_map')
-        }
+        // const pressHandler10 = () => {
+        //     navigation.navigate('weather_map')
+        // }
         const pressHandler11 = () => {
             navigation.navigate('order_list_detail')
         }
@@ -239,7 +239,7 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
-            <TouchableOpacity onPress={pressHandler10}>
+            <TouchableOpacity>
                <HStack>
                <Image
                 source={{
