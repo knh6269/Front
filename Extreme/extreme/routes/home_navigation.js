@@ -20,14 +20,15 @@ import review from "../review";
 import user_info from "../user_info";
 
 const screens = {
-    home_region: {
-        screen: home_region,
-        navigationOptions: () => ({ headerShown: false, })
-    },
     home_recommend: {
         screen: home_recommend,
         navigationOptions: () => ({ headerShown: false, })
     },
+    home_region: {
+        screen: home_region,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
     home_activity: {
         screen: home_activity,
         navigationOptions: () => ({ headerShown: false, })
