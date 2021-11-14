@@ -1,84 +1,74 @@
-import React, { useState, useEffect } from 'react'
-const APP_KEY = 'eaeeee414a3dfd48ad9a03586fc868db'
-const divBtnOpt = {
-  width: '50px',
-  height: '50px',
-  position: 'fixed',
-  top: '100px',
-  zIndex: '10',
-}
-import {StyleSheet,View} from "react-native" ;
+import React, {useState, useEffect} from 'react';
+import Styled from 'styled-components/native';
+import MapView ,{PROVIDER_GOOGLE} from 'react-native-maps';
+import Geolocation from 'react-native-geolocation-service';
+import { NativeBaseProvider,Box,Text } from 'native-base';
+import {
+  Dimensions,} from "react-native";
 
-const App = () => {
-  const [map, setMap] = useState(null)
-  const [markerArr, setMarkerArr] = useState([])
-  const [locationArr, setLocationArr] = useState([])
-
-  const getLocation = async id => {
-    const data = await fetch(`http://localhost:3000/data${id}.json`)
-    const dataJSON = await data.json()
-    setLocationArr(dataJSON.location)
-  }
-
-  const createMap = () => {
-    const script = document.createElement('script')
-    script.async = true
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${APP_KEY}&autoload=false`
-    document.head.appendChild(script)
-    script.onload = () => {
-      const { kakao } = window
-      kakao.maps.load(() => {
-        let container = document.getElementById('Mymap')
-        let options = {
-          center: new kakao.maps.LatLng(37.506502, 127.053617),
-          level: 7,
-        }
-        const createdMap = new kakao.maps.Map(container, options)
-        setMap(createdMap)
-      })
-    }
-  }
-
-  const createMarker = () => {
-    const { kakao } = window
-    const tempArr = []
-    locationArr.forEach(e => {
-      tempArr.push(
-        new kakao.maps.Marker({
-          map: map,
-          position: new kakao.maps.LatLng(e.mapY, e.mapX),
-        })
-      )
-    })
-    setMarkerArr(tempArr)
-  }
-
-  const deleteMarker = () => markerArr.forEach(e => e.setMap(null))
-
-  useEffect(() => {
-    getLocation(1) // location 정보 fetch
-    createMap()
-  }, [])
-
-  // marker 생성 + 표시
-  useEffect(() => map && locationArr.length && createMarker(), [
-    map,
-    locationArr,
-  ])
-
+const Container = Styled.View`
+    flex: 1;
+`;
+const Width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
+let des="낙현이집";
+const AppleMap = () => {
+ 
   return (
-    <View className="App">
-      <View
-        onClick={() => getLocation(2)}
-        style={{ ...divBtnOpt, backgroundColor: 'red', left: '100px' }}
-      />
-      <View
-        onClick={deleteMarker}
-        style={{ ...divBtnOpt, backgroundColor: 'blue', left: '150px' }}
-      />
-      <View id="Mymap" style={{ width: '100vw', height: '100vh' }}></View>
-    </View>
-  )
-}
+    <NativeBaseProvider>
+         <Box 
+            style={{
+                width:Width,
+                height:Height/12,
+                marginTop:40,
+                justifyContent:'center',
+                alignItems:'center',
+                borderWidth:3,
+                marginBottom:30,
+            }}>
+                <Text style={{
+                    textAlign:'center',
+                    height:Height/19,
+                    padding:10,
+                    fontSize:24,
+                    fontWeight:'bold',
+                }}>날씨 지도
+            </Text>
+            </Box>
+    
+    <Box style={{height:Height/2}}> 
+      <Container>
+        <MapView style={{flex: 1,backgroundColor:'red'}} provider={PROVIDER_GOOGLE} 
+          initialRegion={{
+            latitude: 36.62917303057579, 
+            longitude: 127.45632936923715,
+            latitudeDelta: 3,
+            longitudeDelta: 3,
+            
+          }} >
+             <MapView.Marker
+            coordinate={{latitude:36.62917303057579, 
+            longitude: 127.45632936923715}}
+            image={require('./images/그림7.png')}
+            title={"청주"}
+            description={des}
+         />
+         
+         <MapView.Marker
+            coordinate={{latitude:35.5, 
+            longitude: 127.45632936923715}}
+            image={require('./images/그림8.png')}
+            title={"청주"}
+            description={des}
+         />
+          </MapView>
+      </Container>
+    </Box>
+    <Box>
+      <Text>ax</Text>
+    </Box>
+    </NativeBaseProvider>
+  );
+};
 
-export default App
+export default AppleMap;

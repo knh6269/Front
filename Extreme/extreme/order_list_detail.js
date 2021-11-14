@@ -45,14 +45,17 @@ class Payment extends Component {
         )
     }
 }
-export default function Order_list_detail() {
+export default function Order_list_detail({navigation}) {
+    const pressHandler=()=>{
+        navigation.navigate('home_region');
+    }
     return (
         <ScrollView>
             <View style={styles.container}>
                 <Activity activity_name="액티비티 명" dday="D-3" date="2021-00-00" weather="맑음" price1="11010" />
                 <Payment name="다은" phone_number="010-0000-0000" discount="12" price="11111" method="카드" />
                 <View style={styles.button}>
-                    <TouchableOpacity style={styles.button1}>
+                    <TouchableOpacity style={styles.button1} onPress={pressHandler}>
                         <Text>홈으로</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button1}>

@@ -47,6 +47,24 @@ export default function home_region({navigation}){
         const pressHandler11 = () => {
             navigation.navigate('order_list_detail')
         }
+        const pressHandler12 = () => {
+                navigation.navigate('activity_detail')
+        }
+        const pressHandler13 = () => {
+                navigation.navigate('order_list')
+        }
+        const pressHandler14 = () => {
+                navigation.navigate('purchase')
+        }
+        const pressHandler15 = () => {
+                navigation.navigate('reservation_calender')
+        }
+        const pressHandler16 = () => {
+                navigation.navigate('review')
+        }
+        const pressHandler17 = () => {
+                navigation.navigate('user_info')
+            }
     
     return (
         <NativeBaseProvider>
@@ -275,6 +293,169 @@ export default function home_region({navigation}){
                    borderWidth:1,
                    marginTop:10,
                }}>
+            <TouchableOpacity onPress={pressHandler12}>
+               <HStack>
+               <Image
+                source={{
+                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                }}
+                style={{ margin:10, width: 90, height:90, }}
+                alt="trans_1"
+                />
+                <VStack marginTop={2} space={4}>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
+                </VStack>
+                
+                </HStack>
+            </TouchableOpacity>
+            </Box>
+            </HStack>
+            <HStack>
+               <Box style={{
+                   marginLeft:6,
+                   textAlign:'center',
+                   width:Width/2-20,
+                   heigth:200,
+                   borderWidth:1,
+                   marginTop:10,
+               }}>
+               <TouchableOpacity onPress={pressHandler13}>
+               <HStack>
+               <Image
+                source={{
+                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                }}
+                style={{ margin:10, width: 90, height:90, }}
+                alt="trans_1"
+                />
+                <VStack marginTop={2} space={4}>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
+                </VStack>
+                
+                </HStack>
+                </TouchableOpacity>
+               </Box>
+               <Box style={{
+                 marginLeft:6,
+                   textAlign:'center',
+                   width:Width/2,
+                   heigth:200,
+                   borderWidth:1,
+                   marginTop:10,
+               }}>
+            <TouchableOpacity onPress={pressHandler14}>
+               <HStack>
+               <Image
+                source={{
+                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                }}
+                style={{ margin:10, width: 90, height:90, }}
+                alt="trans_1"
+                />
+                <VStack marginTop={2} space={4}>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
+                </VStack>
+                
+                </HStack>
+            </TouchableOpacity>
+            </Box>
+            </HStack>
+            <HStack>
+               <Box style={{
+                   marginLeft:6,
+                   textAlign:'center',
+                   width:Width/2-20,
+                   heigth:200,
+                   borderWidth:1,
+                   marginTop:10,
+               }}>
+               <TouchableOpacity onPress={pressHandler15}>
+               <HStack>
+               <Image
+                source={{
+                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                }}
+                style={{ margin:10, width: 90, height:90, }}
+                alt="trans_1"
+                />
+                <VStack marginTop={2} space={4}>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
+                </VStack>
+                
+                </HStack>
+                </TouchableOpacity>
+               </Box>
+               <Box style={{
+                 marginLeft:6,
+                   textAlign:'center',
+                   width:Width/2,
+                   heigth:200,
+                   borderWidth:1,
+                   marginTop:10,
+               }}>
+            <TouchableOpacity onPress={pressHandler16}>
+               <HStack>
+               <Image
+                source={{
+                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                }}
+                style={{ margin:10, width: 90, height:90, }}
+                alt="trans_1"
+                />
+                <VStack marginTop={2} space={4}>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
+                </VStack>
+                
+                </HStack>
+            </TouchableOpacity>
+
+            </Box>
+            </HStack>
+            <HStack>
+               <Box style={{
+                   marginLeft:6,
+                   textAlign:'center',
+                   width:Width/2-20,
+                   heigth:200,
+                   borderWidth:1,
+                   marginTop:10,
+               }}>
+               <TouchableOpacity onPress={pressHandler17}>
+               <HStack>
+               <Image
+                source={{
+                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                }}
+                style={{ margin:10, width: 90, height:90, }}
+                alt="trans_1"
+                />
+                <VStack marginTop={2} space={4}>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
+                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
+                </VStack>
+                
+                </HStack>
+                </TouchableOpacity>
+               </Box>
+               <Box style={{
+                 marginLeft:6,
+                   textAlign:'center',
+                   width:Width/2,
+                   heigth:200,
+                   borderWidth:1,
+                   marginTop:10,
+               }}>
             <TouchableOpacity>
                <HStack>
                <Image
@@ -292,6 +473,7 @@ export default function home_region({navigation}){
                 
                 </HStack>
             </TouchableOpacity>
+            
             </Box>
             </HStack>
             <HStack>
@@ -346,60 +528,7 @@ export default function home_region({navigation}){
                 
                 </HStack>
             </TouchableOpacity>
-            </Box>
-            </HStack>
-            <HStack>
-               <Box style={{
-                   marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2-20,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-               <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-                </TouchableOpacity>
-               </Box>
-               <Box style={{
-                 marginLeft:6,
-                   textAlign:'center',
-                   width:Width/2,
-                   heigth:200,
-                   borderWidth:1,
-                   marginTop:10,
-               }}>
-            <TouchableOpacity>
-               <HStack>
-               <Image
-                source={{
-                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                }}
-                style={{ margin:10, width: 90, height:90, }}
-                alt="trans_1"
-                />
-                <VStack marginTop={2} space={4}>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>구룡 레포츠</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>평점</Text></HStack>
-                    <HStack  style={{ width:80,textAlign:"center"}}><Text fontSize={14}>16000</Text></HStack>
-                </VStack>
-                
-                </HStack>
-            </TouchableOpacity>
+            
             </Box>
             </HStack>
             </ScrollView>
