@@ -1,297 +1,76 @@
-import React from 'react'
-import {Dimensions,} from "react-native"
-import{
-    NativeBaseProvider,
-    Box,
-    HStack,
-    Text,
-    Image,
-    View
-}from 'native-base';
-import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
+import React, { Component } from 'react'
+import {View} from 'react-native';
+import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import { LocaleConfig } from 'react-native-calendars';
+import moment from 'moment';
+import 'moment/locale/ko';
 
-import IconF from 'react-native-vector-icons/Feather';
-import IconA from 'react-native-vector-icons/AntDesign';
-import IconM from 'react-native-vector-icons/MaterialIcons';
+LocaleConfig.locales['fr'] = {
+  monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+  monthNamesShort: ['Janv.','Févr.','Mars','Avril','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'],
+  dayNames: ['일요일','월요일', '화요일','수요일','목요일','금요일','토요일'],
+  dayNamesShort: ['일', '월','화','수','목','금','토'],
+  today: 'Aujourd\'hui'
+};
+LocaleConfig.defaultLocale = 'fr';
 
-const Width = Dimensions.get('window').width;
-const Height = Dimensions.get('window').height;
+const nowTime = moment().format('YYYY-MM-DD');
+const nowYear = moment().format('YYYY');
+const nowMonth = moment().format('MM');
 
-export default function home_activity({ navigation }) {
-  // const suffing = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const suffing = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const rafting = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const paragliding = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const bungee_jumping = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const water_leisure = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const ski = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const snowboard = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const sky_diving = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const zip_wire = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
+console.log(nowYear + '-' + nowMonth + '01');
+console.log(nowYear, nowMonth, nowTime);
 
-  return (
-    <NativeBaseProvider>
-      <ScrollView>
-        {/* 검색바 */}
-        <Box marginTop={50}>
-          <HStack space={3}>
-            <View>
-              <TextInput style={{ marginLeft: '5%', width:Width-Width/4, height: Height / 20, borderWidth: 3, borderRadius: 8, alignItems: 'center', justifyContent: 'center', }} />
-            </View>
-            <TouchableOpacity>
-              <IconF name="search" size={25} style={{flex:1,}}></IconF>
-            </TouchableOpacity>
-            <TouchableOpacity>
-                <IconA name="shoppingcart" size={25} style={{flex:1,}}></IconA>
-            </TouchableOpacity>
-          </HStack>
-        </Box>
+class App extends Component {
+  render() {
+     return (
+      <View style={{ paddingTop: 50, flex: 1 }}>
+        <Calendar
+        // Initially visible month. Default = Date()
+        current={nowTime}
+        // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
+        minDate={nowYear+ '-' + nowMonth + '-01'}
+        // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
+        maxDate={nowYear+ '-' + nowMonth + '-31'}
+        // Handler which gets executed on day press. Default = undefined
+        onDayPress={(day) => {console.log('selected day', day)}}
+        // Handler which gets executed on day long press. Default = undefined
+        onDayLongPress={(day) => {console.log('selected day', day)}}
+        // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
+        monthFormat={'yyyy MM'}
+        // Handler which gets executed when visible month changes in calendar. Default = undefined
+        onMonthChange={(month) => {console.log('month changed', month)}}
+        // Hide month navigation arrows. Default = false
+        hideArrows={true}
+        // Replace default arrows with custom ones (direction can be 'left' or 'right')
+        renderArrow={(direction) => (<Arrow/>)}
+        // Do not show days of other months in month page. Default = false
+        hideExtraDays={true}
+        // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
+        // day from another month that is visible in calendar page. Default = false
+        disableMonthChange={true}
+        // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
+        firstDay={1}
+        // Hide day names. Default = false
+        hideDayNames={false}
+        // Show week numbers to the left. Default = false
+        showWeekNumbers={false}
+        // Handler which gets executed when press arrow icon left. It receive a callback can go back month
+        onPressArrowLeft={substractMonth => substractMonth()}
+        // Handler which gets executed when press arrow icon right. It receive a callback can go next month
+        onPressArrowRight={addMonth => addMonth()}
+        // Disable left arrow. Default = false
+        disableArrowLeft={true}
+        // Disable right arrow. Default = false
+        disableArrowRight={true}
+        // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
+        disableAllTouchEventsForDisabledDays={true}
+        /** Replace default month and year title with custom one. the function receive a date as parameter. */
+        //renderHeader={(date) => {/*Return JSX*/}}
+        />
+      </View>
+     )
+   }
+ }
 
-        {/* 액티비티 종류 아이콘 */}
-        <Box marginLeft={'10%'}>
-          <Box marginTop={5}>
-            <HStack space={10}>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 50, height: 50, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 50, height: 50, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 50, height: 50, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-            </HStack>
-          </Box>
-
-          <Box marginTop={5}>
-            <HStack space={10}>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 50, height: 50, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 50, height: 50, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 50, height: 50, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-            </HStack>
-          </Box>
-
-          <Box marginTop={5}>
-            <HStack space={10}>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 50, height: 50, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 50, height: 50, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 50, height: 50, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-            </HStack>
-          </Box>
-        </Box>
-
-        {/* 추천 액티비티 */}
-        <Box marginTop={5} marginLeft={'5%'}>
-          <Text>추천 액티비티</Text>
-          <Box marginTop={5}>
-            <HStack space={10}>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 80, height: 90, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 80, height: 90, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 80, height: 90, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <IconM name="navigate-next" size={25} style={{marginTop: 30, flex: 1, }}></IconM>
-              </TouchableOpacity>
-            </HStack>
-          </Box>
-          <TouchableOpacity>
-            <Text textAlign={'center'} fontSize={20} marginRight={'5%'} marginTop={5} borderWidth={1} alignItems={'center'} justifyContent={'center'}>더보기</Text>
-          </TouchableOpacity>
-        </Box>
-
-        {/* 인기 액티비티 */}
-        <Box marginTop={5} marginLeft={'5%'}>
-          <Text>인기 액티비티</Text>
-          <Box marginTop={5}>
-            <HStack space={10}>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 80, height: 90, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 80, height: 90, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 80, height: 90, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <IconM name="navigate-next" size={25} style={{marginTop: 30, flex: 1, }}></IconM>
-              </TouchableOpacity>
-            </HStack>
-          </Box>
-          <TouchableOpacity>
-            <Text textAlign={'center'} fontSize={20} marginRight={'5%'} marginTop={5} borderWidth={1} alignItems={'center'} justifyContent={'center'}>더보기</Text>
-          </TouchableOpacity>
-        </Box>
-
-        {/* 최신 액티비티 */}
-        <Box marginTop={5} marginLeft={'5%'}>
-          <Text>최신 액티비티</Text>
-          <Box marginTop={5}>
-            <HStack space={10}>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 80, height: 90, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 80, height: 90, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{width: 80, height: 90, }}
-                    alt="trans_1"
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <IconM name="navigate-next" size={25} style={{marginTop: 30, flex: 1, }}></IconM>
-              </TouchableOpacity>
-            </HStack>
-          </Box>
-          <TouchableOpacity>
-            <Text textAlign={'center'} fontSize={20} marginRight={'5%'} marginTop={5} borderWidth={1} alignItems={'center'} justifyContent={'center'}>더보기</Text>
-          </TouchableOpacity>
-        </Box>
-      </ScrollView>
-    </NativeBaseProvider>
-  )
-}
+export default App;
