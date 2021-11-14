@@ -57,10 +57,10 @@ const screens = {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
-    // weather_map: {
-    //     screen: weather_map,
-    //     navigationOptions: () => ({ headerShown: false, })
-    // },
+    weather_map: {
+        screen: weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     register_company:{
         screen:register_company,
         navigationOptions: () => ({ headerShown: false, })
