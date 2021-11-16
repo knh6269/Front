@@ -1,9 +1,10 @@
 import React from 'react'
 import {
-    Dimensions} from "react-native"
+    Dimensions, ImagePickerIOS} from "react-native"
 import{
     NativeBaseProvider,
     Box,
+    View,
     HStack,
     Text,
     VStack,
@@ -13,6 +14,8 @@ import{
 import { TouchableOpacity,ScrollView } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
 import { TextInput } from 'react-native-gesture-handler';
+import * as ImagePicker from 'expo-image-picker';
+
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
@@ -26,7 +29,7 @@ export default function register_user({navigation}){
  const [birth,setbirth]=React.useState('');
  const [account,setaccount]=React.useState('');
  let sample='nakhyeon';
- 
+ let pickerResult;
  const submitBtn=()=>{
     console.log(`아이디: ${id}\n비밀번호:${password}`);
   }
@@ -43,6 +46,19 @@ export default function register_user({navigation}){
         console.log('사용 가능한 아이디입니다.');
     }
   }
+  //이미지 불러오기
+  let openImagePickerAsync = async () => {
+    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert("Permission to access camera roll is required!");
+      return;
+    }
+
+    pickerResult = await ImagePicker.launchImageLibraryAsync();
+    console.log(pickerResult);
+  }
+  
     return(
         <NativeBaseProvider>
               <Box 
@@ -81,6 +97,10 @@ export default function register_user({navigation}){
                 }}>
                 <VStack space={1}>
                 <Text style={{marginLeft:10,padding:8,borderBottomWidth:1,width:Width-Width/2}}>프로필 이미지</Text>
+                <TouchableOpacity onPress={openImagePickerAsync}>
+        <Text>Pick a photo</Text>
+      </TouchableOpacity>
+      <Image style={{marginLeft:10,width:80,height:80,borderWidth:1}} source={{ uri: {pickerResult}}} />
                 <Box style={{marginLeft:10,width:80,height:80,borderWidth:1}}></Box>
                 <Text style={{marginLeft:10,padding:8,borderBottomWidth:1,width:Width-Width/2}}>아이디 입력</Text>
                 <HStack space={5} style={{alignItems:'center'}}>

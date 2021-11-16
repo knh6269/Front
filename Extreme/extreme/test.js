@@ -1,71 +1,58 @@
-import Carousel, { Pagination } from 'react-native-snap-carousel';
+import React from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
-import React, { useState, useRef } from 'react';
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  Image,
-  FlatList,
-  Dimensions,
-  ScrollView
-} from 'react-native';
-const { width } = Dimensions.get('window');
-const SPACING = 10;
-const THUMB_SIZE = 80;
-const IMAGES = {
-  image1: require('./images/1.jpg'),
-  image2: require('./images/2.jpg'),
-  image3: require('./images/그림7.png'),
-  image4: require('./images/1.jpg'),
-  image5: require('./images/1.jpg'),
-  image6: require('./images/1.jpg'),
-  image7: require('./images/1.jpg')
-};
-const App = () => {
-  const [images, setImages] = useState([
-    { id: '1', image: IMAGES.image1 },
-    { id: '2', image: IMAGES.image2 },
-    { id: '3', image: IMAGES.image3 },
-    { id: '4', image: IMAGES.image4 },
-    { id: '5', image: IMAGES.image5 },
-    { id: '6', image: IMAGES.image6 },
-    { id: '7', image: IMAGES.image7 }
-  ]);
 
-  return (
-    
-    <View style={{ flex: 1, backgroundColor: 'white', alignItems: 'center' }}>
+export default function App() {
+  const [selectedImage, setSelectedImage] = React.useState(null);
 
-      {/* Title JSX Remains same */}
-      {/* Carousel View */}
-      <View style={{ marginTop: 20 }}>
-        <Carousel
-          layout='default'
-          data={images}
-          sliderWidth={width}
-          itemWidth={width/3}
-          inactiveSlideScale={1} //슬라이드들 크기 같게
-          inactiveSlideOpacity={1} //슬라이드 투명도
-          activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-          contentContainerCustomStyle={{overflow: 'hidden', width: width/3 * (7)}} //마지막 7은 원소의 개수
-          renderItem={({ item, index }) => (
-            <View style={{ flexDirection: 'column', width: '100%', height: '50%', borderWidth:0.5}}>
-                <Image
-                  key={index}
-                  style={{ width: '100%', height: '100%' }}
-                  resizeMode='contain'
-                  source={item.image}
-                />
-                <Text style={{ color: 'red' }}>sss{item.id}</Text>
-            </View>
-          )}
+  let openImagePickerAsync = async () => {
+    let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      alert('Permission to access camera roll is required!');
+      return;
+    }
+
+    let pickerResult = await ImagePicker.launchImageLibraryAsync();
+
+    if (pickerResult.cancelled === true) {
+      return;
+    }
+
+    setSelectedImage({ localUri: pickerResult.uri });
+  };
+
+  if (selectedImage !== null) {
+    return (
+      <View style={{flex:1}}>
+        <Image
+          source={{ uri: selectedImage.localUri }}
+          style={styles.thumbnail}
         />
       </View>
-      
-     
+    );
+  }
+
+  return (
+    <View style={{flex:1}}>
+      <Image style={{width:500, height:500}} source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} />
+      <Text>
+        To share a photo from your phone with a friend, just press the button below!
+      </Text>
+
+      <TouchableOpacity onPress={openImagePickerAsync}>
+        <Text>Pick a photo</Text>
+      </TouchableOpacity>
     </View>
-    
-  );
-};
-export default App;
+);
+}
+
+const styles = StyleSheet.create({
+  /* Other styles hidden to keep the example brief... */
+  thumbnail: {
+    width: 300,
+    height: 300,
+    resizeMode: "contain"
+  }
+});

@@ -20,7 +20,6 @@ import review from "../review";
 import user_info from "../user_info";
 
 const screens = {
-
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
