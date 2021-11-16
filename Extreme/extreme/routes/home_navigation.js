@@ -21,10 +21,14 @@ import user_info from "../user_info";
 import test from "../test";
 
 const screens = {
+<<<<<<< HEAD
     // test: {
     //     screen: test,
     //     navigationOptions: () => ({ headerShown: false, })
     // },
+=======
+
+>>>>>>> 3932e14d16f34a5bd194e36b8ccb78c6deb2a7ae
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -56,7 +60,6 @@ const screens = {
     register_user:{
         screen:register_user,
         navigationOptions: () => ({ headerShown: false, })
-
     },
     login: {
         screen: login,
