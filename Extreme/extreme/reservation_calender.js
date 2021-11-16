@@ -1,76 +1,62 @@
-import React, { Component } from 'react'
-import {View} from 'react-native';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
-import { LocaleConfig } from 'react-native-calendars';
-import moment from 'moment';
-import 'moment/locale/ko';
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button
+} from 'react-native';
+import CalendarPicker from 'react-native-calendar-picker';
+import { color } from 'react-native-reanimated';
 
-LocaleConfig.locales['fr'] = {
-  monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
-  monthNamesShort: ['Janv.','Févr.','Mars','Avril','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'],
-  dayNames: ['일요일','월요일', '화요일','수요일','목요일','금요일','토요일'],
-  dayNamesShort: ['일', '월','화','수','목','금','토'],
-  today: 'Aujourd\'hui'
-};
-LocaleConfig.defaultLocale = 'fr';
+type Props = {};
+// var test = "신청 가능한 activity 확인"
+var ex = "이용 가능한 Activity는 다음과 같다"
 
-const nowTime = moment().format('YYYY-MM-DD');
-const nowYear = moment().format('YYYY');
-const nowMonth = moment().format('MM');
+export default class App extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedStartDate: null,
+      buttoncolor: "blue",
+      test: "확인"
+    };
+    this.onDateChange = this.onDateChange.bind(this);
+  }
 
-console.log(nowYear + '-' + nowMonth + '01');
-console.log(nowYear, nowMonth, nowTime);
+  onDateChange(date) {
+    this.setState({
+      selectedStartDate: date,
+    });
+  }
 
-class App extends Component {
+  _updateCount() {
+    this.setState({ buttoncolor: "green", test:"확인됨"});
+    ex = "123123123"
+  }
+
   render() {
-     return (
-      <View style={{ paddingTop: 50, flex: 1 }}>
-        <Calendar
-        // Initially visible month. Default = Date()
-        current={nowTime}
-        // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
-        minDate={nowYear+ '-' + nowMonth + '-01'}
-        // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
-        maxDate={nowYear+ '-' + nowMonth + '-31'}
-        // Handler which gets executed on day press. Default = undefined
-        onDayPress={(day) => {console.log('selected day', day)}}
-        // Handler which gets executed on day long press. Default = undefined
-        onDayLongPress={(day) => {console.log('selected day', day)}}
-        // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
-        monthFormat={'yyyy MM'}
-        // Handler which gets executed when visible month changes in calendar. Default = undefined
-        onMonthChange={(month) => {console.log('month changed', month)}}
-        // Hide month navigation arrows. Default = false
-        hideArrows={true}
-        // Replace default arrows with custom ones (direction can be 'left' or 'right')
-        renderArrow={(direction) => (<Arrow/>)}
-        // Do not show days of other months in month page. Default = false
-        hideExtraDays={true}
-        // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
-        // day from another month that is visible in calendar page. Default = false
-        disableMonthChange={true}
-        // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
-        firstDay={1}
-        // Hide day names. Default = false
-        hideDayNames={false}
-        // Show week numbers to the left. Default = false
-        showWeekNumbers={false}
-        // Handler which gets executed when press arrow icon left. It receive a callback can go back month
-        onPressArrowLeft={substractMonth => substractMonth()}
-        // Handler which gets executed when press arrow icon right. It receive a callback can go next month
-        onPressArrowRight={addMonth => addMonth()}
-        // Disable left arrow. Default = false
-        disableArrowLeft={true}
-        // Disable right arrow. Default = false
-        disableArrowRight={true}
-        // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
-        disableAllTouchEventsForDisabledDays={true}
-        /** Replace default month and year title with custom one. the function receive a date as parameter. */
-        //renderHeader={(date) => {/*Return JSX*/}}
-        />
-      </View>
-     )
-   }
- }
+    const { selectedStartDate } = this.state;
+    const startDate = selectedStartDate ? selectedStartDate.toString() : '';
 
-export default App;
+    return (
+      <View marginTop={'10%'}>
+        <CalendarPicker
+          onDateChange={this.onDateChange}
+        />
+        <View>
+          <Button
+            color={this.state.buttoncolor}
+            title={this.state.test}
+            width={'5%'}
+            onPress={this._updateCount.bind(this)} />
+          <Text>{startDate}</Text>
+          
+        </View>
+        
+        <View>
+          <Text>{ex}</Text>
+        </View>
+      </View>
+    );
+  }
+}
