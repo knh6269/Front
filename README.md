@@ -18,3 +18,4 @@
 다은
 
       npm install --save react-native-snap-carousel (11.13)
+      npm i react-native-tab-view (11.16)
