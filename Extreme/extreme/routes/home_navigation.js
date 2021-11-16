@@ -18,8 +18,13 @@ import purchase from "../purchase";
 import reservation_calender from "../reservation_calender";
 import review from "../review";
 import user_info from "../user_info";
+import test from "../test";
 
 const screens = {
+    // test: {
+    //     screen: test,
+    //     navigationOptions: () => ({ headerShown: false, })
+    // },
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
