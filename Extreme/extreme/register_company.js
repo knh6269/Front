@@ -28,7 +28,7 @@ export default function register_company({navigation}){
  let sample='nakhyeon';
  
  const submitBtn=()=>{
-    console.log({c_id,c_password});
+    console.log({c_id,c_password}); 1
   }
 
   const cancel=()=>{
