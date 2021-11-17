@@ -1,6 +1,5 @@
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-
 import home_region from "../home_region";
 import home_recommend from "../home_recommend";
 import home_activity from "../home_activity";
@@ -20,8 +19,16 @@ import reservation_calender from "../reservation_calender";
 import review from "../review";
 import user_info from "../user_info";
 import home from "../home";
+// import test from "../test";
 
 const screens = {
+    // test:{
+    //     screen:test
+    // },
+    weather_map: {
+        screen: weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
@@ -60,10 +67,6 @@ const screens = {
     },
     login: {
         screen: login,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    weather_map: {
-        screen: weather_map,
         navigationOptions: () => ({ headerShown: false, })
     },
     register_company:{
