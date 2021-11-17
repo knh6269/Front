@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, useState } from 'react'
 import {Dimensions,} from "react-native"
 import{
     NativeBaseProvider,
@@ -48,22 +48,31 @@ export default function home_activity({ navigation }) {
   // const zip_wire = () => {
   //   navigation.navigate('각 페이지로 이동');
   // }
+  
+  const [search, onChangeTextSearch] = React.useState("")
 
   return (
     <NativeBaseProvider>
       <ScrollView>
         {/* 검색바 */}
-        <Box marginTop={50}>
+        <Box marginTop={'10%'}>
           <HStack space={3}>
-            <View>
-              <TextInput style={{ marginLeft: '5%', width:Width-Width/4, height: Height / 20, borderWidth: 3, borderRadius: 8, alignItems: 'center', justifyContent: 'center', }} />
+            <Image
+                    source={{
+                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                    }}
+                    style={{width: 50, height: 50, }}
+                    alt="trans_1"
+                />
+            <View style={{flexDirection: 'row', height: 30, width: '80%',borderColor: 'gray', borderWidth: 1}}>
+              <IconF name="search" size={24}></IconF>
+                    <TextInput
+                        placeholder={'어디로 여행가세요?'}
+                        onChangeText={(text) => onChangeTextSearch(text)}
+                        value={search}
+                    />
+              {/* <TextInput style={{ marginLeft: '5%', width:Width-Width/4, height: Height / 20, borderWidth: 3, borderRadius: 8, alignItems: 'center', justifyContent: 'center', }} /> */}
             </View>
-            <TouchableOpacity>
-              <IconF name="search" size={25} style={{flex:1,}}></IconF>
-            </TouchableOpacity>
-            <TouchableOpacity>
-                <IconA name="shoppingcart" size={25} style={{flex:1,}}></IconA>
-            </TouchableOpacity>
           </HStack>
         </Box>
 

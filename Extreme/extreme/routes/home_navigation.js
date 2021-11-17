@@ -18,12 +18,21 @@ import purchase from "../purchase";
 import reservation_calender from "../reservation_calender";
 import review from "../review";
 import user_info from "../user_info";
-import test from "../test";
+import home from "../home";
+// import test from "../test";
 
 const screens = {
-    test:{
-         screen:test
-     },
+    // test:{
+    //     screen:test
+    // },
+    weather_map: {
+        screen: weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    home:{
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -60,10 +69,6 @@ const screens = {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
-    weather_map: {
-        screen: weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
     register_company:{
         screen:register_company,
         navigationOptions: () => ({ headerShown: false, })
@@ -98,6 +103,6 @@ const screens = {
     }
 }
 
-const trans_stack = createStackNavigator(screens);
+export const trans_stack = createStackNavigator(screens);
 
 export default createAppContainer(trans_stack);
