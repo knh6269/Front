@@ -20,12 +20,21 @@ import reservation_calender from "../reservation_calender";
 import review from "../review";
 import user_info from "../user_info";
 import home from "../home";
+import register_activity from "../register_activity"
+import test from "../test";
 
 const screens = {
+
+    test:{
+        screen:test,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
     },
+
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -96,6 +105,10 @@ const screens = {
     },
     user_info: {
         screen: user_info,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    register_activity: {
+        screen: register_activity,
         navigationOptions: () => ({ headerShown: false, })
     }
 }

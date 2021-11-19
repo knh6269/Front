@@ -13,7 +13,12 @@ import { TouchableOpacity,ScrollView } from "react-native";
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
-export default function home_region({navigation}){
+export default function home_region({ navigation }) {
+
+        const test=()=>{
+            navigation.navigate('test');
+        }
+
         const pressHandler=()=>{
             navigation.navigate('home_activity');
         }
