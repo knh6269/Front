@@ -22,13 +22,6 @@ import home from "../home";
 // import test from "../test";
 
 const screens = {
-    // test:{
-    //     screen:test
-    // },
-    weather_map: {
-        screen: weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
@@ -100,7 +93,11 @@ const screens = {
     user_info: {
         screen: user_info,
         navigationOptions: () => ({ headerShown: false, })
-    }
+    },
+    weather_map: {
+        screen: weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
 }
 
 export const trans_stack = createStackNavigator(screens);
