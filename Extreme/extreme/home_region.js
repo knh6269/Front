@@ -14,13 +14,6 @@ import { TouchableOpacity,ScrollView } from "react-native";
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
-<<<<<<< HEAD
-export default function home_region({ navigation }) {
-
-        const test=()=>{
-            navigation.navigate('test');
-        }
-=======
 const activitys = [{name: '구룡', price: 15000, star: 4.5, image: require('./images/1.jpg') },
 {  name: '12', price: 15300, star: 3.5, image: require('./images/2.jpg') },
 {   name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
@@ -36,7 +29,8 @@ const activitys = [{name: '구룡', price: 15000, star: 4.5, image: require('./i
 
 {   name: '122', price: 153040, star: 3.15, image: require('./images/1.jpg') }];
 
-export default function home_region({navigation}){
+export default function home_region({ navigation }) {
+
     const renderActivity =({item})=>(
         <View style={{ flexDirection: 'row', justifyContent: 'center', width:Width/2 }}>
             <TouchableOpacity style={{flexDirection: 'row'}}>
@@ -53,7 +47,6 @@ export default function home_region({navigation}){
     </View>
     );
     
->>>>>>> a0c512932341f95133fe3103356fc5f4e36bedae
 
         const pressHandler=()=>{
             navigation.navigate('home_activity');
