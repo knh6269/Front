@@ -19,13 +19,15 @@ import reservation_calender from "../reservation_calender";
 import review from "../review";
 import user_info from "../user_info";
 import home from "../home";
-// import test from "../test";
+import register_activity from "../register_activity"
+
 
 const screens = {
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
     },
+
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -98,6 +100,10 @@ const screens = {
         screen: weather_map,
         navigationOptions: () => ({ headerShown: false, })
     },
+    register_activity: {
+        screen: register_activity,
+        navigationOptions: () => ({ headerShown: false, })
+    }
 }
 
 export const trans_stack = createStackNavigator(screens);
