@@ -31,8 +31,9 @@ export default function AppleMap(){
      { coordinate:{latitude:37.854348731753554,longitude: 128.14330215878118} }, //강원
      { coordinate:{latitude:33.40153208420323,longitude: 126.53592826886285} }, //제주 
   ])
+
   const zooming=()=>{
-    setzooms(zooms=>zooms-1);
+    setzooms(zooms=>zooms-2);
     console.log(zooms);
   }
   const map = useRef(null)  
@@ -76,7 +77,7 @@ export default function AppleMap(){
         }}>
 
       
-        {locations.map((locations,index)=>{
+        {zooms>4&&locations.map((locations,index)=>{
          return(
         <MapView.Marker
          key={index}

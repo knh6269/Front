@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import {useWindowDimensions, TouchableOpacity, ScrollView, TextInput} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import Home_region from "./home_region";
 import Home_recommend from "./home_recommend";
 import Home_activity from "./home_activity";
+import { NativeBaseProvider,
+  Box,
+  HStack,
+  Text,
+  Image,
+  View,
+  flex} from 'native-base';
+import IconF from 'react-native-vector-icons/Feather';
 
 export default function TabViewExample({navigation}) {
   const layout = useWindowDimensions();
@@ -28,11 +36,14 @@ export default function TabViewExample({navigation}) {
     }
   };
   return (
+    <NativeBaseProvider>
+    <Text>ss</Text>
     <TabView
       navigationState={{ index, routes }}
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={{ width: layout.width }}
     />
+    </NativeBaseProvider>
   );
 }

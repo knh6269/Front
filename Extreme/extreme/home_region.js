@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {
     Dimensions,FlatList} from "react-native"
 import{
@@ -11,32 +11,47 @@ import{
     View
 }from 'native-base';
 import { TouchableOpacity,ScrollView } from "react-native";
+import { colorStyle } from 'styled-system';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
-<<<<<<< HEAD
-export default function home_region({ navigation }) {
-
-        const test=()=>{
-            navigation.navigate('test');
-        }
-=======
-const activitys = [{name: '구룡', price: 15000, star: 4.5, image: require('./images/1.jpg') },
+const activitys = 
+[{name: '구룡', price: 15000, star: 4.5, image: require('./images/1.jpg') },
 {  name: '12', price: 15300, star: 3.5, image: require('./images/2.jpg') },
 {   name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
 {   name: '12', price: 153200, star: 3.5, image: require('./images/2.jpg') },
 {   name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
-
 {  name: '12', price: 15300, star: 3.5, image: require('./images/2.jpg') },
 {  name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
 {  name: '12', price: 15300, star: 3.5, image: require('./images/2.jpg') },
 { name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
 {   name: '12', price: 15300, star: 3.5, image: require('./images/2.jpg') },
 {  name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
-
 {   name: '122', price: 153040, star: 3.15, image: require('./images/1.jpg') }];
 
 export default function home_region({navigation}){
+    
+    const pressHandler=()=>{
+        navigation.navigate('home_activity');
+    }
+    const pressHandler2=()=>{
+        navigation.navigate('home_recommend');
+    }
+    const [region,setregion]=useState([
+        {location:"경기",handler:pressHandler},
+        {location:"강원",handler:pressHandler2},
+        {location:"충북",handler:pressHandler},
+    ])
+    const [region1,setregion1]=useState([
+        {location:"충남",id:1},
+        {location:"경북",id:2},
+        {location:"경남",id:3},
+    ])
+    const [region2,setregion2]=useState([
+        {location:"전북",id:1},
+        {location:"전남",id:2},
+        {location:"제주",id:3},
+    ])
     const renderActivity =({item})=>(
         <View style={{ flexDirection: 'row', justifyContent: 'center', width:Width/2 }}>
             <TouchableOpacity style={{flexDirection: 'row'}}>
@@ -50,200 +65,53 @@ export default function home_region({navigation}){
             <Text style={{ color: 'red' }}>{item.star}</Text>
         </View>
         </TouchableOpacity>
-    </View>
+        </View>
     );
-    
->>>>>>> a0c512932341f95133fe3103356fc5f4e36bedae
-
-        const pressHandler=()=>{
-            navigation.navigate('home_activity');
-        }
-        const pressHandler2=()=>{
-            navigation.navigate('home_recommend');
-        }
-        const pressHandler3 = () => {
-            navigation.navigate('my_page')
-        }
-        const pressHandler4 = () => {
-                navigation.navigate('coupon')
-        }
-        const pressHandler5 = () => {
-                navigation.navigate('heart')
-        }
-        const pressHandler6 = () => {
-                navigation.navigate('cart')
-        }
-        const pressHandler7 = () => {
-            navigation.navigate('login')
-        }
-        const pressHandler8=()=>{
-            navigation.navigate('register_user')
-        }
-        const pressHandler9=()=>{
-            navigation.navigate('register_company')
-        }
-        const pressHandler10 = () => {
-            navigation.navigate('weather_map')
-        }
-        const pressHandler11 = () => {
-            navigation.navigate('order_list_detail')
-        }
-        const pressHandler12 = () => {
-                navigation.navigate('activity_detail')
-        }
-        const pressHandler13 = () => {
-                navigation.navigate('order_list')
-        }
-        const pressHandler14 = () => {
-                navigation.navigate('purchase')
-        }
-        const pressHandler15 = () => {
-                navigation.navigate('reservation_calender')
-        }
-        const pressHandler16 = () => {
-                navigation.navigate('review')
-        }
-        const pressHandler17 = () => {
-                navigation.navigate('user_info')
-            }
+     
     
     return (
-        <NativeBaseProvider>
-            <Box marginTop={10}>
-            <HStack>
-            <TouchableOpacity onPress={pressHandler}>
-                <HStack>
-                    <Box width={24}  borderWidth={1}>
-                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경기</Text>
-                    </Box>
-               
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{ width: 120, height:60, }}
-                    alt="trans_1"
-                   
-                    />
-                </HStack>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={pressHandler2}>
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >강원</Text>
-                </Box>
-               
-                    <Image
-                        source={{
-                            uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                        }}
-                        style={{ width: 120, height:60, }}
-                        alt="trans_1"
-                       
-                        />
-                </HStack>
-            </TouchableOpacity>
-
-            </HStack>
-            <HStack>
-            <TouchableOpacity onPress={pressHandler3}>
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >충북</Text>
-                </Box>
-               
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{ width: 120, height:60, }}
-                    alt="trans_1"
-                    
-                    />
-                </HStack>
-             </TouchableOpacity>  
-             <TouchableOpacity onPress={pressHandler4}> 
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >충남</Text>
-                </Box>
-                    <Image
-                        source={{
-                            uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                        }}
-                        style={{ width: 120, height:60, }}
-                        alt="trans_1"
-                      
-                        />
-                </HStack>
-                </TouchableOpacity>
-            </HStack>
-            <HStack>
-                <TouchableOpacity onPress={pressHandler5}>
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경북</Text>
-                </Box>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{ width: 120, height:60, }}
-                    alt="trans_1"
-                   
-                    />
-                </HStack>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={pressHandler6}>
+        <NativeBaseProvider >
+            <Box style={{marginLeft:12}}>
+                <Box >
                     <HStack>
-                    <Box width={24}  borderWidth={1}>
-                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >경남</Text>
-                    </Box>
-                        <Image
-                            source={{
-                                uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                            }}
-                            style={{ width: 120, height:60, }}
-                            alt="trans_1"
-                            
-                            />
+                    { region.map((region)=>{
+                        return(
+                            <TouchableOpacity onPress={region.handler} >
+                                    <Box width={32} borderWidth={1} >
+                                    <Text width={24} fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >{region.location}</Text>
+                                    </Box>
+                                </TouchableOpacity>
+                        )
+                    })} 
                     </HStack>
-                </TouchableOpacity>
-            </HStack>
-            <HStack>
-                <TouchableOpacity onPress={pressHandler7}>
-                <HStack>
-                <Box width={24}  borderWidth={1}>
-                <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >전북</Text>
                 </Box>
-                <Image
-                    source={{
-                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                    }}
-                    style={{ width: 120, height:60, }}
-                    alt="trans_1"
-                   
-                    />
-                </HStack>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={pressHandler8}>
+                <Box >
                     <HStack>
-                    <Box width={24}  borderWidth={1}>
-                    <Text width={16}fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >전남</Text>
-                    </Box>
-                        <Image
-                            source={{
-                                uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                            }}
-                            style={{ width: 120, height:60, }}
-                            alt="trans_1"
-                            
-                            />
+                    { region1.map((region1)=>{
+                        return(
+                            <TouchableOpacity >
+                                    <Box width={32} borderWidth={1} >
+                                    <Text width={24} fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >{region1.location}</Text>
+                                    </Box>
+                                </TouchableOpacity>
+                        )
+                    })} 
                     </HStack>
-                </TouchableOpacity>
-            </HStack>
+                </Box>
+                <Box>
+                    <HStack>
+                    { region2.map((region2)=>{
+                        return(
+                            <TouchableOpacity >
+                                    <Box width={32} borderWidth={1} >
+                                    <Text width={24} fontSize={24} marginLeft={5} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >{region2.location}</Text>
+                                    </Box>
+                                </TouchableOpacity>
+                        )
+                    })} 
+                    </HStack>
+                </Box>
             </Box>
-        
             <FlatList 
                             data={activitys}
                             renderItem={renderActivity}

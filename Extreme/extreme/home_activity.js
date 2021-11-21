@@ -317,7 +317,7 @@ export default function home_activity({ navigation }) {
             <Text textAlign={'center'} fontSize={20} marginRight={'5%'} marginTop={5} borderWidth={1} alignItems={'center'} justifyContent={'center'}>더보기</Text>
           </TouchableOpacity>
         </Box>
-
+        </ScrollView>
         <Box marginTop={'5%'} alignItems='center' >
           <HStack space={10}>
             <TouchableOpacity onPress={cart}>
@@ -338,7 +338,7 @@ export default function home_activity({ navigation }) {
           </HStack>
 
         </Box>
-      </ScrollView>
+      
     </NativeBaseProvider>
   )
 }

@@ -11,36 +11,19 @@ import{
 }from 'native-base';
 import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
 
-import IconF from 'react-native-vector-icons/Feather';
-import IconA from 'react-native-vector-icons/AntDesign';
-import IconM from 'react-native-vector-icons/MaterialIcons';
-
-const Width = Dimensions.get('window').width;
-const Height = Dimensions.get('window').height;
-
-const controller = new AbortController();
-
-fetch('https://extreme-kor.herokuapp.com/weathermap/36.629/127.456', { signal: controller.signal })
-  .then(response => response.json())
-  .then(json => {
-    if (json.success) {
-      console.log(`${json.data.date}`);
-      console.log(`${json.data.min}`);
-      console.log(`${json.data.max}`);
-      console.log(`${json.data.date}`);
-    }
-  })
-  .catch(err => console.log('Fetch err', err));
-
-// const ex = `${json.data.date}` ;
 
 export default function test({ navigation }) {
   
   return (
     <NativeBaseProvider>
-      <Box marginTop={100}>
-        <Text>123</Text>
-      </Box>
-    </NativeBaseProvider>
+     <Image
+            source={{
+              uri:'https://extreme-cbnu.s3.ap-northeast-2.amazonaws.com/profile_images/1637415856452_user_test.JPG'
+            }}  
+            style={{marginTop:20, width: 300, height:300, }}
+            alt='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+          /> 
+      <Text>ss</Text>
+      </NativeBaseProvider>
   )
 }

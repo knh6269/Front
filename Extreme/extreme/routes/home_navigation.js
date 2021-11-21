@@ -19,37 +19,20 @@ import reservation_calender from "../reservation_calender";
 import review from "../review";
 import user_info from "../user_info";
 import home from "../home";
-<<<<<<< HEAD
-import register_activity from "../register_activity"
+import register_activity from "../register_activity";
 import test from "../test";
 
-const screens = {
-
-    test:{
-        screen:test,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    
-=======
-// import test from "../test";
-
-const screens = {
-    // test:{
-    //     screen:test
-    // },
-    weather_map: {
-        screen: weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
->>>>>>> a0c512932341f95133fe3103356fc5f4e36bedae
+const screens = { 
     home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-
+    screen:home,
+    navigationOptions: () => ({ headerShown: false, })
+},
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
+    },
+    test:{
+        screen:test
     },
     home_recommend: {
         screen: home_recommend,
@@ -118,7 +101,10 @@ const screens = {
     register_activity: {
         screen: register_activity,
         navigationOptions: () => ({ headerShown: false, })
-    }
+    }, weather_map: {
+        screen: weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
 }
 
 export const trans_stack = createStackNavigator(screens);
