@@ -11,7 +11,7 @@ import register_user from "../register_user";
 import login from "../login";
 import order_list_detail from "../order_list_detail";
 import register_company  from "../register_company";
-import weather_map from "../weather_map";
+// import weather_map from "../weather_map";
 import activity_detail from "../activity_detail";
 import order_list from "../order_list";
 import purchase from "../purchase";
@@ -19,10 +19,20 @@ import reservation_calender from "../reservation_calender";
 import review from "../review";
 import user_info from "../user_info";
 import home from "../home";
-import register_activity from "../register_activity";
-import test from "../test";
+import register_activity from "../register_activity"
+// import test from "../test";
 
-const screens = { 
+const screens = {
+
+    // test:{
+    //     screen:test,
+    //     navigationOptions: () => ({ headerShown: false, })
+    // },
+    
+    // weather_map: {
+    //     screen: weather_map,
+    //     navigationOptions: () => ({ headerShown: false, })
+    // },
     home:{
     screen:home,
     navigationOptions: () => ({ headerShown: false, })
