@@ -160,9 +160,6 @@ export default function Recommend() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        paddingTop: 50
-    },
     category: {
         backgroundColor: 'white',
         flexDirection: 'column',

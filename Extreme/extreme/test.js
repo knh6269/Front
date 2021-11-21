@@ -54,7 +54,7 @@ export default function test({ navigation }) {
     <NativeBaseProvider>
       <Box marginTop={100}>
         <Text>{data.date}, {data.min}, {data.max}, {data.sky}</Text>
-        <Text>gggg</Text>
+        <Text>ggdsddgg</Text>
         <Text>{pos[0].a.latitude}</Text>
       </Box>
     </NativeBaseProvider>
