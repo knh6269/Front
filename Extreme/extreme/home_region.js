@@ -29,7 +29,8 @@ const activitys = [{name: '구룡', price: 15000, star: 4.5, image: require('./i
 
 {   name: '122', price: 153040, star: 3.15, image: require('./images/1.jpg') }];
 
-export default function home_region({navigation}){
+export default function home_region({ navigation }) {
+
     const renderActivity =({item})=>(
         <View style={{ flexDirection: 'row', justifyContent: 'center', width:Width/2 }}>
             <TouchableOpacity style={{flexDirection: 'row'}}>

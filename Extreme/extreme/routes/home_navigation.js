@@ -21,8 +21,17 @@ import user_info from "../user_info";
 import home from "../home";
 import register_activity from "../register_activity"
 
-
 const screens = {
+
+    // test:{
+    //     screen:test,
+    //     navigationOptions: () => ({ headerShown: false, })
+    // },
+    
+    // weather_map: {
+    //     screen: weather_map,
+    //     navigationOptions: () => ({ headerShown: false, })
+    // },
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
