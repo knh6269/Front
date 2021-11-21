@@ -11,6 +11,18 @@ import{
 }from 'native-base';
 import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
 
+import IconF from 'react-native-vector-icons/Feather';
+import IconA from 'react-native-vector-icons/AntDesign';
+import IconM from 'react-native-vector-icons/MaterialIcons';
+
+const Width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
+
+const controller = new AbortController();
+
+export default function test({ navigation }) {
+
+  const [data, setData] = useState([]);
 
   const [pos,setpos]=useState([
     { a: { latitude: 37.470407483804394, longitude: 126.95072514199354 } }, //서울,경기
