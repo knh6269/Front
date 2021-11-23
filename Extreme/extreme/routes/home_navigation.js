@@ -23,9 +23,14 @@ import register_activity from "../register_activity"
 import test from "../test";
 
 const screens = {
+
+    // test:{
+    //     screen:test,
+    //     navigationOptions: () => ({ headerShown: false, })
+    // },
     home:{
-    screen:home,
-    navigationOptions: () => ({ headerShown: false, })
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
     },
     home_region: {
         screen: home_region,
@@ -109,6 +114,7 @@ const screens = {
         screen:test,
         navigationOptions: () => ({ headerShown: false, })
     },
+
 }
 export const trans_stack = createStackNavigator(screens);
 
