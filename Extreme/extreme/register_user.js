@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Dimensions, ImagePickerIOS
+    Dimensions, ImagePickerIOS, Alert
 } from "react-native"
 import {
     NativeBaseProvider,
@@ -23,16 +23,68 @@ const Height = Dimensions.get('window').height;
 export default function register_user({ navigation }) {
     const [id, setid] = React.useState('');
     const [password, setpw] = React.useState('');
+    const [passwordconfirm, setpwc] = React.useState('');
+
     const [name, setname] = React.useState('');
     const [nic, setnic] = React.useState('');
     const [tel, settel] = React.useState('');
     const [email, setemail] = React.useState('');
     const [birth, setbirth] = React.useState('');
     const [account, setaccount] = React.useState('');
+    const fd = new FormData();
     let sample = 'nakhyeon';
 
+    let upload = async()=>{
+        console.log(fd);
+        const response= fetch('https://extreme-kor.herokuapp.com/user', {
+            method:'POST',
+            headers:{
+            'Content-Type':'multipart/form-data',
+        },
+            body:fd
+        }).then(response=>{
+                console.log(JSON.stringify(response))
+            }).catch(err=>{console.log(err)
+            })
+            }
+
     const submitBtn = () => {
-        console.log('아이디: ${id}\n비밀번호:${password}');
+        if(id==''){
+            Alert.alert( "","아이디를 입력해주세요",[{text:"확인"}])
+        }
+        else if(password==''){
+            Alert.alert( "","비밀번호를 입력해주세요",[{text:"확인"}])
+        }
+        else if(name==''){
+            Alert.alert( "","이름을 입력해주세요",[{text:"확인"}])
+        }
+        else if(nic==''){
+            Alert.alert( "","닉네임을 입력해주세요",[{text:"확인"}])
+        }
+        else if(tel==''){
+            Alert.alert( "","전화번호를 입력해주세요",[{text:"확인"}])
+        }
+        else if(email==''){
+            Alert.alert( "","이메일을 입력해주세요",[{text:"확인"}])
+        }
+        else if(birth==''){
+            Alert.alert( "","생년월일을 입력해주세요",[{text:"확인"}])
+        }
+        else if(account==''){
+            Alert.alert( "","환불계좌를 입력해주세요",[{text:"확인"}])
+        }
+
+        fd.append("password", password)
+        fd.append("nickname", nic)
+        fd.append("name", name)
+        fd.append("phone_number", tel)
+        fd.append("birthday", birth)
+        fd.append("email", email)
+        fd.append("user_id", id)
+        fd.append("profile_image", {uri:selectedImage.localUri, type:'image/jpeg', name:'photo.jpg'})
+        console.log(fd);
+        upload();
+
     }
 
     const cancel = () => {
@@ -64,7 +116,9 @@ export default function register_user({ navigation }) {
             return;
         }
         console.log(pickerResult)
+
         setSelectedImage({ localUri: pickerResult.uri });
+
     };
 
     if (selectedImage !== null) {
@@ -95,7 +149,7 @@ export default function register_user({ navigation }) {
                         alignItems: 'center',
 
                     }}>
-                    <Box style={{ height: 450 }}>
+                    <Box style={{ height: 400 }}>
                         <ScrollView>
                             <Box
                                 style={{
@@ -103,7 +157,7 @@ export default function register_user({ navigation }) {
                                     backgroundColor: 'white',
                                     paddingBottom: 100,
                                     height: 850,
-                                }}>
+                                }} >
                                 <VStack space={1}>
                                     <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>프로필 이미지</Text>
                                     <TouchableOpacity onPress={openImagePickerAsync}>
@@ -113,7 +167,9 @@ export default function register_user({ navigation }) {
                                     <Image
                                         source={{ uri: selectedImage.localUri }}
                                         style={{ width: 80, height: 80 }}
+                                        onPress={console.log(`11${selectedImage.localUri}`)}
                                     />
+                                    <Text>{ selectedImage.localUri}</Text>
                                     <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>아이디 입력</Text>
                                     <HStack space={5} style={{ alignItems: 'center' }}>
                                         <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setid(text)} value={id}></TextInput>
@@ -122,19 +178,19 @@ export default function register_user({ navigation }) {
                                     <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>비밀번호 입력</Text>
                                     <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpw(text)} value={password}></TextInput>
                                     <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>비밀번호 확인</Text>
-                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setname(text)} value={name}>이름</Text>
-                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setnic(text)} value={nic}>닉네임</Text>
-                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => settel(text)} value={tel}>전화번호</Text>
-                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setemail(text)} value={email}>이메일</Text>
-                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setbirth(text)} value={birth}>생년월일</Text>
-                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setaccount(text)} value={account}>환불계좌</Text>
-                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
+                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}  onChangeText={(text) => setpwc(text) }  value={passwordconfirm}></TextInput>
+                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} >이름</Text>
+                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setname(text)} value={name}></TextInput>
+                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>닉네임</Text>
+                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setnic(text)} value={nic}></TextInput>
+                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>전화번호</Text>
+                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => settel(text)} value={tel}></TextInput>
+                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} >이메일</Text>
+                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setemail(text)} value={email}></TextInput>
+                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>생년월일</Text>
+                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setbirth(text)} value={birth}></TextInput>
+                                    <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>환불계좌</Text>
+                                    <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setaccount(text)} value={account}></TextInput>
                                 </VStack>
                             </Box>
                         </ScrollView>
@@ -185,7 +241,7 @@ export default function register_user({ navigation }) {
                                 backgroundColor: 'white',
                                 paddingBottom: 100,
                                 height: 850,
-                            }}>
+                            }} >
                             <VStack space={1}>
                                 <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>프로필 이미지</Text>
                                 <TouchableOpacity onPress={openImagePickerAsync}>
@@ -200,19 +256,19 @@ export default function register_user({ navigation }) {
                                 <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>비밀번호 입력</Text>
                                 <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpw(text)} value={password}></TextInput>
                                 <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>비밀번호 확인</Text>
-                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setname(text)} value={name}>이름</Text>
-                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setnic(text)} value={nic}>닉네임</Text>
-                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => settel(text)} value={tel}>전화번호</Text>
-                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setemail(text)} value={email}>이메일</Text>
-                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setbirth(text)} value={birth}>생년월일</Text>
-                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
-                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} onChangeText={(text) => setaccount(text)} value={account}>환불계좌</Text>
-                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}></TextInput>
+                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }}  onChangeText={(text) => setpwc(text)} value={passwordconfirm}></TextInput>
+                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} >이름</Text>
+                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setname(text)} value={name}></TextInput>
+                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>닉네임</Text>
+                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setnic(text)} value={nic}></TextInput>
+                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>전화번호</Text>
+                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => settel(text)} value={tel}></TextInput>
+                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }} >이메일</Text>
+                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setemail(text)} value={email}></TextInput>
+                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>생년월일</Text>
+                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setbirth(text)} value={birth}></TextInput>
+                                <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>환불계좌</Text>
+                                <TextInput style={{ marginLeft: 10, width: Width / 2, height: 32, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setaccount(text)} value={account}></TextInput>
                             </VStack>
                         </Box>
                     </ScrollView>

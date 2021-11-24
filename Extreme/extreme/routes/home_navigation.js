@@ -11,7 +11,7 @@ import register_user from "../register_user";
 import login from "../login";
 import order_list_detail from "../order_list_detail";
 import register_company  from "../register_company";
-// import weather_map from "../weather_map";
+import weather_map from "../weather_map";
 import activity_detail from "../activity_detail";
 import order_list from "../order_list";
 import purchase from "../purchase";
@@ -23,16 +23,16 @@ import register_activity from "../register_activity"
 // import test from "../test";
 
 const screens = {
+    register_company:{
+        screen:register_company,
+        navigationOptions: () => ({ headerShown: false, })
+    },
 
-    // test:{
-    //     screen:test,
-    //     navigationOptions: () => ({ headerShown: false, })
-    // },
-    
-    // weather_map: {
-    //     screen: weather_map,
-    //     navigationOptions: () => ({ headerShown: false, })
-    // },
+    register_user:{
+        screen:register_user,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
     home:{
     screen:home,
     navigationOptions: () => ({ headerShown: false, })
@@ -40,9 +40,6 @@ const screens = {
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
-    },
-    test:{
-        screen:test
     },
     home_recommend: {
         screen: home_recommend,
@@ -68,16 +65,8 @@ const screens = {
         screen: cart,
         navigationOptions: () => ({ headerShown: false, })
     },
-    register_user:{
-        screen:register_user,
-        navigationOptions: () => ({ headerShown: false, })
-    },
     login: {
         screen: login,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    register_company:{
-        screen:register_company,
         navigationOptions: () => ({ headerShown: false, })
     },
     order_list_detail: {

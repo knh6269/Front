@@ -85,7 +85,7 @@ export default function Home({ navigation }) {
       />
 
       <View style={{ flexDirection: 'row', height: 50, justifyContent: 'space-between' }}>
-        <TouchableOpacity key={routes[3]} onPress={renderScene}>
+        <TouchableOpacity  onPress={cart}>
           <IconA name="shoppingcart" size={40} style={{ flex: 1, }}></IconA>
         </TouchableOpacity>
         <TouchableOpacity onPress={heart}>
