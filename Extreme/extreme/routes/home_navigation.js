@@ -20,23 +20,13 @@ import review from "../review";
 import user_info from "../user_info";
 import home from "../home";
 import register_activity from "../register_activity"
-// import test from "../test";
+import test from "../test";
 
 const screens = {
-    register_company:{
-        screen:register_company,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-
-    register_user:{
-        screen:register_user,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-
     home:{
-    screen:home,
-    navigationOptions: () => ({ headerShown: false, })
-},
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -97,19 +87,31 @@ const screens = {
         screen: user_info,
         navigationOptions: () => ({ headerShown: false, })
     },
-    weather_map: {
-        screen: weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
     register_activity: {
         screen: register_activity,
         navigationOptions: () => ({ headerShown: false, })
-    }, weather_map: {
-        screen: weather_map,
+    },
+    register_company:{
+        screen:register_company,
         navigationOptions: () => ({ headerShown: false, })
     },
-}
 
+    register_user:{
+        screen:register_user,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    test:{
+        screen:test,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
+
+}
 export const trans_stack = createStackNavigator(screens);
 
 export default createAppContainer(trans_stack);
