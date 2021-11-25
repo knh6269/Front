@@ -21,17 +21,26 @@ import user_info from "../user_info";
 import home from "../home";
 import register_activity from "../register_activity"
 import test from "../test";
-
 const screens = {
-
-    // test:{
-    //     screen:test,
-    //     navigationOptions: () => ({ headerShown: false, })
-    // },
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
     },
+    weather_map:{
+        
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    register_user:{
+        screen:register_user,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
+    // test:{
+    //     screen:test,
+    //     navigationOptions: () => ({ headerShown: false, })
+    // },
+    
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -106,10 +115,7 @@ const screens = {
         navigationOptions: () => ({ headerShown: false, })
     }
     ,
-    weather_map:{
-        screen:weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+  
     test:{
         screen:test,
         navigationOptions: () => ({ headerShown: false, })
