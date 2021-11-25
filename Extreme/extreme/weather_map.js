@@ -212,10 +212,10 @@ export default function AppleMap(){
           })
         }
 
-        {zooms==3&&locations_detail.map((locations_detail,index)=>{
+        {zooms==3&&locations_detail.map((locations_detail,index_detail)=>{
          return(
           <MapView.Marker
-            key={index}
+            key={index_detail}
             coordinate={locations_detail.coordinate}
             image= {locations_detail.a}
             title={locations_detail.title}

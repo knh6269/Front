@@ -25,61 +25,30 @@ export default function register_user({ navigation }) {
     const [id, setid] = React.useState('');
     const [password, setpw] = React.useState('');
     const [passwordconfirm, setpwc] = React.useState('');
-
     const [name, setname] = React.useState('');
     const [nic, setnic] = React.useState('');
     const [tel, settel] = React.useState('');
     const [email, setemail] = React.useState('');
     const [birth, setbirth] = React.useState('');
     const [account, setaccount] = React.useState('');
-
+    const fd = new FormData();
     let sample = 'nakhyeon';
 
-    const nakhyeon={
-        user_id : "dd",
-        password : 'a',
-        profile_image : null,
-        nickname :'aa',
-        name : 'ss',
-        phone_number :'aa',
-        birthday : 'ff',
-        email :　'ggggg'
-     }
-
-    const upload=async()=>{ 
-
-        // const fd = new FormData();
-
-        // fd.append("id", '2');
-        // fd.append("password", '2');
-        // fd.append("nickname", '2');
-        // fd.append("name", '2');
-        // fd.append("phone_number", '2');
-        // fd.append("birthday", '2');
-        // fd.append("email", '2');
-        // console.log(fd);
-        
-         
-       const response= await fetch('https://extreme-kor.herokuapp.com/user ', {
-        method:'POST',
-        headers:{
-            Accept: 'application/json',
-            'Content-Type':"application/json",
+    let upload = async()=>{
+        console.log(fd);
+        const response= fetch('https://extreme-kor.herokuapp.com/user', {
+            method:'POST',
+            headers:{
+            'Content-Type':'multipart/form-data',
         },
-        body:JSON.stringify(nakhyeon)
-        })
-        const json=await response.json();
-        console.log(json);
-       
-    }
-    
-    
-        
+            body:fd
+        }).then(response=>{
+                console.log(JSON.stringify(response))
+            }).catch(err=>{console.log(err)
+            })
+            }
+
     const submitBtn = () => {
-       
-        upload();
-
-
         if(id==''){
             Alert.alert( "","아이디를 입력해주세요",[{text:"확인"}])
         }
@@ -104,9 +73,24 @@ export default function register_user({ navigation }) {
         else if(account==''){
             Alert.alert( "","환불계좌를 입력해주세요",[{text:"확인"}])
         }
-        
-        
+
+        fd.append("password", password)
+        fd.append("nickname", nic)
+        fd.append("name", name)
+        fd.append("phone_number", tel)
+        fd.append("birthday", birth)
+        fd.append("email", email)
+        fd.append("user_id", id)
+        fd.append("profile_image", {uri:selectedImage.localUri, type:'image/jpeg', name:'photo.jpg'})
+        console.log(fd);
+        upload();
+
     }
+
+  
+    
+    
+        
    
     
 const cancel=()=>{
@@ -178,7 +162,7 @@ const cancel=()=>{
                                     backgroundColor: 'white',
                                     paddingBottom: 100,
                                     height: 850,
-                                }} onPress={console.log(selectedImage)}>
+                                }} >
                                 <VStack space={1}>
                                     <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>프로필 이미지</Text>
                                     <TouchableOpacity onPress={openImagePickerAsync}>
@@ -262,7 +246,7 @@ const cancel=()=>{
                                 backgroundColor: 'white',
                                 paddingBottom: 100,
                                 height: 850,
-                            }} onPress={console.log(selectedImage)}>
+                            }} >
                             <VStack space={1}>
                                 <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>프로필 이미지</Text>
                                 <TouchableOpacity onPress={openImagePickerAsync}>

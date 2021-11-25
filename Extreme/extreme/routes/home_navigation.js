@@ -22,25 +22,77 @@ import home from "../home";
 import register_activity from "../register_activity"
 import test from "../test";
 const screens = {
-    home:{
-        screen:home,
+    login: {
+        screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
-    weather_map:{
-        
-        screen:weather_map,
+    register_activity: {
+        screen: register_activity,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    review: {
+        screen: review,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    reservation_calender: {
+        screen: reservation_calender,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    order_list_detail: {
+        screen: order_list_detail,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    coupon: {
+        screen: coupon,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    register_company:{
+        screen:register_company,
         navigationOptions: () => ({ headerShown: false, })
     },
     register_user:{
         screen:register_user,
         navigationOptions: () => ({ headerShown: false, })
+    },  
+    activity_detail: {
+        screen: activity_detail,
+        navigationOptions: () => ({ headerShown: false, })
     },
-    
-    // test:{
-    //     screen:test,
-    //     navigationOptions: () => ({ headerShown: false, })
-    // },
-    
+   
+    user_info: {
+        screen: user_info,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    order_list: {
+        screen: order_list,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+  
+    my_page: {
+        screen: my_page,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    purchase: {
+        screen: purchase,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    cart: {
+        screen: cart,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    heart: {
+        screen: heart,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    home:{
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+   
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -53,73 +105,19 @@ const screens = {
         screen: home_activity,
         navigationOptions: () => ({ headerShown: false, })
     }, 
-    coupon: {
-        screen: coupon,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    heart: {
-        screen: heart,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    my_page: {
-        screen: my_page,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    cart: {
-        screen: cart,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    register_user:{
-        screen:register_user,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    login: {
-        screen: login,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    register_company:{
-        screen:register_company,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    order_list_detail: {
-        screen: order_list_detail,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    activity_detail: {
-        screen: activity_detail,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    order_list: {
-        screen: order_list,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    purchase: {
-        screen: purchase,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    reservation_calender: {
-        screen: reservation_calender,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    review: {
-        screen: review,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    user_info: {
-        screen: user_info,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    
-    register_activity: {
-        screen: register_activity,
-        navigationOptions: () => ({ headerShown: false, })
-    }
-    ,
+   
   
+   
+   
+   
+   
+    
+   
     test:{
         screen:test,
         navigationOptions: () => ({ headerShown: false, })
     },
+    
 
 }
 export const trans_stack = createStackNavigator(screens);

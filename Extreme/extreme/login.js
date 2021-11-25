@@ -22,9 +22,36 @@ class Activity extends Component {
         )
     }
 }
-export default function login() {
+
+export default function login({navigation}) {
+
     const [id, onChangeTextID] = React.useState("")
     const [password, onChangeTextPW] = React.useState("")
+    
+    let login_information={
+        "user_id":id,
+        "password":password
+    }
+
+    let login_detail=async()=>{
+        console.log("로그인중.....")
+       let response1= await fetch('https://extreme-kor.herokuapp.com/user/login', {
+        method:'POST',
+        headers:{
+            Accept: 'application/json',
+            'Content-Type':"application/json",
+    },
+        body:JSON.stringify(login_information)
+    }) 
+    const json=await response1.json();
+    if(json.success){
+        navigation.navigate('home');
+    };
+    
+    
+  
+     
+    }
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -47,10 +74,10 @@ export default function login() {
                 </View>
 
                 <TouchableOpacity style={{ borderWidth: 1, width: 150, alignItems: 'center' }}
-                onPress={() => {console.log({id, password})}}>
+                onPress={login_detail}>
                     <Text>로그인</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity >
                     <Text style={{ textDecorationLine: 'underline' }}>회원가입</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
@@ -58,7 +85,7 @@ export default function login() {
                 </TouchableOpacity>
             </View>
         </ScrollView >
-    );
+    )
 
 }
 
