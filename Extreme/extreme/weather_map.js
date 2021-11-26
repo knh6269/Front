@@ -84,6 +84,7 @@ export default function AppleMap(){
         const json = await response.json();
         data=data.concat(json);
       }
+      console.log(data)
       for(let k=0; k<33; k++){
         const response = await fetch(`https://extreme-kor.herokuapp.com/weathermap/${locations_detail[k].coordinate.latitude}/${locations_detail[k].coordinate.longitude}`);
         const json = await response.json();
@@ -129,13 +130,12 @@ export default function AppleMap(){
           else if(data_detail[l].data.state=="partlyClear"){ 
             locations_detail[l].a=IMAGES.image5;
               } 
-          else if(data[l].data.state=="snowAndRainy"){ 
-            locations[l].a=IMAGES.image5;
+          else if(data_detail[l].data.state=="snowAndRainy"){ 
+            locations_detail[l].a=IMAGES.image5;
               } 
-              locations_detail[l].tem=data_detail[l].data.tem;
+
+          locations_detail[l].tem=data_detail[l].data.tem;
           }
-         
-     
       } 
 
       catch (error) {

@@ -2,7 +2,7 @@ import { TabRouter } from "@react-navigation/routers";
 import React, { Component, useState } from "react";
 import { Image, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
     View,
     Text,
@@ -44,14 +44,19 @@ export default function login({navigation}) {
         body:JSON.stringify(login_information)
     }) 
     const json=await response1.json();
+    console.log(json);
     if(json.success){
-        navigation.navigate('home');
-    };
-    
-    
-  
-     
+        navigation.navigate('my_page');
     }
+       
+     await AsyncStorage.setItem('user_id',id,()=>{
+         console.log('유저 id 저장')
+     });
+     await AsyncStorage.setItem('password',password,()=>{
+        console.log('유저 password 저장')
+    });
+    }
+    
     return (
         <ScrollView>
             <View style={styles.container}>

@@ -17,7 +17,7 @@ import {
 } from 'native-base';
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Home({ navigation }) {
   const layout = useWindowDimensions();
 

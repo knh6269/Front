@@ -22,10 +22,30 @@ import home from "../home";
 import register_activity from "../register_activity"
 import test from "../test";
 const screens = {
+    home_region: {
+        screen: home_region,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
+    home:{
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+   
+    my_page: {
+        screen: my_page,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
+   
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+  
     register_activity: {
         screen: register_activity,
         navigationOptions: () => ({ headerShown: false, })
@@ -68,10 +88,7 @@ const screens = {
         navigationOptions: () => ({ headerShown: false, })
     },
   
-    my_page: {
-        screen: my_page,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
     purchase: {
         screen: purchase,
         navigationOptions: () => ({ headerShown: false, })
@@ -84,19 +101,9 @@ const screens = {
         screen: heart,
         navigationOptions: () => ({ headerShown: false, })
     },
-    weather_map:{
-        screen:weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+  
    
-    home_region: {
-        screen: home_region,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
     home_recommend: {
         screen: home_recommend,
         navigationOptions: () => ({ headerShown: false, })
