@@ -41,7 +41,8 @@ export default function test({ navigation }) {
        for(let i=0; i<pos.length; i++){
         const response = await fetch(`https://extreme-kor.herokuapp.com/weathermap/${pos[i].a.latitude}/${pos[i].a.longitude}`);
         const json = await response.json();
-        setData(data.concat(json));
+        //  setData(data.concat(json));
+         console.log(`${json.data[0].activity_name}`);
        }
      
     } catch (error) {

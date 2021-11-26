@@ -19,9 +19,40 @@ import reservation_calender from "../reservation_calender";
 import review from "../review";
 import user_info from "../user_info";
 import home from "../home";
-import register_activity from "../register_activity"
+import register_activity from "../register_activity";
+import top from "../top";
+import under from "../under";
+import select_bank from "../select_bank";
 import test from "../test";
+
 const screens = {
+
+
+        home:{
+    screen:home,
+    navigationOptions: () => ({ headerShown: false, })
+    },
+    
+        register_user:{
+    screen:register_user,
+    navigationOptions: () => ({ headerShown: false, })
+    },
+
+    select_bank: {
+        screen:select_bank,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+    home_recommend: {
+        screen: home_recommend,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+    home_region: {
+    screen: home_region,
+    navigationOptions: () => ({ headerShown: false, })
+    },
+    
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
@@ -50,10 +81,6 @@ const screens = {
         screen:register_company,
         navigationOptions: () => ({ headerShown: false, })
     },
-    register_user:{
-        screen:register_user,
-        navigationOptions: () => ({ headerShown: false, })
-    },  
     activity_detail: {
         screen: activity_detail,
         navigationOptions: () => ({ headerShown: false, })
@@ -88,24 +115,19 @@ const screens = {
         screen:weather_map,
         navigationOptions: () => ({ headerShown: false, })
     },
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-   
-    home_region: {
-        screen: home_region,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    home_recommend: {
-        screen: home_recommend,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
     home_activity: {
         screen: home_activity,
         navigationOptions: () => ({ headerShown: false, })
     }, 
-   
+    top: {
+        screen: top,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    under: {
+        screen: under,
+        navigationOptions: () => ({ headerShown: false, })
+    },
   
    
    

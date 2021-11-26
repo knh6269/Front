@@ -1,6 +1,7 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react';
 import {
-    Dimensions,FlatList} from "react-native"
+    Dimensions, FlatList, StyleSheet
+} from "react-native";
 import{
     NativeBaseProvider,
     Box,
@@ -60,9 +61,9 @@ export default function home_region({navigation}){
             source={item.image}
         />
         <View>
-            <Text style={{ color: 'red' }}>{item.name}</Text>
-            <Text style={{ color: 'red' }}>{item.price}</Text>
-            <Text style={{ color: 'red' }}>{item.star}</Text>
+            <Text>{item.name}</Text>
+            <Text>{item.price}</Text>
+            <Text>{item.star}</Text>
         </View>
         </TouchableOpacity>
         </View>
@@ -121,3 +122,8 @@ export default function home_region({navigation}){
         </NativeBaseProvider>
     )
 }
+
+const styles = StyleSheet.create({
+
+
+})
