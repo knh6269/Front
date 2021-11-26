@@ -55,21 +55,6 @@ export default function home_activity({ navigation }) {
   // const zip_wire = () => {
   //   navigation.navigate('각 페이지로 이동');
   // }
-  const cart = () => {
-    navigation.navigate('cart');
-  }
-  const heart = () => {
-    navigation.navigate('heart');
-  }
-  const map = () => {
-    navigation.navigate('weather_map');
-  }
-  const my_page = () => {
-    navigation.navigate('my_page');
-  }
-  const register_activity = () => {
-    navigation.navigate('register_activity');
-  }
 
   const IMAGES = {
     image1: require('./images/1.jpg'),
@@ -95,9 +80,11 @@ export default function home_activity({ navigation }) {
 
   const getActivity = async () => {
      try {
-      const response = await fetch(`https://extreme-kor.herokuapp.com/activity`);
+      const response = await fetch(`https://extreme-kor.herokuapp.com/activities`);
        const json = await response.json();
        setactivityData(json.data);
+      // console.log(`${json.data[0]}`)
+       console.log(`${json.data[1].activity_name}`)
     } catch (error) {
       console.error(error);
     }
@@ -105,11 +92,12 @@ export default function home_activity({ navigation }) {
 
   useEffect(() => {
     getActivity();
-  }, [activityData]);
+  }, []);
   
   return (
     <NativeBaseProvider>
       <ScrollView>
+        {/* <Text>{data[0].activity_name}</Text> */}
         <Box marginLeft='10%' marginRight='10%'>
           <View marginTop={5} display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
               <TouchableOpacity>
@@ -203,7 +191,7 @@ export default function home_activity({ navigation }) {
                 <Image
                     source={require('./images/zip_wire.png')}
                     style={{width: 40, height: 40, }}
-                    alt="trans_1"
+                  alt="trans_1"
                 />
                 <Text fontSize={16} textAlign='center'>짚와이어</Text>
                 </View>
@@ -213,84 +201,103 @@ export default function home_activity({ navigation }) {
 
         <Box marginLeft='5%' marginRight='5%' borderWidth={1}></Box>
 
-        <Box marginTop={5} marginLeft={'5%'}>
+        <Box marginTop={5} marginLeft={'5%'} >
           <Text fontSize={20}>추천 액티비티</Text>
-            <Carousel
-              layout='default'
-              data={images}
-              sliderWidth={window_width}
-              itemWidth={window_width / 3}
-              inactiveSlideScale={1} //슬라이드들 크기 같게
-              inactiveSlideOpacity={1} //슬라이드 투명도
-              activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-              contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
-              renderItem={({ item, index }) => (
-                <View>
-                  <View style={{ flexDirection: 'column', width: '100%', height: 150, borderWidth: 0.5 }}> 
-                    <Image
-                          key={index}
-                          style={{ width: '100%', height: '100%' }}
-                          resizeMode='contain'
-                          source={item.image}
-                  />
-                  <HStack>
-                    <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>추천</Text>
-                    <Text style={{ color: 'red' }}>{item.activity_name}</Text>
-                  </HStack>
+            <View>
+              <Carousel
+                layout='default'
+                data={images}
+                sliderWidth={window_width}
+                itemWidth={window_width / 3}
+                inactiveSlideScale={1} //슬라이드들 크기 같게
+                inactiveSlideOpacity={1} //슬라이드 투명도
+                activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
+                renderItem={({ item, index }) => (
+                  <View>
+                    <View style={{width: '100%', height: 150,}}> 
+                      <Image
+                            key={index}
+                            style={{ width: '90%', height: '85%', borderRadius:10 }}
+                            resizeMode='contain'
+                        source={item.image}
+                        alt="profile"
+                      />
+                      <HStack>
+                          <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>추천</Text>
+                          <Text>{item.activity_name}</Text>
+                      </HStack>
+                    </View>
                   </View>
-                  </View>
-              )}
-            />              
+                )}
+              />      
+            </View>        
         </Box>
 
-        <Box marginTop={5} marginLeft={'5%'}>
+        <Box marginTop={5} marginLeft={'5%'} >
           <Text fontSize={20}>인기 액티비티</Text>
-            <Carousel
-              layout='default'
-              data={images}
-              sliderWidth={window_width}
-              itemWidth={window_width / 3}
-              inactiveSlideScale={1} //슬라이드들 크기 같게
-              inactiveSlideOpacity={1} //슬라이드 투명도
-              activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-              contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
-              renderItem={({ item, index }) => (
-                  <View style={{ flexDirection: 'column', width: '100%', height: 150, borderWidth: 0.5 }}> 
-                    <Image
-                          key={index}
-                          style={{ width: '100%', height: '100%' }}
-                          resizeMode='contain'
-                          source={item.image}
+            <View>
+              <Carousel
+                layout='default'
+                data={images}
+                sliderWidth={window_width}
+                itemWidth={window_width / 3}
+                inactiveSlideScale={1} //슬라이드들 크기 같게
+                inactiveSlideOpacity={1} //슬라이드 투명도
+                activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
+                renderItem={({ item, index }) => (
+                  <View>
+                    <View style={{width: '100%', height: 150,}}> 
+                      <Image
+                            key={index}
+                            style={{ width: '90%', height: '85%', borderRadius:10 }}
+                            resizeMode='contain'
+                        source={item.image}
+                        alt="profile"
                       />
-                      <Text style={{ color: 'red' }}>{item.activity_name}</Text>
+                      <HStack>
+                          <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>인기</Text>
+                          <Text>{item.activity_name}</Text>
+                      </HStack>
+                    </View>
                   </View>
-              )}
-            />              
+                )}
+              />      
+            </View>        
         </Box>
 
-        <Box marginTop={5} marginLeft={'5%'}>
+        <Box marginTop={5} marginLeft={'5%'} >
           <Text fontSize={20}>최신 액티비티</Text>
-            <Carousel
-              layout='default'
-              data={images}
-              sliderWidth={window_width}
-              itemWidth={window_width / 3}
-              inactiveSlideScale={1} //슬라이드들 크기 같게
-              inactiveSlideOpacity={1} //슬라이드 투명도
-              activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-              contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
-              renderItem={({ item, index }) => (
-                  <View style={{ flexDirection: 'column', width: '100%', height: 150, borderWidth: 0.5 }}> 
-                    <Image
-                          key={index}
-                          style={{ width: '100%', height: '100%' }}
-                          resizeMode='contain'
-                          source={item.image}
+            <View>
+              <Carousel
+                layout='default'
+                data={images}
+                sliderWidth={window_width}
+                itemWidth={window_width / 3}
+                inactiveSlideScale={1} //슬라이드들 크기 같게
+                inactiveSlideOpacity={1} //슬라이드 투명도
+                activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
+                renderItem={({ item, index }) => (
+                  <View>
+                    <View style={{width: '100%', height: 150,}}> 
+                      <Image
+                            key={index}
+                            style={{ width: '90%', height: '85%', borderRadius:10 }}
+                            resizeMode='contain'
+                        source={item.image}
+                        alt="profile"
                       />
-                      <Text style={{ color: 'red' }}>{item.activity_name}</Text>
+                      <HStack>
+                          <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#ff3e3e' }}>최신</Text>
+                          <Text>{item.activity_name}</Text>
+                      </HStack>
+                    </View>
                   </View>
-              )}
-            />              
+                )}
+              />      
+            </View>        
         </Box>
       </ScrollView>
     </NativeBaseProvider>

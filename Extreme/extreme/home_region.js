@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import React, { useState,useEffect } from 'react'
 import {
     Dimensions, FlatList
 } from "react-native"
 import {
+=======
+import React, { useState } from 'react';
+import {
+    Dimensions, FlatList, StyleSheet
+} from "react-native";
+import{
+>>>>>>> 668d4dac4b0a10acabeff03b883da2904e12239d
     NativeBaseProvider,
     Box,
     HStack,
@@ -114,6 +122,7 @@ export default function home_region({ navigation }) {
         { location: "전남", handler: pressHandler8},
         { location: "제주", handler: pressHandler9 },
     ])
+<<<<<<< HEAD
 
     const renderActivity = ({ item}) => (
         <View style={{ flexDirection: 'row', justifyContent: 'center', width: Width / 2 }}>
@@ -128,6 +137,21 @@ export default function home_region({ navigation }) {
                     <Text style={{ color: 'red' }}>{item.activity_price}</Text>
                 </View>
             </TouchableOpacity>
+=======
+    const renderActivity =({item})=>(
+        <View style={{ flexDirection: 'row', justifyContent: 'center', width:Width/2 }}>
+            <TouchableOpacity style={{flexDirection: 'row'}}>
+        <Image
+            style={{ width: 100, height: 100 }}
+            source={item.image}
+        />
+        <View>
+            <Text>{item.name}</Text>
+            <Text>{item.price}</Text>
+            <Text>{item.star}</Text>
+        </View>
+        </TouchableOpacity>
+>>>>>>> 668d4dac4b0a10acabeff03b883da2904e12239d
         </View>
     );
 
@@ -185,8 +209,18 @@ export default function home_region({ navigation }) {
                 numColumns={2} />
 
         </NativeBaseProvider>
+<<<<<<< HEAD
     );
     
       
     }
                 
+=======
+    )
+}
+
+const styles = StyleSheet.create({
+
+
+})
+>>>>>>> 668d4dac4b0a10acabeff03b883da2904e12239d

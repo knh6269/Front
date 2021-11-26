@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput, Dimensions} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import Home_region from "./home_region";
 import Home_recommend from "./home_recommend";
@@ -21,29 +21,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function Home({ navigation }) {
   const layout = useWindowDimensions();
 
-  // const [search, onChangeTextSearch] = React.useState("")
-
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'activity', title: 'Activity 종류' },
     { key: 'region', title: '지역별 Activity 종류' },
     { key: 'recommend', title: '여행지 추천' },
   ]);
-  // const cart = () => {
-  //   navigation.navigate('cart');
-  // }
-  // const heart = () => {
-  //   navigation.navigate('heart');
-  // }
-  // const map = () => {
-  //   navigation.navigate('weather_map');
-  // }
-  // const my_page = () => {
-  //   navigation.navigate('my_page');
-  // }
-  // const register_activity = () => {
-  //   navigation.navigate('register_activity');
-  // }
+
   const renderScene = ({ route }) => {
     switch (route.key) {
       case 'activity':
@@ -75,7 +59,7 @@ export default function Home({ navigation }) {
         />
       </View>
  
-      <View style={{ height: '7%', }}>
+      <View style={{ width: Width, height: '7%', }}>
         <Under></Under>
       </View>
 
