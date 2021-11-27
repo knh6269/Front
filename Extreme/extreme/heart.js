@@ -14,6 +14,7 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 import IconA from 'react-native-vector-icons/AntDesign';
+import IconM from 'react-native-vector-icons/MaterialIcons';
 
 export default function heart({navigation}){
         const pressHandler=()=>{
@@ -22,196 +23,106 @@ export default function heart({navigation}){
     
     return (
         <NativeBaseProvider>
-            <Box marginTop={30} flexDirection={'row'} justifyContent={'center'} alignItems={'center'} >
-                <HStack>
-                    <IconA name="shoppingcart" size={45} style={{flex:1,}}></IconA>
-                    <Text fontSize={30} style={{fontWeight:'bold',}} >장바구니</Text>
-                </HStack>
-            </Box>  
+            <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}}>
+                <TouchableOpacity>
+                    <IconM name="navigate-before" size={25} style={{}}></IconM>
+                </TouchableOpacity>
+                <IconA marginLeft={'5%'} name="heart" size={25}></IconA>
+                <Text marginLeft={'3%'} fontSize={20}>찜</Text>
+            </Box>
             <ScrollView>
-                <Box marginTop={30} marginLeft={'10%'}>
-                    <HStack space={5}>
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
+                <Box>
+                    <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
+                        <Box>
+                            <TouchableOpacity onPress={pressHandler}>
                                 <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
+                                    source={require('./images/1.jpg')}
+                                    style={{ width:100, height:100}}
                                     alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
+                                    resizeMode='contain'/>
+                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
+                            </TouchableOpacity>
+                        </Box>
+                        <Box>
+                            <TouchableOpacity onPress={pressHandler}>
                                 <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
+                                    source={require('./images/1.jpg')}
+                                    style={{ width:100, height:100}}
                                     alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
+                                    resizeMode='contain'/>
+                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
+                            </TouchableOpacity>
+                        </Box>
+                    </Box>
 
-                    </HStack>
-                </Box>
-
-                <Box marginTop={30} marginLeft={'10%'}>
-                    <HStack space={5}>
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
+                    <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
+                        <Box>
+                            <TouchableOpacity onPress={pressHandler}>
                                 <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
+                                    source={require('./images/1.jpg')}
+                                    style={{ width:100, height:100}}
                                     alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
+                                    resizeMode='contain'/>
+                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
+                            </TouchableOpacity>
+                        </Box>
+                        <Box>
+                            <TouchableOpacity onPress={pressHandler}>
                                 <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
+                                    source={require('./images/1.jpg')}
+                                    style={{ width:100, height:100}}
                                     alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
+                                    resizeMode='contain'/>
+                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
+                            </TouchableOpacity>
+                        </Box>
+                    </Box>
 
-                    </HStack>
-                </Box>
-
-                <Box marginTop={30} marginLeft={'10%'}>
-                    <HStack space={5}>
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
+                    <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%',}}>
+                        <Box>
+                            <TouchableOpacity onPress={pressHandler}>
                                 <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
+                                    source={require('./images/1.jpg')}
+                                    style={{ width:100, height:100}}
                                     alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
+                                    resizeMode='contain'/>
+                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
+                            </TouchableOpacity>
+                        </Box>
+                        <Box>
+                            <TouchableOpacity onPress={pressHandler}>
                                 <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
+                                    source={require('./images/1.jpg')}
+                                    style={{ width:100, height:100}}
                                     alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
+                                    resizeMode='contain'/>
+                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
+                            </TouchableOpacity>
+                        </Box>
+                    </Box>
 
-                    </HStack>
-                </Box>
-
-                <Box marginTop={30} marginLeft={'10%'}>
-                    <HStack space={5}>
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
+                    <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
+                        <Box>
+                            <TouchableOpacity onPress={pressHandler}>
                                 <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
+                                    source={require('./images/1.jpg')}
+                                    style={{ width:100, height:100}}
                                     alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
+                                    resizeMode='contain'/>
+                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
+                            </TouchableOpacity>
+                        </Box>
+                        <Box>
+                            <TouchableOpacity onPress={pressHandler}>
                                 <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
+                                    source={require('./images/1.jpg')}
+                                    style={{ width:100, height:100}}
                                     alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
-
-                    </HStack>
-                </Box>
-
-                <Box marginTop={30} marginLeft={'10%'}>
-                    <HStack space={5}>
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
-                                <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
-                                    alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={pressHandler}>
-                            <HStack>
-                                <Image
-                                    source={{
-                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                    }}
-                                    style={{ width: '50%', height:100, }}
-                                    alt="trans_1"
-                                
-                                />
-                            </HStack>
-                            <Box width={'50%'}>
-                                <Text fontSize={10} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </Box>
-                        </TouchableOpacity>
-
-                    </HStack>
+                                    resizeMode='contain'/>
+                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
+                            </TouchableOpacity>
+                        </Box>
+                    </Box>
                 </Box>
             </ScrollView>
         </NativeBaseProvider>

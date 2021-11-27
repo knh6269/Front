@@ -23,6 +23,8 @@ const IMAGES = {
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
+import IconA from 'react-native-vector-icons/AntDesign';
+import IconM from 'react-native-vector-icons/MaterialIcons';
 
 export default function AppleMap(){
   const [zooms, setzooms] = useState(6);
@@ -160,78 +162,61 @@ export default function AppleMap(){
 
     return (
     <NativeBaseProvider onPress={getWeather}>
-         <Box
-                style={{
-                width:Width,
-                height:Height/12,
-                marginTop:40,
-                justifyContent:'center',
-                alignItems:'center',
-                borderWidth:3,
-                marginBottom:30,
-            }}>
-                <Text
-                style={{
-                    textAlign:'center',
-                    height:Height/19,
-                    padding:10,
-                    fontSize:24,
-                    fontWeight:'bold',
-                }}>현재 날씨 지도
-            </Text>
-            </Box>
-    <Box style={{height:Height/2}}  > 
-      <Container>
-        <HStack>
-          <Button width={Width/2}onPress={zooming}><Text>전국 날씨 보기</Text></Button>
-          <Button width={Width/2}onPress={zoomout}><Text>자세한 날씨보기</Text></Button>
-        </HStack>
-        <MapView 
-          zoomEnabled={false}
-          style={{flex: 1,backgroundColor:'red'}} provider={PROVIDER_GOOGLE} 
-          ref={(current)=>{map.current=current}}
-          region={{
-          latitude: 36.62917303057579, 
-          longitude: 127.45632936923715,
-          latitudeDelta:zooms,
-          longitudeDelta:zooms,
-        }}>
+      <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}}>
+            <TouchableOpacity>
+                <IconM name="navigate-before" size={25} style={{}}></IconM>
+            </TouchableOpacity>
+            <Text marginLeft={'3%'} fontSize={20}>현재 날씨 지도</Text>
+        </Box>
+      <Box style={{marginTop:'3%', height:Height/2}}  > 
+        <Container>
+          <HStack>
+            <Button width={Width/2}onPress={zooming}><Text>전국 날씨 보기</Text></Button>
+            <Button width={Width/2}onPress={zoomout}><Text>자세한 날씨보기</Text></Button>
+          </HStack>
+          <MapView 
+            zoomEnabled={false}
+            style={{flex: 1,backgroundColor:'red'}} provider={PROVIDER_GOOGLE} 
+            ref={(current)=>{map.current=current}}
+            region={{
+            latitude: 36.62917303057579, 
+            longitude: 127.45632936923715,
+            latitudeDelta:zooms,
+            longitudeDelta:zooms,
+          }}>
 
-      
-        {zooms==5&&locations.map((locations,index)=>{
-         return(
-          <MapView.Marker
-            key={index}
-            coordinate={locations.coordinate}
-            image= {locations.a}
-            title={locations.title}
-            description={`현재온도:${locations.tem}`}
-           />
-         
-        )
-          })
-        }
+        
+          {zooms==5&&locations.map((locations,index)=>{
+          return(
+            <MapView.Marker
+              key={index}
+              coordinate={locations.coordinate}
+              image= {locations.a}
+              title={locations.title}
+              description={`현재온도:${locations.tem}`}
+            />
+          
+          )
+            })
+          }
 
-        {zooms==3&&locations_detail.map((locations_detail,index_detail)=>{
-         return(
-          <MapView.Marker
-            key={index_detail}
-            coordinate={locations_detail.coordinate}
-            image= {locations_detail.a}
-            title={locations_detail.title}
-            description={`현재온도:${locations_detail.tem}`}
-           />
-         
-        )
-          })
-        }
-           </MapView>
+          {zooms==3&&locations_detail.map((locations_detail,index_detail)=>{
+          return(
+            <MapView.Marker
+              key={index_detail}
+              coordinate={locations_detail.coordinate}
+              image= {locations_detail.a}
+              title={locations_detail.title}
+              description={`현재온도:${locations_detail.tem}`}
+            />
+          
+          )
+            })
+          }
+            </MapView>
 
-      </Container>
-    </Box>
-    <Box>
-      <Text >ax</Text>
-    </Box>
+        </Container>
+      </Box>
     </NativeBaseProvider>
   );
 }
