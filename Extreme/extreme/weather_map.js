@@ -130,13 +130,12 @@ export default function AppleMap(){
           else if(data_detail[l].data.state=="partlyClear"){ 
             locations_detail[l].a=IMAGES.image5;
               } 
-          else if(data[l].data.state=="snowAndRainy"){ 
-            locations[l].a=IMAGES.image5;
+          else if(data_detail[l].data.state=="snowAndRainy"){ 
+            locations_detail[l].a=IMAGES.image5;
               } 
-              locations_detail[l].tem=data_detail[l].data.tem;
+
+          locations_detail[l].tem=data_detail[l].data.tem;
           }
-         
-     
       } 
 
       catch (error) {

@@ -19,14 +19,60 @@ import reservation_calender from "../reservation_calender";
 import review from "../review";
 import user_info from "../user_info";
 import home from "../home";
-import register_activity from "../register_activity"
+import register_activity from "../register_activity";
+import top from "../top";
+import under from "../under";
+import select_bank from "../select_bank";
 import test from "../test";
+
 const screens = {
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
+        },
+    
+    under: {
+        screen: under,
+        navigationOptions: () => ({ headerShown: false, })
     },
 
+    login: {
+        screen: login,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+    
+    register_user:{
+    screen:register_user,
+    navigationOptions: () => ({ headerShown: false, })
+    },
+
+    select_bank: {
+        screen:select_bank,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+    home_recommend: {
+        screen: home_recommend,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
+    home:{
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+   
+    my_page: {
+        screen: my_page,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
+   
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+  
     register_activity: {
         screen: register_activity,
         navigationOptions: () => ({ headerShown: false, })
@@ -81,10 +127,7 @@ const screens = {
         navigationOptions: () => ({ headerShown: false, })
     },
   
-    my_page: {
-        screen: my_page,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
     purchase: {
         screen: purchase,
         navigationOptions: () => ({ headerShown: false, })
@@ -102,15 +145,6 @@ const screens = {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
     },
-    home_recommend: {
-        screen: home_recommend,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    home_activity: {
-        screen: home_activity,
-        navigationOptions: () => ({ headerShown: false, })
-    }, 
-   
   
    
    
