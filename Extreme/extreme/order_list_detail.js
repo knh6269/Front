@@ -1,92 +1,184 @@
-import React, { Component } from "react";
-import { Image, ScrollView } from 'react-native';
-//import Icon from 'react-native-vector-icons/AntDesign';
-
-import {
-    View,
+import React, { Component, useState } from 'react'
+import {Dimensions,} from "react-native"
+import{
+    NativeBaseProvider,
+    Box,
+    HStack,
     Text,
-    TouchableOpacity,
-    TextInput,
-    StyleSheet
-} from "react-native";
+    Image,
+    View,
+    flex,
+    Button,  
+}from 'native-base';
+import { TouchableOpacity, ScrollView, TextInput, StyleSheet} from "react-native";
+import Carousel, { Pagination } from 'react-native-snap-carousel';
+import IconM from 'react-native-vector-icons/MaterialIcons';
+
+var window_width = Dimensions.get('window').width;
+var window_height = Dimensions.get('window').height;
+
+import IconI from 'react-native-vector-icons/Ionicons';
+import IconE from 'react-native-vector-icons/Entypo';
+import { flexDirection } from 'styled-system';
 
 
-class Activity extends Component {
-    render() {
-        return (
-            <View style={{ flex: 1 }}>
-                <Text>{this.props.activity_name}</Text>
-                <View style={{ flexDirection: 'row' }}>
-                    <View style={{ height: 130, width: 130, backgroundColor: 'gray' }}></View>
-                    <View style={{marginLeft: 5}}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={{ marginTop: 5, color: '#A0A0A0' }}>{this.props.dday}</Text>
-                            <Text style={{ marginTop: 5, color: '#A0A0A0' }}>{this.props.weather}</Text>
-                        </View>
-                        <Text style={{ marginTop: 5, color: '#A0A0A0' }}>{this.props.date}</Text>
-                        <Text style={{ marginTop: 5, color: '#A0A0A0' }}>{this.props.price1}</Text>
-                    </View>
-                </View>
-            </View>
-        )
-    }
-}
-class Payment extends Component {
-    render() {
-        return (
-            <View style={{ flex: 1 ,marginTop: 30}}>
-                <Text style={{ marginTop: 5, color: '#A0A0A0' }}>결제 정보</Text>
-                <Text style={{ marginTop: 5, color: '#A0A0A0' }}>예약자 명 {this.props.name}</Text>
-                <Text style={{ marginTop: 5, color: '#A0A0A0' }}>휴대폰 번호 {this.props.phone_number}</Text>
-                <Text style={{ marginTop: 5, color: '#A0A0A0' }}>할인 금액 {this.props.discount}</Text>
-                <Text style={{ marginTop: 5, color: '#A0A0A0' }}>결제 금액 {this.props.price}</Text>
-                <Text style={{ marginTop: 5, color: '#A0A0A0' }}>결제 수단 {this.props.method}</Text>
-            </View>
-        )
-    }
-}
 export default function Order_list_detail({navigation}) {
     const pressHandler=()=>{
         navigation.navigate('home_region');
     }
+    
+    const IMAGES = {
+        image1: require('./images/1.jpg'),
+        image2: require('./images/2.jpg'),
+        image3: require('./images/그림7.png'),
+        image4: require('./images/1.jpg'),
+        image5: require('./images/1.jpg'),
+        image6: require('./images/1.jpg'),
+        image7: require('./images/1.jpg')
+    };
+
+    const [images, setImages] = useState([
+        { id: '1', image: IMAGES.image1, activity_name: '구룡스포츠1' },
+        { id: '2', image: IMAGES.image2, activity_name: '구룡스포츠2' },
+        { id: '3', image: IMAGES.image3, activity_name: '구룡스포츠3' },
+        { id: '4', image: IMAGES.image4, activity_name: '구룡스포츠1' },
+        { id: '5', image: IMAGES.image5, activity_name: '구룡스포츠5' },
+        { id: '6', image: IMAGES.image6, activity_name: '구룡스포츠4' },
+        { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠8' }
+    ]);
+    
     return (
-        <ScrollView>
-            <View style={styles.container}>
-                <Activity activity_name="액티비티 명" dday="D-3" date="2021-00-00" weather="맑음" price1="11010" />
-                <Payment name="다은" phone_number="010-0000-0000" discount="12" price="11111" method="카드" />
-                <View style={styles.button}>
-                    <TouchableOpacity style={styles.button1} onPress={pressHandler}>
-                        <Text>홈으로</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button1}>
-                        <Text>취소 요청</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
-        </ScrollView >
+        <NativeBaseProvider>
+            <ScrollView>
+                <Box>
+                    <Box>
+                        <Carousel
+                            layout='default'
+                            data={images}
+                            sliderWidth={window_width}
+                            itemWidth={window_width}
+                            inactiveSlideScale={1} //슬라이드들 크기 같게
+                            inactiveSlideOpacity={1} //슬라이드 투명도
+                            activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                            contentContainerCustomStyle={{ overflow: 'hidden' }} //마지막 7은 원소의 개수
+                            renderItem={({ item, index }) => (
+                                <View>
+                                    <View style={{width: '100%', height: window_width,}}> 
+                                        <Image
+                                                key={index}
+                                                style={{ width: '100%', height: '100%', borderRadius:10 }}
+                                                resizeMode='contain'
+                                            source={item.image}
+                                            alt="profile"
+                                        />
+                                    </View>
+                                </View>
+                            )}
+                        />      
+                    </Box>
+                        
+                    <Box style={{backgroundColor:'white'}}>
+                        <Box style={{paddingTop:'3%', marginLeft:'3%', marginRight:'3%', flexDirection:'row', justifyContent:'space-between'}}>
+                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>액티비티명</Text>
+                            <Text>123</Text>
+                        </Box>
+
+                        <Box style={{ marginTop:'5%', marginBottom:'5%', marginLeft:'3%', marginRight:'3%',}}>
+                            <Button style={{ borderRadius:10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: 'white' }}>
+                                <Text style={{ fontSize: 20, fontWeight: 'bold', }}>날짜 및 시간 선택</Text>
+                            </Button>
+                        </Box>
+                    </Box>
+                        
+                    <Box marginTop='3%'></Box>
+
+                    <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
+                        <Box style={{marginLeft: '3%', marginRight:'3%',}}>
+                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>90,000원</Text>
+                            <Text style={{ marignTop:'3%', fontWeight: 'bold', fontSize: 16 }}>상품 정보</Text>
+                        </Box>
+
+                        <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={0.5}></Box>
+
+                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
+                            <Text style={{color:'#acacac'}}>업체명</Text>
+                            <Text>하모닉스</Text>
+                        </Box>
+
+                        <Box style={{marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
+                            <Text style={{color:'#acacac'}}>주소</Text>
+                            <Text>하모닉스</Text>
+                        </Box>
+
+                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
+                            <Text style={{color:'#acacac'}}>이용 가능 시간</Text>
+                            <Text>하모닉스</Text>
+                        </Box>
+                    </Box>
+
+                    <Box marginTop='3%'></Box>
+
+                    <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
+                        <Box style={{marginLeft: '5%', marignRight:'5%',}}>
+                            <Text style={{ marignTop:'3%', fontWeight: 'bold', fontSize: 16 }}>고객 정보</Text>
+                        </Box>
+
+                        <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
+
+                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', }}>
+                            <Image
+                                source={{
+                                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                                }}
+                                style={{width:40, height:40, borderRadius:50}}
+                                alt="trans_1" />
+                            <Box style={{marginLeft:'3%'}}>
+                                <Text style={{fontSize:12}}>하모닉스</Text>
+                                <Box style={{flexDirection:'row'}}>
+                                    <Text>123</Text>
+                                    <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>2021.11.28</Text>
+                                </Box>
+                            </Box>
+                        </Box>
+
+                        <Box style={{ marginTop: '3%', marginLeft: '3%', marignRight: '3%' }}>
+                            <Text>후기 날려 날려~</Text>
+                        </Box>
+
+                        <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
+
+                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', }}>
+                            <Image
+                                source={{
+                                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                                }}
+                                style={{width:40, height:40, borderRadius:50}}
+                                alt="trans_1" />
+                            <Box style={{marginLeft:'3%'}}>
+                                <Text style={{fontSize:12}}>하모닉스</Text>
+                                <Box style={{flexDirection:'row'}}>
+                                    <Text>123</Text>
+                                    <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>2021.11.28</Text>
+                                </Box>
+                            </Box>
+                        </Box>
+
+                        <Box style={{ marginTop: '3%', marginLeft: '3%', marignRight: '3%' }}>
+                            <Text>후기 날려 날려~</Text>
+                        </Box>
+                    </Box>
+                </Box>
+            </ScrollView >
+
+            <Box style={{ paddingLeft:'3%', paddingRight:'3%', height: '15%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
+                <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
+                    <Text style={{ fontSize: 20, fontWeight:'bold'}}>리뷰쓰기</Text>
+                </Button>
+                <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
+                    <Text style={{ fontSize: 20, fontWeight:'bold'}}>환불신청</Text>
+                </Button>
+            </Box>
+        </NativeBaseProvider>
     );
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 50
-    },
-    activity: {
-        height: 200,
-        backgroundColor: 'white',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderTopWidth: 0.5,
-        borderColor: '#A0A0A0',
-    },
-    button: {
-        marginTop: 50,
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    button1:{
-        borderWidth:1
-    }
-});

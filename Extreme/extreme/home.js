@@ -47,7 +47,7 @@ export default function Home({ navigation }) {
   return (
     <NativeBaseProvider>
       <View style={{ height: '10%', }}>
-        <Top></Top>
+        <Top navigation={navigation} ></Top>
       </View>
 
       <View style={{ height: '83%', }}>        
@@ -59,8 +59,8 @@ export default function Home({ navigation }) {
         />
       </View>
  
-      <View style={{ width: Width, height: '7%', }}>
-        <Under></Under>
+      <View style={{ width: layout.width, height: '7%', }}>
+        <Under navigation={navigation} ></Under>
       </View>
 
     </NativeBaseProvider>

@@ -21,8 +21,6 @@ import { backgroundColor } from 'styled-system';
 var window_width = Dimensions.get('window').width;
 var window_height = Dimensions.get('window').height;
     
-console.log("window_width:" + window_width);
-console.log("window_height:" + window_height);
 
 export default function home_activity({ navigation }) {
   // const suffing = () => {

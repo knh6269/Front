@@ -26,9 +26,36 @@ import select_bank from "../select_bank";
 import test from "../test";
 
 const screens = {
-        home:{
+
+    home:{
     screen:home,
     navigationOptions: () => ({ headerShown: false, })
+    },
+
+    cart: {
+        screen: cart,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    heart: {
+        screen: heart,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+      
+
+    order_list_detail: {
+        screen: order_list_detail,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+    order_list: {
+        screen: order_list,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+            my_page: {
+        screen: my_page,
+        navigationOptions: () => ({ headerShown: false, })
     },
     
         register_user:{
@@ -54,17 +81,7 @@ const screens = {
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
-    },
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-   
-    my_page: {
-        screen: my_page,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    
+    },    
    
     weather_map:{
         screen:weather_map,
@@ -83,10 +100,7 @@ const screens = {
         screen: reservation_calender,
         navigationOptions: () => ({ headerShown: false, })
     },
-    order_list_detail: {
-        screen: order_list_detail,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
     coupon: {
         screen: coupon,
         navigationOptions: () => ({ headerShown: false, })
@@ -104,24 +118,12 @@ const screens = {
         screen: user_info,
         navigationOptions: () => ({ headerShown: false, })
     },
-    order_list: {
-        screen: order_list,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-  
-   
+
     purchase: {
         screen: purchase,
         navigationOptions: () => ({ headerShown: false, })
     },
-    cart: {
-        screen: cart,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    heart: {
-        screen: heart,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
     weather_map:{
         screen:weather_map,
         navigationOptions: () => ({ headerShown: false, })

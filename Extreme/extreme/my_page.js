@@ -1,6 +1,5 @@
 import React, {useState, Component, useEffect } from "react";
 import { Image, ScrollView } from 'react-native';
-//import Icon from 'react-native-vector-icons/AntDesign';
 
 import {
     View,

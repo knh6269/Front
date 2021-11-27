@@ -7,7 +7,8 @@ import{
     Text,
     Image,
     View,
-    VStack
+    VStack,
+    Button,
 }from 'native-base';
 import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
 
@@ -30,79 +31,97 @@ export default function order_list({ navigation }) {
 
     return (
         <NativeBaseProvider>
+            <Box style={{ flexDirection: 'row', marginTop: '5%' }}>
+                <HStack>
+                    <TouchableOpacity>
+                        <IconM name="navigate-before" size={25} style={{}}></IconM>
+                    </TouchableOpacity>
+                    <Text fontSize={20}>주문 내역</Text>
+                </HStack>
+            </Box>
+
             <ScrollView>
-                <Box marginTop={'5%'}>
-                    <Text textAlign={'center'} fontSize={20}>주문 내역</Text>
-                </Box>
+                <Box>
+                    <Box style={{ backgroundColor:'white', marginTop:'5%', borderWidth:1, paddingLeft:'3%', paddingRight:'3%' }}>
+                        <HStack space={1} marginRight={'3%'} justifyContent={'space-between'}>
+                            <Text>2021.11.13</Text>
+                            <TouchableOpacity onPress={order_list_detail}>
+                                <Box style={{justifyContent:'center'}}>
+                                    <HStack>
+                                        <Text fontSize={14} color={'#4f8bc2'} justifyContent={'center'}>주문 상세보기</Text>
+                                        <IconA name="right" size={14} justifyContent={'center'}></IconA>
+                                    </HStack>
+                                </Box>
+                            </TouchableOpacity>
+                        </HStack>
+                        
+                        <Box style={{ marginTop: '3%', }}>
+                            <Text style={{fontSize:16, fontWeight:'bold'}}>구입한 상품명</Text>
+                            <Box style={{flexDirection:'row', marginTop: '3%',}}>
+                                <Image
+                                    source={{
+                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                                    }}
+                                    style={{width:73, height:73}}
+                                    alt="trans_1" />
+                                <Box style={{flexDirection:'column', marginLeft:'3%', fontSize:14}}>
+                                    <Text>구입한 상품명</Text>
+                                    <Text>이용 날짜</Text>
+                                    <Text style={{marginTop:'5%'}}>가격</Text>
+                                </Box>    
+                            </Box>
+
+                            <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={1}></Box>
+
+                            <Box style={{marginBottom:'5%', marginTop:'5%', justifyContent: 'space-around', flexDirection:'row'}}>
+                                <Button style={{ fontSize:14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} ><Text>리뷰쓰기</Text></Button>
+                                <Button style={{ fontSize:14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} ><Text>환불신청</Text></Button>
+                            </Box>
+                        </Box>
+                    </Box>
                     
-                <Box  borderWidth={1} alignItems={'flex-end'} >
-                    <HStack space={1} marginRight={'5%'}>
-                        <TouchableOpacity onPress={order_list_detail}>
-                            <Text fontSize={10}>주문 상세보기</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={order_list_detail}>
-                            <IconA name="right" size={10}></IconA>
-                        </TouchableOpacity>
-                        </HStack>
-                </Box>
-
-                <Box marginTop={'5%'} marginLeft={'5%'}>
-                    <HStack>
-                        <Image
-                            source={{
-                                uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                            }}
-                            style={{ marginLeft:'5%', width:150, height:110}}
-                            alt="trans_1" />
-                        <VStack space={5}>
-                            <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{fontWeight:'bold'}} >상품명입니다</Text>
-                            <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} >이용 날짜</Text>
-                            <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} >가격</Text>
-                        </VStack>
-                        <VStack space={10}>
-                            <TouchableOpacity>
-                                <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{fontWeight:'bold'}} >환불</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={review}>
-                                <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} >리뷰 쓰기</Text>
-                            </TouchableOpacity>
-                        </VStack>      
-                    </HStack>
-                </Box>
-                
-                <Box marginTop={'5%'} borderWidth={1} alignItems={'flex-end'} >
-                        <HStack space={1} marginRight={'5%'}>
+                    <Box style={{ backgroundColor:'white', marginTop:'5%', borderWidth:1, paddingLeft:'3%', paddingRight:'3%' }}>
+                        <HStack space={1} marginRight={'3%'} justifyContent={'space-between'}>
+                            <Text>2021.11.13</Text>
                             <TouchableOpacity onPress={order_list_detail}>
-                                <Text fontSize={10}>주문 상세보기</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={order_list_detail}>
-                                <IconA name="right" size={10}></IconA>
+                                <Box style={{justifyContent:'center'}}>
+                                    <HStack>
+                                        <Text fontSize={14} color={'#4f8bc2'} justifyContent={'center'}>주문 상세보기</Text>
+                                        <IconA name="right" size={14} justifyContent={'center'}></IconA>
+                                    </HStack>
+                                </Box>
                             </TouchableOpacity>
                         </HStack>
-                </Box>
+                        
+                        <Box style={{ marginTop: '3%', }}>
+                            <Text style={{fontSize:16, fontWeight:'bold'}}>구입한 상품명</Text>
+                            <Box style={{flexDirection:'row', marginTop: '3%',}}>
+                                <Image
+                                    source={{
+                                        uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                                    }}
+                                    style={{width:73, height:73}}
+                                    alt="trans_1" />
+                                <Box style={{flexDirection:'column', marginLeft:'3%', fontSize:14}}>
+                                    <Text>구입한 상품명</Text>
+                                    <Text>이용 날짜</Text>
+                                    <Text style={{marginTop:'5%'}}>가격</Text>
+                                </Box>    
+                            </Box>
 
-                <Box marginTop={'5%'} marginLeft={'5%'}>
-                    <HStack>
-                        <Image
-                            source={{
-                                uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                            }}
-                            style={{ marginLeft:'5%', width:150, height:110}}
-                            alt="trans_1" />
-                        <VStack space={5}>
-                            <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{fontWeight:'bold'}} >상품명입니다</Text>
-                            <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} >이용 날짜</Text>
-                            <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} >가격</Text>
-                        </VStack>
-                        <VStack space={10}>
-                            <TouchableOpacity>
-                                <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{fontWeight:'bold'}} >환불</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={review}>
-                                <Text marginLeft={'10%'} borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} >리뷰 쓰기</Text>
-                            </TouchableOpacity>
-                        </VStack>      
-                    </HStack>
+                            <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={1}></Box>
+
+                            <Box style={{marginBottom:'5%', marginTop:'5%', justifyContent: 'space-around', flexDirection:'row'}}>
+                                <Button style={{ width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
+                                    <Text style={{ fontSize: 14, }}>리뷰쓰기</Text>
+                                </Button>
+                                <Button style={{ fontSize: 14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
+                                    <Text style={{ fontSize: 14, }}>환불신청</Text>
+                                </Button>
+                            </Box>
+                        </Box>
+                    </Box>
+                    
                 </Box>
             </ScrollView>
         </NativeBaseProvider>
