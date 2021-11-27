@@ -39,9 +39,7 @@ const screens = {
     heart: {
         screen: heart,
         navigationOptions: () => ({ headerShown: false, })
-    },
-
-      
+    },      
 
     order_list_detail: {
         screen: order_list_detail,

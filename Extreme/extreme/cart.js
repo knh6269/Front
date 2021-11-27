@@ -25,7 +25,7 @@ export default function cart({navigation}){
   }
   
   const [groupValue, setGroupValue] = React.useState([
-    "Photography",
+    "all",
   ])
 
   return (
@@ -40,14 +40,23 @@ export default function cart({navigation}){
 
       <ScrollView>
         <Box style={{}}>
-          <Box style={{backgroundColor:'white', justifyContent:'space-between', flexDirection: 'row', marginTop: '3%', paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', borderWidth:1}}>
-            <Box style={{flexDirection: 'row'}}>
-              <Text>체크박스</Text>
-              <Text style={{fontSize:16}}>전체선택</Text>
+          <Box style={{backgroundColor:'white', justifyContent:'space-between', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', borderWidth:1}}>
+            <Box style={{flexDirection: 'row', justifyContent:'center'}}>
+              <Checkbox.Group
+                    colorScheme="green"
+                    defaultValue={groupValue}
+                    accessibilityLabel="pick an item"
+                    onChange={(values) => {
+                      setGroupValue(values || [])
+                    }}
+                >
+                <Checkbox borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} value="all" my="1"></Checkbox>
+                </Checkbox.Group>
+              <Text style={{marginLeft:'3%', fontSize:16}}>전체선택</Text>
             </Box>
             <Box>
-              <Button style={{borderColor:'#eeeeee'}}>
-                <Text>선택 삭제</Text>
+              <Button style={{borderColor:'red', backgroundColor:'white'}}>
+                <Text style={{fontSize:14}}>선택 삭제</Text>
               </Button>
             </Box>
           </Box>
