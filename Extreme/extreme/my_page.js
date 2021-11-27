@@ -1,7 +1,5 @@
 import React, {useState, Component, useEffect } from "react";
-import { BackHandler, Image, ScrollView } from 'react-native';
-import Under from "./under";
-//import Icon from 'react-native-vector-icons/AntDesign';
+import { Image, ScrollView } from 'react-native';
 
 import {
     View,
