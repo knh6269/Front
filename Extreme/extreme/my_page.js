@@ -1,5 +1,6 @@
 import React, {useState, Component, useEffect } from "react";
 import { Image, ScrollView } from 'react-native';
+import Under from "./under";
 
 import {
     View,
