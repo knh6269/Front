@@ -84,6 +84,7 @@ export default function AppleMap(){
         const json = await response.json();
         data=data.concat(json);
       }
+      console.log(data)
       for(let k=0; k<33; k++){
         const response = await fetch(`https://extreme-kor.herokuapp.com/weathermap/${locations_detail[k].coordinate.latitude}/${locations_detail[k].coordinate.longitude}`);
         const json = await response.json();

@@ -22,12 +22,29 @@ import home from "../home";
 import register_activity from "../register_activity"
 import test from "../test";
 const screens = {
-    login: {
-        screen: login,
+    home:{
+        screen:home,
         navigationOptions: () => ({ headerShown: false, })
     },
+
     register_activity: {
         screen: register_activity,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+    register_company:{
+        screen:register_company,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+    login: {
+        screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
     review: {
@@ -44,10 +61,6 @@ const screens = {
     },
     coupon: {
         screen: coupon,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    register_company:{
-        screen:register_company,
         navigationOptions: () => ({ headerShown: false, })
     },
     register_user:{
@@ -82,14 +95,6 @@ const screens = {
     },
     heart: {
         screen: heart,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    weather_map:{
-        screen:weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    home:{
-        screen:home,
         navigationOptions: () => ({ headerShown: false, })
     },
    
