@@ -26,7 +26,15 @@ import select_bank from "../select_bank";
 import test from "../test";
 
 const screens = {
-        home:{
+    login: {
+        screen: login,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    select_bank: {
+        screen:select_bank,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    home:{
     screen:home,
     navigationOptions: () => ({ headerShown: false, })
     },
@@ -36,10 +44,7 @@ const screens = {
     navigationOptions: () => ({ headerShown: false, })
     },
 
-    select_bank: {
-        screen:select_bank,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
 
     home_recommend: {
         screen: home_recommend,
@@ -51,10 +56,7 @@ const screens = {
     navigationOptions: () => ({ headerShown: false, })
     },
     
-    login: {
-        screen: login,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
@@ -139,13 +141,6 @@ const screens = {
         screen: under,
         navigationOptions: () => ({ headerShown: false, })
     },
-  
-   
-   
-   
-   
-    
-   
     test:{
         screen:test,
         navigationOptions: () => ({ headerShown: false, })

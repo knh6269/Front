@@ -1,5 +1,5 @@
 import React, {useState, Component, useEffect } from "react";
-import { Image, ScrollView } from 'react-native';
+import { BackHandler, Image, ScrollView } from 'react-native';
 //import Icon from 'react-native-vector-icons/AntDesign';
 
 import {
@@ -27,7 +27,7 @@ class User extends Component {
     }
 }
 
-export default function My_page() {
+export default function My_page({navigation}) {
     let [data,setData]=useState()
     
  
@@ -37,7 +37,9 @@ export default function My_page() {
         const json = await response.json();
         setData(json);
     }     
-    
+    const ww=()=>{
+    navigation.navigate('user_info');
+    }
     useEffect(() => {
         zz();
       }, [data]);
@@ -58,7 +60,7 @@ export default function My_page() {
                   <Text>이메일: {data.data.email}</Text>
                   <Text>생년월일: {data.data.birthday}</Text>
                 </VStack>
-                    <TouchableOpacity  style={styles.menu}>
+                    <TouchableOpacity  style={styles.menu} onPress={ww}>
                         <Text>회원 정보 수정</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.menu}>
