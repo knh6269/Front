@@ -26,6 +26,35 @@ import select_bank from "../select_bank";
 import test from "../test";
 
 const screens = {
+
+        register_activity: {
+        screen: register_activity,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+        order_list_detail: {
+    screen: order_list_detail,
+    navigationOptions: () => ({ headerShown: false, })
+    },
+
+        order_list: {
+        screen: order_list,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+        activity_detail: {
+        screen: activity_detail,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+
+
+
+
+    home_region: {
+        screen: home_region,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
@@ -73,10 +102,7 @@ const screens = {
         navigationOptions: () => ({ headerShown: false, })
     },
   
-    register_activity: {
-        screen: register_activity,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+
 
     register_company:{
         screen:register_company,
@@ -110,10 +136,7 @@ const screens = {
         screen:register_user,
         navigationOptions: () => ({ headerShown: false, })
     },  
-    activity_detail: {
-        screen: activity_detail,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+
    
     user_info: {
         screen: user_info,
@@ -133,10 +156,7 @@ const screens = {
         navigationOptions: () => ({ headerShown: false, })
     },
    
-    home_region: {
-        screen: home_region,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
     test:{
         screen:test,
         navigationOptions: () => ({ headerShown: false, })
