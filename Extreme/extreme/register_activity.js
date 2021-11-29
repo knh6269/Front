@@ -85,17 +85,16 @@ export default function register_activity() {
         // else if(address==''){
         //     Alert.alert( "","주소를 입력해주세요",[{text:"확인"}])
         // }
-        let me = (await AsyncStorage.getItem('user_id'));
-
+        // let me = (await AsyncStorage.getItem('user_id'));
+        console.log("버튼")
         fd.append("activity_category", '서핑')
         fd.append("activity_name", p_name)
         let price1 = Number(price)
         fd.append("activity_price", price1)
         fd.append("location", location)
         fd.append("address", address)
-        fd.append("company_id", me)
-        fd.append("activity_images", [{ uri: selectedImage.localUri, type: 'image/jpeg', name: 'photo.jpg' }])
-        console.log(fd);
+        fd.append("company_id", 'asdf')
+        fd.append("activity_images", [{ uri: selectedImage.localUri, type: 'image/jpeg', name: 'photo.jpg' }, { uri: selectedImage.localUri, type: 'image/jpeg', name: 'photo.jpg' }, { uri: selectedImage.localUri, type: 'image/jpeg', name: 'photo.jpg' }])
         upload();
 
     }
@@ -172,7 +171,6 @@ export default function register_activity() {
                             <Box style={{ marginTop: '3%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', }}>
                                 <TextInput placeholder="가격을 입력해주세요" style={{ paddingLeft: '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => onChangeTextPrice(text)}
                                     value={price}>
-                                    <Text>원 기준 (1인 기준)</Text>
                                 </TextInput>
                             </Box>
                         </Box>
@@ -211,15 +209,8 @@ export default function register_activity() {
                             </Box>
                         </Box>
                         <Button style={{ marginBottom: '3%', marginTop: '3%', borderRadius: 10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: '#4f8bc2' }}>
-                            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>등록 완료</Text>
+                            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }} onPress={submitBtn}>등록 완료</Text>
                         </Button>
-
-
-                        <Box>
-                            <TouchableOpacity>
-                                <Text textAlign={'center'} fontSize={20} marginTop={5} borderWidth={1} alignItems={'center'} justifyContent={'center'} onPress={submitBtn}>등록 완료</Text>
-                            </TouchableOpacity>
-                        </Box>
                     </Box>
                 </ScrollView>
             </NativeBaseProvider>
@@ -328,15 +319,8 @@ export default function register_activity() {
                         </Box>
                     </Box>
                     <Button style={{ marginBottom: '3%', marginTop: '3%', borderRadius: 10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: '#4f8bc2' }}>
-                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>등록 완료</Text>
+                        <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }} onPress={submitBtn}>등록 완료</Text>
                     </Button>
-
-
-                    <Box>
-                        <TouchableOpacity>
-                            <Text textAlign={'center'} fontSize={20} marginTop={5} borderWidth={1} alignItems={'center'} justifyContent={'center'} onPress={submitBtn}>등록 완료</Text>
-                        </TouchableOpacity>
-                    </Box>
                 </Box>
             </ScrollView>
         </NativeBaseProvider>

@@ -68,7 +68,7 @@ export default function register_company({navigation}){
     navigation.navigate('home_region');
   }
 
-  const same=()=>{
+  const same = async() => {
     const response = await fetch(`https://extreme-kor.herokuapp.com/user/check_id/${c_id}`);
     const json = await response.json();
     console.log(json)

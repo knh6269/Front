@@ -109,10 +109,13 @@ const cancel=()=>{
         console.log(json)
 
         if (json.success) {
+            Alert.alert( "","사용 가능한 아이디입니다.",[{text:"확인"}])
             console.log('사용 가능한 아이디입니다.');
             id_state = true
         }
         else {
+            Alert.alert( "","중복된 아이디입니다.",[{text:"확인"}])
+            id_state = false
             console.log('중복된 아이디입니다.');
         }
     }

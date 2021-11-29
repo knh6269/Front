@@ -25,13 +25,24 @@ import under from "../under";
 import select_bank from "../select_bank";
 import search from "../search";
 import test from "../test";
+import activity_list from "../activity_list";
 
-const screens = {
 
-    
+const screens = {    
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
+    },
+    activity_list:{
+        screen:activity_list,
+        navigationOptions: () => ({ headerShown: false, })
+
+    },
+
+    register_activity:{
+        screen:register_activity,
+        navigationOptions: () => ({ headerShown: false, })
+
     },
 
         search: {
