@@ -29,6 +29,7 @@ export default function register_company({navigation}){
  const [c_accountname,setaccountname]=React.useState('');
  const [c_account,setaccount]=React.useState('');
  const fd = new FormData();
+ let id_state = false
 
  let sample='nakhyeon';
 
