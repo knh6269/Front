@@ -39,17 +39,17 @@ export default function user_info({ navigation }) {
             setpw(pw)
         }
         console.log(me, nic, password)
-        const response= fetch('https://extreme-kor.herokuapp.com/user', {
-            method:'PATCH',
+        const response= fetch('https://extreme-kor.herokuapp.com/user/modify', {
+            method:'POST',
             headers:{
             'Content-Type':'application/json',
         },
-            body:{user_id:me, nickname:nic, password:password}
+            body:JSON.stringify({"user_id":me, "nickname":nic, "password":password})
         }).then(response=>{
-                console.log(JSON.stringify(response))
+                console.log("sss"+JSON.stringify(response))
             }).catch(err=>{console.log(err)
             })
-        console.log(JSON.stringify(response));
+        // console.log(JSON.stringify(response));
     }
     useEffect(() => {
         zz();

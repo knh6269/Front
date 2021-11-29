@@ -26,6 +26,11 @@ import select_bank from "../select_bank";
 import test from "../test";
 
 const screens = {
+    register_activity: {
+        screen: register_activity,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
@@ -73,10 +78,6 @@ const screens = {
         navigationOptions: () => ({ headerShown: false, })
     },
   
-    register_activity: {
-        screen: register_activity,
-        navigationOptions: () => ({ headerShown: false, })
-    },
 
     register_company:{
         screen:register_company,

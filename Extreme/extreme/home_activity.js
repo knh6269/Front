@@ -78,6 +78,7 @@ export default function home_activity({ navigation }) {
   const [activityData, setactivityData] = useState();
   const [activityData2, setactivityData2] = useState();
   const [activityData3, setactivityData3] = useState();
+  const [length, setLength] = useState();
 
   let acti
   let acti2
@@ -92,7 +93,6 @@ export default function home_activity({ navigation }) {
        acti2=json.data.slice()
        acti3=json.data.slice()
 
-       data = json.data
        setactivityData(acti);
        acti2.sort((a, b)=> (a.activity_name > b.activity_name ? 1:-1))
        setactivityData2(acti2)
