@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
+import home_activity from './home_activity';
 
 // import cart from '../cart';
 
@@ -46,28 +47,67 @@ export default function Under({ navigation }) {
         navigation.navigate('login');
         }
     }
-    const register_activity = () => {
-        navigation.navigate('register_activity');
+    const home = () => {
+        navigation.navigate('home');
     }
 
     return (
         <NativeBaseProvider>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                <TouchableOpacity onPress={cart}>
-                    <IconA name="shoppingcart" size={40}></IconA>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={heart}>
-                    <IconA name="heart" size={40}></IconA>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={register_activity}>
-                    <IconA name="home" size={40}></IconA>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={map}>
-                    <IconF name="map-pin" size={40}></IconF>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={my_page}>
-                    <IconA name="user" size={40}></IconA>
-                </TouchableOpacity>
+            <View style={{flexDirection: 'row', justifyContent: 'space-around',}}>
+                <View style={{flexDirection:'column', justifyContent:'center', alignItems:'center'}}>    
+                    <TouchableOpacity onPress={cart}>
+                        <Image
+                        source={require('./images/cart-outline.png')}
+                        style={{width: 40, height: 40, }}
+                        alt="trans_1"
+                        />
+                        <Text style={{textAlign:'center',fontSize:10}}>장바구니</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{flexDirection:'column', justifyContent:'center', alignItems:'center'}}>    
+                    <TouchableOpacity onPress={heart}>
+                        <Image
+                        source={require('./images/cards-heart-outline.png')}
+                        style={{width: 40, height: 40, }}
+                        alt="trans_1"
+                        />
+                        <Text style={{textAlign:'center',fontSize:10}}>찜</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{flexDirection:'column', justifyContent:'center', alignItems:'center'}}>    
+                    <TouchableOpacity onPress={home}>
+                        <Image
+                        source={require('./images/home-outline.png')}
+                        style={{width: 40, height: 40, }}
+                        alt="trans_1"
+                        />
+                        <Text style={{textAlign:'center', fontSize:10, color:'#1d7dc3'}}>홈</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{flexDirection:'column', justifyContent:'center', alignItems:'center'}}>    
+                    <TouchableOpacity onPress={map}>
+                        <Image
+                        source={require('./images/map-marker-outline.png')}
+                        style={{width: 40, height: 40, }}
+                        alt="trans_1"
+                        />
+                        <Text style={{textAlign:'center',fontSize:10}}>날씨 지도</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{flexDirection:'column', justifyContent:'center', alignItems:'center'}}>    
+                    <TouchableOpacity onPress={my_page}>
+                        <Image
+                        source={require('./images/account-outline.png')}
+                        style={{width: 40, height: 40, }}
+                        alt="trans_1"
+                        />
+                        <Text style={{textAlign:'center',fontSize:10}}>마이페이지</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </NativeBaseProvider>
     )

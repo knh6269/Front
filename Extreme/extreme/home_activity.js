@@ -55,25 +55,6 @@ export default function home_activity({ navigation }) {
   //   navigation.navigate('각 페이지로 이동');
   // }
 
-  const IMAGES = {
-    image1: require('./images/1.jpg'),
-    image2: require('./images/2.jpg'),
-    image3: require('./images/그림7.png'),
-    image4: require('./images/1.jpg'),
-    image5: require('./images/1.jpg'),
-    image6: require('./images/1.jpg'),
-    image7: require('./images/1.jpg')
-  };
-
-  const [images, setImages] = useState([
-    { id: '1', image: IMAGES.image1, activity_name: '구룡스포츠1' },
-    { id: '2', image: IMAGES.image2, activity_name: '구룡스포츠2' },
-    { id: '3', image: IMAGES.image3, activity_name: '구룡스포츠3' },
-    { id: '4', image: IMAGES.image4, activity_name: '구룡스포츠1' },
-    { id: '5', image: IMAGES.image5, activity_name: '구룡스포츠5' },
-    { id: '6', image: IMAGES.image6, activity_name: '구룡스포츠4' },
-    { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠8' }
-  ]);
 
   const [activityData, setactivityData] = useState();
   const [activityData2, setactivityData2] = useState();
@@ -110,7 +91,7 @@ export default function home_activity({ navigation }) {
     <NativeBaseProvider>
       <ScrollView>
         <Box marginLeft='10%' marginRight='10%'>
-          <View marginTop={5} display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
+          <View display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
               <TouchableOpacity>
               <View justifyContent="center" alignItems="center" width={100} height={100} >
                 <Image
@@ -210,7 +191,7 @@ export default function home_activity({ navigation }) {
           </View>
         </Box>
 
-        <Box marginLeft='5%' marginRight='5%' borderWidth={1}></Box>
+        <Box marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
 
         <Box marginTop={5} marginLeft={'5%'} >
           <Text fontSize={20}>추천 액티비티</Text>

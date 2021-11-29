@@ -1,7 +1,7 @@
 import React, {useState, useEffect,useRef} from 'react';
 import Styled from 'styled-components/native';
 import MapView , {PROVIDER_GOOGLE, AnimatedRegion, Animated} from 'react-native-maps';
-import { NativeBaseProvider,Box,Text,Button,View,VStack,HStack } from 'native-base';
+import { NativeBaseProvider,Box,Text,Button,View,VStack,HStack, Image } from 'native-base';
 import {
   Dimensions, ImageStore, Touchable} from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -160,20 +160,30 @@ export default function AppleMap(){
 
   const map = useRef(null) ; 
 
-    return (
-    <NativeBaseProvider onPress={getWeather}>
-      <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}}>
-            <TouchableOpacity>
-                <IconM name="navigate-before" size={25} style={{}}></IconM>
-            </TouchableOpacity>
-            <Text marginLeft={'3%'} fontSize={20}>현재 날씨 지도</Text>
-        </Box>
-      <Box style={{marginTop:'3%', height:Height/2}}  > 
+  return (
+    <NativeBaseProvider onPress={getWeather}> 
+      <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom: '5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems: 'center' }}>
+        <TouchableOpacity>
+            <IconM name="navigate-before" size={25} style={{}}></IconM>
+        </TouchableOpacity>
+        <Image
+            source={require('./images/map-marker-outline.png')}
+            style={{width: 40, height: 40, }}
+            alt="trans_1"
+        />
+        <Text marginLeft={'3%'} fontSize={20}>현재 날씨 지도</Text>
+      </Box>
+      
+      <Box style={{backgroundColor:'white', height:Height/2}}  > 
         <Container>
-          <HStack>
-            <Button width={Width/2}onPress={zooming}><Text>전국 날씨 보기</Text></Button>
-            <Button width={Width/2}onPress={zoomout}><Text>자세한 날씨보기</Text></Button>
-          </HStack>
+          <Box style={{flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5%'}}>
+              <Button style={{ backgroundColor: '#4f8bc2' }} onPress={zooming}>
+              <Text style={{color:'white', fontSize:14}}>전국 날씨 보기</Text>
+            </Button>
+            <Button style={{ backgroundColor: '#4f8bc2' }} onPress={zoomout}>
+              <Text style={{color:'white', fontSize:14}}>자세한 날씨 보기</Text>
+            </Button>
+          </Box>
           <MapView 
             zoomEnabled={false}
             style={{flex: 1,backgroundColor:'red'}} provider={PROVIDER_GOOGLE} 

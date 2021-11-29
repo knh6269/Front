@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput, Dimensions} from 'react-native';
+import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput, Dimensions, SafeAreaView} from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import Home_region from "./home_region";
 import Home_recommend from "./home_recommend";
@@ -13,7 +13,7 @@ import {
   Text,
   Image,
   View,
-  flex
+  flex,
 } from 'native-base';
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
@@ -24,7 +24,7 @@ export default function Home({ navigation }) {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'activity', title: 'Activity 종류' },
-    { key: 'region', title: '지역별 Activity 종류' },
+    { key: 'region', title: '지역별 Activity' },
     { key: 'recommend', title: '여행지 추천' },
   ]);
 
@@ -46,23 +46,24 @@ export default function Home({ navigation }) {
 
   return (
     <NativeBaseProvider>
-      <View style={{ height: '10%', }}>
-        <Top navigation={navigation}></Top>
-      </View>
+      <Box>
+        <View style={{ height: '12%', }}>
+          <Top navigation={navigation}></Top>
+        </View>
 
-      <View style={{ height: '83%', }}>        
-        <TabView
-          navigationState={{ index, routes }}
-          renderScene={renderScene}
-          onIndexChange={setIndex}
-          initialLayout={{ width: layout.width }}
-        />
-      </View>
- 
-      <View style={{ width: layout.width, height: '7%', }}>
-        <Under navigation={navigation}></Under>
-      </View>
-
+        <View style={{ height: '78%', }}>        
+          <TabView
+            navigationState={{ index, routes }}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            initialLayout={{ width: layout.width }}
+          />
+        </View>
+  
+        <View style={{ width: layout.width, height: '11%', }}>
+          <Under navigation={navigation}></Under>
+        </View>
+      </Box>
     </NativeBaseProvider>
   );
 }

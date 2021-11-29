@@ -68,13 +68,18 @@ export default function register_company({navigation}){
   }
 
   const same=()=>{
-    if(c_id==sample){
+    const response = await fetch(`https://extreme-kor.herokuapp.com/user/check_id/${c_id}`);
+    const json = await response.json();
+    console.log(json)
+
+    if (json.success) {
+        console.log('사용 가능한 아이디입니다.');
+        id_state = true
+    }
+    else {
         console.log('중복된 아이디입니다.');
     }
-    else{
-        console.log('사용 가능한 아이디입니다.');
-    }
-  }
+}
 
   const [selectedImage, setSelectedImage] = React.useState(null);
 

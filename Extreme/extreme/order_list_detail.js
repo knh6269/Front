@@ -1,184 +1,101 @@
-import React, { Component, useState } from 'react'
+import React from 'react'
 import {Dimensions,} from "react-native"
 import{
     NativeBaseProvider,
     Box,
     HStack,
     Text,
+    VStack,
     Image,
-    View,
-    flex,
-    Button,  
-}from 'native-base';
-import { TouchableOpacity, ScrollView, TextInput, StyleSheet} from "react-native";
-import Carousel, { Pagination } from 'react-native-snap-carousel';
+    Button
+} from 'native-base';
+import { TouchableOpacity, ScrollView, StyleSheet } from "react-native";
+
+const Width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
+
+import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 
-var window_width = Dimensions.get('window').width;
-var window_height = Dimensions.get('window').height;
-
-import IconI from 'react-native-vector-icons/Ionicons';
-import IconE from 'react-native-vector-icons/Entypo';
-import { flexDirection } from 'styled-system';
-
-
-export default function Order_list_detail({navigation}) {
-    const pressHandler=()=>{
-        navigation.navigate('home_region');
-    }
+export default function activity_detail({ navigation }) {
     
-    const IMAGES = {
-        image1: require('./images/1.jpg'),
-        image2: require('./images/2.jpg'),
-        image3: require('./images/그림7.png'),
-        image4: require('./images/1.jpg'),
-        image5: require('./images/1.jpg'),
-        image6: require('./images/1.jpg'),
-        image7: require('./images/1.jpg')
-    };
-
-    const [images, setImages] = useState([
-        { id: '1', image: IMAGES.image1, activity_name: '구룡스포츠1' },
-        { id: '2', image: IMAGES.image2, activity_name: '구룡스포츠2' },
-        { id: '3', image: IMAGES.image3, activity_name: '구룡스포츠3' },
-        { id: '4', image: IMAGES.image4, activity_name: '구룡스포츠1' },
-        { id: '5', image: IMAGES.image5, activity_name: '구룡스포츠5' },
-        { id: '6', image: IMAGES.image6, activity_name: '구룡스포츠4' },
-        { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠8' }
-    ]);
+    const heart=()=>{
+        navigation.navigate('heart');
+    }
+    const cart=()=>{
+        navigation.navigate('cart');
+    }
+    const purchase=()=>{
+        navigation.navigate('purchase');
+    }
     
     return (
         <NativeBaseProvider>
-            <ScrollView>
-                <Box>
-                    <Box>
-                        <Carousel
-                            layout='default'
-                            data={images}
-                            sliderWidth={window_width}
-                            itemWidth={window_width}
-                            inactiveSlideScale={1} //슬라이드들 크기 같게
-                            inactiveSlideOpacity={1} //슬라이드 투명도
-                            activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-                            contentContainerCustomStyle={{ overflow: 'hidden' }} //마지막 7은 원소의 개수
-                            renderItem={({ item, index }) => (
-                                <View>
-                                    <View style={{width: '100%', height: window_width,}}> 
-                                        <Image
-                                                key={index}
-                                                style={{ width: '100%', height: '100%', borderRadius:10 }}
-                                                resizeMode='contain'
-                                            source={item.image}
-                                            alt="profile"
-                                        />
-                                    </View>
-                                </View>
-                            )}
-                        />      
+            <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%', borderWidth:0.5}}>
+                <TouchableOpacity>
+                    <IconM name="navigate-before" size={25} style={{}}></IconM>
+                </TouchableOpacity>
+                <Text marginLeft={'3%'} fontSize={20}>주문 내역 (상세)</Text>
+            </Box>
+            <Box style={{ backgroundColor:'white', borderWidth:1, paddingLeft:'3%', paddingRight:'3%', paddingTop:'3%' }}>
+                <Text style={{fontSize:18, fontWeight:'bold'}}>구입한 상품명</Text>
+                <Box style={{flexDirection:'row', marginTop: '3%',}}>
+                    <Image
+                        source={{
+                            uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                        }}
+                        style={{width:73, height:73}}
+                        alt="trans_1" />
+                    <Box style={{ flexDirection: 'column', marginLeft: '3%', }}>
+                        <Box style={{flexDirection:'row', justifyContent:'space-between'}}>
+                            <Text style={{fontSize:14, fontWeight:'bold'}}>80,000원</Text>
+                            <Text style={{fontSize:18, fontWeight:'bold', marginLeft:'50%'}}>D-31</Text>
+                        </Box>
+                        <Box style={{flexDirection:'row', marginTop:'5%', }}>
+                            <Text style={{fontSize: 14}}>사용 일시 : </Text>
+                            <Text style={{fontSize:16, fontWeight:'bold', marginLeft:'3%'}}>2021.11.28</Text>
+                        </Box>
+                        <Box style={{flexDirection:'row', marginTop:'3%', }}>
+                            <Text style={{fontSize: 14}}>예상 날씨 : </Text>
+                            <Text style={{fontSize:18, color:'#4f8bc2', fontWeight:'bold', marginLeft:'3%'}}>맑음</Text>
+                        </Box>
+                    </Box>    
+                </Box>
+
+                <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={0.5}></Box>
+
+                <Box style={{marginBottom:'5%'}}>
+                    <Text style={{ fontSize: 16, fontWeight: 'bold' }}>결제 정보</Text>
+                    <Box style={{ flexDirection: 'row', marginTop:'3%'}}>
+                        <Text style={{width:'20%', color:'#898989'}}>예약자 명</Text>
+                        <Text style={{marginLeft:'10%'}}>정연휘</Text>
                     </Box>
-                        
-                    <Box style={{backgroundColor:'white'}}>
-                        <Box style={{paddingTop:'3%', marginLeft:'3%', marginRight:'3%', flexDirection:'row', justifyContent:'space-between'}}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>액티비티명</Text>
-                            <Text>123</Text>
-                        </Box>
-
-                        <Box style={{ marginTop:'5%', marginBottom:'5%', marginLeft:'3%', marginRight:'3%',}}>
-                            <Button style={{ borderRadius:10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: 'white' }}>
-                                <Text style={{ fontSize: 20, fontWeight: 'bold', }}>날짜 및 시간 선택</Text>
-                            </Button>
-                        </Box>
+                    <Box style={{ flexDirection: 'row', }}>
+                        <Text style={{width:'20%', color:'#898989'}}>휴대폰 번호</Text>
+                        <Text style={{marginLeft:'10%'}}>010-1234-5678</Text>
                     </Box>
-                        
-                    <Box marginTop='3%'></Box>
-
-                    <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
-                        <Box style={{marginLeft: '3%', marginRight:'3%',}}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>90,000원</Text>
-                            <Text style={{ marignTop:'3%', fontWeight: 'bold', fontSize: 16 }}>상품 정보</Text>
-                        </Box>
-
-                        <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={0.5}></Box>
-
-                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
-                            <Text style={{color:'#acacac'}}>업체명</Text>
-                            <Text>하모닉스</Text>
-                        </Box>
-
-                        <Box style={{marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
-                            <Text style={{color:'#acacac'}}>주소</Text>
-                            <Text>하모닉스</Text>
-                        </Box>
-
-                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
-                            <Text style={{color:'#acacac'}}>이용 가능 시간</Text>
-                            <Text>하모닉스</Text>
-                        </Box>
+                    <Box style={{ flexDirection: 'row', }}>
+                        <Text style={{width:'20%', color:'#898989'}}>할인 금액</Text>
+                        <Text style={{marginLeft:'10%'}}>10,000원</Text>
                     </Box>
-
-                    <Box marginTop='3%'></Box>
-
-                    <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
-                        <Box style={{marginLeft: '5%', marignRight:'5%',}}>
-                            <Text style={{ marignTop:'3%', fontWeight: 'bold', fontSize: 16 }}>고객 정보</Text>
-                        </Box>
-
-                        <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
-
-                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', }}>
-                            <Image
-                                source={{
-                                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                }}
-                                style={{width:40, height:40, borderRadius:50}}
-                                alt="trans_1" />
-                            <Box style={{marginLeft:'3%'}}>
-                                <Text style={{fontSize:12}}>하모닉스</Text>
-                                <Box style={{flexDirection:'row'}}>
-                                    <Text>123</Text>
-                                    <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>2021.11.28</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-
-                        <Box style={{ marginTop: '3%', marginLeft: '3%', marignRight: '3%' }}>
-                            <Text>후기 날려 날려~</Text>
-                        </Box>
-
-                        <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
-
-                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', }}>
-                            <Image
-                                source={{
-                                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                }}
-                                style={{width:40, height:40, borderRadius:50}}
-                                alt="trans_1" />
-                            <Box style={{marginLeft:'3%'}}>
-                                <Text style={{fontSize:12}}>하모닉스</Text>
-                                <Box style={{flexDirection:'row'}}>
-                                    <Text>123</Text>
-                                    <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>2021.11.28</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-
-                        <Box style={{ marginTop: '3%', marginLeft: '3%', marignRight: '3%' }}>
-                            <Text>후기 날려 날려~</Text>
-                        </Box>
+                    <Box style={{ flexDirection: 'row', }}>
+                        <Text style={{width:'20%', color:'#898989'}}>결제 금액</Text>
+                        <Text style={{marginLeft:'10%'}}>80,000원</Text>
+                    </Box>
+                    <Box style={{ flexDirection: 'row', }}>
+                        <Text style={{width:'20%', color:'#898989'}}>결제 수단</Text>
+                        <Text style={{marginLeft:'10%'}}>카드(일시불)</Text>
                     </Box>
                 </Box>
-            </ScrollView >
-
-            <Box style={{ paddingLeft:'3%', paddingRight:'3%', height: '15%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
-                <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
-                    <Text style={{ fontSize: 20, fontWeight:'bold'}}>리뷰쓰기</Text>
+            </Box>
+            <Box style={{backgroundColor:'white', paddingTop:'5%', paddingBottom:'5%', justifyContent: 'space-around', flexDirection:'row', borderWidth:0.5}}>
+                <Button style={{ width: 150, height: 50, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white', borderRadius:10}} >
+                    <Text style={{ fontSize: 20, fontWeight:'bold'}}>취소 요청</Text>
                 </Button>
-                <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
-                    <Text style={{ fontSize: 20, fontWeight:'bold'}}>환불신청</Text>
+                <Button style={{ width: 150, height: 50, borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2', borderRadius:10 }} >
+                    <Text style={{ fontSize: 20, fontWeight:'bold'}}>홈으로</Text>
                 </Button>
             </Box>
         </NativeBaseProvider>
-    );
-
+    )
 }

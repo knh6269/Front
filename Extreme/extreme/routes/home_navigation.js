@@ -23,73 +23,65 @@ import register_activity from "../register_activity";
 import top from "../top";
 import under from "../under";
 import select_bank from "../select_bank";
+import search from "../search";
 import test from "../test";
 
 const screens = {
-    register_activity: {
-        screen: register_activity,
-        navigationOptions: () => ({ headerShown: false, })
-    },
 
+    
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
-        },
-    
-    under: {
-        screen: under,
+    },
+
+        search: {
+        screen: search,
         navigationOptions: () => ({ headerShown: false, })
     },
+
 
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
-
-    
-    register_user:{
-    screen:register_user,
-    navigationOptions: () => ({ headerShown: false, })
-    },
-
+  
     select_bank: {
         screen:select_bank,
         navigationOptions: () => ({ headerShown: false, })
     },
-
-    home_recommend: {
-        screen: home_recommend,
+    order_list_detail: {
+    screen: order_list_detail,
+    navigationOptions: () => ({ headerShown: false, })
+    },
+    activity_detail: {
+        screen: activity_detail,
         navigationOptions: () => ({ headerShown: false, })
     },
-    
+    home_region: {
+        screen: home_region,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
-    },
-   
+        },
+
     my_page: {
         screen: my_page,
         navigationOptions: () => ({ headerShown: false, })
     },
-    
-   
     weather_map:{
         screen:weather_map,
         navigationOptions: () => ({ headerShown: false, })
     },
-  
-
     register_company:{
         screen:register_company,
         navigationOptions: () => ({ headerShown: false, })
     },
-
-
     weather_map:{
         screen:weather_map,
         navigationOptions: () => ({ headerShown: false, })
     },
-
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
@@ -111,10 +103,7 @@ const screens = {
         screen:register_user,
         navigationOptions: () => ({ headerShown: false, })
     },  
-    activity_detail: {
-        screen: activity_detail,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+
    
     user_info: {
         screen: user_info,
@@ -133,9 +122,21 @@ const screens = {
         screen: heart,
         navigationOptions: () => ({ headerShown: false, })
     },
-   
-    home_region: {
-        screen: home_region,
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
+    home_activity: {
+        screen: home_activity,
+        navigationOptions: () => ({ headerShown: false, })
+    }, 
+    top: {
+        screen: top,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    under: {
+        screen: under,
         navigationOptions: () => ({ headerShown: false, })
     },
     test:{
