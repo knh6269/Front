@@ -23,11 +23,15 @@ export default function heart({navigation}){
     
     return (
         <NativeBaseProvider>
-            <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}}>
+            <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
                 <TouchableOpacity>
                     <IconM name="navigate-before" size={25} style={{}}></IconM>
                 </TouchableOpacity>
-                <IconA marginLeft={'5%'} name="heart" size={25}></IconA>
+                <Image
+                    source={require('./images/cards-heart-outline.png')}
+                    style={{width: 40, height: 40, }}
+                    alt="trans_1"
+                />
                 <Text marginLeft={'3%'} fontSize={20}>찜</Text>
             </Box>
             <ScrollView>

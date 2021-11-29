@@ -23,17 +23,27 @@ import register_activity from "../register_activity";
 import top from "../top";
 import under from "../under";
 import select_bank from "../select_bank";
+import search from "../search";
 import test from "../test";
 
 const screens = {
+
+    
+    home:{
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+        search: {
+        screen: search,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-        },
   
     select_bank: {
         screen:select_bank,
@@ -55,10 +65,7 @@ const screens = {
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
         },
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+
     my_page: {
         screen: my_page,
         navigationOptions: () => ({ headerShown: false, })

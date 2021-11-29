@@ -1,6 +1,6 @@
 import { TabRouter } from "@react-navigation/routers";
 import React, { Component, useState } from "react";
-import { Image, ScrollView } from 'react-native';
+import { Image, ScrollView, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -10,18 +10,11 @@ import {
     TextInput,
     StyleSheet
 } from "react-native";
+import { NativeBaseProvider,Box,Button,VStack,HStack, } from 'native-base';
+import IconA from 'react-native-vector-icons/AntDesign';
 
-
-class Activity extends Component {
-    render() {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <View style={{ height: 30, width: 30, backgroundColor: 'gray' }}></View>
-                <Text style={{ marginTop: 5, color: '#A0A0A0' }}>{this.props.name}</Text>
-            </View>
-        )
-    }
-}
+const Width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
 
 export default function login({navigation}) {
 
@@ -58,38 +51,58 @@ export default function login({navigation}) {
     }
     
     return (
-        <ScrollView>
-            <View style={styles.container}>
-                <View style={styles.input}>
+        <NativeBaseProvider>
+            <Box style={{marginLeft:'3%', marginTop:'5%'}}>
+                <IconA name="close" size={25} style={{marginLeft:'5%'}}></IconA>
+            </Box>
+            <Box style={{marginLeft:'5%', marginRight:'5%'}}>
+                <Box style={{ flexDirection: 'column', justifyContent: 'center', height: Height / 3, }}>
+                    <Box style={{flexDirection:'row', alignContent:'center', alignItems:'center'}}>
+                        <Text style={{fontSize:'50', fontWeight:'bold', color:'#4f8bc2'}}>Extreme</Text>
+                        <Text style={{fontSize:'30', fontWeight:'bold'}}>을</Text>
+                    </Box>
+                    <Text style={{fontSize:'30', fontWeight:'bold'}}>즐길 준비가 되셨나요?</Text>
+                </Box>
+
+                <Box style={{flexDirection:'row', borderColor:'#898989', borderWidth:1,height:'10%', justifyContent:'center', alignItems:'center'}}>
                     <Icon name="user" size={24}></Icon>
                     <TextInput
+                        placeholderTextSize={12}
                         placeholder={'아이디'}
                         onChangeText={(text) => onChangeTextID(text)}
                         value={id}
+                        maxLength={10}
                     />
-                </View>
-                <View style={styles.input}>
+                </Box>
+
+                <Box style={{marignTop:'3%', flexDirection:'row', borderColor:'#898989', borderWidth:1,height:'10%', justifyContent:'center', alignItems:'center'}}>
                     <Icon name="lock" size={24}></Icon>
                     <TextInput
+                        placeholderTextSize={12}
                         placeholder={'비밀번호'}
                         onChangeText={(text) => onChangeTextPW(text)}
                         value={password}
                         secureTextEntry={true}
+                        maxLength={10}
                     />
-                </View>
+                </Box>
 
-                <TouchableOpacity style={{ borderWidth: 1, width: 150, alignItems: 'center' }}
-                onPress={login_detail}>
-                    <Text>로그인</Text>
-                </TouchableOpacity>
-                <TouchableOpacity >
-                    <Text style={{ textDecorationLine: 'underline' }}>회원가입</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={{ textDecorationLine: 'underline' }}>ID/PW 찾기</Text>
-                </TouchableOpacity>
-            </View>
-        </ScrollView >
+                <Box style={{marginTop:'3%', flexDirection:'row', justifyContent:'center', marginBottom:'5%', justifyContent:'center', alignItems:'center'}}>
+                    <Button style={{ backgroundColor: 'black' }}>
+                        <Text style={{color:'white', fontSize:20, fontWeight:'bold'}}>로그인</Text>
+                    </Button>
+                </Box>
+
+                <Box style={{flexDirection:'row', justifyContent:'space-around', marginBottom:'5%'}}>
+                    <Button style={{backgroundColor: 'transparent',  }}>
+                        <Text style={{color:'black', fontSize:14}}>사용자 회원 가입</Text>
+                    </Button>
+                    <Button style={{ backgroundColor: 'transparent',}}>
+                        <Text style={{color:'black', fontSize:14}}>관계자 회원 가입</Text>
+                    </Button>
+                </Box>
+            </Box>
+        </NativeBaseProvider>
     )
 
 }

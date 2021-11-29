@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput,SafeAreaView  } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import {
   NativeBaseProvider,
@@ -19,7 +19,7 @@ export default function Top({ navigation }) {
   
   return (
     <NativeBaseProvider>
-      <Box>
+      <Box style={{marginTop:'5%'}}>
         <View style={{ flexDirection: 'row' }}>
           <View>
             <Image
@@ -39,6 +39,6 @@ export default function Top({ navigation }) {
           </View>
         </View>
       </Box>
-    </NativeBaseProvider >
+    </NativeBaseProvider>
   )
 }

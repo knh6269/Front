@@ -102,7 +102,7 @@ export default function Recommend() {
                         </View>
                     </View>
 
-                    <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={1}></Box>
+                    <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5} color={'#acacac'}></Box>
 
                     <View style={{marginTop:16}}> 
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -143,7 +143,7 @@ export default function Recommend() {
                         </View>
                     </View>
 
-                    <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={1}></Box>
+                    <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5} color={'#acacac'}></Box>
 
                     <View style={{marginTop:16}}> 
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
