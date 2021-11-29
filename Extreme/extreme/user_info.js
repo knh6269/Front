@@ -19,9 +19,9 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 export default function user_info({ navigation }) {
-    let [data,setData]=useState()
-    const [nic, setnic] = React.useState('');
-    const [password, setpw] = React.useState('');
+    let [data,setData]=useState();
+    const [nic, setnic] = useState();
+    const [password, setpw] = useState();
  
     let zz=async()=>{
         let me=(await AsyncStorage.getItem('user_id'));
@@ -29,37 +29,43 @@ export default function user_info({ navigation }) {
         const json = await response.json();
         setData(json);
     }     
+
+
+
     let modify = async()=>{
         let me=(await AsyncStorage.getItem('user_id'));
-        console.log(data)
-        if(password==''){
+        const sample={
+            user_id:me,
+            password:password,
+            nickname:nic
+        }
+        if(password==null){
             let pw = data.data.password
-            console.log("ss")
             setpw(pw)
         }
-        console.log(me, nic, password)
-        const response= fetch('https://extreme-kor.herokuapp.com/user', {
-            method:'PATCH',
+
+        const response= await fetch('https://extreme-kor.herokuapp.com/user/modify', {
+            method:'POST',
             headers:{
             'Content-Type':'application/json',
         },
-            body:{user_id:me, nickname:nic, password:password}
-        }).then(response=>{
-                console.log(JSON.stringify(response))
-            }).catch(err=>{console.log(err)
-            })
-        console.log(response);
+            body:JSON.stringify(sample)
+        })
+        const json=await response.json();       
+        console.log(json);
+
     }
+
     useEffect(() => {
         zz();
-      }, [data]);
+      }, []);
       
-    {if(data){
+    {if(data!=null){
 
     return (
         <NativeBaseProvider>
             <ScrollView>
-                <Box marginTop={'5%'}>
+                <Box marginTop={'5%' }>
                     <Text textAlign={'center'} fontSize={20}>기본 정보</Text>
                 </Box>
                     
@@ -75,7 +81,6 @@ export default function user_info({ navigation }) {
                             <TextInput defaultValue={data.data.nickname} onChangeText={nickname=>setnic(nickname)}/>
                             <Text>비밀번호 수정</Text>
                             <TextInput onChangeText={(text) => setpw(text)}></TextInput>
-
                             <Text>이름</Text>
                             <Text>{data.data.name}</Text>
                             <Text>휴대폰 번호</Text>

@@ -64,7 +64,8 @@
     "react-navigation-stack": "^2.10.4",
     "rnv-date-range-picker": "^1.2.6",
     "styled-components": "^5.3.3",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "zeplin-to-react-native": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

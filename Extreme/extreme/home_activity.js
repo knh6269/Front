@@ -17,12 +17,11 @@ import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import { backgroundColor } from 'styled-system';
+import { parse } from 'react-native-svg';
 
 var window_width = Dimensions.get('window').width;
 var window_height = Dimensions.get('window').height;
     
-console.log("window_width:" + window_width);
-console.log("window_height:" + window_height);
 
 export default function home_activity({ navigation }) {
   // const suffing = () => {
@@ -76,20 +75,33 @@ export default function home_activity({ navigation }) {
     { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠8' }
   ]);
 
-  const [activityData, setactivityData] = useState([]);
+  const [activityData, setactivityData] = useState();
+  const [activityData2, setactivityData2] = useState();
+  const [activityData3, setactivityData3] = useState();
+
+  let acti
+  let acti2
+  let newest_activity;
+  let recommend_activity;
 
   const getActivity = async () => {
      try {
       const response = await fetch(`https://extreme-kor.herokuapp.com/activities`);
        const json = await response.json();
-       setactivityData(json.data);
-      // console.log(`${json.data[0]}`)
-       console.log(`${json.data[1].activity_name}`)
+       acti=json.data.slice()
+       acti2=json.data.slice()
+       acti3=json.data.slice()
+
+       data = json.data
+       setactivityData(acti);
+       acti2.sort((a, b)=> (a.activity_name > b.activity_name ? 1:-1))
+       setactivityData2(acti2)
+       acti3.sort((a, b)=> (a.activity_category > b.activity_category ? 1:-1))
+       setactivityData3(acti3)
     } catch (error) {
       console.error(error);
     }
   }
-
   useEffect(() => {
     getActivity();
   }, []);
@@ -97,7 +109,6 @@ export default function home_activity({ navigation }) {
   return (
     <NativeBaseProvider>
       <ScrollView>
-        {/* <Text>{data[0].activity_name}</Text> */}
         <Box marginLeft='10%' marginRight='10%'>
           <View marginTop={5} display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
               <TouchableOpacity>
@@ -206,21 +217,21 @@ export default function home_activity({ navigation }) {
             <View>
               <Carousel
                 layout='default'
-                data={images}
+                data={activityData}
                 sliderWidth={window_width}
                 itemWidth={window_width / 3}
                 inactiveSlideScale={1} //슬라이드들 크기 같게
                 inactiveSlideOpacity={1} //슬라이드 투명도
                 activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-                contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
-                renderItem={({ item, index }) => (
+                // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / data.length}} //마지막 7은 원소의 개수
+                renderItem={({ item}) => (
                   <View>
                     <View style={{width: '100%', height: 150,}}> 
                       <Image
-                            key={index}
+                            key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
                             resizeMode='contain'
-                        source={item.image}
+                        source={{uri:item.Activity_images[0].image_url}}
                         alt="profile"
                       />
                       <HStack>
@@ -239,22 +250,22 @@ export default function home_activity({ navigation }) {
             <View>
               <Carousel
                 layout='default'
-                data={images}
+                data={activityData2}
                 sliderWidth={window_width}
                 itemWidth={window_width / 3}
                 inactiveSlideScale={1} //슬라이드들 크기 같게
                 inactiveSlideOpacity={1} //슬라이드 투명도
                 activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-                contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
-                renderItem={({ item, index }) => (
+                // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
+                renderItem={({ item }) => (
                   <View>
                     <View style={{width: '100%', height: 150,}}> 
                       <Image
-                            key={index}
+                            key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
                             resizeMode='contain'
-                        source={item.image}
-                        alt="profile"
+                            source={{uri:item.Activity_images[0].image_url}}
+                            alt="profile"
                       />
                       <HStack>
                           <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>인기</Text>
@@ -272,22 +283,22 @@ export default function home_activity({ navigation }) {
             <View>
               <Carousel
                 layout='default'
-                data={images}
+                data={activityData3}
                 sliderWidth={window_width}
                 itemWidth={window_width / 3}
                 inactiveSlideScale={1} //슬라이드들 크기 같게
                 inactiveSlideOpacity={1} //슬라이드 투명도
                 activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-                contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
-                renderItem={({ item, index }) => (
+                // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
+                renderItem={({ item }) => (
                   <View>
                     <View style={{width: '100%', height: 150,}}> 
                       <Image
-                            key={index}
+                            key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
                             resizeMode='contain'
-                        source={item.image}
-                        alt="profile"
+                            source={{uri:item.Activity_images[0].image_url}}
+                            alt="profile"
                       />
                       <HStack>
                           <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#ff3e3e' }}>최신</Text>

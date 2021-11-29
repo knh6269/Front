@@ -21,172 +21,168 @@ const Height = Dimensions.get('window').height;
 
 export default function home_region({ navigation }) {
     const [state, setState] = useState('경기도');
-    const [data, setData] = useState()
-    
-
-    const activitys =
-        [{ name: '구룡', price: 15000, star: 4.5, image: require('./images/1.jpg') },
-        { name: '12', price: 15300, star: 3.5, image: require('./images/2.jpg') },
-        { name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
-        { name: '12', price: 153200, star: 3.5, image: require('./images/2.jpg') },
-        { name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
-        { name: '12', price: 15300, star: 3.5, image: require('./images/2.jpg') },
-        { name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
-        { name: '12', price: 15300, star: 3.5, image: require('./images/2.jpg') },
-        { name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
-        { name: '12', price: 15300, star: 3.5, image: require('./images/2.jpg') },
-        { name: '121', price: 153300, star: 3.15, image: require('./images/2.jpg') },
-        { name: '122', price: 153040, star: 3.15, image: require('./images/1.jpg') }];
-
-     
+    const [data, setData] = useState()     
   
-    let location='강원도'
+    let location='경기도'
     let load = async () => {
         let response1 = await fetch(`https://extreme-kor.herokuapp.com/activity/location/${location}`);
         const json = await response1.json();
         if (json.success) {
           setData(json.data)
-          
-         
         }
       
     }
-    useEffect(()=>{
-      load();
-    },[])
+    useEffect(() => {
+        load();
+    }, [])
 
 
     const pressHandler = () => {
-        location='경기도'
+        location = '경기도'
         setState(location);
         console.log(`지역:${location}`);
         load()
        
     }
     const pressHandler2 = () => {
-        location='강원도'
+        location = '강원도'
         setState(location);
         console.log(`지역:${location}`);
         load()
     }
     const pressHandler3 = () => {
-         location='충청북도'
+        location = '충청북도'
         console.log(location);
         load()
     }
     const pressHandler4 = () => {
-         location='충청남도'
+        location = '충청남도'
         load()
     }
-    const pressHandler5= () => {
-         location='경상북도'
+    const pressHandler5 = () => {
+        location = '경상북도'
         load()
     }
     const pressHandler6 = () => {
-         location='경상남도'
+        location = '경상남도'
         load()
     }
     const pressHandler7 = () => {
-         location='전라북도'
+        location = '전라북도'
         load()
     }
     const pressHandler8 = () => {
-          location='전라남도'
+        location = '전라남도'
         load()
     }
     const pressHandler9 = () => {
-          location='제주도'
+        location = '제주도'
         load()
     }
 
     const [region, setregion] = useState([
-        { location: "경기", handler: pressHandler },
-        { location: "강원", handler: pressHandler2 },
-        { location: "충북", handler: pressHandler3 },
+        { location: "경기도", handler: pressHandler },
+        { location: "강원도", handler: pressHandler2 },
+        { location: "충청북도", handler: pressHandler3 },
     ])
     const [region1, setregion1] = useState([
-        { location: "충남", handler: pressHandler4 },
-        { location: "경북", handler: pressHandler5  },
-        { location: "경남", handler: pressHandler6},
+        { location: "충청남도", handler: pressHandler4 },
+        { location: "경상북도", handler: pressHandler5 },
+        { location: "경상남도", handler: pressHandler6 },
     ])
     const [region2, setregion2] = useState([
-        { location: "전북", handler: pressHandler7 },
-        { location: "전남", handler: pressHandler8},
-        { location: "제주", handler: pressHandler9 },
+        { location: "전라북도", handler: pressHandler7 },
+        { location: "전라남도", handler: pressHandler8 },
+        { location: "제주도", handler: pressHandler9 },
     ])
 
-    const renderActivity = ({ item}) => (
-        <View style={{ flexDirection: 'row', justifyContent: 'center', width: Width / 2 }}>
-            <TouchableOpacity style={{ flexDirection: 'row' }}>
+    const renderActivity = ({ item }) => (
+        <TouchableOpacity>
+            <Box style={{height:100, marginTop:'3%', borderWidth:1, width:'70%', flexDirection: 'row', alignItems:'center', justifyContent: 'center',}}>
                 <Image
-                    style={{ width: 100, height: 100 }}
-                    source={{uri:item.Activity_images[0].image_url}}   
-                /> 
-                <View>
-                    
-                    <Text style={{ color: 'red' }}>{item.activity_name}</Text>
-                    <Text style={{ color: 'red' }}>{item.activity_price}</Text>
-                </View>
-            </TouchableOpacity>
-        </View>
-    );
+                    style={{ width: 50, height: 50,}}
+                    source={{ uri: item.Activity_images[0].image_url }}  
+                />
+                <Box style={{flexDirection: 'column', }}>
+                    <Text style={{ color: 'black' }}>{item.activity_name}</Text>
+                    <Text style={{ color: 'black', marginLeft:'3%' }}>별점</Text>
+                    <Text style={{ color: 'black' }}>{item.activity_price}</Text>
+                </Box>
+            </Box>
+        </TouchableOpacity>
+
+
+        // <Box style={{marginTop:'3%', paddingLeft : '3%', paddingRight:'3%', marinLeft:'5%', borderWidth:1, flexDirection: 'row',  width: Width/2, height:Height/4, alignItems:'center', justifyContent: 'space-between',}}>
+        //     <Image
+        //         style={{ width: 50, height: 50,}}
+        //         source={{ uri: item.Activity_images[0].image_url }}  
+        //     />
+        //     <Box style={{flexDirection: 'column',}}>
+        //         <Text style={{ color: 'black' }}>{item.activity_name}</Text>
+        //         <Text style={{ color: 'black', marignLeft:'3%' }}>별점</Text>
+        //         <Text style={{ color: 'black' }}>{item.activity_price}</Text>
+        //     </Box>
+        // </Box>
+    )
 
    
     return (
         <NativeBaseProvider >
-            <Box style={{ marginLeft: 12 }} >
-                <Box >
-                    <HStack>
+            <Box style={{ marginTop: '5%', justifyContent: 'center', flexDirection: 'column', alignItems:'center'}} >
+                <Box>
+                    <Box style={{flexDirection:'row'}}>
                         {region.map((region) => {
                             return (
                                 <TouchableOpacity onPress={region.handler} >
-                                    <Box width={32} borderWidth={1} >
-                                        <Text width={24} fontSize={24} marginLeft={5} marginTop={2} style={{ fontWeight: 'bold', textAlign: 'center' }} >{region.location}</Text>
+                                    <Box style={{ borderColor:'#acacac', width: 120, borderWidth: 1, height: 50, alignItems:'center', justifyContent: 'center',}}>
+                                        <Text style={{ fontSize:12, textAlign: 'center',}} >{region.location}</Text>
                                     </Box>
                                 </TouchableOpacity>
                             )
                         })}
-                    </HStack>
+                    </Box>
                 </Box>
                 <Box>
-                    <HStack>
+                    <Box style={{flexDirection:'row'}}>
                         {region1.map((region1) => {
                             return (
-                                <TouchableOpacity  onPress={region1.handler} >
-                                    <Box width={32} borderWidth={1} >
-                                        <Text width={24} fontSize={24} marginLeft={5} marginTop={2} style={{ fontWeight: 'bold', textAlign: 'center' }} >{region1.location}</Text>
+                                <TouchableOpacity onPress={region1.handler} >
+                                    <Box style={{ borderColor:'#acacac', width: 120, borderWidth: 1, height: 50, alignItems:'center', justifyContent: 'center',}}>
+                                        <Text style={{ fontSize:12, textAlign: 'center',}} >{region1.location}</Text>
                                     </Box>
                                 </TouchableOpacity>
                             )
                         })}
-                    </HStack>
+                    </Box>
                 </Box>
                 <Box >
-                    <HStack>
+                    <Box style={{flexDirection:'row'}}>
                         {region2.map((region2) => {
                             return (
-                                <TouchableOpacity  onPress={region2.handler} >
-                                    <Box width={32} borderWidth={1} >
-                                        <Text width={24} fontSize={24} marginLeft={5} marginTop={2} style={{ fontWeight: 'bold', textAlign: 'center' }} >{region2.location}</Text>
+                                <TouchableOpacity onPress={region2.handler} >
+                                    <Box style={{ borderColor:'#acacac', width: 120, borderWidth: 1, height: 50, alignItems:'center', justifyContent: 'center',}}>
+                                        <Text style={{ fontSize:12, textAlign: 'center',}} >{region2.location}</Text>
                                     </Box>
                                 </TouchableOpacity>
                             )
                         })}
-                    </HStack>
+                    </Box>
                 </Box>
-
             </Box>
-            <FlatList
-                data={data}
-                renderItem={renderActivity}
-                keyExtractor={(Activity)=>Activity.activity_name}
-                extraData={state}
-                alt={"Dd"}
-                numColumns={2} />
+
+            <ScrollView>
+                <Box style={{Width:Width, marginTop:'5%', marginLeft:'5%', marginRight:'5%'}}>
+                    <FlatList
+                        data={data}
+                        renderItem={renderActivity}
+                        keyExtractor={(Activity) => Activity.activity_name}
+                        extraData={state}
+                        alt={"Dd"}
+                        numColumns={2} />
+                </Box>
+            </ScrollView>
 
         </NativeBaseProvider>
-    );
-    
-      
-    }
-                
+    )
+}
+        

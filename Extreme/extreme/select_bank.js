@@ -137,8 +137,6 @@ export default function select_bank() {
                         </Button>
                     </Box>
                 </Box>
-
-
             </ScrollView>
         </NativeBaseProvider>
     );

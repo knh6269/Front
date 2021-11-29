@@ -30,7 +30,8 @@ class User extends Component {
 export default function My_page({navigation}) {
     let [data,setData]=useState()
     
- 
+    
+    
     let zz=async()=>{
         let me=(await AsyncStorage.getItem('user_id'));
         const response = await fetch(`https://extreme-kor.herokuapp.com/user/data/${me}`);
@@ -42,13 +43,13 @@ export default function My_page({navigation}) {
     }
     useEffect(() => {
         zz();
-      }, [data]);
+      }, []);
       
     {if(data){
     return (
         <NativeBaseProvider>
         <View style={{ flex: 1 }}>
-            <ScrollView>
+            <ScrollView onPress={console.log(`출력: ${data}`)}>
                 <View style={styles.container}>
                 <VStack>
                   <Image 

@@ -55,7 +55,7 @@ export default function register_company({navigation}){
     fd.append("company_contact", c_tel)
     fd.append("company_address", c_address)
     fd.append("activity_category", c_activity)
-    fd.append("bank_name", id)
+    fd.append("bank_name", c_accountname)
     fd.append("account_number", c_account)
     fd.append("account_image", {uri:selectedImage.localUri, type:'image/jpeg', name:'photo.jpg'})
     console.log(fd);
@@ -126,16 +126,16 @@ export default function register_company({navigation}){
                 alignItems:'center',
                
             }}>
-                <Box style={{height:800}}>
+                        <Box style={{height:500}}>
                 <ScrollView>
                 <Box
                 style={{
                     width:Width-40,
                    backgroundColor:'white',
-                    paddingBottom:200,
-                    height:800,
+                    paddingBottom:400,
+                    height:1000
                 }}>
-                <VStack space={1} style={{height:800}}>
+                <VStack space={1} style={{height:1000}}>
                 <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>통장사본 이미지</Text>
                                 <TouchableOpacity onPress={openImagePickerAsync}>
                                     <Text>Pick a photo</Text>
@@ -212,7 +212,7 @@ export default function register_company({navigation}){
                             width:Width-40,
                            backgroundColor:'white',
                             paddingBottom:200,
-                            height:800,
+                            height:1000
                         }}>
                         <VStack space={1} style={{height:1000}}>
                         <Text style={{ marginLeft: 10, padding: 8, borderBottomWidth: 1, width: Width - Width / 2 }}>통장사본 이미지</Text>

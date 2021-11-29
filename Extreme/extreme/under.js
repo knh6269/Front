@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput } from 'react-native';
 import {
   NativeBaseProvider,
@@ -9,12 +9,24 @@ import {
   View,
   flex
 } from 'native-base';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 
 // import cart from '../cart';
 
 export default function Under({ navigation }) {
+    const [me, setme] = useState();
+    let zz=async()=>{
+        setme(await AsyncStorage.getItem('user_id'));
+        const response = await fetch(`https://extreme-kor.herokuapp.com/user/data/${me}`);
+        const json = await response.json();
+    }     
+    
+    useEffect(() => {
+        zz();
+      }, [me]);
 
     const cart = () => {
         navigation.navigate('cart');
@@ -26,7 +38,13 @@ export default function Under({ navigation }) {
         navigation.navigate('weather_map');
     }
     const my_page = () => {
+        console.log("ca"+me)
+        if(me!=null){
         navigation.navigate('my_page');
+        }
+        else{
+        navigation.navigate('login');
+        }
     }
     const register_activity = () => {
         navigation.navigate('register_activity');

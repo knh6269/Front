@@ -125,7 +125,6 @@ const cancel=()=>{
         console.log(pickerResult)
 
         setSelectedImage({ localUri: pickerResult.uri });
-
     };
 
     if (selectedImage !== null) {
