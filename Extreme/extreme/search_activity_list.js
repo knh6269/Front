@@ -15,7 +15,10 @@ import {
 } from 'native-base';
 const Width = Dimensions.get('window').width;
 
-// import cart from '../cart';
+
+import IconF from 'react-native-vector-icons/Feather';
+import IconA from 'react-native-vector-icons/AntDesign';
+import IconM from 'react-native-vector-icons/MaterialIcons';
 
 export default function search_activity_list({route, navigation}) {
     const [state, setState] = useState(navigation.state.params.search);
@@ -38,15 +41,20 @@ export default function search_activity_list({route, navigation}) {
 
     const renderActivity = ({ item }) => (
         <TouchableOpacity>
-            <Box style={{marginTop:'3%', borderWidth:1, flexDirection: 'row', alignItems:'center', justifyContent: 'center',}}>
+            <Box style={{ height:100, marginBottom:'3%', backgroundColor:'white', borderWidth:1, flexDirection: 'row', alignItems:'center', justifyContent: 'space-around',}}>
                 <Image
-                    style={{ width: 50, height: 50,}}
+                    style={{ width: 60, height: 60,}}
                     source={{ uri: item.Activity_images[0].image_url }}  
                 />
                 <Box style={{flexDirection: 'column', }}>
-                    <Text style={{ color: 'black' }}>{item.activity_name}</Text>
-                    <Text style={{ color: 'black', marginLeft:'3%' }}>별점</Text>
-                    <Text style={{ color: 'black' }}>{item.activity_price}</Text>
+                    <Text style={{ color: 'black', fontSize:20 }}>액티비티 명</Text>
+                    <Text style={{ color: 'black', fontSize:20 }}>별점</Text>
+                    <Text style={{ color: 'black', fontSize:20 }}>가격</Text>
+                </Box>
+                <Box style={{flexDirection: 'column', }}>
+                    <Text style={{ color: 'black', fontSize:18 }}>{item.activity_name}</Text>
+                    <Text style={{ color: 'black', fontSize:18 }}>별점</Text>
+                    <Text style={{ color: 'black', fontSize:18 }}>{item.activity_price}</Text>
                 </Box>
             </Box>
         </TouchableOpacity>
@@ -54,9 +62,14 @@ export default function search_activity_list({route, navigation}) {
 
     return (
         <NativeBaseProvider>
-            <View><Text>{state}</Text></View>
+            <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
+                <TouchableOpacity>
+                    <IconM name="navigate-before" size={25} style={{}}></IconM>
+                </TouchableOpacity>
+                <Text marginLeft={'3%'} fontSize={20}>{state}의 검색 결과</Text>
+            </Box>
             <ScrollView>
-                <Box style={{Width:Width, marginTop:'5%', marginLeft:'3%', marginRight:'3%'}}>
+                <Box style={{width:Width, paddingTop:'3%', paddingLeft:'3%', paddingRight:'3%'}}>
                     <FlatList
                         data={data}
                         renderItem={renderActivity}
