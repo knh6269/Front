@@ -10,15 +10,6 @@ const Container = Styled.View`
     flex: 1;
 `;
 let a=0;
-
-const IMAGES = {
-  image1: require('./images/cloud.png'),
-  image2: require('./images/snow.png'),
-  image3: require('./images/그림7.png'),
-  image4: require('./images/그림8.png'),
-  image5: require('./images/partlyClear.png'),
-  image6: require('./images/snowAndRaindy.png'),
-};
   
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
