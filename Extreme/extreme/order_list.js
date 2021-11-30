@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, Component, useEffect } from "react";
 import {Dimensions,} from "react-native"
 import{
     NativeBaseProvider,
@@ -15,11 +15,14 @@ import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Loading from "./test";
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 export default function order_list({ navigation }) {
+    const [data,setData]=useState(); //연휘야 여기 담겨있어~
     const review=()=>{
             navigation.navigate('review');
     }
@@ -28,7 +31,21 @@ export default function order_list({ navigation }) {
             navigation.navigate('order_list_detail');
     }
 
+    const get_order_list=async()=>{
+        let me=(await AsyncStorage.getItem('user_id'));
+        const response = await fetch(`GET https://extreme-kor.herokuapp.com/reservation/orderlist?id=daeun`);
+        const json = await response.json();
+        setData(json.data);
+    }
 
+    useEffect(() => {
+        get_order_list();
+      }, []);
+
+    const dd=()=>{
+        console.log(data)
+    }
+    if(data){
     return (
         <NativeBaseProvider>
             <Box style={{ flexDirection: 'row', marginTop: '5%' }}>
@@ -45,7 +62,7 @@ export default function order_list({ navigation }) {
                     <Box style={{ backgroundColor:'white', marginTop:'5%', borderWidth:1, paddingLeft:'3%', paddingRight:'3%' }}>
                         <HStack space={1} marginRight={'3%'} justifyContent={'space-between'}>
                             <Text>2021.11.13</Text>
-                            <TouchableOpacity onPress={order_list_detail}>
+                            <TouchableOpacity onPress={dd}>
                                 <Box style={{justifyContent:'center'}}>
                                     <HStack>
                                         <Text fontSize={14} color={'#4f8bc2'} justifyContent={'center'}>주문 상세보기</Text>
@@ -125,5 +142,10 @@ export default function order_list({ navigation }) {
                 </Box>
             </ScrollView>
         </NativeBaseProvider>
-  )
+  )}
+  else{
+      return(
+          <Loading/>
+      )
+  }
 }

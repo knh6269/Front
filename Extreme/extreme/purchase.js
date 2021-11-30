@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, Component, useEffect } from "react";
 import {Dimensions,} from "react-native"
 import{
     NativeBaseProvider,
@@ -14,12 +14,13 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 import IconA from 'react-native-vector-icons/AntDesign';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function purchase({navigation}){
         const pressHandler=()=>{
             navigation.navigate('각 페이지로 이동');
     }
-    
+  
     return (
         <NativeBaseProvider>
             {/* 오른쪽 정렬이 안됨 flex-end 속성이 안 먹는 듯 */}

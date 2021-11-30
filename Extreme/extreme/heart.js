@@ -21,6 +21,10 @@ export default function heart({navigation}){
         const pressHandler=()=>{
             navigation.navigate('각 페이지로 이동');
         }
+
+        //액티비티 이름: data[0].Activity.activity_name
+        //업체 이름: data[0].Activity.Company.company_name
+        //이미지 경로: data[0].Activity.Activity_images[0].image_url
         const [data,setData]=useState(); //연휘야 여기 담겨있어~
 
         const get_heart=async()=>{
@@ -35,7 +39,7 @@ export default function heart({navigation}){
           }, []);
 
         const dd=()=>{
-            console.log(data)
+            console.log(data[0].Activity.activity_name)
         }
     return (
         <NativeBaseProvider >
