@@ -47,7 +47,7 @@ export default function Home({ navigation }) {
   return (
     <NativeBaseProvider>
       <Box>
-        <View style={{ height: '12%', }}>
+        <View style={{ height: '12%',}}>
           <Top navigation={navigation}></Top>
         </View>
 

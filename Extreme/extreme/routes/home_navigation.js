@@ -23,7 +23,6 @@ import register_activity from "../register_activity";
 import top from "../top";
 import under from "../under";
 import select_bank from "../select_bank";
-import search from "../search";
 import test from "../test";
 import activity_list from "../activity_list";
 import search_activity_list from "../search_activity_list";
@@ -50,11 +49,6 @@ const screens = {
         screen:register_activity,
         navigationOptions: () => ({ headerShown: false, })
 
-    },
-
-        search: {
-        screen: search,
-        navigationOptions: () => ({ headerShown: false, })
     },
 
 
