@@ -17,6 +17,7 @@ import {
 } from "native-base";
 
 import IconM from 'react-native-vector-icons/MaterialIcons';
+import Loading from "./test";
 const { width } = Dimensions.get('window');
 // const [selectedLanguage, setSelectedLanguage] = useState();
 
@@ -43,7 +44,7 @@ export default function Recommend() {
         { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠' }
     ]);
     const [selectedValue, setSelectedValue] = useState("select");
-
+    
     return (
         <NativeBaseProvider>
             <ScrollView>
@@ -186,9 +187,10 @@ export default function Recommend() {
                 </Box>
             </ScrollView >
         </NativeBaseProvider>
-    );
+    );}
+  
 
-}
+
 
 const styles = StyleSheet.create({
     activity: {

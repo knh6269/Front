@@ -23,13 +23,66 @@ import register_activity from "../register_activity";
 import top from "../top";
 import under from "../under";
 import select_bank from "../select_bank";
+import search from "../search_activity_list";
 import test from "../test";
 import activity_list from "../activity_list";
 import search_activity_list from "../search_activity_list";
 
 
-const screens = { 
-       
+const screens = {
+    login: {
+        screen: login,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    cart: {
+        screen: cart,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    my_page: {
+        screen: my_page,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    test:{
+        screen:test,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+   
+    purchase: {
+        screen: purchase,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    order_list:{
+        screen:order_list,
+        navigationOptions:()=>({headerShown:false,})
+    },
+    heart: {
+        screen: heart,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+   
+    home:{
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
+        },
+   
+    
+    activity_detail: {
+        screen: activity_detail,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+   
+  
+  
+    
+    register_user:{
+        screen:register_user,
+        navigationOptions: () => ({ headerShown: false, })
+    }, 
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    }, 
+   
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
@@ -51,26 +104,17 @@ const screens = {
 
     },
 
+        search: {
+        screen: search,
+        navigationOptions: () => ({ headerShown: false, })
+    },
 
-    login: {
-        screen: login,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-  
-    weather_map:{
-        screen:weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
     register_company:{
         screen:register_company,
         navigationOptions: () => ({ headerShown: false, })
     },
-    activity_detail: {
-        screen: activity_detail,
-        navigationOptions: () => ({ headerShown: false, })
-    },
    
-  
+   
     weather_map:{
         screen:weather_map,
         navigationOptions: () => ({ headerShown: false, })
@@ -80,16 +124,8 @@ const screens = {
         screen: review,
         navigationOptions: () => ({ headerShown: false, })
     },
-    order_list:{
-        screen:order_list,
-        navigationOptions:()=>({headerShown:false,})
-    },
+   
     
-  
-    register_user:{
-        screen:register_user,
-        navigationOptions: () => ({ headerShown: false, })
-    },  
     select_bank: {
         screen:select_bank,
         navigationOptions: () => ({ headerShown: false, })
@@ -103,23 +139,13 @@ const screens = {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
     },
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-        },
-
-    my_page: {
-        screen: my_page,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    
    
+    
     
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
-   
     reservation_calender: {
         screen: reservation_calender,
         navigationOptions: () => ({ headerShown: false, })
@@ -130,25 +156,17 @@ const screens = {
         navigationOptions: () => ({ headerShown: false, })
     },
    
-
-   
     user_info: {
         screen: user_info,
         navigationOptions: () => ({ headerShown: false, })
     },
 
-    purchase: {
-        screen: purchase,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
     cart: {
         screen: cart,
         navigationOptions: () => ({ headerShown: false, })
     },
-    heart: {
-        screen: heart,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
     weather_map:{
         screen:weather_map,
         navigationOptions: () => ({ headerShown: false, })
@@ -166,10 +184,7 @@ const screens = {
         screen: under,
         navigationOptions: () => ({ headerShown: false, })
     },
-    test:{
-        screen:test,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
 }
 export const trans_stack = createStackNavigator(screens);
 

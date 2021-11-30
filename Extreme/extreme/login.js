@@ -32,8 +32,8 @@ export default function login({navigation}) {
         "password":password
     }
 
-    let login_detail=async()=>{
-        console.log("로그인중.....")
+    let login_user=async()=>{
+        console.log("유저로그인중.....")
        let response1= await fetch('https://extreme-kor.herokuapp.com/user/login', {
         method:'POST',
         headers:{
@@ -55,6 +55,14 @@ export default function login({navigation}) {
         console.log('유저 password 저장')
     });
     }
+    let login_company=async()=>{
+        console.log("업체 로그인중.....")
+        let response1= await fetch(`https://extreme-kor.herokuapp.com/company?id=${id}`);
+        const json=await response1.json();
+        console.log(json);
+    }
+   
+    
     
     return (
         <NativeBaseProvider>
@@ -94,8 +102,11 @@ export default function login({navigation}) {
                 </Box>
 
                 <Box style={{marginTop:'3%', flexDirection:'row', justifyContent:'center', marginBottom:'5%', justifyContent:'center', alignItems:'center'}}>
-                    <Button style={{ backgroundColor: 'black' }} onPress={login_detail}>
-                        <Text style={{color:'white', fontSize:20, fontWeight:'bold'}}>로그인</Text>
+                    <Button style={{ backgroundColor: 'black' , marginRight:Width/10}} onPress={login_user}>
+                        <Text style={{color:'white', fontSize:20, fontWeight:'bold'}}>유저 로그인</Text>
+                    </Button>
+                    <Button style={{ backgroundColor: 'black' }} onPress={login_company}>
+                        <Text style={{color:'white', fontSize:20, fontWeight:'bold'}}>업체 로그인</Text>
                     </Button>
                 </Box>
 

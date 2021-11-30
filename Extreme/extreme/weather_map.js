@@ -1,7 +1,7 @@
 import React, {useState, useEffect,useRef} from 'react';
 import Styled from 'styled-components/native';
 import MapView , {PROVIDER_GOOGLE, AnimatedRegion, Animated} from 'react-native-maps';
-import { NativeBaseProvider,Box,Text,Button,View,VStack,HStack, Image } from 'native-base';
+import { NativeBaseProvider,Box,Text,Button,View,VStack,HStack } from 'native-base';
 import {
   Dimensions, ImageStore, Touchable} from "react-native";
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -40,7 +40,7 @@ export default function AppleMap(){
       { coordinate:{latitude:35.82059665884646,longitude: 127.11104959061522} ,title:"전북",a:'',tem:''}, //전북
       { coordinate:{latitude:34.81637712860163,longitude:  126.46289201208677} ,title:"전남",a:'',tem:''}, //전남 
      { coordinate:{latitude:37.854348731753554,longitude: 128.14330215878118} ,title:"강원",a:'',tem:''}, //강원
-     { coordinate:{latitude:33.40153208420323,longitude: 126.53592826886285} ,title:"제주",a:'',tem:''}, //제주 
+     { coordinate:{latitude:33.40153208420323,longitude: 126.53592826886285} ,title:"제주",a:'',tem:''}, //제주 x`
     ])
 
     const [locations_detail,setlocation_detai]=useState([
@@ -77,7 +77,6 @@ export default function AppleMap(){
     { coordinate:{latitude:35.15772097249917, longitude:126.8293473141308} ,title:"광주",a:'',tem:''}, //제주 
     { coordinate:{latitude:36.338271001544314, longitude:127.38281781920932} ,title:"대전",a:'',tem:''}, //제주 
     { coordinate:{latitude:35.16891168784421, longitude:129.04411519586463} ,title:"부산",a:'',tem:''}, //제주 
-  
   ])
   const getWeather = async () => { 
     try {
@@ -160,30 +159,20 @@ export default function AppleMap(){
 
   const map = useRef(null) ; 
 
-  return (
-    <NativeBaseProvider onPress={getWeather}> 
-      <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom: '5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems: 'center' }}>
-        <TouchableOpacity>
-            <IconM name="navigate-before" size={25} style={{}}></IconM>
-        </TouchableOpacity>
-        <Image
-            source={require('./images/map-marker-outline.png')}
-            style={{width: 40, height: 40, }}
-            alt="trans_1"
-        />
-        <Text marginLeft={'3%'} fontSize={20}>현재 날씨 지도</Text>
-      </Box>
-      
-      <Box style={{backgroundColor:'white', height:Height/2}}  > 
+    return (
+    <NativeBaseProvider onPress={getWeather}>
+      <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}}>
+            <TouchableOpacity>
+                <IconM name="navigate-before" size={25} style={{}}></IconM>
+            </TouchableOpacity>
+            <Text marginLeft={'3%'} fontSize={20}>현재 날씨 지도</Text>
+        </Box>
+      <Box style={{marginTop:'3%', height:Height/2}}  > 
         <Container>
-          <Box style={{flexDirection:'row', justifyContent:'space-evenly', marginBottom:'5%'}}>
-              <Button style={{ backgroundColor: '#4f8bc2' }} onPress={zooming}>
-              <Text style={{color:'white', fontSize:14}}>전국 날씨 보기</Text>
-            </Button>
-            <Button style={{ backgroundColor: '#4f8bc2' }} onPress={zoomout}>
-              <Text style={{color:'white', fontSize:14}}>자세한 날씨 보기</Text>
-            </Button>
-          </Box>
+          <HStack>
+            <Button width={Width/2}onPress={zooming}><Text>전국 날씨 보기</Text></Button>
+            <Button width={Width/2}onPress={zoomout}><Text>자세한 날씨보기</Text></Button>
+          </HStack>
           <MapView 
             zoomEnabled={false}
             style={{flex: 1,backgroundColor:'red'}} provider={PROVIDER_GOOGLE} 

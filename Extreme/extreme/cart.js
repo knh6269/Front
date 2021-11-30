@@ -19,8 +19,14 @@ const Height = Dimensions.get('window').height;
 
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Loading from "./test";
 
 export default function cart({navigation}){
+  //액비티티 이름 :data[0].Activity.activity_name  
+// 업체 이름: data[0].Activity.Company.company_name
+// 이미지 경로: data[0].Activity.Activity_images[0].image_url
+
   let [cart,setCart]=useState()
 
   const pressHandler=()=>{
@@ -112,7 +118,7 @@ useEffect(() => {
   return (
     <NativeBaseProvider>
       <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={dd}>
           <IconM name="navigate-before" size={25} style={{}}></IconM>
         </TouchableOpacity>
           <Image
@@ -162,8 +168,8 @@ useEffect(() => {
       </Box>
           
     </NativeBaseProvider>
-  )
-}
+  )}
+
 
 
 

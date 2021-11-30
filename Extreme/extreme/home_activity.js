@@ -18,6 +18,7 @@ import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import { backgroundColor } from 'styled-system';
 import { parse } from 'react-native-svg';
+import Loading from './test';
 
 var window_width = Dimensions.get('window').width;
 var window_height = Dimensions.get('window').height;
@@ -60,7 +61,6 @@ export default function home_activity({ navigation , route}) {
   const [activityData2, setactivityData2] = useState();
   const [activityData3, setactivityData3] = useState();
   const [length, setLength] = useState();
-
   let acti
   let acti2
   let newest_activity;
@@ -90,7 +90,7 @@ export default function home_activity({ navigation , route}) {
   useEffect(() => {
     getActivity();
   }, []);
-  
+ 
   return (
     <NativeBaseProvider>
       <ScrollView>
@@ -208,10 +208,11 @@ export default function home_activity({ navigation , route}) {
                 inactiveSlideScale={1} //슬라이드들 크기 같게
                 inactiveSlideOpacity={1} //슬라이드 투명도
                 activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                alt="dd"
                 // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / data.length}} //마지막 7은 원소의 개수
-                renderItem={({ item}) => (
+                renderItem={({ item}) => ( 
                   <View>
-                    <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
+                    <View style={{width: '100%', height: 150,}}> 
                       <Image
                             key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
@@ -223,7 +224,7 @@ export default function home_activity({ navigation , route}) {
                           <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>추천</Text>
                           <Text>{item.activity_name}</Text>
                       </HStack>
-                      </TouchableOpacity>
+                    </View>
                   </View>
                 )}
               />      
@@ -241,10 +242,11 @@ export default function home_activity({ navigation , route}) {
                 inactiveSlideScale={1} //슬라이드들 크기 같게
                 inactiveSlideOpacity={1} //슬라이드 투명도
                 activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                alt="dd"
                 // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
                 renderItem={({ item }) => (
                   <View>
-                    <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
+                    <View style={{width: '100%', height: 150,}}> 
                       <Image
                             key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
@@ -256,7 +258,7 @@ export default function home_activity({ navigation , route}) {
                           <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>인기</Text>
                           <Text>{item.activity_name}</Text>
                       </HStack>
-                      </TouchableOpacity>
+                    </View>
                   </View>
                 )}
               />      
@@ -277,7 +279,7 @@ export default function home_activity({ navigation , route}) {
                 // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
                 renderItem={({ item }) => (
                   <View>
-                    <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
+                    <View style={{width: '100%', height: 150,}}> 
                       <Image
                             key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
@@ -289,7 +291,7 @@ export default function home_activity({ navigation , route}) {
                           <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#ff3e3e' }}>최신</Text>
                           <Text>{item.activity_name}</Text>
                       </HStack>
-                      </TouchableOpacity>
+                    </View>
                   </View>
                 )}
               />      

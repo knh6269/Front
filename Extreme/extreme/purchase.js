@@ -14,6 +14,7 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 import IconA from 'react-native-vector-icons/AntDesign';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function purchase({ navigation }) {
     const [purchaseData, setPurchaseData] = useState(navigation.state.params.purchase_Data);

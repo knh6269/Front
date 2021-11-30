@@ -22,6 +22,7 @@ var window_height = Dimensions.get('window').height;
 import IconI from 'react-native-vector-icons/Ionicons';
 import IconE from 'react-native-vector-icons/Entypo';
 import { flexDirection } from 'styled-system';
+import Loading from './test';
 
 
 export default function Order_list_detail({ navigation }) {
@@ -202,9 +203,9 @@ export default function Order_list_detail({ navigation }) {
     );}
     else 
     return(
-      <NativeBaseProvider>
-        <View><Text>dd</Text></View>
-        </NativeBaseProvider>
+     
+        <Loading/>
+        
     )}
   
  

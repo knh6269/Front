@@ -14,6 +14,7 @@ import {
 import { TouchableOpacity, ScrollView } from "react-native";
 import { colorStyle } from 'styled-system';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Loading from './test';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
@@ -112,7 +113,7 @@ export default function home_region({ navigation }) {
         </TouchableOpacity>
     )
 
-   
+    if(data){
     return (
         <NativeBaseProvider >
             <Box style={{ marginTop: '3%', justifyContent: 'center', flexDirection: 'column', alignItems:'center'}} >
@@ -170,6 +171,9 @@ export default function home_region({ navigation }) {
             </ScrollView>
 
         </NativeBaseProvider>
-    )
+    )}
+    else{
+        return(<Loading/>)
+    }
 }
         
