@@ -29,8 +29,15 @@ import activity_list from "../activity_list";
 import search_activity_list from "../search_activity_list";
 
 
-const screens = { 
-       
+const screens = {
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    }, 
+    login: {
+        screen: login,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
@@ -58,15 +65,9 @@ const screens = {
     },
 
 
-    login: {
-        screen: login,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
   
-    weather_map:{
-        screen:weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
     register_company:{
         screen:register_company,
         navigationOptions: () => ({ headerShown: false, })

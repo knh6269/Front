@@ -208,6 +208,7 @@ export default function home_activity({ navigation , route}) {
                 inactiveSlideScale={1} //슬라이드들 크기 같게
                 inactiveSlideOpacity={1} //슬라이드 투명도
                 activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                alt="dd"
                 // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / data.length}} //마지막 7은 원소의 개수
                 renderItem={({ item}) => (
                   <View>
@@ -241,6 +242,7 @@ export default function home_activity({ navigation , route}) {
                 inactiveSlideScale={1} //슬라이드들 크기 같게
                 inactiveSlideOpacity={1} //슬라이드 투명도
                 activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                alt="dd"
                 // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
                 renderItem={({ item }) => (
                   <View>
