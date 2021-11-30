@@ -22,7 +22,7 @@ export default function Top({ navigation }) {
     onChangeTextSearch("")
     if(params==""){
       Alert.alert( "","검색어를 입력해주세요.",[{text:"확인"}])
-      console.log('사용 가능한 아이디입니다.');
+      console.log('검색어 없음');
 
     }
     else{

@@ -212,7 +212,7 @@ export default function home_activity({ navigation , route}) {
                 // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / data.length}} //마지막 7은 원소의 개수
                 renderItem={({ item}) => (
                   <View>
-                    <View style={{width: '100%', height: 150,}}> 
+                    <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
                       <Image
                             key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
@@ -224,7 +224,7 @@ export default function home_activity({ navigation , route}) {
                           <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>추천</Text>
                           <Text>{item.activity_name}</Text>
                       </HStack>
-                    </View>
+                      </TouchableOpacity>
                   </View>
                 )}
               />      
@@ -246,7 +246,7 @@ export default function home_activity({ navigation , route}) {
                 // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
                 renderItem={({ item }) => (
                   <View>
-                    <View style={{width: '100%', height: 150,}}> 
+                    <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
                       <Image
                             key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
@@ -258,7 +258,7 @@ export default function home_activity({ navigation , route}) {
                           <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>인기</Text>
                           <Text>{item.activity_name}</Text>
                       </HStack>
-                    </View>
+                      </TouchableOpacity>
                   </View>
                 )}
               />      
@@ -279,7 +279,7 @@ export default function home_activity({ navigation , route}) {
                 // contentContainerCustomStyle={{ overflow: 'hidden', width: window_width / 3 * (7) }} //마지막 7은 원소의 개수
                 renderItem={({ item }) => (
                   <View>
-                    <View style={{width: '100%', height: 150,}}> 
+                    <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
                       <Image
                             key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
@@ -291,7 +291,7 @@ export default function home_activity({ navigation , route}) {
                           <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#ff3e3e' }}>최신</Text>
                           <Text>{item.activity_name}</Text>
                       </HStack>
-                    </View>
+                      </TouchableOpacity>
                   </View>
                 )}
               />      

@@ -97,7 +97,7 @@ export default function home_region({ navigation }) {
     ])
 
     const renderActivity = ({ item }) => (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
             <Box style={{marginTop:'3%', borderWidth:1, flexDirection: 'row', alignItems:'center', justifyContent: 'center',}}>
                 <Image
                     style={{ width: 50, height: 50,}}

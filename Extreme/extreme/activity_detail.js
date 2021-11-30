@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react'
-import {Dimensions,} from "react-native"
-import{
+import { Dimensions, } from "react-native"
+import {
     NativeBaseProvider,
     Box,
     HStack,
@@ -8,9 +8,10 @@ import{
     Image,
     View,
     flex,
-    Button,  
-}from 'native-base';
-import { TouchableOpacity, ScrollView, TextInput, StyleSheet} from "react-native";
+    Button,
+    InfoIcon,
+} from 'native-base';
+import { TouchableOpacity, ScrollView, TextInput, StyleSheet } from "react-native";
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -23,77 +24,82 @@ import IconE from 'react-native-vector-icons/Entypo';
 import { flexDirection } from 'styled-system';
 
 
-export default function Order_list_detail({navigation}) {
-    let [review,setReview]=useState();
+export default function Order_list_detail({ navigation }) {
+    let [review, setReview] = useState();
+    const [info, setInfo] = useState();
 
-    const pressHandler=()=>{
+
+    const [activity_id, setActivityID] = useState(navigation.state.params.activity_id);
+
+
+    const pressHandler = () => {
         navigation.navigate('home_region');
     }
-    
-    const IMAGES = {
-        image1: require('./images/1.jpg'),
-        image2: require('./images/2.jpg'),
-        image3: require('./images/그림7.png'),
-        image4: require('./images/1.jpg'),
-        image5: require('./images/1.jpg'),
-        image6: require('./images/1.jpg'),
-        image7: require('./images/1.jpg')
-    };
-   
-    const [images, setImages] = useState([
-        { id: '1', image: IMAGES.image1, activity_name: '구룡스포츠1' },
-        { id: '2', image: IMAGES.image2, activity_name: '구룡스포츠2' },
-        { id: '3', image: IMAGES.image3, activity_name: '구룡스포츠3' },
-        { id: '4', image: IMAGES.image4, activity_name: '구룡스포츠1' },
-        { id: '5', image: IMAGES.image5, activity_name: '구룡스포츠5' },
-        { id: '6', image: IMAGES.image6, activity_name: '구룡스포츠4' },
-        { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠8' }
-    ]);
-    const handle_review=async()=>{
-        await AsyncStorage.setItem('activity_id','95',()=>{
-            console.log('액티비티 id 저장')
-        });
-        navigation.navigate('review');
-        
+
+    const get_activity_info = async () => {
+        console.log("로딩"+activity_id)
+        try {
+            const response = await fetch(`https://extreme-kor.herokuapp.com/activity?id=${activity_id}`);
+            const json = await response.json();
+            if (json.success) {
+                console.log("로딩 성공1")
+                setInfo(json.data);
+                console.log("ss"+JSON.stringify(info))
+            }
+            else{
+                console.log("실패")
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
     }
-    const get_review=async()=>{
-        try{
-        let activity_id=(await AsyncStorage.getItem('activity_id'));
-        const response=await fetch(`https://extreme-kor.herokuapp.com/review?activity_id=${activity_id}`);
-        const json=await response.json();
-        setReview(json.data);
-    }
-     
-        catch(error){
+    const get_review = async () => {
+        console.log("로딩"+activity_id)
+        try {
+            const response = await fetch(`https://extreme-kor.herokuapp.com/review?activity_id=${activity_id}`);
+            const json = await response.json();
+            if (json.success) {
+                console.log("로딩 성공")
+                setReview(json.data);
+                console.log(json.data);
+            }
+            else{
+                console.log("실패")
+            }
+        }
+        catch (error) {
             console.error(error);
         }
     }
     useEffect(() => {
-     get_review();
-      }, []);
-       return(
+        get_activity_info();
+        get_review();
+    }, []);
+    {if(info!=null){
+    return(
         <NativeBaseProvider>
             <ScrollView> 
                
                     <Box>
                         <Carousel
                             layout='default'
-                            data={images}
+                            data={info.Activity_images}
                             sliderWidth={window_width}
                             itemWidth={window_width}
                             inactiveSlideScale={1} //슬라이드들 크기 같게
                             inactiveSlideOpacity={1} //슬라이드 투명도
                             activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
                             contentContainerCustomStyle={{ overflow: 'hidden' }} //마지막 7은 원소의 개수
-                            renderItem={({ item, index }) => (
+                            renderItem={({ item}) => (
                                 <View>
                                     <View style={{width: '100%', height: window_width,}}> 
                                         <Image
-                                                key={index}
+                                                key={item.activity_name}
                                                 style={{ width: '100%', height: '100%', borderRadius:10 }}
                                                 resizeMode='contain'
-                                            source={item.image}
-                                            alt="profile"
+                                                source={{uri:item.image_url}}
+                                                alt="profile"
                                         />
                                     </View>
                                 </View>
@@ -103,8 +109,8 @@ export default function Order_list_detail({navigation}) {
                         
                     <Box style={{backgroundColor:'white'}}>
                         <Box style={{paddingTop:'3%', marginLeft:'3%', marginRight:'3%', flexDirection:'row', justifyContent:'space-between'}}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>액티비티명</Text>
-                            <Text>123</Text>
+                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{info.activity_name}</Text>
+                            <Text>{info.star}</Text>
                         </Box>
 
                         <Box style={{ marginTop:'5%', marginBottom:'5%', marginLeft:'3%', marginRight:'3%',}}>
@@ -118,7 +124,7 @@ export default function Order_list_detail({navigation}) {
 
                     <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
                         <Box style={{marginLeft: '3%', marginRight:'3%',}}>
-                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>90,000원</Text>
+                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{info.activity_price}원</Text>
                             <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>상품 정보</Text>
                         </Box>
 
@@ -126,12 +132,12 @@ export default function Order_list_detail({navigation}) {
 
                         <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
                             <Text style={{color:'#acacac'}}>업체명</Text>
-                            <Text>하모닉스</Text>
+                            <Text>{info.Company.company_name}</Text>
                         </Box>
 
                         <Box style={{marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
                             <Text style={{color:'#acacac'}}>주소</Text>
-                            <Text>하모닉스</Text>
+                            <Text>{info.address}</Text>
                         </Box>
 
                         <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
@@ -144,16 +150,16 @@ export default function Order_list_detail({navigation}) {
 
                     <Box onPress={console.log(review)} style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
                         <Box style={{marginLeft: '5%', marginRight:'5%',}}>
-                            <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>고객 정보</Text>
+                            <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>고객 리뷰</Text>
                         </Box>
                    
                         
                     </Box> 
-                    
-                  
                    
                 
-                            {review.map((review)=>{
+                   
+                
+                            {(review)&&review.map((review)=>{
                                 return(
                                     
                                 <View>
@@ -162,15 +168,15 @@ export default function Order_list_detail({navigation}) {
                                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', }}>
                                         <Image
                                             source={{
-                                                uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                                                uri:review.User.profile_image,
                                             }}
                                             style={{width:40, height:40, borderRadius:50}}
                                             alt="trans_1" />
                                         <Box style={{marginLeft:'3%'}}>
-                                            <Text style={{fontSize:12}}>{review.id}</Text>
+                                            <Text style={{fontSize:12}}>{review.User.nickname}</Text>
                                             <Box style={{flexDirection:'row'}}>
-                                                <Text>123</Text>
-                                                <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>2021.11.28</Text>
+                                                <Text>{review.star}</Text>
+                                                <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>{review.created_at}</Text>
                                             </Box>
                                         </Box>
                                     </Box>
@@ -181,10 +187,11 @@ export default function Order_list_detail({navigation}) {
                                     </View>);
                                 
                             })}
+                            
             </ScrollView >
 
             <Box style={{ paddingLeft:'3%', paddingRight:'3%', height: '15%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
-                <Button onPress={handle_review} style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
+                <Button onPress={()=>navigation.navigate('review', {activity_id:info.id})} style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
                     <Text style={{ fontSize: 20, fontWeight:'bold'}}>리뷰쓰기</Text>
                 </Button>
                 <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
@@ -192,6 +199,13 @@ export default function Order_list_detail({navigation}) {
                 </Button>
             </Box>
         </NativeBaseProvider>
-    );
-
+    );}
+    else 
+    return(
+      <NativeBaseProvider>
+        <View><Text>dd</Text></View>
+        </NativeBaseProvider>
+    )}
+  
+ 
 }

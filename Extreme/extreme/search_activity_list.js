@@ -40,7 +40,7 @@ export default function search_activity_list({route, navigation}) {
     }, [])
 
     const renderActivity = ({ item }) => (
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
             <Box style={{ height:100, marginBottom:'3%', backgroundColor:'white', borderWidth:1, flexDirection: 'row', alignItems:'center', justifyContent: 'space-around',}}>
                 <Image
                     style={{ width: 60, height: 60,}}
