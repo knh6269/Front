@@ -29,6 +29,7 @@ export default function register_company({navigation}){
  const [c_accountname,setaccountname]=React.useState('');
  const [c_account,setaccount]=React.useState('');
  const fd = new FormData();
+ let id_state = false
 
  let sample='nakhyeon';
 
@@ -67,14 +68,19 @@ export default function register_company({navigation}){
     navigation.navigate('home_region');
   }
 
-  const same=()=>{
-    if(c_id==sample){
+  const same = async() => {
+    const response = await fetch(`https://extreme-kor.herokuapp.com/user/check_id/${c_id}`);
+    const json = await response.json();
+    console.log(json)
+
+    if (json.success) {
+        console.log('사용 가능한 아이디입니다.');
+        id_state = true
+    }
+    else {
         console.log('중복된 아이디입니다.');
     }
-    else{
-        console.log('사용 가능한 아이디입니다.');
-    }
-  }
+}
 
   const [selectedImage, setSelectedImage] = React.useState(null);
 

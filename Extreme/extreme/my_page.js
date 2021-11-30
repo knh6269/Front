@@ -1,6 +1,6 @@
 import React, {useState, Component, useEffect } from "react";
-import { BackHandler, Image, ScrollView } from 'react-native';
-//import Icon from 'react-native-vector-icons/AntDesign';
+import { Image, ScrollView } from 'react-native';
+import Under from "./under";
 
 import {
     View,
@@ -16,40 +16,35 @@ import { VStack, NativeBaseProvider } from "native-base";
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
-class User extends Component {
-    render() {
-        return (
-            <View style={{ flexDirection: 'row', alignItems: 'center', height: 150 }}>
-                <View style={{ height: 100, width: 100, backgroundColor: 'gray', marginLeft: 50 }}></View>
-                <Text style={{ marginLeft: 50, color: '#A0A0A0' }}>{this.props.name}</Text>
-            </View>
-        )
-    }
-}
-
 export default function My_page({navigation}) {
     let [data,setData]=useState()
     
-    
-    
+ 
     let zz=async()=>{
         let me=(await AsyncStorage.getItem('user_id'));
         const response = await fetch(`https://extreme-kor.herokuapp.com/user/data/${me}`);
         const json = await response.json();
         setData(json);
+        console.log("s")
     }     
     const ww=()=>{
     navigation.navigate('user_info');
+    }
+    const logout=async()=>{
+        console.log("로그아웃")
+        AsyncStorage.removeItem('user_id');
+        navigation.navigate('home')
+        setData()
     }
     useEffect(() => {
         zz();
       }, []);
       
-    {if(data){
+    {if(data!=null){
     return (
         <NativeBaseProvider>
         <View style={{ flex: 1 }}>
-            <ScrollView onPress={console.log(`출력: ${data}`)}>
+            <ScrollView>
                 <View style={styles.container}>
                 <VStack>
                   <Image 
@@ -67,6 +62,10 @@ export default function My_page({navigation}) {
                     <TouchableOpacity style={styles.menu}>
                         <Text>주문 내역</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.menu} onPress={logout}>
+                        <Text>로그아웃</Text>
+                    </TouchableOpacity>
+
                 
                 </View>
             </ScrollView >
@@ -76,6 +75,10 @@ export default function My_page({navigation}) {
                 <Text>Tel : 000-0000-0000</Text>
             </View>
         </View>
+        <View style={{ width: Width, height: '7%', }}>
+        <Under navigation={navigation}></Under>
+      </View>
+
         </NativeBaseProvider>
     );}
     else 

@@ -98,7 +98,7 @@ export default function home_region({ navigation }) {
 
     const renderActivity = ({ item }) => (
         <TouchableOpacity>
-            <Box style={{height:100, marginTop:'3%', borderWidth:1, width:'70%', flexDirection: 'row', alignItems:'center', justifyContent: 'center',}}>
+            <Box style={{marginTop:'3%', borderWidth:1, flexDirection: 'row', alignItems:'center', justifyContent: 'center',}}>
                 <Image
                     style={{ width: 50, height: 50,}}
                     source={{ uri: item.Activity_images[0].image_url }}  
@@ -110,25 +110,12 @@ export default function home_region({ navigation }) {
                 </Box>
             </Box>
         </TouchableOpacity>
-
-
-        // <Box style={{marginTop:'3%', paddingLeft : '3%', paddingRight:'3%', marinLeft:'5%', borderWidth:1, flexDirection: 'row',  width: Width/2, height:Height/4, alignItems:'center', justifyContent: 'space-between',}}>
-        //     <Image
-        //         style={{ width: 50, height: 50,}}
-        //         source={{ uri: item.Activity_images[0].image_url }}  
-        //     />
-        //     <Box style={{flexDirection: 'column',}}>
-        //         <Text style={{ color: 'black' }}>{item.activity_name}</Text>
-        //         <Text style={{ color: 'black', marignLeft:'3%' }}>별점</Text>
-        //         <Text style={{ color: 'black' }}>{item.activity_price}</Text>
-        //     </Box>
-        // </Box>
     )
 
    
     return (
         <NativeBaseProvider >
-            <Box style={{ marginTop: '5%', justifyContent: 'center', flexDirection: 'column', alignItems:'center'}} >
+            <Box style={{ marginTop: '3%', justifyContent: 'center', flexDirection: 'column', alignItems:'center'}} >
                 <Box>
                     <Box style={{flexDirection:'row'}}>
                         {region.map((region) => {
@@ -171,7 +158,7 @@ export default function home_region({ navigation }) {
             </Box>
 
             <ScrollView>
-                <Box style={{Width:Width, marginTop:'5%', marginLeft:'5%', marginRight:'5%'}}>
+                <Box style={{Width:Width, marginTop:'5%', marginLeft:'3%', marginRight:'3%'}}>
                     <FlatList
                         data={data}
                         renderItem={renderActivity}

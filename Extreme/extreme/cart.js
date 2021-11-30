@@ -30,11 +30,15 @@ export default function cart({navigation}){
 
   return (
     <NativeBaseProvider>
-      <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}}>
+      <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
         <TouchableOpacity>
           <IconM name="navigate-before" size={25} style={{}}></IconM>
         </TouchableOpacity>
-        <IconA marginLeft={'5%'} name="shoppingcart" size={25}></IconA>
+          <Image
+              source={require('./images/cart-outline.png')}
+              style={{width: 40, height: 40, }}
+              alt="trans_1"
+          />
         <Text marginLeft={'3%'} fontSize={20}>장바구니</Text>
       </Box>
 
@@ -190,9 +194,9 @@ export default function cart({navigation}){
         </Box>
       </ScrollView>
                   
-      <Box style={{backgroundColor:'white', marginTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%',}}>
-        <Button style={{backgroundColor:'#4f8bc2'}}>
-          <Text style={{fontSize:20}}>구매하기</Text>
+      <Box style={{backgroundColor:'white', paddingTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%',}}>
+        <Button style={{backgroundColor:'#4f8bc2', }}>
+          <Text style={{fontSize:20, color:'white'}}>구매하기</Text>
         </Button>
       </Box>
           

@@ -23,7 +23,7 @@ var window_width = Dimensions.get('window').width;
 var window_height = Dimensions.get('window').height;
     
 
-export default function home_activity({ navigation }) {
+export default function home_activity({ navigation , route}) {
   // const suffing = () => {
   //   navigation.navigate('각 페이지로 이동');
   // }
@@ -55,35 +55,20 @@ export default function home_activity({ navigation }) {
   //   navigation.navigate('각 페이지로 이동');
   // }
 
-  const IMAGES = {
-    image1: require('./images/1.jpg'),
-    image2: require('./images/2.jpg'),
-    image3: require('./images/그림7.png'),
-    image4: require('./images/1.jpg'),
-    image5: require('./images/1.jpg'),
-    image6: require('./images/1.jpg'),
-    image7: require('./images/1.jpg')
-  };
-
-  const [images, setImages] = useState([
-    { id: '1', image: IMAGES.image1, activity_name: '구룡스포츠1' },
-    { id: '2', image: IMAGES.image2, activity_name: '구룡스포츠2' },
-    { id: '3', image: IMAGES.image3, activity_name: '구룡스포츠3' },
-    { id: '4', image: IMAGES.image4, activity_name: '구룡스포츠1' },
-    { id: '5', image: IMAGES.image5, activity_name: '구룡스포츠5' },
-    { id: '6', image: IMAGES.image6, activity_name: '구룡스포츠4' },
-    { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠8' }
-  ]);
 
   const [activityData, setactivityData] = useState();
   const [activityData2, setactivityData2] = useState();
   const [activityData3, setactivityData3] = useState();
+  const [length, setLength] = useState();
 
   let acti
   let acti2
   let newest_activity;
   let recommend_activity;
-
+  // const move=type=>{
+  //   navigation.navigate('activity_list', {name:type})
+  //   console.log(type)
+  // }
   const getActivity = async () => {
      try {
       const response = await fetch(`https://extreme-kor.herokuapp.com/activities`);
@@ -92,7 +77,6 @@ export default function home_activity({ navigation }) {
        acti2=json.data.slice()
        acti3=json.data.slice()
 
-       data = json.data
        setactivityData(acti);
        acti2.sort((a, b)=> (a.activity_name > b.activity_name ? 1:-1))
        setactivityData2(acti2)
@@ -102,6 +86,7 @@ export default function home_activity({ navigation }) {
       console.error(error);
     }
   }
+  
   useEffect(() => {
     getActivity();
   }, []);
@@ -110,8 +95,8 @@ export default function home_activity({ navigation }) {
     <NativeBaseProvider>
       <ScrollView>
         <Box marginLeft='10%' marginRight='10%'>
-          <View marginTop={5} display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
-              <TouchableOpacity>
+          <View display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
+              <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'서핑'})}>
               <View justifyContent="center" alignItems="center" width={100} height={100} >
                 <Image
                     source={require('./images/surfing.png')}
@@ -121,7 +106,7 @@ export default function home_activity({ navigation }) {
                 <Text fontSize={16} textAlign='center'>서핑</Text>
               </View>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'래프팅'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}> 
                 <Image
                     source={require('./images/rafting.png')}
@@ -131,7 +116,7 @@ export default function home_activity({ navigation }) {
                 <Text fontSize={16} textAlign='center'>래프팅</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'패러글라이딩'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}>
                 <Image
                     source={require('./images/paragliding.png')}
@@ -144,7 +129,7 @@ export default function home_activity({ navigation }) {
           </View>
 
           <View display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
-              <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'스키'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}>
                 <Image
                     source={require('./images/ski.png')}
@@ -154,7 +139,7 @@ export default function home_activity({ navigation }) {
                 <Text fontSize={16} textAlign='center'>스키</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'수상레저'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}>
                 <Image
                     source={require('./images/water_leisure.png')}
@@ -164,7 +149,7 @@ export default function home_activity({ navigation }) {
                 <Text fontSize={16} textAlign='center'>수상레저</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'번지점프'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}>
                 <Image
                     source={require('./images/jumping.png')}
@@ -177,7 +162,7 @@ export default function home_activity({ navigation }) {
           </View>
 
           <View display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
-              <TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'스노보드'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}>
                 <Image
                     source={require('./images/snowboarding.png')}
@@ -187,7 +172,7 @@ export default function home_activity({ navigation }) {
                 <Text fontSize={16} textAlign='center'>스노보드</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'스카이다이빙'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}>
                 <Image
                     source={require('./images/sky_diving.png')}
@@ -197,7 +182,7 @@ export default function home_activity({ navigation }) {
                 <Text fontSize={16} textAlign='center'>스카이 다이빙</Text>
                 </View>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'짚와이어'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}>
                 <Image
                     source={require('./images/zip_wire.png')}
@@ -210,7 +195,7 @@ export default function home_activity({ navigation }) {
           </View>
         </Box>
 
-        <Box marginLeft='5%' marginRight='5%' borderWidth={1}></Box>
+        <Box marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
 
         <Box marginTop={5} marginLeft={'5%'} >
           <Text fontSize={20}>추천 액티비티</Text>

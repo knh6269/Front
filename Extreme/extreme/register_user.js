@@ -40,7 +40,7 @@ export default function register_user({ navigation }) {
     const [birth, setbirth] = React.useState('');
     const [account, setaccount] = React.useState('');
     const fd = new FormData();
-    let sample = 'nakhyeon';
+    let id_state = false
 
     let upload = async()=>{
         console.log(fd);
@@ -60,6 +60,10 @@ export default function register_user({ navigation }) {
         if(id==''){
             Alert.alert( "","아이디를 입력해주세요",[{text:"확인"}])
         }
+        else if(id_state==false){
+            Alert.alert( "","아이디 중복확인을 해주세요",[{text:"확인"}])
+        }
+
         else if(password==''){
             Alert.alert( "","비밀번호를 입력해주세요",[{text:"확인"}])
         }
@@ -81,6 +85,7 @@ export default function register_user({ navigation }) {
         else if(account==''){
             Alert.alert( "","환불계좌를 입력해주세요",[{text:"확인"}])
         }
+        else{
 
         fd.append("password", password)
         fd.append("nickname", nic)
@@ -91,19 +96,27 @@ export default function register_user({ navigation }) {
         fd.append("user_id", id)
         fd.append("profile_image", {uri:selectedImage.localUri, type:'image/jpeg', name:'photo.jpg'})
         console.log(fd);
-        upload();
+        upload();}
 
     }
     
 const cancel=()=>{
     sample=1;
 }
-    const same = () => {
-        if (id == sample) {
-            console.log('중복된 아이디입니다.');
+    const same = async() => {
+        const response = await fetch(`https://extreme-kor.herokuapp.com/user/check_id/${id}`);
+        const json = await response.json();
+        console.log(json)
+
+        if (json.success) {
+            Alert.alert( "","사용 가능한 아이디입니다.",[{text:"확인"}])
+            console.log('사용 가능한 아이디입니다.');
+            id_state = true
         }
         else {
-            console.log('사용 가능한 아이디입니다.');
+            Alert.alert( "","중복된 아이디입니다.",[{text:"확인"}])
+            id_state = false
+            console.log('중복된 아이디입니다.');
         }
     }
     //이미지 불러오기

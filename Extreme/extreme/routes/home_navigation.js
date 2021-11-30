@@ -23,21 +23,45 @@ import register_activity from "../register_activity";
 import top from "../top";
 import under from "../under";
 import select_bank from "../select_bank";
+import search from "../search";
 import test from "../test";
+import activity_list from "../activity_list";
+import search_activity_list from "../search_activity_list";
 
-const screens = {
+
+const screens = { 
+       
+    home:{
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    activity_list:{
+        screen:activity_list,
+        navigationOptions: () => ({ headerShown: false, })
+
+    },
+    search_activity_list:{
+        screen:search_activity_list,
+        navigationOptions: () => ({ headerShown: false, })
+
+    },
+
+    register_activity:{
+        screen:register_activity,
+        navigationOptions: () => ({ headerShown: false, })
+
+    },
+
+        search: {
+        screen: search,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+
+
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
-    register_activity:{
-        screen:register_activity,
-        navigationOptions: () => ({ headerShown: false, })  
-    },
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-        },
   
     weather_map:{
         screen:weather_map,
@@ -89,10 +113,7 @@ const screens = {
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
         },
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+
     my_page: {
         screen: my_page,
         navigationOptions: () => ({ headerShown: false, })

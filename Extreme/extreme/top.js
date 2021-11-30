@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput, SafeAreaView, Alert } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import {
   NativeBaseProvider,
@@ -16,10 +16,23 @@ import IconA from 'react-native-vector-icons/AntDesign';
 export default function Top({ navigation }) {
 
   const [search, onChangeTextSearch] = React.useState("");
-  
+
+  const search_activity=()=>{
+    let params = search
+    onChangeTextSearch("")
+    if(params==""){
+      Alert.alert( "","검색어를 입력해주세요.",[{text:"확인"}])
+      console.log('사용 가능한 아이디입니다.');
+
+    }
+    else{
+      navigation.navigate('search_activity_list', { search: params })
+    }
+
+  }
   return (
     <NativeBaseProvider>
-      <Box>
+      <Box style={{ marginTop: '5%' }}>
         <View style={{ flexDirection: 'row' }}>
           <View>
             <Image
@@ -29,7 +42,6 @@ export default function Top({ navigation }) {
             />
           </View>
           <View style={{ flexDirection: 'row', width: '65%', borderColor: 'gray', borderWidth: 1, alignItems: 'center' }}>
-            <IconF name="search" size={20}></IconF>
             <TextInput
               placeholder={'어디로!! 여행가세요?'}
               onChangeText={(text) => onChangeTextSearch(text)}
@@ -37,8 +49,12 @@ export default function Top({ navigation }) {
               fontSize={20}
             />
           </View>
+          <TouchableOpacity onPress={search_activity}>
+              <IconF name="search" size={20}></IconF>
+            </TouchableOpacity>
+
         </View>
       </Box>
-    </NativeBaseProvider >
+    </NativeBaseProvider>
   )
 }

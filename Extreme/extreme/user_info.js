@@ -30,8 +30,6 @@ export default function user_info({ navigation }) {
         setData(json);
     }     
 
-
-
     let modify = async()=>{
         let me=(await AsyncStorage.getItem('user_id'));
         const sample={
