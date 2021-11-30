@@ -58,7 +58,7 @@ export default function My_page({navigation}) {
                     </Box>
                 </Box>
                 
-                <Box style={{ marginTop: '3%', marginLeft: '10%', marginRight: '10`%', flexDirection: 'column'}}>
+                <Box style={{ marginTop: '3%', marginLeft: '10%', marginRight: '10%', flexDirection: 'column'}}>
                     <Box style={{ flexDirection: 'row', alignContent:'center', alignItems:'center'}}>
                         <Text style={{ fontSize: 18, textAlign: 'center' }}>전화번호</Text>
                         <Text style={{ fontSize: 14, textAlign: 'center' }}> : </Text>
@@ -108,10 +108,10 @@ export default function My_page({navigation}) {
                     <Text style={{marginTop:'3%'}}>Tel : 000-0000-0000</Text>
                 </Box>
                 
-                <View style={{ width: Width, height: '7%', }}>
+            </ScrollView >
+            <View style={{ width: Width, height: '11%', }}>
                     <Under navigation={navigation}></Under>
                 </View>
-            </ScrollView >
 
         </NativeBaseProvider>
     );}

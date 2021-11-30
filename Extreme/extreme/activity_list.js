@@ -20,7 +20,7 @@ import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 
-export default function activity_list({route, navigation}) {
+export default function activity_list({navigation}) {
     const [state, setState] = useState(navigation.state.params.type);
     const [data, setData] = useState()     
   
