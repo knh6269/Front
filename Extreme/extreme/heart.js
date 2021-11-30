@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, Component, useEffect } from "react";
 import {
     Dimensions,} from "react-native"
 import{
@@ -16,13 +16,29 @@ const Height = Dimensions.get('window').height;
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function heart({navigation}){
         const pressHandler=()=>{
             navigation.navigate('각 페이지로 이동');
         }
-    
+        const [data,setData]=useState(); //연휘야 여기 담겨있어~
+
+        const get_heart=async()=>{
+        
+            let me=(await AsyncStorage.getItem('user_id'));
+            const response = await fetch(`https://extreme-kor.herokuapp.com/hearts?id=daeun`);
+            const json = await response.json();
+            setData(json.data);
+        }
+        useEffect(() => {
+            get_heart();
+          }, []);
+
+        const dd=()=>{
+            console.log(data)
+        }
     return (
-        <NativeBaseProvider>
+        <NativeBaseProvider >
             <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
                 <TouchableOpacity>
                     <IconM name="navigate-before" size={25} style={{}}></IconM>
@@ -38,7 +54,7 @@ export default function heart({navigation}){
                 <Box>
                     <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
                         <Box>
-                            <TouchableOpacity onPress={pressHandler}>
+                            <TouchableOpacity onPress={dd}>
                                 <Image
                                     source={require('./images/1.jpg')}
                                     style={{ width:100, height:100}}
@@ -59,7 +75,7 @@ export default function heart({navigation}){
                         </Box>
                     </Box>
 
-                    <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
+                    <Box  style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
                         <Box>
                             <TouchableOpacity onPress={pressHandler}>
                                 <Image
@@ -116,7 +132,7 @@ export default function heart({navigation}){
                                 <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
                             </TouchableOpacity>
                         </Box>
-                        <Box>
+                        <Box >
                             <TouchableOpacity onPress={pressHandler}>
                                 <Image
                                     source={require('./images/1.jpg')}

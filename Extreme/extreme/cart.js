@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, Component, useEffect } from "react";
 import { Dimensions, } from "react-native"
 
 import {
@@ -18,8 +18,12 @@ const Height = Dimensions.get('window').height;
 
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function cart({navigation}){
+  const [data,setData]=useState(); //연휘야 여기 담겨있어~
+
   const pressHandler=()=>{
     navigation.navigate('각 페이지로 이동');
   }
@@ -28,10 +32,24 @@ export default function cart({navigation}){
     "all",
   ])
 
+  const get_cart=async()=>{
+        
+    let me=(await AsyncStorage.getItem('user_id'));
+    const response = await fetch(`https://extreme-kor.herokuapp.com/cart?id=daeun`);
+    const json = await response.json();
+    setData(json.data);
+}
+useEffect(() => {
+    get_cart();
+  }, []);
+  const dd=()=>{
+    console.log(data)
+}
+
   return (
     <NativeBaseProvider>
       <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={dd}>
           <IconM name="navigate-before" size={25} style={{}}></IconM>
         </TouchableOpacity>
           <Image
