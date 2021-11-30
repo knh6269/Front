@@ -30,11 +30,48 @@ const screens = {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
+    register_activity:{
+        screen:register_activity,
+        navigationOptions: () => ({ headerShown: false, })  
+    },
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
         },
   
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    register_company:{
+        screen:register_company,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    activity_detail: {
+        screen: activity_detail,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+   
+  
+    weather_map:{
+        screen:weather_map,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    
+    review: {
+        screen: review,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+    order_list:{
+        screen:order_list,
+        navigationOptions:()=>({headerShown:false,})
+    },
+    
+  
+    register_user:{
+        screen:register_user,
+        navigationOptions: () => ({ headerShown: false, })
+    },  
     select_bank: {
         screen:select_bank,
         navigationOptions: () => ({ headerShown: false, })
@@ -43,10 +80,7 @@ const screens = {
     screen: order_list_detail,
     navigationOptions: () => ({ headerShown: false, })
     },
-    activity_detail: {
-        screen: activity_detail,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
     home_region: {
         screen: home_region,
         navigationOptions: () => ({ headerShown: false, })
@@ -63,26 +97,14 @@ const screens = {
         screen: my_page,
         navigationOptions: () => ({ headerShown: false, })
     },
-    weather_map:{
-        screen:weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    register_company:{
-        screen:register_company,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-    weather_map:{
-        screen:weather_map,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+    
+   
+    
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
-    review: {
-        screen: review,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
     reservation_calender: {
         screen: reservation_calender,
         navigationOptions: () => ({ headerShown: false, })
@@ -92,10 +114,7 @@ const screens = {
         screen: coupon,
         navigationOptions: () => ({ headerShown: false, })
     },
-    register_user:{
-        screen:register_user,
-        navigationOptions: () => ({ headerShown: false, })
-    },  
+   
 
    
     user_info: {

@@ -85,6 +85,41 @@ export default function login({navigation}) {
                 <TouchableOpacity >
                     <Text style={{ textDecorationLine: 'underline' }}>회원가입</Text>
                 </TouchableOpacity>
+                <TouchableOpacity style={{marginBottom:100}}>
+                    <Text style={{ textDecorationLine: 'underline' }}>ID/PW 찾기</Text>
+                </TouchableOpacity>
+            </View>
+
+
+
+
+
+            <View style={styles.container}>
+                <View style={styles.input}>
+                    <Icon name="user" size={24}></Icon>
+                    <TextInput
+                        placeholder={'아이디'}
+                        onChangeText={(text) => onChangeTextID(text)}
+                        value={id}
+                    />
+                </View>
+                <View style={styles.input}>
+                    <Icon name="lock" size={24}></Icon>
+                    <TextInput
+                        placeholder={'비밀번호'}
+                        onChangeText={(text) => onChangeTextPW(text)}
+                        value={password}
+                        secureTextEntry={true}
+                    />
+                </View>
+
+                <TouchableOpacity style={{ borderWidth: 1, width: 150, alignItems: 'center' }}
+                onPress={login_detail}>
+                    <Text>로그인</Text>
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Text style={{ textDecorationLine: 'underline' }}>회원가입</Text>
+                </TouchableOpacity>
                 <TouchableOpacity>
                     <Text style={{ textDecorationLine: 'underline' }}>ID/PW 찾기</Text>
                 </TouchableOpacity>

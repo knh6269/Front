@@ -178,6 +178,7 @@ export default function register_company({navigation}){
         </NativeBaseProvider>
     );
             }
+            else{
             return(
                 <NativeBaseProvider>
                       <Box 
@@ -255,6 +256,6 @@ export default function register_company({navigation}){
                         </Box>
                         </Box>
                 </NativeBaseProvider>
-            );
+            );}
         
 }

@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import {Dimensions,} from "react-native"
 import{
     NativeBaseProvider,
@@ -13,6 +13,7 @@ import{
 import { TouchableOpacity, ScrollView, TextInput, StyleSheet} from "react-native";
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import IconM from 'react-native-vector-icons/MaterialIcons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 var window_width = Dimensions.get('window').width;
 var window_height = Dimensions.get('window').height;
@@ -23,6 +24,8 @@ import { flexDirection } from 'styled-system';
 
 
 export default function Order_list_detail({navigation}) {
+    let [review,setReview]=useState();
+
     const pressHandler=()=>{
         navigation.navigate('home_region');
     }
@@ -36,7 +39,7 @@ export default function Order_list_detail({navigation}) {
         image6: require('./images/1.jpg'),
         image7: require('./images/1.jpg')
     };
-
+   
     const [images, setImages] = useState([
         { id: '1', image: IMAGES.image1, activity_name: '구룡스포츠1' },
         { id: '2', image: IMAGES.image2, activity_name: '구룡스포츠2' },
@@ -46,11 +49,32 @@ export default function Order_list_detail({navigation}) {
         { id: '6', image: IMAGES.image6, activity_name: '구룡스포츠4' },
         { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠8' }
     ]);
-    
-    return (
+    const handle_review=async()=>{
+        await AsyncStorage.setItem('activity_id','95',()=>{
+            console.log('액티비티 id 저장')
+        });
+        navigation.navigate('review');
+        
+    }
+    const get_review=async()=>{
+        try{
+        let activity_id=(await AsyncStorage.getItem('activity_id'));
+        const response=await fetch(`https://extreme-kor.herokuapp.com/review?activity_id=${activity_id}`);
+        const json=await response.json();
+        setReview(json.data);
+    }
+     
+        catch(error){
+            console.error(error);
+        }
+    }
+    useEffect(() => {
+     get_review();
+      }, []);
+       return(
         <NativeBaseProvider>
-            <ScrollView>
-                <Box>
+            <ScrollView> 
+               
                     <Box>
                         <Carousel
                             layout='default'
@@ -95,7 +119,7 @@ export default function Order_list_detail({navigation}) {
                     <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
                         <Box style={{marginLeft: '3%', marginRight:'3%',}}>
                             <Text style={{ fontWeight: 'bold', fontSize: 18 }}>90,000원</Text>
-                            <Text style={{ marignTop:'3%', fontWeight: 'bold', fontSize: 16 }}>상품 정보</Text>
+                            <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>상품 정보</Text>
                         </Box>
 
                         <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={0.5}></Box>
@@ -118,60 +142,49 @@ export default function Order_list_detail({navigation}) {
 
                     <Box marginTop='3%'></Box>
 
-                    <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
-                        <Box style={{marginLeft: '5%', marignRight:'5%',}}>
-                            <Text style={{ marignTop:'3%', fontWeight: 'bold', fontSize: 16 }}>고객 정보</Text>
+                    <Box onPress={console.log(review)} style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
+                        <Box style={{marginLeft: '5%', marginRight:'5%',}}>
+                            <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>고객 정보</Text>
                         </Box>
-
-                        <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
-
-                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', }}>
-                            <Image
-                                source={{
-                                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                }}
-                                style={{width:40, height:40, borderRadius:50}}
-                                alt="trans_1" />
-                            <Box style={{marginLeft:'3%'}}>
-                                <Text style={{fontSize:12}}>하모닉스</Text>
-                                <Box style={{flexDirection:'row'}}>
-                                    <Text>123</Text>
-                                    <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>2021.11.28</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-
-                        <Box style={{ marginTop: '3%', marginLeft: '3%', marignRight: '3%' }}>
-                            <Text>후기 날려 날려~</Text>
-                        </Box>
-
-                        <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
-
-                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', }}>
-                            <Image
-                                source={{
-                                    uri: 'https://wallpaperaccess.com/full/317501.jpg',
-                                }}
-                                style={{width:40, height:40, borderRadius:50}}
-                                alt="trans_1" />
-                            <Box style={{marginLeft:'3%'}}>
-                                <Text style={{fontSize:12}}>하모닉스</Text>
-                                <Box style={{flexDirection:'row'}}>
-                                    <Text>123</Text>
-                                    <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>2021.11.28</Text>
-                                </Box>
-                            </Box>
-                        </Box>
-
-                        <Box style={{ marginTop: '3%', marginLeft: '3%', marignRight: '3%' }}>
-                            <Text>후기 날려 날려~</Text>
-                        </Box>
-                    </Box>
-                </Box>
+                   
+                        
+                    </Box> 
+                    
+                  
+                   
+                
+                            {review.map((review)=>{
+                                return(
+                                    
+                                <View>
+                                    <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
+    
+                                    <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', }}>
+                                        <Image
+                                            source={{
+                                                uri: 'https://wallpaperaccess.com/full/317501.jpg',
+                                            }}
+                                            style={{width:40, height:40, borderRadius:50}}
+                                            alt="trans_1" />
+                                        <Box style={{marginLeft:'3%'}}>
+                                            <Text style={{fontSize:12}}>{review.id}</Text>
+                                            <Box style={{flexDirection:'row'}}>
+                                                <Text>123</Text>
+                                                <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>2021.11.28</Text>
+                                            </Box>
+                                        </Box>
+                                    </Box>
+    
+                                    <Box style={{ marginTop: '3%', marginLeft: '3%', marginRight: '3%' }}>
+                                        <Text>{review.content}</Text>
+                                    </Box>
+                                    </View>);
+                                
+                            })}
             </ScrollView >
 
             <Box style={{ paddingLeft:'3%', paddingRight:'3%', height: '15%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
-                <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
+                <Button onPress={handle_review} style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
                     <Text style={{ fontSize: 20, fontWeight:'bold'}}>리뷰쓰기</Text>
                 </Button>
                 <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >

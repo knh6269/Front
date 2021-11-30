@@ -94,45 +94,45 @@ export default function AppleMap(){
       }
       
       for(let j=0; j<9; j++){
-        if(data[j].data.state=="clear"){
+        if(data[j].data.state=="맑음"){
           locations[j].a=IMAGES.image4;
         }
-        else if(data[j].data.state=="cloudy"){ 
+        else if(data[j].data.state=="구름많음"){ 
         locations[j].a=IMAGES.image1;
           } 
-        else if(data[j].data.state=="snow"){ 
+        else if(data[j].data.state=="눈"){ 
           locations[j].a=IMAGES.image2;
             } 
-        else if(data[j].data.state=="rainy"){ 
+        else if(data[j].data.state=="비"){ 
           locations[j].a=IMAGES.image3;
             } 
-        else if(data[j].data.state=="partlyClear"){ 
+        else if(data[j].data.state=="흐림"){ 
           locations[j].a=IMAGES.image5;
             } 
-        else if(data[j].data.state=="snowAndRainy"){ 
+        else if(data[j].data.state=="눈/비"){ 
           locations[j].a=IMAGES.image5;
             } 
 
         locations[j].tem=data[j].data.tem;
         }
         for(let l=0; l<33; l++){
-          if(data_detail[l].data.state=="clear"){
+          if(data_detail[l].data.state=="맑음"){
             locations_detail[l].a=IMAGES.image4;
   
           }
-          else if(data_detail[l].data.state=="cloudy"){ 
+          else if(data_detail[l].data.state=="구름많음"){ 
           locations_detail[l].a=IMAGES.image1;
             } 
-          else if(data_detail[l].data.state=="snow"){ 
+          else if(data_detail[l].data.state=="눈"){ 
             locations_detail[l].a=IMAGES.image2;
               } 
-          else if(data_detail[l].data.state=="rainy"){ 
+          else if(data_detail[l].data.state=="비"){ 
             locations_detail[l].a=IMAGES.image3;
               } 
-          else if(data_detail[l].data.state=="partlyClear"){ 
+          else if(data_detail[l].data.state=="흐림"){ 
             locations_detail[l].a=IMAGES.image5;
               } 
-          else if(data_detail[l].data.state=="snowAndRainy"){ 
+          else if(data_detail[l].data.state=="눈/비"){ 
             locations_detail[l].a=IMAGES.image5;
               } 
 
