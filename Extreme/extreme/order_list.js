@@ -1,5 +1,5 @@
 import React, {useState, Component, useEffect } from "react";
-import {Dimensions,} from "react-native"
+import {Dimensions, FlatList} from "react-native"
 import{
     NativeBaseProvider,
     Box,
@@ -22,7 +22,7 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 export default function order_list({ navigation }) {
-    const [data,setData]=useState();
+    const [order_list,setOrderList]=useState();
     const review=()=>{
             navigation.navigate('review');
     }
@@ -33,25 +33,21 @@ export default function order_list({ navigation }) {
 
     const get_order_list=async()=>{
         let me=(await AsyncStorage.getItem('user_id'));
-        const response = await fetch(`GET https://extreme-kor.herokuapp.com/reservation/orderlist?id=daeun`);
+        const response = await fetch(`https://extreme-kor.herokuapp.com/reservation/orderlist?id=${me}`);
         const json = await response.json();
-        setData(json.data);
+        setOrderList(json.data);
     }
 
     useEffect(() => {
         get_order_list();
       }, []);
 
-    const dd=()=>{
-        console.log(data)
-    }
-
     const renderActivity = ({ item, index }) => (
                 <Box>
                     <Box style={{ backgroundColor:'white', marginTop:'5%', borderWidth:1, paddingLeft:'3%', paddingRight:'3%' }}>
                         <HStack space={1} marginRight={'3%'} justifyContent={'space-between'}>
                             <Text>2021.11.13</Text>
-                            <TouchableOpacity onPress={dd}>
+                            <TouchableOpacity>
                                 <Box style={{justifyContent:'center'}}>
                                     <HStack>
                                         <Text fontSize={14} color={'#4f8bc2'} justifyContent={'center'}>주문 상세보기</Text>
@@ -88,7 +84,7 @@ export default function order_list({ navigation }) {
                 </Box>  
     )
 
-    if(data){
+    if(order_list){
     return (
         <NativeBaseProvider>
             <Box style={{ flexDirection: 'row', marginTop: '5%' }}>
