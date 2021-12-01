@@ -19,7 +19,7 @@ import IconM from 'react-native-vector-icons/MaterialIcons';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Loading from "./test";
-export default function heart({navigation:{goBack}}){
+export default function heart({navigation}){
         const pressHandler=()=>{
             navigation.navigate('각 페이지로 이동');
         }
@@ -67,7 +67,7 @@ export default function heart({navigation:{goBack}}){
     return (
         <NativeBaseProvider >
             <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-                <TouchableOpacity onPress={()=>goBack()}>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <IconM name="navigate-before" size={25} style={{}}></IconM>
                 </TouchableOpacity>
                 <Image
