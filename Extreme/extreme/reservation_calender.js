@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import { Dimensions, FlatList, Alert} from "react-native"
 import{
     NativeBaseProvider,
@@ -25,13 +25,34 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr';
 
 
-
+  
 import IconA from 'react-native-vector-icons/AntDesign';
+import Loading from './test';
 
 export default function reservation_calender({ navigation }) {
-  
+  const [data,setData]=useState();
   const [outputText, setoutputText] = useState('');
   const [outputactivity, setoutputactivity] = useState('');
+
+ 
+const [time2,setTime2]=useState([
+    {when:"14:00",handler:Handler,status:'white'},
+    {when:"15:00",handler:Handler,status:'white'},
+    {when:"16:00",handler:Handler,status:'white'},
+    {when:"17:00",handler:Handler,status:'white'},
+    {when:"18:00",handler:Handler,status:'white'},
+]);
+  const getData=async()=>{
+    const response = await fetch(`https://extreme-kor.herokuapp.com/reservation/activity?id=235`);
+    const json = await response.json();
+    console.log(json)
+    setData(json.data);
+}
+ 
+  const Handler=()=>{
+    console.log(data)
+   }
+
   const [time,setTime]=useState([
     {when:"09:00",handler:Handler,status:'white'},
     {when:"10:00",handler:Handler,status:'white'},
@@ -40,17 +61,14 @@ export default function reservation_calender({ navigation }) {
     {when:"13:00",handler:Handler,status:'powderblue'},
     
 ]);
-const [time2,setTime2]=useState([
-    {when:"14:00",handler:Handler,status:'white'},
-    {when:"15:00",handler:Handler,status:'white'},
-    {when:"16:00",handler:Handler,status:'white'},
-    {when:"17:00",handler:Handler,status:'white'},
-    {when:"18:00",handler:Handler,status:'white'},
-]);
-
-  const Handler=()=>{
-
+   useEffect(()=>{
+     getData();
+   })
+  const zz=()=>{
+    
+    console.log(data[0].Activity_time)
   }
+  if(data){
   return (
   <NativeBaseProvider>
       <Box style={{ paddingTop: 50 }}>
@@ -61,7 +79,7 @@ const [time2,setTime2]=useState([
         current={Date()}
         minDate={'2021-01-01'}
         maxDate={'2022-12-31'}
-        onDayPress={(day) => { setoutputText(day.dateString), setoutputactivity(day.day) }}
+        onDayPress={(day) => { setoutputText(day.dateString), setoutputactivity(`${day.year}+${day.month}+${day.day}`) }}
         onDayLongPress={(day) => { setoutputText(day.dateString) }}
         monthFormat={'yyyy MM dd'}
         onMonthChange={(month) => { console.log('month changed', month) }}
@@ -85,26 +103,33 @@ const [time2,setTime2]=useState([
       />
       </Box>
       <Box marginTop={'5%'} marginBottom={'5%'}>
-        <Text>선택된 날짜 : {outputText}</Text>
-        <Box style={{alignItems:'center'}}>
-         <Text style={{fontWeight:'bold'}}>이용 가능 시간</Text>
-        </Box>
+        <Text>선택된 날짜 : {outputactivity}</Text>
+
+        <Button onPress={zz}><Text>d</Text></Button>
+        {outputactivity==data[0].Activity_time.date&&
+        <Box>
+          <Box style={{alignItems:'center'}}>
+            <Text style={{fontWeight:'bold'}}>{data[0].Activity_time.hour}</Text>
+          </Box>
           <Box style={{ flexDirection: 'row'}}>
           {time.map((time)=>{
             return( <Button style={{backgroundColor:time.status,margin:10, borderWidth:1}} onPress={time.handler}><Text>{time.when}</Text></Button>)
-           
           })}
           </Box>
-          
+        </Box>
+}       
           <Box style={{ flexDirection: 'row'}}>
           {time2.map((time2)=>{
             return( <Button style={{backgroundColor:time.status,margin:10, borderWidth:1}} onPress={time2.handler}><Text>{time2.when}</Text></Button>)
            
           })}
-          
+         
           </Box>
         
       </Box>
   </NativeBaseProvider> 
-  );
+  );}
+  else{
+    return(<Loading/>)
+  }
 }
