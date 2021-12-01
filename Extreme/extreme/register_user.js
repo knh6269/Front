@@ -168,7 +168,7 @@ export default function register_user({ navigation}) {
                                     />
                         </TouchableOpacity>
                     </Box>
-
+                    
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
                             <TextInput placeholder="아이디를 입력하세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '70%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setid(text)} value={id}></TextInput>
