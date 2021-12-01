@@ -20,49 +20,66 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function purchase({ navigation }) {
     const [purchaseData, setPurchaseData] = useState(navigation.state.params.purchase_Data);
-
+    var payment=0;
     const coupon = () => {
         navigation.navigate('coupon');
     }
+    for(i=0;i<purchaseData.length;i++){
+        payment = payment + purchaseData[i].payment
+        console.log(payment)
 
+    }
     useEffect(() => {
-        console.log(purchaseData)
 
     }, []);
     const renderActivity = ({ item, index }) => (
-        <Box style={{ flexDirection:'row', marginTop:'3%', justifyContent:'space-around'}}>
-            <Box style={{flexDirection:'row',}}>
-                <Box style={{ flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
-                    <Image
-                    source={{
-                        uri: item.Activity.Activity_images[0].image_url
-                    }}
-                    style={{borderRadius:10, marginLeft:'5%', width:100, height:100}}
-                    alt="trans_1" />
-                </Box>
-            </Box>
-            <Box style={{ flexDirection:'column' }}>
-                <Box style={{ marginTop:'3%', flexDirection:'row' }}>
-                    <Text fontSize={20} style={{ fontWeight: 'bold', textAlign:'center' }} >상품명</Text>
-                    <Text fontSize={18} style={{ marginLeft:'3%', textAlign:'center' }} >{item.Activity.activity_name}</Text>
-                </Box>
-                <Box style={{ marginTop:'3%', flexDirection:'row' }}>
-                    <Text fontSize={20} style={{ fontWeight: 'bold', textAlign:'center' }} >날짜</Text>
-                    <Text fontSize={18} style={{ marginLeft:'3%', textAlign:'center' }} >{item.Activity_time.date}</Text>
-                </Box>
-                <Box style={{ marginTop:'3%', flexDirection:'row' }}>
-                    <Text fontSize={20} style={{ fontWeight: 'bold', textAlign:'center' }} >날씨</Text>
-                    <Text fontSize={18} style={{ marginLeft:'3%', textAlign:'center' }} >해 쨍쨍</Text>
-                </Box>
+        <Box style={{ backgroundColor:'white', marginTop: '3%', paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', borderWidth:1}}>
+        <Box style={{flexDirection:'row', marginTop:'3%'}}>
+        <Box style={{flexDirection:'row',}}>
+            <Box style={{ flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
+              <Image
+                source={{
+                    uri: item.Activity.Activity_images[0].image_url
+                }}
+                style={{borderRadius:10, marginLeft:'3%', width:70, height:70}}
+                alt="trans_1" />
             </Box>
         </Box>
+        
+        <Box style={{height:70, flexDirection:'column', marginLeft:'5%', justifyContent:'space-between'}}>
+          <Text style={{fontSize:14}}>{item.Activity.activity_name}</Text>
+          <Text style={{fontSize:14}}>{item.Activity.activity_price}원</Text>
+          <Text style={{fontSize:14}}>{item.people}인</Text>
+        </Box>
+  
+        <Box style={{height:70, flexDirection:'column', marginLeft:'20%', justifyContent:'space-between'}}>
+          <Text style={{fontSize:14}}>{item.Activity_time.date}</Text>
+          <Text style={{fontSize:14}}>{item.Activity_time.hour}</Text>
+  
+          <Image
+            source={{
+                uri: 'https://wallpaperaccess.com/full/317502.jpg',
+            }}
+            style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+            alt="trans_1" />
+        </Box>
+        </Box>
+            <Box>
+            <HStack marginLeft={'5%'} marginTop={'5%'}>
+              <Box marginLeft={'5%'} flexDirection={'row'}>
+                  <Text style={{fontWeight:'bold'}} >총 결제 금액</Text>
+                  <Text style={{fontWeight:'bold', marginLeft:'3%'}} >{item.payment}원</Text>
+              </Box>
+            </HStack>
+          </Box>
+          </Box>
 
-        )
+          )
     
 
     return (
         <NativeBaseProvider>
-            <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}}>
+            <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}} >
             <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <IconM name="navigate-before" size={25} style={{}}></IconM>
                 </TouchableOpacity>
@@ -97,7 +114,7 @@ export default function purchase({ navigation }) {
 
                     <Box style={{ flexDirection: 'row', marginTop: '5%', borderWidth:0.5, justifyContent:'space-between' }}>
                         <Text fontSize={20}>총 결제 금액</Text>
-                        <Text fontSize={18} style={{ fontWeight: 'bold' }} >1234원</Text>
+                        <Text fontSize={18} style={{ fontWeight: 'bold' }} >{payment}원</Text>
                     </Box>
 
                     <Box marginTop='5%' borderWidth={3} borderColor={'#eeeeee'}></Box>

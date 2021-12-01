@@ -45,6 +45,7 @@ export default function login({navigation}) {
     const json=await response1.json();
     console.log(json);
     if(json.success){
+        
         navigation.navigate('home');
     }
        

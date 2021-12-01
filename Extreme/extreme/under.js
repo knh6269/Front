@@ -23,11 +23,12 @@ export default function Under({ navigation }) {
         setme(await AsyncStorage.getItem('user_id'));
         const response = await fetch(`https://extreme-kor.herokuapp.com/user/data/${me}`);
         const json = await response.json();
+        console.log(me)
     }     
     
     useEffect(() => {
         zz();
-      }, [me]);
+      }, []);
 
     const cart = () => {
         navigation.navigate('cart');

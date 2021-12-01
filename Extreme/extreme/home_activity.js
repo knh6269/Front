@@ -69,6 +69,7 @@ export default function home_activity({ navigation , route}) {
      try {
       const response = await fetch(`https://extreme-kor.herokuapp.com/activities`);
        const json = await response.json();
+       console.log(json)
        acti=json.data.slice()
        acti2=json.data.slice()
        acti3=json.data.slice()

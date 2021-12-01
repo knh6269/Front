@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput, Dimensions, SafeAreaView} from 'react-native';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import Home_region from "./home_region";
 import Home_recommend from "./home_recommend";
 import Home_activity from "./home_activity";
@@ -53,10 +53,12 @@ export default function Home({ navigation }) {
 
         <View style={{ height: '78%', }}>        
           <TabView
+          renderTabBar={<TabBar indicatorStyle={{ backgroundColor: 'white' }}/>}
             navigationState={{ index, routes }}
             renderScene={renderScene}
             onIndexChange={setIndex}
             initialLayout={{ width: layout.width }}
+            
           />
         </View>
   

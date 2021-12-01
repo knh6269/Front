@@ -102,11 +102,14 @@ useEffect(() => {
       
       <Box style={{height:70, flexDirection:'column', marginLeft:'5%', justifyContent:'space-between'}}>
         <Text style={{fontSize:14}}>{item.Activity.activity_name}</Text>
-        <Text style={{fontSize:14}}>{item.payment}원</Text>
+        <Text style={{fontSize:14}}>{item.Activity.activity_price}원</Text>
+        <Text style={{fontSize:14}}>{item.people}인</Text>
       </Box>
 
       <Box style={{height:70, flexDirection:'column', marginLeft:'20%', justifyContent:'space-between'}}>
         <Text style={{fontSize:14}}>{item.Activity_time.date}</Text>
+        <Text style={{fontSize:14}}>{item.Activity_time.hour}</Text>
+
         <Image
           source={{
               uri: 'https://wallpaperaccess.com/full/317502.jpg',
