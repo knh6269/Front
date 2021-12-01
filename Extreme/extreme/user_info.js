@@ -8,6 +8,7 @@ import{
     Image,
     View,
     VStack,
+    Button
 }from 'native-base';
 import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
 
@@ -62,47 +63,63 @@ export default function user_info({ navigation }) {
 
     return (
         <NativeBaseProvider>
-            <ScrollView>
-                <Box marginTop={'5%' }>
-                    <Text textAlign={'center'} fontSize={20}>기본 정보</Text>
+            <ScrollView style={{backgroundColor:'white'}}>
+                <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
+                    <TouchableOpacity>
+                        <IconM name="navigate-before" size={25} style={{}}></IconM>
+                    </TouchableOpacity>
+                    <Image
+                        source={require('./images/cards-heart-outline.png')}
+                        style={{width: 40, height: 40, }}
+                        alt="trans_1"
+                    />
+                    <Text marginLeft={'3%'} fontSize={20}>내 정보 수정</Text>
                 </Box>
                     
-                <Box marginTop={'5%'} marginLeft={'5%'}>
-                    <HStack space={5}>
-                        <Image
-                            source={{uri:data.data.prorile_image}}
-                            style={{ width: 120, height:150, }}
-                            alt="trans_1"
-                        />
-                        <VStack space={5}>
-                            <Text>닉네임</Text>
-                            <TextInput defaultValue={data.data.nickname} onChangeText={nickname=>setnic(nickname)}/>
-                            <Text>비밀번호 수정</Text>
-                            <TextInput onChangeText={(text) => setpw(text)}></TextInput>
-                            <Text>이름</Text>
-                            <Text>{data.data.name}</Text>
-                            <Text>휴대폰 번호</Text>
-                            <Text>{data.data.phone_number}</Text>
-                            <Text>계좌 정보</Text>
-                            {/* <Text>{data.data.phone_number}</Text> */}
+                <Box style={{marginTop:'3%', flexDirection: 'column', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
+                    <Image
+                        source={{ uri: data.data.profile_image }}
+                        style={{ width: 100, height: 100, borderRadius: 50 }} />
+                    <Text style={{fontSize:'18', fontWeight:'bold', marginTop:'3%'}}>{data.data.name}</Text>
+                    <Text style={{fontSize:'16', marginTop:'3%'}}>{data.data.phone_number}</Text>
 
-                        </VStack>
-                    </HStack>
                 </Box>
 
-                <Box marginTop={'5%'} marginLeft={'5%'}>
-                    <VStack space={5}>  
-                        <Text>부가 정보</Text> 
-                        <Text>생년 월일</Text>
-                        <Text>{data.data.birthday}</Text>
+                <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5} color={'#acacac'}></Box>
 
-                        <Text>이메일</Text>
-                        <Text>{data.data.email}</Text>
-
-                    </VStack>
+                <Box style={{ marginLeft: '5%', marginTop: '3%', flexDirection: 'column', }}>
+                    <Box style={{flexDirection:'row', marginTop:'3%'}}>
+                        <Text style={{fontSize:'16', fontWeight:'bold'}}>닉네임</Text>
+                        <TextInput style={{ width: '50%', marginLeft:'3%' }}borderWidth={0.5} placeholder={data.data.nickname} defaultValue={data.data.nickname} onChangeText={nickname=>setnic(nickname)}/>
+                    </Box>
+                    <Box style={{flexDirection:'row', marginTop:'3%', flexDirection:'row'}}>
+                        <Text style={{fontSize:'16', fontWeight:'bold'}}>비밀번호 수정</Text>
+                        <TextInput style={{ marginLeft:'3%', width: '50%' }} borderWidth={0.5} placeholder={'수정할 비밀번호를 입력하세요'} onChangeText={(text) => setpw(text)}></TextInput>
+                    </Box>
                 </Box>
-                <TouchableOpacity style={{ width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={modify}><Text>수정</Text></TouchableOpacity>
 
+                <Box style={{ marginTop: '10%', flexDirection: 'column', justifyContent:'space-around' }}>
+                    <Box style={{ marginLeft: '3%', flexDirection: 'row' }}>
+                        <Text style={{fontSize:'18', }}>부가 정보</Text>
+                    </Box>
+                    <Box style={{ marginLeft : '3%', flexDirection : 'row'}}>
+                        <Text style={{fontSize:'16',}}>생년 월일</Text>
+                        <Text style={{marginLeft:'3%', fontSize:14}}>{data.data.birthday}</Text>
+                    </Box>
+                    <Box style={{ marginLeft : '3%', flexDirection : 'row'}}>
+                        <Text style={{fontSize:'16',}}>이메일</Text>
+                        <Text style={{marginLeft:'3%', fontSize:14}}>{data.data.email}</Text>
+                    </Box>
+                </Box>
+
+                <Box style={{ marginTop:'10%', paddingLeft:'3%', paddingRight:'3%', height: '15%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
+                    <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
+                        <Text style={{ fontSize: 20, fontWeight:'bold'}}>취소하기</Text>
+                    </Button>
+                    <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2' }} onPress={modify} >
+                        <Text style={{ fontSize: 20, fontWeight:'bold'}}>수정완료</Text>
+                    </Button>
+                </Box>
             </ScrollView>
         </NativeBaseProvider>
   );}

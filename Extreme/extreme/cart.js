@@ -151,12 +151,12 @@ useEffect(() => {
             </Box>
           </Box>
           <FlatList
-                        data={cart}
-                        renderItem={renderActivity}
-                        keyExtractor={(Activity) => Activity.activity_name}
-                        extraData={cart}
-                        alt={"Dd"}
-                        numColumns={1} />
+            data={cart}
+            renderItem={renderActivity}
+            keyExtractor={(Activity) => Activity.activity_name}
+            extraData={cart}
+            alt={"Dd"}
+            numColumns={1} />
         </Box>
       </ScrollView>
                   
