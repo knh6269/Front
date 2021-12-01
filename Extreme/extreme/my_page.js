@@ -23,7 +23,7 @@ import IconE from 'react-native-vector-icons/Entypo';
 export default function My_page({navigation}) {
     let [data,setData]=useState()
     
- 
+
     let zz=async()=>{
         let me=(await AsyncStorage.getItem('user_id'));
         const response = await fetch(`https://extreme-kor.herokuapp.com/user/data/${me}`);
@@ -39,6 +39,9 @@ export default function My_page({navigation}) {
         AsyncStorage.removeItem('user_id');
         navigation.navigate('home')
         setData()
+    }
+    const order_list = () => {
+        navigation.navigate('order_list');
     }
     useEffect(() => {
         zz();
@@ -85,7 +88,7 @@ export default function My_page({navigation}) {
                     </TouchableOpacity>
                     </Box>
                     <Box style={{ flexDirection: 'row', alignContent:'center', alignItems:'center'}}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={order_list}>
                         <IconM name="navigate-before" size={25} style={{}}>
                             <Text style={{fontSize:18}}>주문 내역</Text>
                         </IconM>

@@ -66,9 +66,6 @@ export default function login({navigation}) {
     
     return (
         <NativeBaseProvider>
-            <Box style={{marginLeft:'3%', marginTop:'5%'}}>
-                <IconA name="close" size={25} style={{marginLeft:'5%'}}></IconA>
-            </Box>
             <Box style={{marginLeft:'5%', marginRight:'5%'}}>
                 <Box style={{ flexDirection: 'column', justifyContent: 'center', height: Height / 3, }}>
                     <Box style={{flexDirection:'row', alignContent:'center', alignItems:'center'}}>
@@ -121,20 +118,4 @@ export default function login({navigation}) {
             </Box>
         </NativeBaseProvider>
     )
-
 }
-
-const styles = StyleSheet.create({
-    container: {
-        paddingTop: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    input: {
-        flexDirection: 'row',
-        height: 30,
-        width: 150,
-        borderColor: 'gray',
-        borderWidth: 1
-    }
-});
