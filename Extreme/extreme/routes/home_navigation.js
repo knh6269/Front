@@ -39,6 +39,11 @@ const screens = {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
+    register_user:{
+        screen:register_user,
+        navigationOptions: () => ({ headerShown: false, })
+    }, 
+   
     heart: {
         screen: heart,
         navigationOptions: () => ({ headerShown: false, })
@@ -77,10 +82,7 @@ const screens = {
   
   
     
-    register_user:{
-        screen:register_user,
-        navigationOptions: () => ({ headerShown: false, })
-    }, 
+  
     weather_map:{
         screen:weather_map,
         navigationOptions: () => ({ headerShown: false, })
@@ -107,9 +109,9 @@ const screens = {
 
     },
 
-        search: {
-        screen: search,
-        navigationOptions: () => ({ headerShown: false, })
+    search: {
+    screen: search,
+    navigationOptions: () => ({ headerShown: false, })
     },
 
     register_company:{

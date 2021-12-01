@@ -12,7 +12,6 @@ import{
 }from 'native-base';
 import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
@@ -22,7 +21,6 @@ import { parse } from 'react-native-svg';
 var window_width = Dimensions.get('window').width;
 var window_height = Dimensions.get('window').height;
     
-
 export default function home_activity({ navigation , route}) {
   // const suffing = () => {
   //   navigation.navigate('각 페이지로 이동');
@@ -54,8 +52,6 @@ export default function home_activity({ navigation , route}) {
   // const zip_wire = () => {
   //   navigation.navigate('각 페이지로 이동');
   // }
-
-
   const [activityData, setactivityData] = useState();
   const [activityData2, setactivityData2] = useState();
   const [activityData3, setactivityData3] = useState();
@@ -76,7 +72,6 @@ export default function home_activity({ navigation , route}) {
        acti=json.data.slice()
        acti2=json.data.slice()
        acti3=json.data.slice()
-
        setactivityData(acti);
        acti2.sort((a, b)=> (a.activity_name > b.activity_name ? 1:-1))
        setactivityData2(acti2)
@@ -127,7 +122,6 @@ export default function home_activity({ navigation , route}) {
                 </View>
               </TouchableOpacity>
           </View>
-
           <View display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
           <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'스키'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}>
@@ -160,7 +154,6 @@ export default function home_activity({ navigation , route}) {
                 </View>
               </TouchableOpacity>
           </View>
-
           <View display='flex' alignItems='center' flexDirection='row' justifyContent='space-between'>
           <TouchableOpacity onPress={()=>navigation.navigate('activity_list', {type:'스노보드'})}>
                 <View justifyContent="center" alignItems="center" width={100} height={100}>
@@ -194,9 +187,7 @@ export default function home_activity({ navigation , route}) {
               </TouchableOpacity>
           </View>
         </Box>
-
         <Box marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
-
         <Box marginTop={5} marginLeft={'5%'} >
           <Text fontSize={20}>추천 액티비티</Text>
             <View>
@@ -229,7 +220,6 @@ export default function home_activity({ navigation , route}) {
               />      
             </View>        
         </Box>
-
         <Box marginTop={5} marginLeft={'5%'} >
           <Text fontSize={20}>인기 액티비티</Text>
             <View>
@@ -262,7 +252,6 @@ export default function home_activity({ navigation , route}) {
               />      
             </View>        
         </Box>
-
         <Box marginTop={5} marginLeft={'5%'} >
           <Text fontSize={20}>최신 액티비티</Text>
             <View>
