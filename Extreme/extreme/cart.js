@@ -19,7 +19,6 @@ const Height = Dimensions.get('window').height;
 
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import Loading from "./test";
 
 export default function cart({navigation}){
@@ -118,7 +117,7 @@ useEffect(() => {
   return (
     <NativeBaseProvider>
       <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-        <TouchableOpacity onPress={dd}>
+        <TouchableOpacity onPress={zz}>
           <IconM name="navigate-before" size={25} style={{}}></IconM>
         </TouchableOpacity>
           <Image
