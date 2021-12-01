@@ -68,17 +68,16 @@ export default function activity_list({navigation}) {
                 </TouchableOpacity>
                 <Text marginLeft={'3%'} fontSize={20}>{state}의 목록</Text>
             </Box>
-            <ScrollView>
-                <Box style={{width:Width, paddingTop:'3%', paddingLeft:'3%', paddingRight:'3%'}}>
-                    <FlatList
-                        data={data}
-                        renderItem={renderActivity}
-                        keyExtractor={(Activity) => Activity.activity_name}
-                        extraData={state}
-                        alt={"Dd"}
-                        numColumns={1} />
-                </Box>
-            </ScrollView>
+            
+            <Box style={{width:Width, paddingTop:'3%', paddingLeft:'3%', paddingRight:'3%'}}>
+                <FlatList
+                    data={data}
+                    renderItem={renderActivity}
+                    keyExtractor={(Activity) => Activity.activity_name}
+                    extraData={state}
+                    alt={"Dd"}
+                    numColumns={1} />
+            </Box>
         </NativeBaseProvider>
     )
 }

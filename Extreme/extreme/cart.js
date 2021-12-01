@@ -153,15 +153,13 @@ useEffect(() => {
         <Text marginLeft={'3%'} fontSize={20}>장바구니</Text>
       </Box>
 
-      <ScrollView>
-          <FlatList
-            data={cart}
-            renderItem={renderActivity}
-            keyExtractor={(Activity) => Activity.activity_name}
-            extraData={cart}
-            alt={"Dd"}
-            numColumns={1} />
-      </ScrollView>
+      <FlatList
+        data={cart}
+        renderItem={renderActivity}
+        keyExtractor={(Activity) => Activity.activity_name}
+        extraData={cart}
+        alt={"Dd"}
+        numColumns={1} />
    
       <Box style={{backgroundColor:'white', paddingTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%',}}>
         <Button style={{backgroundColor:'#4f8bc2', }} onPress={go_purchase}>

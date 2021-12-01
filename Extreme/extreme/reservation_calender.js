@@ -123,9 +123,7 @@ const [time2,setTime2]=useState([
             return( <Button style={{backgroundColor:time.status,margin:10, borderWidth:1}} onPress={time2.handler}><Text>{time2.when}</Text></Button>)
            
           })}
-         
-          </Box>
-        
+          </Box>  
       </Box>
   </NativeBaseProvider> 
   );}
