@@ -50,7 +50,7 @@ export default function order_list({ navigation }) {
         <NativeBaseProvider>
             <Box style={{ flexDirection: 'row', marginTop: '5%' }}>
                 <HStack>
-                    <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.goBack()}>
                         <IconM name="navigate-before" size={25} style={{}}></IconM>
                     </TouchableOpacity>
                     <Text fontSize={20}>주문 내역</Text>

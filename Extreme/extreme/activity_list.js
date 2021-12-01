@@ -20,7 +20,7 @@ import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 
-export default function activity_list({route, navigation}) {
+export default function activity_list({navigation}) {
     const [state, setState] = useState(navigation.state.params.type);
     const [data, setData] = useState()     
   
@@ -63,7 +63,7 @@ export default function activity_list({route, navigation}) {
     return (
         <NativeBaseProvider>
             <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-                <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <IconM name="navigate-before" size={25} style={{}}></IconM>
                 </TouchableOpacity>
                 <Text marginLeft={'3%'} fontSize={20}>{state}의 목록</Text>

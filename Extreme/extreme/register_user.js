@@ -29,15 +29,6 @@ export default function register_user({ navigation}) {
     
     const [bank,setBank]=useState()
 
-    const dd=()=>{
-        
-        setBank(navigation.state.params.bank)
-    }
-   
-    const ff=()=>{
-        dd();
-        console.log(bank)
-    }
     const select_bank = () => {
         navigation.navigate('select_bank');
     }
@@ -158,7 +149,7 @@ export default function register_user({ navigation}) {
         return (
             <NativeBaseProvider>
             <Box style={{flexDirection: 'row', marginTop:50}}>
-                <TouchableOpacity onPress={dd}>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <IconM name="navigate-before" size={25} style={{ }}></IconM>
                 </TouchableOpacity>
                 <Text style={{fontSize: 20,}}>회원가입</Text>

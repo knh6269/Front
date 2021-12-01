@@ -22,7 +22,7 @@ import IconM from 'react-native-vector-icons/MaterialIcons';
 import Loading from "./test";
 // import { ControlledPropUpdatedSelectedItem } from "native-base/lib/typescript/components/composites/Typeahead/useTypeahead/types";
 
-export default function cart({navigation}){
+export default function cart({navigation:{goBack}}){
   //액비티티 이름 :data[0].Activity.activity_name  
 // 업체 이름: data[0].Activity.Company.company_name
 // 이미지 경로: data[0].Activity.Activity_images[0].image_url
@@ -142,7 +142,7 @@ useEffect(() => {
   return (
     <NativeBaseProvider>
       <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-        <TouchableOpacity onPress={zz}>
+      <TouchableOpacity onPress={()=>goBack()}>
           <IconM name="navigate-before" size={25} style={{}}></IconM>
         </TouchableOpacity>
           <Image

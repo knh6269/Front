@@ -32,7 +32,7 @@ export default function activity_detail({ navigation }) {
     return (
         <NativeBaseProvider>
             <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%', borderWidth:0.5}}>
-                <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <IconM name="navigate-before" size={25} style={{}}></IconM>
                 </TouchableOpacity>
                 <Text marginLeft={'3%'} fontSize={20}>주문 내역 (상세)</Text>

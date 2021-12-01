@@ -63,7 +63,7 @@ export default function search_activity_list({route, navigation}) {
     return (
         <NativeBaseProvider>
             <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-                <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <IconM name="navigate-before" size={25} style={{}}></IconM>
                 </TouchableOpacity>
                 <Text marginLeft={'3%'} fontSize={20}>{state}의 검색 결과</Text>
