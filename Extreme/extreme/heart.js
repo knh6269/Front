@@ -43,7 +43,7 @@ export default function heart({navigation}){
   
     const renderActivity = ({ item }) => (
         <Box>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.navigate('activity_detail', {activity_id:item.activity_id})}>
                 <Image
                     source={{
                         uri: item.Activity.Activity_images[0].image_url

@@ -25,12 +25,13 @@ const Height = Dimensions.get('window').height;
 
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
+import Loading from './test';
 
 export default function AppleMap(){
   const [zooms, setzooms] = useState(6);
   let data=[];
   let data_detail=[];
-
+  let status;
   const [locations,setlocation]=useState([
       { coordinate:{latitude:37.470407483804394,longitude: 126.95072514199354},title:"서울/경기",a:'',tem:''}, //서울,경기
       { coordinate:{latitude:35.62917303057579,longitude: 127.45632936923715} ,title:"충북",a:'',tem:''}, //충북
@@ -137,6 +138,7 @@ export default function AppleMap(){
 
           locations_detail[l].tem=data_detail[l].data.tem;
           }
+          status=1;
       } 
 
       catch (error) {
@@ -158,8 +160,8 @@ export default function AppleMap(){
   };
 
   const map = useRef(null) ; 
-
-    return (
+    if(status==1){
+   return (
     <NativeBaseProvider onPress={getWeather}>
       <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}}>
             <TouchableOpacity>
@@ -217,5 +219,9 @@ export default function AppleMap(){
         </Container>
       </Box>
     </NativeBaseProvider>
-  );
+  );}
+  else{
+    return(<Loading/>)
+    
+  }
 }

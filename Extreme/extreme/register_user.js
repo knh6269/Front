@@ -1,4 +1,4 @@
-import React ,{useEffect}from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import {
     Dimensions, ImagePickerIOS, Alert
 } from "react-native"
@@ -20,16 +20,27 @@ import { TouchableOpacity, ScrollView } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
 import { TextInput } from 'react-native-gesture-handler';
 import * as ImagePicker from 'expo-image-picker';
+import Loading from './test';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
-export default function register_user({ navigation }) {
+export default function register_user({ navigation}) {
+    
+    const [bank,setBank]=useState()
 
+    const dd=()=>{
+        
+        setBank(navigation.state.params.bank)
+    }
+   
+    const ff=()=>{
+        dd();
+        console.log(bank)
+    }
     const select_bank = () => {
         navigation.navigate('select_bank');
     }
-
     const [id, setid] = React.useState('');
     const [password, setpw] = React.useState('');
     const [passwordconfirm, setpwc] = React.useState('');
@@ -55,8 +66,9 @@ export default function register_user({ navigation }) {
             }).catch(err=>{console.log(err)
             })
             }
-
+        
     const submitBtn = () => {
+        setBank(navigation.state.params.bank)
         if(id==''){
             Alert.alert( "","아이디를 입력해주세요",[{text:"확인"}])
         }
@@ -95,14 +107,17 @@ export default function register_user({ navigation }) {
         fd.append("email", email)
         fd.append("user_id", id)
         fd.append("profile_image", {uri:selectedImage.localUri, type:'image/jpeg', name:'photo.jpg'})
+        fd.append("account_number",account)
+        fd.append("bank_name",bank)
         console.log(fd);
-        upload();}
+        upload();
+       
+    }
 
     }
-    
-const cancel=()=>{
-    sample=1;
-}
+    const cancel=()=>{
+        navigation.navigate('home')
+    }
     const same = async() => {
         const response = await fetch(`https://extreme-kor.herokuapp.com/user/check_id/${id}`);
         const json = await response.json();
@@ -139,12 +154,11 @@ const cancel=()=>{
 
         setSelectedImage({ localUri: pickerResult.uri });
     };
-
     if (selectedImage !== null) {
         return (
             <NativeBaseProvider>
             <Box style={{flexDirection: 'row', marginTop:50}}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={dd}>
                     <IconM name="navigate-before" size={25} style={{ }}></IconM>
                 </TouchableOpacity>
                 <Text style={{fontSize: 20,}}>회원가입</Text>
@@ -222,7 +236,7 @@ const cancel=()=>{
                         <HStack space={5} style={{ alignItems: 'center' }}>
                             <TextInput placeholder="환불계좌를 입력하세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '70%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setaccount(text)} value={account}></TextInput>
                             <TouchableOpacity onPress={select_bank}>
-                                <Button style={{ backgroundColor: '#ced4da', width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={same}><Text style={{ fontSize: 16, height: 30 }}>은행 선택</Text></Button>
+                                <Button style={{ backgroundColor: '#ced4da', width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={select_bank}><Text style={{ fontSize: 16, height: 30 }}>은행 선택</Text></Button>
                             </TouchableOpacity>
                         </HStack>
                     </Box>
@@ -236,11 +250,11 @@ const cancel=()=>{
         </NativeBaseProvider>
         );
     }
-
+    
     return (
         <NativeBaseProvider>
             <Box style={{flexDirection: 'row', marginTop:50}}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={dd}>
                     <IconM name="navigate-before" size={25} style={{ }}></IconM>
                 </TouchableOpacity>
                 <Text style={{fontSize: 20,}}>회원가입</Text>
@@ -314,7 +328,7 @@ const cancel=()=>{
                         <HStack space={5} style={{ alignItems: 'center' }}>
                             <TextInput placeholder="환불계좌를 입력하세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '70%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setaccount(text)} value={account}></TextInput>
                             <TouchableOpacity onPress={select_bank}>
-                                <Button style={{ backgroundColor: '#ced4da', width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={same}><Text style={{ fontSize: 16, height: 30 }}>은행 선택</Text></Button>
+                                <Button style={{ backgroundColor: '#ced4da', width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={select_bank}><Text style={{ fontSize: 16, height: 30 }}>은행 선택</Text></Button>
                             </TouchableOpacity>
                         </HStack>
                     </Box>
@@ -327,4 +341,7 @@ const cancel=()=>{
             </ScrollView>
         </NativeBaseProvider>
     )
-}
+    }
+
+
+    
