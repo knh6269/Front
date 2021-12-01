@@ -30,6 +30,10 @@ import search_activity_list from "../search_activity_list";
 
 
 const screens = {
+    reservation_calender: {
+        screen: reservation_calender,
+        navigationOptions: () => ({ headerShown: false, })
+    },
     home:{
         screen:home,
         navigationOptions: () => ({ headerShown: false, })
@@ -151,10 +155,7 @@ const screens = {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
-    reservation_calender: {
-        screen: reservation_calender,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
     
     coupon: {
         screen: coupon,
