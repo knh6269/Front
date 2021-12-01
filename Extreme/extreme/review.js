@@ -25,28 +25,54 @@ const [review_write,setRev]=useState();
 const [star,setStar]=useState();
 
 const Handler1=()=>{
-  setStar(1);
+    setStar(1);
+    starValue[0].status = "star";
+    starValue[1].status = "staro";
+    starValue[2].status = "staro";
+    starValue[3].status = "staro";
+    starValue[4].status = "staro";
   console.log(star);
 }
 const Handler2=()=>{
     setStar(2);
+    starValue[0].status = "star";
+    starValue[1].status = "star";
+    starValue[2].status = "staro";
+    starValue[3].status = "staro";
+    starValue[4].status = "staro";
   }
 const Handler3=()=>{
-setStar(3);
+    setStar(3);
+    starValue[0].status = "star";
+    starValue[1].status = "star";
+    starValue[2].status = "star";
+    starValue[3].status = "staro";
+    starValue[4].status = "staro";
 }
 const Handler4=()=>{
-setStar(4);
+    setStar(4);
+    starValue[0].status = "star";
+    starValue[1].status = "star";
+    starValue[2].status = "star";
+    starValue[3].status = "star";
+    starValue[4].status = "staro";
 }
 const Handler5=()=>{    
-setStar(5);
+    setStar(5);
+    starValue[0].status = "star";
+    starValue[1].status = "star";
+    starValue[2].status = "star";
+    starValue[3].status = "star";
+    starValue[4].status = "star";
 }
 const [starValue,setStartValue]=useState([
-    {text:1,handler:Handler1},
-    {text:2,handler:Handler2},
-    {text:3,handler:Handler3},
-    {text:4,handler:Handler4},
-    {text:5,handler:Handler5}
+    {text:1,handler:Handler1,status:"staro"},
+    {text:2,handler:Handler2,status:"staro"},
+    {text:3,handler:Handler3,status:"staro"},
+    {text:4,handler:Handler4,status:"staro"},
+    {text:5,handler:Handler5,status:"staro"}
 ]);
+    
   let submit=async()=>{
     let me=(await AsyncStorage.getItem('user_id'));
     let activity_id=(await AsyncStorage.getItem('activity_id'));
@@ -74,28 +100,46 @@ const [starValue,setStartValue]=useState([
     return (
         <NativeBaseProvider>
             <ScrollView>
-                <Box marginTop={'5%'}>
-                    <Text textAlign={'center'} fontSize={20} >리뷰 작성</Text>
-                </Box>
-                <Box marrginTop={50}>
-                    <View>
-                        <TextInput onChangeText={text=>setRev(text)} style={{ height: Height / 2, borderWidth: 3, borderRadius: 8, alignItems: 'center', justifyContent: 'center', }} />
-                    </View>
-                    <View>
-                    <HStack>
-                        <Text>별점</Text>
-                        <HStack style={{width:Width}}>
-                            {starValue.map((starValue,index)=>{
-                                return(
-                                <Button key={index} style={{width:Width/6}} onPress={starValue.handler}><Text>{starValue.text}</Text></Button>)
-                            })}
-                        </HStack>
-                    </HStack>   
-                    </View>
-                </Box>
-                    <Button onPress={submit}><Text>등록</Text></Button>
-                
+                <Box style={{backgroundColor:'white'}}>
+                    <Box style={{marginLeft:'3%', marginTop:'5%', flexDirection:'row'}}>
+                        <IconA name="close" size={25} style={{ }}></IconA>
+                        <Text textAlign={'center'} fontSize={20} marginLeft={'3%'} >리뷰 작성</Text>
+                    </Box>
+
+                    <Box style={{borderWidth:0.5, margin:'3%', backgroundColor:'#f1f1f1'}}>
+                        <Text style={{fontSize:14, textAlign:'center'}}>작성해 주시는 후기는 우리 모두에게 큰 힘이 됩니다.</Text>
+                        <Text style={{fontSize:14, textAlign:'center'}}>보다 더 나은 Extreme을 선보이도록 하겠습니다.</Text>
+                    </Box>
+
+                    <Box style={{margin : '3%'}}>
+                        <Box>
+                            <TextInput placeholder='제품 후기를 남겨주세요.' onChangeText={text=>setRev(text)} style={{ padding:'5%', height: Height / 3, borderWidth: 3, alignItems: 'center', justifyContent: 'center', }} />
+                        </Box>
+
+                        <Box>
+                            <Text style={{fontSize:16, paddingLeft:'5%', paddingRight:'5%', marginTop:'5%', marginBottom:'3%'}}>별점</Text>
+                        </Box>
+                        
+                        <Box style={{height:Height/3, backgroundColor:'#eeeeee', borderWidth:0.5, borderColor:'#eeeeee', flexDirection:'row', height: Height / 6, justifyContent:'center', alignItems:'center'}}>
+                            <HStack space={5}>
+                                {starValue.map((starValue,index)=>{
+                                    return (
+                                        <Box style={{ flexDirection: 'column' }}>
+                                            <TouchableOpacity onPress={starValue.handler}>
+                                                 <IconA name={starValue.status} size={30} style={{}}></IconA>      
+                                            </TouchableOpacity>
+                                        </Box>                                    
+                                    )})}
+                            </HStack>
+                        </Box>   
+                    </Box>    
+                </Box>  
             </ScrollView>
+            <Box style={{ marginTop: '3%', }}>
+                <Button style={{ backgroundColor: '#4f8bc2', }} onPress={submit}>
+                    <Text style={{color:'black'}}>확인</Text>
+                </Button>
+            </Box>
         </NativeBaseProvider>
   )
 }
