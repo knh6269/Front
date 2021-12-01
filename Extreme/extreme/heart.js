@@ -77,17 +77,14 @@ export default function heart({navigation}){
                 />
                 <Text marginLeft={'3%'} fontSize={20}>찜</Text>
             </Box>
-            <ScrollView>
-                <Box>
-                <FlatList
-                    data={data}
-                    renderItem={renderActivity}
-                    keyExtractor={(Activity) => Activity.activity_name}
-                    extraData={data}
-                    alt={"Dd"}
-                    numColumns={2} />
-                </Box>
-            </ScrollView>
+            <FlatList
+                data={data}
+                renderItem={renderActivity}
+                keyExtractor={(Activity) => Activity.activity_name}
+                extraData={data}
+                alt={"Dd"}
+                numColumns={2} />
+
         </NativeBaseProvider>
     )}
     else{

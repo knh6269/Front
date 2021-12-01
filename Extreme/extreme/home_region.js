@@ -17,8 +17,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
-
-
 export default function home_region({ navigation }) {
     const [state, setState] = useState('경기도');
     const [data, setData] = useState()     
@@ -98,15 +96,18 @@ export default function home_region({ navigation }) {
 
     const renderActivity = ({ item }) => (
         <TouchableOpacity onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
-            <Box style={{marginTop:'3%', borderWidth:1, flexDirection: 'row', alignItems:'center', justifyContent: 'center',}}>
-                <Image
-                    style={{ width: 50, height: 50,}}
-                    source={{ uri: item.Activity_images[0].image_url }}  
-                />
-                <Box style={{flexDirection: 'column', }}>
-                    <Text style={{ color: 'black' }}>{item.activity_name}</Text>
-                    <Text style={{ color: 'black', marginLeft:'3%' }}>별점</Text>
-                    <Text style={{ color: 'black' }}>{item.activity_price}</Text>
+            <Box style={{padding:'3%', width:Width/2, borderWidth:0.5, flexDirection: 'row', alignItems:'center',}}>
+                <Box style={{ flexDirection: 'column', }}>
+                    <Image
+                        source={{ uri: item.Activity_images[0].image_url }}  
+                        style={{ height:Height/6, width:Width/4}}
+                        alt="trans_1"
+                        resizeMode='stretch'/>
+                </Box>
+                <Box style={{flexDirection: 'column', justifyContent:'space-around', marginLeft:'5%'}}>
+                    <Text numberOfLines={1} style={{ fontSize:14, fontWeight:'bold'}}>{item.activity_name}</Text>
+                    <Text style={{ fontSize:14,}}>{item.star}</Text>
+                    <Text style={{ fontSize:14, }}>{item.activity_price}</Text>
                 </Box>
             </Box>
         </TouchableOpacity>
@@ -157,17 +158,15 @@ export default function home_region({ navigation }) {
                 </Box>
             </Box>
 
-            <ScrollView>
-                <Box style={{Width:Width, marginTop:'5%', marginLeft:'3%', marginRight:'3%'}}>
-                    <FlatList
-                        data={data}
-                        renderItem={renderActivity}
-                        keyExtractor={(Activity) => Activity.activity_name}
-                        extraData={state}
-                        alt={"Dd"}
-                        numColumns={2} />
-                </Box>
-            </ScrollView>
+            <Box style={{marginTop:'3%'}}>
+                <FlatList
+                    data={data}
+                    renderItem={renderActivity}
+                    keyExtractor={(Activity) => Activity.activity_name}
+                    extraData={state}
+                    alt={"Dd"}
+                    numColumns={2} />
+            </Box>
 
         </NativeBaseProvider>
     )

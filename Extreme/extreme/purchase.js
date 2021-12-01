@@ -86,16 +86,17 @@ export default function purchase({ navigation }) {
                 <Text marginLeft={'3%'} fontSize={20}>구매하기</Text>
             </Box>
 
+            <Box style={{backgroundColor:'white', padding:'5%'}}>
+            <FlatList
+                data={purchaseData}
+                renderItem={renderActivity}
+                keyExtractor={(Activity) => Activity.activity_name}
+                extraData={purchaseData}
+                alt={"Dd"}
+                numColumns={1} />
+            </Box>
             <ScrollView>
-                <Box style={{backgroundColor:'white', padding:'5%'}}>
-                    <FlatList
-                        data={purchaseData}
-                        renderItem={renderActivity}
-                        keyExtractor={(Activity) => Activity.activity_name}
-                        extraData={purchaseData}
-                        alt={"Dd"}
-                        numColumns={1} />
-                    
+                <Box style={{backgroundColor:'white',}}>
                     <Box marginTop='5%' borderWidth={3} borderColor={'#eeeeee'}></Box>
 
                     <Box style={{ flexDirection: 'column', marginTop: '5%' }}>
