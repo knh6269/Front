@@ -1,5 +1,5 @@
 import React, {useState, Component, useEffect } from "react";
-import { Dimensions, FlatList} from "react-native"
+import { Dimensions, FlatList, Alert} from "react-native"
 
 import {
     Checkbox,
@@ -20,6 +20,7 @@ const Height = Dimensions.get('window').height;
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import Loading from "./test";
+// import { ControlledPropUpdatedSelectedItem } from "native-base/lib/typescript/components/composites/Typeahead/useTypeahead/types";
 
 export default function cart({navigation}){
   //액비티티 이름 :data[0].Activity.activity_name  
@@ -27,16 +28,20 @@ export default function cart({navigation}){
 // 이미지 경로: data[0].Activity.Activity_images[0].image_url
 
   let [cart,setCart]=useState()
+  let [checkindex,setCheckIndex]=useState()
 
-  const pressHandler=()=>{
-    navigation.navigate('각 페이지로 이동');
-  }
+  var send_index=[]
+
   let zz=async()=>{
     let me=(await AsyncStorage.getItem('user_id'));
-    const response = await fetch(`https://extreme-kor.herokuapp.com/cart?id=daeun`);
+    const response = await fetch(`https://extreme-kor.herokuapp.com/cart?id=${me}`);
     const json = await response.json();
     setCart(json.data);
-    console.log("s"+JSON.stringify(json))
+    for (i=0;i<json.data.length;i++){
+      send_index.push(i)
+    }
+    console.log(send_index)
+    setCheckIndex(send_index)
 }     
 useEffect(() => {
   zz();
@@ -44,27 +49,48 @@ useEffect(() => {
 
 
 
-  const [groupValue, setGroupValue] = React.useState([
-    "all",
-  ])
+  const checkbox_data=(index)=>{
+    console.log("체크")
+    console.log(send_index)
+    if(checkindex.includes(index)){
+      setCheckIndex(checkindex.filter((element)=>element!==index))
+    }
+    else{
+      setCheckIndex(element=> [...element, index])
+    }
+  }
+  const go_purchase=()=>{
+    setCheckIndex(checkindex.sort())
+    console.log(checkindex)
 
-  const renderActivity = ({ item }) => (
+    let send_purchase=[]
+    for (i=0;i<checkindex.length;i++){
+      send_purchase.push(cart[checkindex[i]])
+      console.log("ddld"+send_purchase)
+    }
+    if (send_purchase.length==0){
+      Alert.alert( "","구매하실 상품을 선택해주세요",[{text:"확인"}])
+    }
+    else{
+      console.log(send_purchase)
+      navigation.navigate('purchase', {purchase_Data:send_purchase})
+    }
+  }
+  const go_purchase2=(index)=>{
+    console.log(cart[index])
+    navigation.navigate('purchase', {purchase_Data:[cart[index]]})
+  }
+
+
+  const renderActivity = ({ item, index }) => (
     <Box style={{ backgroundColor:'white', marginTop: '3%', paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', borderWidth:1}}>
     <Box style={{flexDirection:'row-reverse',}}>
       <IconA marginLeft={'5%'} name="close" size={25}></IconA>
     </Box>
     <Box style={{flexDirection:'row', marginTop:'3%'}}>
       <Box style={{flexDirection:'row',}}>
-        <Checkbox.Group
-            colorScheme="green"
-            defaultValue={groupValue}
-            accessibilityLabel="pick an item"
-            onChange={(values) => {
-              setGroupValue(values || [])
-            }}
-        >
           <Box style={{ flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
-            <Checkbox borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} value="Photography" my="1"></Checkbox>
+            <Checkbox borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} defaultIsChecked={true} onPress={()=>checkbox_data(index)}></Checkbox>
             <Image
               source={{
                   uri: item.Activity.Activity_images[0].image_url
@@ -72,7 +98,6 @@ useEffect(() => {
               style={{borderRadius:10, marginLeft:'3%', width:70, height:70}}
               alt="trans_1" />
           </Box>
-        </Checkbox.Group>
       </Box>
       
       <Box style={{height:70, flexDirection:'column', marginLeft:'5%', justifyContent:'space-between'}}>
@@ -106,7 +131,7 @@ useEffect(() => {
       <Button style={{ width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
         <Text style={{ fontSize: 14, }}>날짜변경</Text>
       </Button>
-      <Button style={{ fontSize: 14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
+      <Button style={{ fontSize: 14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }}  onPress={()=>go_purchase2(index)}>
           <Text style={{ fontSize: 14, }}>바로구매</Text>
       </Button>
     </Box>
@@ -129,27 +154,6 @@ useEffect(() => {
       </Box>
 
       <ScrollView>
-        <Box style={{}}>
-          <Box style={{backgroundColor:'white', justifyContent:'space-between', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', borderWidth:1}}>
-            <Box style={{flexDirection: 'row', justifyContent:'center'}}>
-              <Checkbox.Group
-                    colorScheme="green"
-                    defaultValue={groupValue}
-                    accessibilityLabel="pick an item"
-                    onChange={(values) => {
-                      setGroupValue(values || [])
-                    }}
-                >
-                <Checkbox borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} value="all" my="1"></Checkbox>
-                </Checkbox.Group>
-              <Text style={{marginLeft:'3%', fontSize:16}}>전체선택</Text>
-            </Box>
-            <Box>
-              <Button style={{borderColor:'red', backgroundColor:'white'}}>
-                <Text style={{fontSize:14}}>선택 삭제</Text>
-              </Button>
-            </Box>
-          </Box>
           <FlatList
             data={cart}
             renderItem={renderActivity}
@@ -157,11 +161,10 @@ useEffect(() => {
             extraData={cart}
             alt={"Dd"}
             numColumns={1} />
-        </Box>
       </ScrollView>
-                  
+   
       <Box style={{backgroundColor:'white', paddingTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%',}}>
-        <Button style={{backgroundColor:'#4f8bc2', }} onPress={()=>navigation.navigate('purchase', {purchase_Data:cart[1]})}>
+        <Button style={{backgroundColor:'#4f8bc2', }} onPress={go_purchase}>
           <Text style={{fontSize:20, color:'white'}}>구매하기</Text>
         </Button>
       </Box>

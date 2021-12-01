@@ -30,6 +30,11 @@ import search_activity_list from "../search_activity_list";
 
 
 const screens = {
+    home:{
+        screen:home,
+        navigationOptions: () => ({ headerShown: false, })
+        },
+
     login: {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
@@ -62,10 +67,6 @@ const screens = {
     },
    
    
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-        },
    
     
     activity_detail: {

@@ -19,7 +19,7 @@ const Height = Dimensions.get('window').height;
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
-import Loading from './test';
+
 export default function activity_list({route, navigation}) {
     const [state, setState] = useState(navigation.state.params.type);
     const [data, setData] = useState()     
@@ -59,7 +59,7 @@ export default function activity_list({route, navigation}) {
             </Box>
         </TouchableOpacity>
     )
-    if(data){
+
     return (
         <NativeBaseProvider>
             <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
@@ -80,8 +80,5 @@ export default function activity_list({route, navigation}) {
                 </Box>
             </ScrollView>
         </NativeBaseProvider>
-    )}
-    else{
-        return (<Loading/>)
-    }
+    )
 }
