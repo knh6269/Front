@@ -33,16 +33,14 @@ export default function heart({navigation}){
         let me = (await AsyncStorage.getItem('user_id'));
         const response = await fetch(`https://extreme-kor.herokuapp.com/hearts?id=daeun`);
         const json = await response.json();
+        console.log(json)
         setData(json.data);
     }
     useEffect(() => {
         get_heart();
     }, []);
 
-    const dd = () => {
-        console.log(data[0].Activity.activity_name)
-    }
-    
+  
     const renderActivity = ({ item }) => (
         <Box>
             <TouchableOpacity>
@@ -53,7 +51,7 @@ export default function heart({navigation}){
                     style={{ width:100, height:100}}
                     alt="trans_1"
                     resizeMode='contain'/>
-                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >{data[0].Activity.activity_name}</Text>
+                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >{item.Activity.activity_name}</Text>
             </TouchableOpacity>
         </Box>
         )
@@ -78,14 +76,14 @@ export default function heart({navigation}){
             <ScrollView>
                 <Box>
                 <FlatList
-                    data={heart}
+                    data={data}
                     renderItem={renderActivity}
                     keyExtractor={(Activity) => Activity.activity_name}
-                    extraData={heart}
+                    extraData={data}
                     alt={"Dd"}
                     numColumns={2} />
                 </Box>
-                
+
                 {/* <Box>
                     <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
                         <Box>

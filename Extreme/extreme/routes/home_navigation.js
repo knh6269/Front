@@ -34,6 +34,11 @@ const screens = {
         screen: login,
         navigationOptions: () => ({ headerShown: false, })
     },
+    heart: {
+        screen: heart,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+   
     cart: {
         screen: cart,
         navigationOptions: () => ({ headerShown: false, })
@@ -55,10 +60,7 @@ const screens = {
         screen:order_list,
         navigationOptions:()=>({headerShown:false,})
     },
-    heart: {
-        screen: heart,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+   
    
     home:{
         screen:home,

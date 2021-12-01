@@ -33,7 +33,7 @@ export default function cart({navigation}){
   }
   let zz=async()=>{
     let me=(await AsyncStorage.getItem('user_id'));
-    const response = await fetch(`https://extreme-kor.herokuapp.com/cart?id=${me}`);
+    const response = await fetch(`https://extreme-kor.herokuapp.com/cart?id=daeun`);
     const json = await response.json();
     setCart(json.data);
     console.log("s"+JSON.stringify(json))
