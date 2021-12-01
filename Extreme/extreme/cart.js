@@ -19,7 +19,7 @@ const Height = Dimensions.get('window').height;
 
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import Loading from "./test";
 
 export default function cart({navigation}){
@@ -118,7 +118,7 @@ useEffect(() => {
   return (
     <NativeBaseProvider>
       <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-        <TouchableOpacity onPress={dd}>
+        <TouchableOpacity>
           <IconM name="navigate-before" size={25} style={{}}></IconM>
         </TouchableOpacity>
           <Image
@@ -152,12 +152,12 @@ useEffect(() => {
             </Box>
           </Box>
           <FlatList
-                        data={cart}
-                        renderItem={renderActivity}
-                        keyExtractor={(Activity) => Activity.activity_name}
-                        extraData={cart}
-                        alt={"Dd"}
-                        numColumns={1} />
+            data={cart}
+            renderItem={renderActivity}
+            keyExtractor={(Activity) => Activity.activity_name}
+            extraData={cart}
+            alt={"Dd"}
+            numColumns={1} />
         </Box>
       </ScrollView>
                   
