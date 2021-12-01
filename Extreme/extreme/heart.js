@@ -8,6 +8,7 @@ import{
     Text,
     VStack,
     Image,
+    Button
 }from 'native-base';
 import { TouchableOpacity,ScrollView } from "react-native";
 const Width = Dimensions.get('window').width;
@@ -42,15 +43,18 @@ export default function heart({navigation}){
 
   
     const renderActivity = ({ item }) => (
-        <Box>
-            <TouchableOpacity>
+        <Box style={{borderColor:'#898989', borderWidth:0.5, backgroundColor:'white', width:Width/2, padding : '3%'}}>
+            <Box style={{marginBottom:'3%'}}>
+                <IconA name="close" size={25} style={{marginLeft:'5%'}}></IconA>
+            </Box>
+            <TouchableOpacity onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
                 <Image
                     source={{
                         uri: item.Activity.Activity_images[0].image_url
                     }}
-                    style={{ width:100, height:100}}
+                    style={{ height:Height/6}}
                     alt="trans_1"
-                    resizeMode='contain'/>
+                    resizeMode='stretch'/>
                 <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >{item.Activity.activity_name}</Text>
             </TouchableOpacity>
         </Box>
@@ -83,100 +87,6 @@ export default function heart({navigation}){
                     alt={"Dd"}
                     numColumns={2} />
                 </Box>
-
-                {/* <Box>
-                    <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
-                        <Box>
-                            <TouchableOpacity onPress={dd}>
-                                <Image
-                                    source={{uri:data[0].Activity.Activity_images[0].image_url}}
-                                    style={{ width:100, height:100}}
-                                    alt="trans_1"
-                                    resizeMode='contain'/>
-                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >{data[0].Activity.activity_name}</Text>
-                            </TouchableOpacity>
-                        </Box>
-                        <Box>
-                            <TouchableOpacity onPress={pressHandler}>
-                                <Image
-                                    source={require('./images/1.jpg')}
-                                    style={{ width:100, height:100}}
-                                    alt="trans_1"
-                                    resizeMode='contain'/>
-                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </TouchableOpacity>
-                        </Box>
-                    </Box>
-
-                    <Box  style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
-                        <Box>
-                            <TouchableOpacity onPress={pressHandler}>
-                                <Image
-                                    source={require('./images/1.jpg')}
-                                    style={{ width:100, height:100}}
-                                    alt="trans_1"
-                                    resizeMode='contain'/>
-                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </TouchableOpacity>
-                        </Box>
-                        <Box>
-                            <TouchableOpacity onPress={pressHandler}>
-                                <Image
-                                    source={require('./images/1.jpg')}
-                                    style={{ width:100, height:100}}
-                                    alt="trans_1"
-                                    resizeMode='contain'/>
-                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </TouchableOpacity>
-                        </Box>
-                    </Box>
-
-                    <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%',}}>
-                        <Box>
-                            <TouchableOpacity onPress={pressHandler}>
-                                <Image
-                                    source={require('./images/1.jpg')}
-                                    style={{ width:100, height:100}}
-                                    alt="trans_1"
-                                    resizeMode='contain'/>
-                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </TouchableOpacity>
-                        </Box>
-                        <Box>
-                            <TouchableOpacity onPress={pressHandler}>
-                                <Image
-                                    source={require('./images/1.jpg')}
-                                    style={{ width:100, height:100}}
-                                    alt="trans_1"
-                                    resizeMode='contain'/>
-                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </TouchableOpacity>
-                        </Box>
-                    </Box>
-
-                    <Box style={{backgroundColor:'white', justifyContent:'space-around', flexDirection: 'row',paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', }}>
-                        <Box>
-                            <TouchableOpacity onPress={pressHandler}>
-                                <Image
-                                    source={require('./images/1.jpg')}
-                                    style={{ width:100, height:100}}
-                                    alt="trans_1"
-                                    resizeMode='contain'/>
-                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </TouchableOpacity>
-                        </Box>
-                        <Box >
-                            <TouchableOpacity onPress={pressHandler}>
-                                <Image
-                                    source={require('./images/1.jpg')}
-                                    style={{ width:100, height:100}}
-                                    alt="trans_1"
-                                    resizeMode='contain'/>
-                                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >image</Text>
-                            </TouchableOpacity>
-                        </Box>
-                    </Box>
-                </Box> */}
             </ScrollView>
         </NativeBaseProvider>
     )}
