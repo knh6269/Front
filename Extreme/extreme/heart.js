@@ -67,7 +67,7 @@ export default function heart({navigation}){
     return (
         <NativeBaseProvider >
             <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-            <TouchableOpacity onPress={()=>navigation.goBack()}>
+                <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <IconM name="navigate-before" size={25} style={{}}></IconM>
                 </TouchableOpacity>
                 <Image

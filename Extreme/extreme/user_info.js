@@ -65,23 +65,18 @@ export default function user_info({ navigation }) {
         <NativeBaseProvider>
             <ScrollView style={{backgroundColor:'white'}}>
                 <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-                <TouchableOpacity onPress={()=>navigation.goBack()}>
+                    <TouchableOpacity onPress={()=>navigation.goBack()}>
                         <IconM name="navigate-before" size={25} style={{}}></IconM>
                     </TouchableOpacity>
-                    <Image
-                        source={require('./images/cards-heart-outline.png')}
-                        style={{width: 40, height: 40, }}
-                        alt="trans_1"
-                    />
                     <Text marginLeft={'3%'} fontSize={20}>내 정보 수정</Text>
                 </Box>
                     
-                <Box style={{marginTop:'3%', flexDirection: 'column', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
+                <Box style={{borderWidth:1, marginTop:'3%', flexDirection: 'column', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
                     <Image
                         source={{ uri: data.data.profile_image }}
                         style={{ width: 100, height: 100, borderRadius: 50 }} />
-                    <Text style={{fontSize:'18', fontWeight:'bold', marginTop:'3%'}}>{data.data.name}</Text>
-                    <Text style={{fontSize:'16', marginTop:'3%'}}>{data.data.phone_number}</Text>
+                    <Text style={{fontSize:18, fontWeight:'bold', marginTop:'3%'}}>{data.data.name}</Text>
+                    <Text style={{fontSize:16, marginTop:'3%'}}>{data.data.phone_number}</Text>
 
                 </Box>
 
@@ -89,25 +84,25 @@ export default function user_info({ navigation }) {
 
                 <Box style={{ marginLeft: '5%', marginTop: '3%', flexDirection: 'column', }}>
                     <Box style={{flexDirection:'row', marginTop:'3%'}}>
-                        <Text style={{fontSize:'16', fontWeight:'bold'}}>닉네임</Text>
+                        <Text style={{fontSize:16, fontWeight:'bold'}}>닉네임</Text>
                         <TextInput style={{ width: '50%', marginLeft:'3%' }}borderWidth={0.5} placeholder={data.data.nickname} defaultValue={data.data.nickname} onChangeText={nickname=>setnic(nickname)}/>
                     </Box>
                     <Box style={{flexDirection:'row', marginTop:'3%', flexDirection:'row'}}>
-                        <Text style={{fontSize:'16', fontWeight:'bold'}}>비밀번호 수정</Text>
+                        <Text style={{fontSize:16, fontWeight:'bold'}}>비밀번호 수정</Text>
                         <TextInput style={{ marginLeft:'3%', width: '50%' }} borderWidth={0.5} placeholder={'수정할 비밀번호를 입력하세요'} onChangeText={(text) => setpw(text)}></TextInput>
                     </Box>
                 </Box>
 
                 <Box style={{ marginTop: '10%', flexDirection: 'column', justifyContent:'space-around' }}>
                     <Box style={{ marginLeft: '3%', flexDirection: 'row' }}>
-                        <Text style={{fontSize:'18', }}>부가 정보</Text>
+                        <Text style={{fontSize:18, }}>부가 정보</Text>
                     </Box>
                     <Box style={{ marginLeft : '3%', flexDirection : 'row'}}>
-                        <Text style={{fontSize:'16',}}>생년 월일</Text>
+                        <Text style={{fontSize:16,}}>생년 월일</Text>
                         <Text style={{marginLeft:'3%', fontSize:14}}>{data.data.birthday}</Text>
                     </Box>
                     <Box style={{ marginLeft : '3%', flexDirection : 'row'}}>
-                        <Text style={{fontSize:'16',}}>이메일</Text>
+                        <Text style={{fontSize:16,}}>이메일</Text>
                         <Text style={{marginLeft:'3%', fontSize:14}}>{data.data.email}</Text>
                     </Box>
                 </Box>

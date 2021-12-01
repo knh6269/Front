@@ -27,10 +27,6 @@ export default function order_list({ navigation }) {
             navigation.navigate('review');
     }
     
-    const order_list_detail=()=>{
-            navigation.navigate('order_list_detail');
-    }
-
     const get_order_list=async()=>{
         let me=(await AsyncStorage.getItem('user_id'));
         const response = await fetch(`https://extreme-kor.herokuapp.com/reservation/orderlist?id=${me}`);
@@ -45,31 +41,30 @@ export default function order_list({ navigation }) {
     const renderActivity = ({ item, index }) => (
                 <Box>
                     <Box style={{ backgroundColor:'white', marginTop:'5%', borderWidth:1, paddingLeft:'3%', paddingRight:'3%' }}>
-                        <HStack space={1} marginRight={'3%'} justifyContent={'space-between'}>
-                            <Text>2021.11.13</Text>
-                            <TouchableOpacity>
-                                <Box style={{justifyContent:'center'}}>
-                                    <HStack>
-                                        <Text fontSize={14} color={'#4f8bc2'} justifyContent={'center'}>주문 상세보기</Text>
-                                        <IconA name="right" size={14} justifyContent={'center'}></IconA>
-                                    </HStack>
+                        <Box style={{flexDirection:'row', justifyContent:'space-between'}}>
+                            <Text style={{color:'#c4c4c4', fontSize:14, fontWeight:'bold'}}>{item.Activity_time.date}</Text>
+                            <TouchableOpacity onPress={()=>navigation.navigate('order_list_detail', {orderListData:item})}>
+                                <Box style={{flexDirection:'row', alignContent:'center', alignItems:'center'}}>
+                                    <Text fontSize={14} style={{color : '#4f8bc2', justifyContent:'center', textAlign:'center'}}>주문 상세보기</Text>
+                                    <IconA name="right" size={14} color={'#4f8bc2'} style={{ justifyContent: 'center', textAlign: 'center' }}></IconA>
                                 </Box>
                             </TouchableOpacity>
-                        </HStack>
+                        </Box>
                         
                         <Box style={{ marginTop: '3%', }}>
-                            <Text style={{fontSize:16, fontWeight:'bold'}}>구입한 상품명</Text>
+                            <Text style={{fontSize:16, fontWeight:'bold'}}>{item.Activity.activity_name}</Text>
                             <Box style={{flexDirection:'row', marginTop: '3%',}}>
                                 <Image
                                     source={{
                                         uri: item.Activity.Activity_images[0].image_url
                                     }}
-                                    style={{width:73, height:73}}
+                                    style={{width:100, height:100}}
                                     alt="trans_1" />
-                                <Box style={{flexDirection:'column', marginLeft:'3%', fontSize:14}}>
+                                <Box style={{flexDirection:'column', justifyContent:'space-around', marginLeft:'3%', }}>
                                     <Text style={{fontSize:14}}>{item.Activity.activity_name}</Text>
-                                    <Text>이용 날짜</Text>
-                                    <Text style={{fontSize:14}}>{item.payment}원</Text>
+                                    <Text style={{fontSize: 14 }}>{item.payment}원</Text>
+                                    <Text style={{fontSize:14}}>{item.Activity.activity_price}원</Text>
+                                    <Text style={{fontSize:14}}>{item.people}인</Text>
                                 </Box>    
                             </Box>
 
@@ -77,7 +72,7 @@ export default function order_list({ navigation }) {
 
                             <Box style={{marginBottom:'5%', marginTop:'5%', justifyContent: 'space-around', flexDirection:'row'}}>
                                 <Button style={{ fontSize:14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} ><Text>리뷰쓰기</Text></Button>
-                                <Button style={{ fontSize:14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} ><Text>환불신청</Text></Button>
+                                <Button style={{ fontSize:14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} ><Text>예약취소</Text></Button>
                             </Box>
                         </Box>
                     </Box>  
@@ -87,13 +82,11 @@ export default function order_list({ navigation }) {
     if(order_list){
     return (
         <NativeBaseProvider>
-            <Box style={{ flexDirection: 'row', marginTop: '5%' }}>
-                <HStack>
+            <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
                 <TouchableOpacity onPress={()=>navigation.goBack()}>
-                        <IconM name="navigate-before" size={25} style={{}}></IconM>
-                    </TouchableOpacity>
-                    <Text fontSize={20}>주문 내역</Text>
-                </HStack>
+                    <IconM name="navigate-before" size={25} style={{}}></IconM>
+                </TouchableOpacity>
+                <Text marginLeft={'3%'} fontSize={20}>주문 내역</Text>
             </Box>
 
             <FlatList
