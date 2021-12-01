@@ -65,7 +65,7 @@ export default function user_info({ navigation }) {
         <NativeBaseProvider>
             <ScrollView style={{backgroundColor:'white'}}>
                 <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-                    <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.goBack()}>
                         <IconM name="navigate-before" size={25} style={{}}></IconM>
                     </TouchableOpacity>
                     <Image

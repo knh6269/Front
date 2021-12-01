@@ -104,7 +104,7 @@ export default function register_activity() {
         return (
             <NativeBaseProvider>
                 <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingLeft: '5%', borderWidth: 0.5 }}>
-                    <TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.goBack()}>
                         <IconM name="navigate-before" size={25} style={{}}></IconM>
                     </TouchableOpacity>
                     <Text marginLeft={'3%'} fontSize={20}>액티비티 등록</Text>

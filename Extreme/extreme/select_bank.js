@@ -31,7 +31,7 @@ export default function select_bank({navigation}) {
     return (
         <NativeBaseProvider>
             <Box style={{flexDirection: 'row', marginTop:50}}>
-                <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <IconM name="navigate-before" size={25} style={{ }}></IconM>
                 </TouchableOpacity>
             </Box>
