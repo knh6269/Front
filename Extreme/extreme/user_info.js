@@ -11,6 +11,7 @@ import{
     Button
 }from 'native-base';
 import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
+import Loading from "./test";
 
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
@@ -64,7 +65,7 @@ export default function user_info({ navigation }) {
     return (
         <NativeBaseProvider>
             <ScrollView style={{backgroundColor:'white'}}>
-                <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center', borderWidth:1}}>
+                <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
                     <TouchableOpacity onPress={()=>navigation.goBack()}>
                         <IconM name="navigate-before" size={25} style={{}}></IconM>
                     </TouchableOpacity>
@@ -120,8 +121,6 @@ export default function user_info({ navigation }) {
   );}
   else 
   return(
-    <NativeBaseProvider>
-      <View><Text>dd</Text></View>
-      </NativeBaseProvider>
-  )}
+    <Loading/>
+)}
 }

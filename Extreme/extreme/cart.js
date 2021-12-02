@@ -115,16 +115,14 @@ const delete_cart=(reservation_id)=>{
       </TouchableOpacity>
     </Box>
     <Box style={{flexDirection:'row', marginTop:'3%'}}>
-      <Box style={{flexDirection:'row',}}>
-          <Box style={{ flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
-            <Checkbox borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} defaultIsChecked={true} onPress={()=>checkbox_data(index)}></Checkbox>
-            <Image
-              source={{
-                  uri: item.Activity.Activity_images[0].image_url
-              }}
-              style={{borderRadius:10, marginLeft:'3%', width:70, height:70}}
-              alt="trans_1" />
-          </Box>
+      <Box style={{ flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
+        <Checkbox borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} defaultIsChecked={true} onPress={()=>checkbox_data(index)}></Checkbox>
+        <Image
+          source={{
+              uri: item.Activity.Activity_images[0].image_url
+          }}
+          style={{borderRadius:10, marginLeft:'3%', width:70, height:70}}
+          alt="trans_1" />
       </Box>
       
       <Box style={{height:70, flexDirection:'column', marginLeft:'5%', justifyContent:'space-between'}}>

@@ -80,27 +80,27 @@ export default function My_page({navigation}) {
                 </Box>
                 
                 <Box style={{ marginTop: '10%', marginLeft: '10%', marginRight: '10%', flexDirection:'column'}}>
-                    <Box style={{ flexDirection: 'row', alignContent:'center', alignItems:'center'}}>
                     <TouchableOpacity onPress={ww}>
-                        <IconM name="navigate-before" size={25} style={{}}>
-                            <Text style={{fontSize:18, textAlign:'center'}}>회원 정보 수정</Text>
-                        </IconM>
+                        <Box style={{ flexDirection: 'row', alignContent: 'center', alignItems: 'center' }}>
+                            <IconM name="navigate-before" size={25} style={{ justifyContent: 'center', textAlign: 'center' }}></IconM>
+                            <Text fontSize={16} style={{justifyContent:'center', textAlign:'center'}}>회원 정보 수정</Text>
+                        </Box>
                     </TouchableOpacity>
-                    </Box>
-                    <Box style={{ flexDirection: 'row', alignContent:'center', alignItems:'center'}}>
+
                     <TouchableOpacity onPress={order_list}>
-                        <IconM name="navigate-before" size={25} style={{}}>
-                            <Text style={{fontSize:18}}>주문 내역</Text>
-                        </IconM>
+                        <Box style={{ flexDirection: 'row', alignContent: 'center', alignItems: 'center' }}>
+                            <IconM name="navigate-before" size={25} style={{ justifyContent: 'center', textAlign: 'center' }}></IconM>
+                            <Text fontSize={16} style={{justifyContent:'center', textAlign:'center'}}>주문 내역</Text>
+                        </Box>
                     </TouchableOpacity>
-                    </Box>
-                    <Box style={{ flexDirection: 'row', alignContent:'center', alignItems:'center'}}>
+
                     <TouchableOpacity onPress={logout}>
-                        <IconM name="navigate-before" size={25} style={{}}>
-                            <Text style={{fontSize:18}}>로그아웃</Text>
-                        </IconM>
+                        <Box style={{ flexDirection: 'row', alignContent: 'center', alignItems: 'center' }}>
+                            <IconM name="navigate-before" size={25} style={{ justifyContent: 'center', textAlign: 'center' }}></IconM>
+                            <Text fontSize={16} style={{justifyContent:'center', textAlign:'center'}}>로그아웃</Text>
+                        </Box>
                     </TouchableOpacity>
-                    </Box>
+
                 </Box>
 
                 <Box marginTop='10%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
@@ -112,9 +112,10 @@ export default function My_page({navigation}) {
                 </Box>
                 
             </ScrollView >
+
             <View style={{ width: Width, height: '11%', }}>
-                    <Under navigation={navigation}></Under>
-                </View>
+                <Under navigation={navigation}></Under>
+            </View>
 
         </NativeBaseProvider>
     );}
