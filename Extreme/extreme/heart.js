@@ -1,6 +1,6 @@
 import React, {useState, Component, useEffect } from "react";
 import {
-    Dimensions, FlatList} from "react-native"
+    Dimensions, FlatList, Alert} from "react-native"
 import{
     NativeBaseProvider,
     Box,
@@ -28,26 +28,56 @@ export default function heart({navigation}){
     //업체 이름: data[0].Activity.Company.company_name
     //이미지 경로: data[0].Activity.Activity_images[0].image_url
     const [data, setData] = useState(); //연휘야 여기 담겨있어~
+    const [userInfo, setUserInfo] = useState(); //연휘야 여기 담겨있어~
+
 
     const get_heart = async () => {
-        
         let me = (await AsyncStorage.getItem('user_id'));
+        setUserInfo(me)
         const response = await fetch(`https://extreme-kor.herokuapp.com/hearts?id=${me}`);
         const json = await response.json();
         console.log(json)
         setData(json.data);
+        console.log(json.data)
     }
     useEffect(() => {
         get_heart();
     }, []);
 
-  
+    const delete_item = async(activity_id)=>{
+        const sample={
+            user_id:userInfo,
+            activity_id : activity_id
+        }
+        console.log(userInfo)
+
+        const response= await fetch('https://extreme-kor.herokuapp.com/heart/del', {
+            method:'POST',
+            headers:{
+            'Content-Type':'application/json',
+        },
+            body:JSON.stringify(sample)
+        })
+        console.log(sample)
+        const json=await response.json();       
+        console.log(json);
+        get_heart();
+
+
+    }
+    const delete_heart=(activity_id)=>{
+        Alert.alert( "","정말 삭제하시겠습니까?",[{text:"네", onPress:()=>delete_item(activity_id)},{text:"아니요"}])
+    
+      }
+    
     const renderActivity = ({ item }) => (
         <Box style={{borderColor:'#898989', borderWidth:0.5, backgroundColor:'white', width:Width/2, padding : '3%'}}>
             <Box style={{marginBottom:'3%'}}>
+            <TouchableOpacity onPress={()=>delete_heart(item.activity_id)}>
                 <IconA name="close" size={25} style={{marginLeft:'5%'}}></IconA>
+                </TouchableOpacity>
             </Box>
-            <TouchableOpacity onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
+            <TouchableOpacity onPress={()=>navigation.navigate('activity_detail', {activity_id:item.activity_id})}>
                 <Image
                     source={{
                         uri: item.Activity.Activity_images[0].image_url

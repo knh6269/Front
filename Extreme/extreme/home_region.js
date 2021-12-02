@@ -27,6 +27,7 @@ export default function home_region({ navigation }) {
         const json = await response1.json();
         if (json.success) {
           setData(json.data)
+          console.log(json.data)
         }
       
     }

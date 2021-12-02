@@ -60,7 +60,8 @@ useEffect(() => {
     }
   }
   const go_purchase=()=>{
-    setCheckIndex(checkindex.sort())
+    let value=checkindex.sort()
+    setCheckIndex(value)
     console.log(checkindex)
 
     let send_purchase=[]
@@ -81,11 +82,18 @@ useEffect(() => {
     navigation.navigate('purchase', {purchase_Data:[cart[index]]})
   }
 
+  const delete_cart=()=>{
+    Alert.alert( "","정말 삭제하시겠습니까?",[{text:"네",},{text:"아니요"}])
+
+  }
+
 
   const renderActivity = ({ item, index }) => (
     <Box style={{ backgroundColor:'white', marginTop: '3%', paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', borderWidth:1}}>
     <Box style={{flexDirection:'row-reverse',}}>
+    <TouchableOpacity onPress={()=>delete_cart()}>
       <IconA marginLeft={'5%'} name="close" size={25}></IconA>
+      </TouchableOpacity>
     </Box>
     <Box style={{flexDirection:'row', marginTop:'3%'}}>
       <Box style={{flexDirection:'row',}}>

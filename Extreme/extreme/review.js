@@ -21,6 +21,7 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 export default function review({ navigation }) {
+const [review_activity_id, setReviewActivieyID] = useState(navigation.state.params.review_activity_id)
 const [review_write,setRev]=useState();
 const [star,setStar]=useState();
 
@@ -75,13 +76,13 @@ const [starValue,setStartValue]=useState([
     
   let submit=async()=>{
     let me=(await AsyncStorage.getItem('user_id'));
-    let activity_id=(await AsyncStorage.getItem('activity_id'));
     const sample={
         content:review_write,
         star:star,
         user_id:me,
-        activity_id:activity_id
+        activity_id:review_activity_id
     };
+    console.log(sample)
 
     const response=await fetch("https://extreme-kor.herokuapp.com/review",{
         method:"POST",
@@ -94,8 +95,9 @@ const [starValue,setStartValue]=useState([
     const json=await response.json();
     console.log(json);
     if(json.success){
-        navigation.navigate('activity_detail');
+        navigation.goBack();
     }
+    
   }
     return (
         <NativeBaseProvider>

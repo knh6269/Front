@@ -27,15 +27,12 @@ export default function order_list({ navigation }) {
             navigation.navigate('review');
     }
     
-    const order_list_detail=()=>{
-            navigation.navigate('order_list_detail');
-    }
-
     const get_order_list=async()=>{
         let me=(await AsyncStorage.getItem('user_id'));
         const response = await fetch(`https://extreme-kor.herokuapp.com/reservation/orderlist?id=${me}`);
         const json = await response.json();
         setOrderList(json.data);
+        console.log(json.data)
     }
 
     useEffect(() => {
@@ -46,8 +43,8 @@ export default function order_list({ navigation }) {
                 <Box>
                     <Box style={{ backgroundColor:'white', marginTop:'5%', borderWidth:1, paddingLeft:'3%', paddingRight:'3%' }}>
                         <HStack space={1} marginRight={'3%'} justifyContent={'space-between'}>
-                            <Text>2021.11.13</Text>
-                            <TouchableOpacity>
+                            <Text>{item.Activity_time.date}</Text>
+                            <TouchableOpacity onPress={()=>navigation.navigate('order_list_detail', {orderListData:item})}>
                                 <Box style={{justifyContent:'center'}}>
                                     <HStack>
                                         <Text fontSize={14} color={'#4f8bc2'} justifyContent={'center'}>주문 상세보기</Text>
@@ -58,7 +55,7 @@ export default function order_list({ navigation }) {
                         </HStack>
                         
                         <Box style={{ marginTop: '3%', }}>
-                            <Text style={{fontSize:16, fontWeight:'bold'}}>구입한 상품명</Text>
+                            <Text style={{fontSize:16, fontWeight:'bold'}}>{item.Activity.activity_name}</Text>
                             <Box style={{flexDirection:'row', marginTop: '3%',}}>
                                 <Image
                                     source={{
@@ -68,7 +65,7 @@ export default function order_list({ navigation }) {
                                     alt="trans_1" />
                                 <Box style={{flexDirection:'column', marginLeft:'3%', fontSize:14}}>
                                     <Text style={{fontSize:14}}>{item.Activity.activity_name}</Text>
-                                    <Text>이용 날짜</Text>
+                                    <Text>{item.Activity.date}</Text>
                                     <Text style={{fontSize:14}}>{item.payment}원</Text>
                                 </Box>    
                             </Box>
@@ -76,8 +73,8 @@ export default function order_list({ navigation }) {
                             <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={1}></Box>
 
                             <Box style={{marginBottom:'5%', marginTop:'5%', justifyContent: 'space-around', flexDirection:'row'}}>
-                                <Button style={{ fontSize:14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} ><Text>리뷰쓰기</Text></Button>
-                                <Button style={{ fontSize:14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} ><Text>환불신청</Text></Button>
+                                <Button style={{ fontSize:14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={()=>navigation.navigate('review', {review_activity_id:item.Activity.id})} ><Text>리뷰쓰기</Text></Button>
+                                <Button style={{ fontSize:14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} ><Text>예약취소</Text></Button>
                             </Box>
                         </Box>
                     </Box>  
@@ -87,13 +84,11 @@ export default function order_list({ navigation }) {
     if(order_list){
     return (
         <NativeBaseProvider>
-            <Box style={{ flexDirection: 'row', marginTop: '5%' }}>
-                <HStack>
+            <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
                 <TouchableOpacity onPress={()=>navigation.goBack()}>
-                        <IconM name="navigate-before" size={25} style={{}}></IconM>
-                    </TouchableOpacity>
-                    <Text fontSize={20}>주문 내역</Text>
-                </HStack>
+                    <IconM name="navigate-before" size={25} style={{}}></IconM>
+                </TouchableOpacity>
+                <Text marginLeft={'3%'} fontSize={20}>주문 내역</Text>
             </Box>
 
             <FlatList
