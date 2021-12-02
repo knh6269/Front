@@ -9,7 +9,8 @@ import {
     VStack,
     Image,
     NativeBaseProvider,
-    Button
+  Button,
+    View
 } from 'native-base';
 import { TouchableOpacity, ScrollView, StyleSheet } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -20,12 +21,10 @@ const Height = Dimensions.get('window').height;
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import Loading from "./test";
-// import { ControlledPropUpdatedSelectedItem } from "native-base/lib/typescript/components/composites/Typeahead/useTypeahead/types";
+import Under from "./under";
 
-export default function cart({navigation}){
-  //액비티티 이름 :data[0].Activity.activity_name  
-// 업체 이름: data[0].Activity.Company.company_name
-// 이미지 경로: data[0].Activity.Activity_images[0].image_url
+export default function cart({ navigation }) {
+
 
   let [cart,setCart]=useState()
   let [checkindex,setCheckIndex]=useState()
@@ -169,32 +168,36 @@ const delete_cart=(reservation_id)=>{
 
   return (
     <NativeBaseProvider>
-      <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-      <TouchableOpacity onPress={()=>navigation.goBack()}>
-          <IconM name="navigate-before" size={25} style={{}}></IconM>
-        </TouchableOpacity>
-          <Image
-              source={require('./images/cart-outline.png')}
-              style={{width: 40, height: 40, }}
-              alt="trans_1"
-          />
-        <Text marginLeft={'3%'} fontSize={20}>장바구니</Text>
-      </Box>
-
-      <FlatList
-        data={cart}
-        renderItem={renderActivity}
-        keyExtractor={(Activity) => Activity.activity_name}
-        extraData={cart}
-        alt={"Dd"}
-        numColumns={1} />
-   
-      <Box style={{backgroundColor:'white', paddingTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%',}}>
-        <Button style={{backgroundColor:'#4f8bc2', }} onPress={go_purchase}>
-          <Text style={{fontSize:20, color:'white'}}>구매하기</Text>
-        </Button>
-      </Box>
-          
+      
+        <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
+        <TouchableOpacity onPress={()=>navigation.goBack()}>
+            <IconM name="navigate-before" size={25} style={{}}></IconM>
+          </TouchableOpacity>
+            <Image
+                source={require('./images/cart-outline.png')}
+                style={{width: 40, height: 40, }}
+                alt="trans_1"
+            />
+          <Text marginLeft={'3%'} fontSize={20}>장바구니</Text>
+        </Box>
+      <ScrollView>
+        <FlatList
+          data={cart}
+          renderItem={renderActivity}
+          keyExtractor={(Activity) => Activity.activity_name}
+          extraData={cart}
+          alt={"Dd"}
+          numColumns={1} />
+    </ScrollView>
+        <Box style={{backgroundColor:'white', paddingTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%',}}>
+          <Button style={{backgroundColor:'#4f8bc2', }} onPress={go_purchase}>
+            <Text style={{fontSize:20, color:'white'}}>구매하기</Text>
+          </Button>
+        </Box>
+      
+        <View style={{ width: Width, height: '11%', }}>
+          <Under navigation={navigation}></Under>
+        </View>
     </NativeBaseProvider>
   )}
 

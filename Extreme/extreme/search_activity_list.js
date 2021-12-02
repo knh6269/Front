@@ -15,12 +15,13 @@ import {
 } from 'native-base';
 const Width = Dimensions.get('window').width;
 
-
+import Under from "./under";
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 
-export default function search_activity_list({route, navigation}) {
+export default function search_activity_list({ route, navigation }) {
+    const layout = useWindowDimensions();
     const [state, setState] = useState(navigation.state.params.search);
     const [data, setData] = useState()     
   
@@ -68,15 +69,20 @@ export default function search_activity_list({route, navigation}) {
                 </TouchableOpacity>
                 <Text marginLeft={'3%'} fontSize={20}>{state}의 검색 결과</Text>
             </Box>
-            <Box style={{width:Width, paddingTop:'3%', paddingLeft:'3%', paddingRight:'3%'}}>
-                <FlatList
-                    data={data}
-                    renderItem={renderActivity}
-                    keyExtractor={(Activity) => Activity.activity_name}
-                    extraData={state}
-                    alt={"Dd"}
-                    numColumns={1} />
-            </Box>
+            <ScrollView>
+                <Box style={{width:Width, paddingTop:'3%', paddingLeft:'3%', paddingRight:'3%'}}>
+                    <FlatList
+                        data={data}
+                        renderItem={renderActivity}
+                        keyExtractor={(Activity) => Activity.activity_name}
+                        extraData={state}
+                        alt={"Dd"}
+                        numColumns={1} />
+                </Box>
+            </ScrollView>
+            <View style={{ width: layout.width, height: '11%', }}>
+                <Under navigation={navigation}></Under>
+            </View>
         </NativeBaseProvider>
     )
 }

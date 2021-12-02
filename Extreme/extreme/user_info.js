@@ -8,10 +8,12 @@ import{
     Image,
     View,
     VStack,
-    Button
+    Button,
+
 }from 'native-base';
 import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
 import Loading from "./test";
+import Under from "./under";
 
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
@@ -116,7 +118,10 @@ export default function user_info({ navigation }) {
                     <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2' }} onPress={modify} >
                         <Text style={{ fontSize: 20, fontWeight:'bold'}}>수정완료</Text>
                     </Button>
-                </Box>
+            </Box>
+             <View style={{ width: Width, height: '11%', }}>
+          <Under navigation={navigation}></Under>
+        </View>
         </NativeBaseProvider>
   );}
   else 

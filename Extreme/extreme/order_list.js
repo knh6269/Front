@@ -11,6 +11,7 @@ import{
     Button,
 }from 'native-base';
 import { TouchableOpacity, ScrollView, TextInput, } from "react-native";
+import Under from "./under";
 
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
@@ -89,14 +90,18 @@ export default function order_list({ navigation }) {
                 </TouchableOpacity>
                 <Text marginLeft={'3%'} fontSize={20}>주문 내역</Text>
             </Box>
-
-            <FlatList
-                data={order_list}
-                renderItem={renderActivity}
-                keyExtractor={(Activity) => Activity.activity_name}
-                extraData={order_list}
-                alt={"Dd"}
-                numColumns={1} />
+            <ScrollView>
+                <FlatList
+                    data={order_list}
+                    renderItem={renderActivity}
+                    keyExtractor={(Activity) => Activity.activity_name}
+                    extraData={order_list}
+                    alt={"Dd"}
+                    numColumns={1} />
+            </ScrollView>
+            <View style={{ width: Width, height: '11%', }}>
+                <Under navigation={navigation}></Under>
+            </View>
         </NativeBaseProvider>
   )}
   else{

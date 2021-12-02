@@ -8,7 +8,8 @@ import{
     Text,
     VStack,
     Image,
-    Button
+    Button,
+    View
 }from 'native-base';
 import { TouchableOpacity,ScrollView } from "react-native";
 const Width = Dimensions.get('window').width;
@@ -19,14 +20,12 @@ import IconM from 'react-native-vector-icons/MaterialIcons';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Loading from "./test";
+import Under from "./under";
+
 export default function heart({navigation}){
         const pressHandler=()=>{
             navigation.navigate('각 페이지로 이동');
         }
-
-    //액티비티 이름: data[0].Activity.activity_name
-    //업체 이름: data[0].Activity.Company.company_name
-    //이미지 경로: data[0].Activity.Activity_images[0].image_url
     const [data, setData] = useState(); //연휘야 여기 담겨있어~
     const [userID, setUserID] = useState(); //연휘야 여기 담겨있어~
 
@@ -96,6 +95,7 @@ export default function heart({navigation}){
     if(data){
     return (
         <NativeBaseProvider >
+
             <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
                 <TouchableOpacity onPress={()=>navigation.goBack()}>
                     <IconM name="navigate-before" size={25} style={{}}></IconM>
@@ -107,6 +107,7 @@ export default function heart({navigation}){
                 />
                 <Text marginLeft={'3%'} fontSize={20}>찜</Text>
             </Box>
+            <ScrollView>
             <FlatList
                 data={data}
                 renderItem={renderActivity}
@@ -114,7 +115,10 @@ export default function heart({navigation}){
                 extraData={data}
                 alt={"Dd"}
                 numColumns={2} />
-
+            </ScrollView>
+            <View style={{ width: Width, height: '11%', }}>
+          <Under navigation={navigation}></Under>
+        </View>
         </NativeBaseProvider>
     )}
     else{

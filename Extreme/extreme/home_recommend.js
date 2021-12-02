@@ -1,4 +1,4 @@
-import React, { Component,  useState } from "react";
+import React, { Component,  useState, useEffect } from "react";
 import { Image, ScrollView, Dimensions, } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import {Picker} from '@react-native-picker/picker';
@@ -20,7 +20,7 @@ import IconM from 'react-native-vector-icons/MaterialIcons';
 import Loading from "./test";
 const width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
-// const [selectedLanguage, setSelectedLanguage] = useState();
+
 
 const IMAGES = {
     image1: require('./images/1.jpg'),
@@ -34,6 +34,7 @@ const IMAGES = {
 
 
 export default function Recommend() {
+    const [travelData, settravelData] = useState();
 
     const [images, setImages] = useState([
         { id: '1', image: IMAGES.image1, activity_name: '구룡스포츠' },
@@ -45,6 +46,24 @@ export default function Recommend() {
         { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠' }
     ]);
     const [selectedValue, setSelectedValue] = useState("select");
+    const getTravel= async () => {
+        try {
+         const response = await fetch(`https://extreme-kor.herokuapp.com/travel?location=경기도`);
+            const json = await response.json();
+            if (json.success) {
+               settravelData(json.data);
+               console.log(json.data)
+            }
+       } catch (error) {
+         console.error(error);
+       }
+     }
+     
+     useEffect(() => {
+       getTravel();
+     }, []);
+   
+   
     
     return (
         <NativeBaseProvider>
@@ -78,7 +97,7 @@ export default function Recommend() {
                     
                         <Carousel
                             layout='default'
-                            data={images}
+                            data={travelData}
                             sliderWidth={width}
                             itemWidth={width / 3}
                             inactiveSlideScale={1} //슬라이드들 크기 같게
@@ -87,15 +106,15 @@ export default function Recommend() {
                             contentContainerCustomStyle={{ overflow: 'hidden', width: width / 3 * (7) }} //마지막 7은 원소의 개수
                             renderItem={({ item, index }) => (
                                 <View>
-                                    <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
+                                    <TouchableOpacity style={{width: '100%', height: 150,}}>
                                     <Image
-                                            key={item.activity_name}
-                                            style={{ width: '90%', height: '85%', borderRadius:10 }}
-                                            resizeMode='contain'
-                                            source={item.image}
+                                        key={item.travel_name}
+                                        style={{ width: '90%', height: '85%', borderRadius:10 }}
+                                        resizeMode='contain'
+                                        source={{uri:item.Travel_images[0].image_url}}
                                         alt="profile"
-                                    />
-                                    <Text>{item.activity_name}</Text>
+                                />
+                                    <Text>{item.travel_name}</Text>
                                     </TouchableOpacity>
                                 </View>
                             )}
@@ -189,13 +208,3 @@ export default function Recommend() {
         </NativeBaseProvider>
     );}
   
-
-
-
-const styles = StyleSheet.create({
-    activity: {
-        height: 120,
-        
-        marginTop:8
-    }
-});
