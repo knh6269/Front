@@ -12,8 +12,6 @@ import {
     View
 } from 'native-base';
 import { TouchableOpacity, ScrollView } from "react-native";
-import { colorStyle } from 'styled-system';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
