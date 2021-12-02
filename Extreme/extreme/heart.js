@@ -28,12 +28,12 @@ export default function heart({navigation}){
     //업체 이름: data[0].Activity.Company.company_name
     //이미지 경로: data[0].Activity.Activity_images[0].image_url
     const [data, setData] = useState(); //연휘야 여기 담겨있어~
-    const [userInfo, setUserInfo] = useState(); //연휘야 여기 담겨있어~
+    const [userID, setUserID] = useState(); //연휘야 여기 담겨있어~
 
 
     const get_heart = async () => {
         let me = (await AsyncStorage.getItem('user_id'));
-        setUserInfo(me)
+        setUserID(me)
         const response = await fetch(`https://extreme-kor.herokuapp.com/hearts?id=${me}`);
         const json = await response.json();
         console.log(json)
@@ -46,10 +46,10 @@ export default function heart({navigation}){
 
     const delete_item = async(activity_id)=>{
         const sample={
-            user_id:userInfo,
+            user_id:userID,
             activity_id : activity_id
         }
-        console.log(userInfo)
+        console.log(userID)
 
         const response= await fetch('https://extreme-kor.herokuapp.com/heart/del', {
             method:'POST',

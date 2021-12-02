@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react'
-import { Dimensions, } from "react-native"
+import { Dimensions, Alert} from "react-native"
 import {
     NativeBaseProvider,
     Box,
@@ -23,6 +23,7 @@ import IconI from 'react-native-vector-icons/Ionicons';
 import IconE from 'react-native-vector-icons/Entypo';
 import { flexDirection } from 'styled-system';
 import Loading from './test';
+import heart from './heart';
 
 
 export default function Order_list_detail({ navigation }) {
@@ -54,6 +55,34 @@ export default function Order_list_detail({ navigation }) {
         catch (error) {
             console.error(error);
         }
+    }
+    const heart=async(activity_id)=>{
+        let me = (await AsyncStorage.getItem('user_id'));
+        if(me){
+        const sample={
+            user_id:me,
+            activity_id : activity_id
+        }
+        console.log(me)
+
+        const response= await fetch('https://extreme-kor.herokuapp.com/heart', {
+            method:'POST',
+            headers:{
+            'Content-Type':'application/json',
+        },
+            body:JSON.stringify(sample)
+        })
+        console.log(sample)
+        const json=await response.json();       
+        console.log(json);
+        Alert.alert( "","찜이 되었습니다",[{text:"확인"}])
+
+    }
+        else{
+            Alert.alert( "","로그인이 필요한 기능입니다",[{text:"확인"}])
+
+        }
+
     }
     const get_review = async () => {
         console.log("로딩"+activity_id)
@@ -113,6 +142,10 @@ export default function Order_list_detail({ navigation }) {
                             <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{info.activity_name}</Text>
                             <Text>{info.star}</Text>
                         </Box>
+                        <TouchableOpacity onPress={()=>heart(info.id)}>
+                            <Text>찜</Text>
+                        </TouchableOpacity>
+
 
                         <Box style={{ marginTop:'5%', marginBottom:'5%', marginLeft:'3%', marginRight:'3%',}}>
                             <Button style={{ borderRadius:10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: 'white' }}>
