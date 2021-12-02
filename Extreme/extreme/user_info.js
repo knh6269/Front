@@ -65,14 +65,14 @@ export default function user_info({ navigation }) {
     return (
         <NativeBaseProvider>
             <ScrollView style={{backgroundColor:'white'}}>
-                <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-                    <TouchableOpacity onPress={()=>navigation.goBack()}>
+                <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom: '5%', paddingLeft: '5%', borderWidth: 0.5 }}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
                         <IconM name="navigate-before" size={25} style={{}}></IconM>
                     </TouchableOpacity>
                     <Text marginLeft={'3%'} fontSize={20}>내 정보 수정</Text>
                 </Box>
                     
-                <Box style={{borderWidth:1, marginTop:'3%', flexDirection: 'column', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
+                <Box style={{marginTop:'3%', flexDirection: 'column', justifyContent:'center', alignContent:'center', alignItems:'center'}}>
                     <Image
                         source={{ uri: data.data.profile_image }}
                         style={{ width: 100, height: 100, borderRadius: 50 }} />
@@ -107,16 +107,16 @@ export default function user_info({ navigation }) {
                         <Text style={{marginLeft:'3%', fontSize:14}}>{data.data.email}</Text>
                     </Box>
                 </Box>
+            </ScrollView>
 
                 <Box style={{ marginTop:'10%', paddingLeft:'3%', paddingRight:'3%', height: '15%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
-                    <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
+                <Button style={{ borderRadius: 20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={() => navigation.goBack()}>
                         <Text style={{ fontSize: 20, fontWeight:'bold'}}>취소하기</Text>
                     </Button>
                     <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2' }} onPress={modify} >
                         <Text style={{ fontSize: 20, fontWeight:'bold'}}>수정완료</Text>
                     </Button>
                 </Box>
-            </ScrollView>
         </NativeBaseProvider>
   );}
   else 
