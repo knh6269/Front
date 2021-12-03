@@ -13,6 +13,8 @@ import {
   View,
   flex
 } from 'native-base';
+import Under from "./under";
+
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
@@ -20,7 +22,10 @@ import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 
-export default function activity_list({navigation}) {
+export default function activity_list({ navigation }) {
+    
+    const layout = useWindowDimensions();
+
     const [state, setState] = useState(navigation.state.params.type);
     const [data, setData] = useState()     
   
@@ -68,16 +73,20 @@ export default function activity_list({navigation}) {
                 </TouchableOpacity>
                 <Text marginLeft={'3%'} fontSize={20}>{state}의 목록</Text>
             </Box>
-            
-            <Box style={{width:Width, paddingTop:'3%', paddingLeft:'3%', paddingRight:'3%'}}>
-                <FlatList
-                    data={data}
-                    renderItem={renderActivity}
-                    keyExtractor={(Activity) => Activity.activity_name}
-                    extraData={state}
-                    alt={"Dd"}
-                    numColumns={1} />
-            </Box>
+            <ScrollView>
+                <Box style={{width:Width, paddingTop:'3%', paddingLeft:'3%', paddingRight:'3%'}}>
+                    <FlatList
+                        data={data}
+                        renderItem={renderActivity}
+                        keyExtractor={(Activity) => Activity.activity_name}
+                        extraData={state}
+                        alt={"Dd"}
+                        numColumns={1} />
+                </Box>
+            </ScrollView>
+            <View style={{ width: layout.width, height: '11%', }}>
+                <Under navigation={navigation}></Under>
+            </View>
         </NativeBaseProvider>
     )
 }

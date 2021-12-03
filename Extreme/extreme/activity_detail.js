@@ -19,8 +19,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 var window_width = Dimensions.get('window').width;
 var window_height = Dimensions.get('window').height;
 
-import IconI from 'react-native-vector-icons/Ionicons';
-import IconE from 'react-native-vector-icons/Entypo';
+import IconF from 'react-native-vector-icons/Feather';
+import IconA from 'react-native-vector-icons/AntDesign';
+
 import { flexDirection } from 'styled-system';
 import Loading from './test';
 import heart from './heart';
@@ -110,126 +111,145 @@ export default function Order_list_detail({ navigation }) {
     return(
         <NativeBaseProvider>
             <ScrollView> 
-               
-                    <Box>
-                        <Carousel
-                            layout='default'
-                            data={info.Activity_images}
-                            sliderWidth={window_width}
-                            itemWidth={window_width}
-                            inactiveSlideScale={1} //슬라이드들 크기 같게
-                            inactiveSlideOpacity={1} //슬라이드 투명도
-                            activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-                            contentContainerCustomStyle={{ overflow: 'hidden' }} //마지막 7은 원소의 개수
-                            renderItem={({ item}) => (
-                                <View>
-                                    <View style={{width: '100%', height: window_width,}}> 
-                                        <Image
-                                                key={item.activity_name}
-                                                style={{ width: '100%', height: '100%', borderRadius:10 }}
-                                                resizeMode='contain'
-                                                source={{uri:item.image_url}}
-                                                alt="profile"
-                                        />
-                                    </View>
+                <Box>
+                    <Carousel
+                        layout='default'
+                        data={info.Activity_images}
+                        sliderWidth={window_width}
+                        itemWidth={window_width}
+                        inactiveSlideScale={1} //슬라이드들 크기 같게
+                        inactiveSlideOpacity={1} //슬라이드 투명도
+                        activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                        contentContainerCustomStyle={{ overflow: 'hidden' }} //마지막 7은 원소의 개수
+                        renderItem={({ item}) => (
+                            <View>
+                                <View style={{width: '100%', height: window_width,}}> 
+                                    <Image
+                                            key={item.activity_name}
+                                            style={{ width: '100%', height: '100%', borderRadius:10 }}
+                                            resizeMode='contain'
+                                            source={{uri:item.image_url}}
+                                            alt="profile"
+                                    />
                                 </View>
-                            )}
-                        />      
-                    </Box>
-                        
-                    <Box style={{backgroundColor:'white'}}>
+                            </View>
+                        )}
+                    />      
+                </Box>
+                    
+                <Box style={{ backgroundColor: 'white' }}>
+                
+                    <Box>
                         <Box style={{paddingTop:'3%', marginLeft:'3%', marginRight:'3%', flexDirection:'row', justifyContent:'space-between'}}>
                             <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{info.activity_name}</Text>
-                            <Text>{info.star}</Text>
-                        </Box>
-                        <TouchableOpacity onPress={()=>heart(info.id)}>
-                            <Text>찜</Text>
-                        </TouchableOpacity>
-
-
-                        <Box style={{ marginTop:'5%', marginBottom:'5%', marginLeft:'3%', marginRight:'3%',}}>
-                            <Button style={{ borderRadius:10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: 'white' }}>
-                                <Text style={{ fontSize: 20, fontWeight: 'bold', }}>날짜 및 시간 선택</Text>
-                            </Button>
+                            <Text>{info.star}점</Text>
                         </Box>
                     </Box>
-                        
-                    <Box marginTop='3%'></Box>
 
-                    <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
-                        <Box style={{marginLeft: '3%', marginRight:'3%',}}>
+
+                    <Box style={{ marginTop:'5%', marginBottom:'5%', marginLeft:'3%', marginRight:'3%',}}>
+                        <Button onPress={()=>navigation.navigate('reservation_calender', {activity_id:info.activity_id})} style={{ borderRadius:10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: 'white' }}>
+                            <Text style={{ fontSize: 20, fontWeight: 'bold', }}>날짜 및 시간 선택</Text>
+                        </Button>
+                    </Box>
+                </Box>
+                    
+                <Box marginTop='3%'></Box>
+
+                <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
+                    <Box style={{ marginLeft: '3%', marginRight: '3%', }}>
+                        <Box style={{flexDirection:'row', justifyContent:'space-between', marginRight:'30%'}}>
                             <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{info.activity_price}원</Text>
-                            <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>상품 정보</Text>
+                            
                         </Box>
-
-                        <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={0.5}></Box>
-
-                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
-                            <Text style={{color:'#acacac'}}>업체명</Text>
-                            <Text>{info.Company.company_name}</Text>
-                        </Box>
-
-                        <Box style={{marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
-                            <Text style={{color:'#acacac'}}>주소</Text>
-                            <Text>{info.address}</Text>
-                        </Box>
-
-                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', justifyContent:'space-between'}}>
-                            <Text style={{color:'#acacac'}}>이용 가능 시간</Text>
-                            <Text>하모닉스</Text>
-                        </Box>
+                        <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>상품 정보</Text>
                     </Box>
 
-                    <Box marginTop='3%'></Box>
+                    <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={0.5}></Box>
 
-                    <Box onPress={console.log(review)} style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
-                        <Box style={{marginLeft: '5%', marginRight:'5%',}}>
-                            <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>고객 리뷰</Text>
-                        </Box>
-                   
+                    <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'10%', flexDirection:'row', justifyContent:'space-between'}}>
+                        <Text style={{color:'#acacac'}}>업체명</Text>
+                        <Text>{info.Company.company_name}</Text>
+                    </Box>
+
+                    <Box style={{marginLeft:'3%', marginRight:'10%', flexDirection:'row', justifyContent:'space-between'}}>
+                        <Text style={{color:'#acacac'}}>주소</Text>
+                        <Text>{info.address}</Text>
+                    </Box>
+
+                </Box>
+
+                <Box marginTop='3%'></Box>
+
+                <Box onPress={console.log(review)} style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
+                    <Box style={{marginLeft: '5%', marginRight:'5%',}}>
+                        <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>고객 리뷰</Text>
+                    </Box>
+                
+                    
+                </Box> 
+
+                {(review)&&review.map((review)=>{
+                    return(
                         
-                    </Box> 
-                   
-                
-                   
-                
-                            {(review)&&review.map((review)=>{
-                                return(
-                                    
-                                <View>
-                                    <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
-    
-                                    <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'row', }}>
-                                        <Image
-                                            source={{
-                                                uri:review.User.profile_image,
-                                            }}
-                                            style={{width:40, height:40, borderRadius:50}}
-                                            alt="trans_1" />
-                                        <Box style={{marginLeft:'3%'}}>
-                                            <Text style={{fontSize:12}}>{review.User.nickname}</Text>
-                                            <Box style={{flexDirection:'row'}}>
-                                                <Text>{review.star}</Text>
-                                                <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>{review.created_at}</Text>
-                                            </Box>
+                    <View>
+                        <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
+                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'column', }}>
+                            <Box  style={{flexDirection:'row',}}>
+                                <Image
+                                source={{
+                                    uri:review.User.profile_image,
+                                }}
+                                style={{width:50, height:50, borderRadius:50}}
+                                alt="trans_1" />
+                                <Box style={{flexDirection:'column', marginLeft:'5%'}}>
+                                        <Text style={{ fontSize: 12 }}>{review.User.nickname}</Text>
+                                        <Box style={{flexDirection:'row'}}>
+                                            <Text>
+                                                {
+                                                    review.star == 1
+                                                        ? <Box style={{flexDirection:'row'}}><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#d0d0d0'} size={25}></IconA><IconA name="star" color={'#d0d0d0'}  size={25}></IconA><IconA name="star" color={'#d0d0d0'} size={25}></IconA><IconA name="star" color={'#d0d0d0'} size={25}></IconA></Box>
+                                                        : (
+                                                            review.star == 2
+                                                                ? <Box style={{flexDirection:'row'}}><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#d0d0d0'} size={25}></IconA><IconA name="star" color={'#d0d0d0'} size={25}></IconA><IconA name="star" color={'#d0d0d0'} size={25}></IconA></Box>
+                                                                : (
+                                                                    review.star == 3
+                                                                    ? <Box style={{flexDirection:'row'}}><IconA name="star" size={25} color={'#f1ec6f'}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#d0d0d0'} size={25} color={'#d0d0d0'} ></IconA><IconA name="star" size={25} color={'#d0d0d0'} ></IconA></Box>
+                                                                        : (
+                                                                            review.star == 4
+                                                                                ? <Box style={{ flexDirection: 'row' }}><IconA name="star" size={25} color={'#f1ec6f'} borderWidth={1}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#d0d0d0'} size={25}></IconA></Box>
+                                                                                : <Box style={{flexDirection:'row'}}><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA><IconA name="star" color={'#f1ec6f'} size={25}></IconA></Box>
+                                                                                        
+                                                                                
+                                                                        )
+                                                                )
+                                                        )
+
+                                                }
+                                               
+                                            </Text>
+                                            <Text style={{marginLeft:'3%', fontSize:10, color:'#898989'}}>{review.created_at}</Text>
                                         </Box>
-                                    </Box>
-    
-                                    <Box style={{ marginTop: '3%', marginLeft: '3%', marginRight: '3%' }}>
-                                        <Text>{review.content}</Text>
-                                    </Box>
-                                    </View>);
-                                
-                            })}
+                                </Box>
+                            </Box>
+                        </Box>
+                        <Box style={{ marginTop: '3%', marginLeft: '3%', marginRight: '3%' }}>
+                            <Text>{review.content}</Text>
+                        </Box>
+                        </View>);
+                    
+                })}
                             
             </ScrollView >
 
             <Box style={{ paddingLeft:'3%', paddingRight:'3%', height: '15%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
-                <Button onPress={()=>navigation.navigate('review', {activity_id:info.id})} style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
-                    <Text style={{ fontSize: 20, fontWeight:'bold'}}>리뷰쓰기</Text>
-                </Button>
-                <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
-                    <Text style={{ fontSize: 20, fontWeight:'bold'}}>환불신청</Text>
+                <Box style={{ borderRadius:10, width : '20%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white', alignContent:'center', alignItems:'center'}}>
+                    <TouchableOpacity onPress={() => heart(info.id)}>
+                        <IconA name="heart" size={25}></IconA>
+                    </TouchableOpacity>
+                </Box>
+                <Button style={{ borderRadius:10, width: '80%', borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2',  }} >
+                    <Text style={{ fontSize: 20, fontWeight:'bold', color:'white'}}>구매하기</Text>
                 </Button>
             </Box>
         </NativeBaseProvider>
@@ -239,7 +259,9 @@ export default function Order_list_detail({ navigation }) {
      
         <Loading/>
         
-    )}
+        )
+    }
+    
   
  
 }

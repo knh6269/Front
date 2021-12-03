@@ -22,36 +22,7 @@ var window_width = Dimensions.get('window').width;
 var window_height = Dimensions.get('window').height;
     
 export default function home_activity({ navigation , route}) {
-  // const suffing = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const suffing = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const rafting = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const paragliding = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const bungee_jumping = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const water_leisure = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const ski = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const snowboard = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const sky_diving = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
-  // const zip_wire = () => {
-  //   navigation.navigate('각 페이지로 이동');
-  // }
+
   const [activityData, setactivityData] = useState();
   const [activityData2, setactivityData2] = useState();
   const [activityData3, setactivityData3] = useState();
@@ -59,12 +30,7 @@ export default function home_activity({ navigation , route}) {
 
   let acti
   let acti2
-  let newest_activity;
-  let recommend_activity;
-  // const move=type=>{
-  //   navigation.navigate('activity_list', {name:type})
-  //   console.log(type)
-  // }
+
   const getActivity = async () => {
      try {
       const response = await fetch(`https://extreme-kor.herokuapp.com/activities`);
@@ -207,14 +173,14 @@ export default function home_activity({ navigation , route}) {
                       <Image
                             key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
-                            resizeMode='contain'
+                            resizeMode='stretch'
                         source={{uri:item.Activity_images[0].image_url}}
                         alt="profile"
                       />
-                      <HStack>
-                          <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>추천</Text>
-                          <Text>{item.activity_name}</Text>
-                      </HStack>
+                      <View style={{marginTop:'3%', flexDirection:'row', justifyContent:'center',}}>
+                          <Text style={{ color: 'white', backgroundColor:'#4f8bc2' }}>추천</Text>
+                          <Text style={{ marginLeft : '3%', fontSoze:10}}>{item.activity_name}</Text>
+                      </View>
                       </TouchableOpacity>
                   </View>
                 )}
@@ -239,14 +205,14 @@ export default function home_activity({ navigation , route}) {
                       <Image
                             key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
-                            resizeMode='contain'
+                            resizeMode='stretch'
                             source={{uri:item.Activity_images[0].image_url}}
                             alt="profile"
                       />
-                      <HStack>
-                          <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#4f8bc2' }}>인기</Text>
-                          <Text>{item.activity_name}</Text>
-                      </HStack>
+                      <View style={{marginTop:'3%', flexDirection:'row', justifyContent:'center',}}>
+                          <Text style={{ color: 'white', backgroundColor:'#4f8bc2' }}>인기</Text>
+                          <Text style={{ marginLeft : '3%', fontSoze:10}}>{item.activity_name}</Text>
+                      </View>
                       </TouchableOpacity>
                   </View>
                 )}
@@ -271,14 +237,14 @@ export default function home_activity({ navigation , route}) {
                       <Image
                             key={item.activity_name}
                             style={{ width: '90%', height: '85%', borderRadius:10 }}
-                            resizeMode='contain'
+                            resizeMode='stretch'
                             source={{uri:item.Activity_images[0].image_url}}
                             alt="profile"
                       />
-                      <HStack>
-                          <Text style={{ textAlign : 'center', color: 'white', backgroundColor:'#ff3e3e' }}>최신</Text>
-                          <Text>{item.activity_name}</Text>
-                      </HStack>
+                      <View style={{marginTop:'3%', flexDirection:'row', justifyContent:'center',}}>
+                          <Text style={{ color: 'white', backgroundColor:'#ff3e3e' }}>인기</Text>
+                          <Text style={{ marginLeft : '3%', fontSoze:10}}>{item.activity_name}</Text>
+                      </View>
                       </TouchableOpacity>
                   </View>
                 )}

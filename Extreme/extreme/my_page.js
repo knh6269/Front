@@ -88,14 +88,14 @@ export default function My_page({navigation}) {
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={order_list}>
-                        <Box style={{ flexDirection: 'row', alignContent: 'center', alignItems: 'center' }}>
+                        <Box style={{ flexDirection: 'row', alignContent: 'center', alignItems: 'center', marginTop:'5%' }}>
                             <IconM name="navigate-before" size={25} style={{ justifyContent: 'center', textAlign: 'center' }}></IconM>
                             <Text fontSize={16} style={{justifyContent:'center', textAlign:'center'}}>주문 내역</Text>
                         </Box>
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={logout}>
-                        <Box style={{ flexDirection: 'row', alignContent: 'center', alignItems: 'center' }}>
+                        <Box style={{ flexDirection: 'row', alignContent: 'center', alignItems: 'center', marginTop:'5%' }}>
                             <IconM name="navigate-before" size={25} style={{ justifyContent: 'center', textAlign: 'center' }}></IconM>
                             <Text fontSize={16} style={{justifyContent:'center', textAlign:'center'}}>로그아웃</Text>
                         </Box>
@@ -116,7 +116,6 @@ export default function My_page({navigation}) {
             <View style={{ width: Width, height: '11%', }}>
                 <Under navigation={navigation}></Under>
             </View>
-
         </NativeBaseProvider>
     );}
     else 
@@ -125,14 +124,3 @@ export default function My_page({navigation}) {
        )}
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-        paddingTop: 50,
-        flex: 0.8
-    },
-    menu: {
-        paddingLeft: 40,
-        padding: 10
-    }
-});
