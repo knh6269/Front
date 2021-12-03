@@ -148,7 +148,7 @@ export default function Order_list_detail({ navigation }) {
 
 
                     <Box style={{ marginTop:'5%', marginBottom:'5%', marginLeft:'3%', marginRight:'3%',}}>
-                        <Button style={{ borderRadius:10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: 'white' }}>
+                        <Button onPress={()=>navigation.navigate('reservation_calender', {activity_id:info.activity_id})} style={{ borderRadius:10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: 'white' }}>
                             <Text style={{ fontSize: 20, fontWeight: 'bold', }}>날짜 및 시간 선택</Text>
                         </Button>
                     </Box>
@@ -177,10 +177,6 @@ export default function Order_list_detail({ navigation }) {
                         <Text>{info.address}</Text>
                     </Box>
 
-                    <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'10%', flexDirection:'row', justifyContent:'space-between'}}>
-                        <Text style={{color:'#acacac'}}>이용 가능 시간</Text>
-                        <Text>하모닉스</Text>
-                    </Box>
                 </Box>
 
                 <Box marginTop='3%'></Box>
