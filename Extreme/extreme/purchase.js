@@ -146,13 +146,13 @@ export default function purchase({ navigation }) {
 
                         <Box style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop:'3%'}}>
                             <Box>
-                                <Button onPress={zz} style={{backgroundColor:'#a9a9a9', borderRadius:20 }}>
-                                    <Text style={{fontSize:20, color:'white'}}>계좌 이체</Text>
+                                <Button style={{backgroundColor:'#a9a9a9', borderRadius:20 }}>
+                                    <Text style={{fontSize:20, color:'white'}}>현장 결제</Text>
                                 </Button>
                             </Box>
                             <Box>
                             <Button style={{backgroundColor:'#a9a9a9', borderRadius:20 }}>
-                                <Text style={{fontSize:20, color:'white'}}>카카오페이</Text>
+                                <Text style={{fontSize:20, color:'white'}}>무통장 입금</Text>
                             </Button>
                             </Box>
                         </Box>

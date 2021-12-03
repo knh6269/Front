@@ -45,14 +45,25 @@ export default function Recommend() {
         { id: '6', image: IMAGES.image6, activity_name: '구룡스포츠' },
         { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠' }
     ]);
-    const [selectedValue, setSelectedValue] = useState("select");
+    const [selectedValue, setSelectedValue] = useState("경기도");
+
+    const selectItem=(itemValue)=>{
+        setSelectedValue(itemValue)
+        getTravel()
+
+    }
     const getTravel= async () => {
+        console.log("item", selectedValue)
         try {
-         const response = await fetch(`https://extreme-kor.herokuapp.com/travel?location=경기도`);
+         const response = await fetch(`https://extreme-kor.herokuapp.com/travel?location=${selectedValue}`);
             const json = await response.json();
             if (json.success) {
                settravelData(json.data);
                console.log(json.data)
+            }
+            else{
+                console.log("없서")
+                // settravelData();
             }
        } catch (error) {
          console.error(error);
@@ -60,8 +71,8 @@ export default function Recommend() {
      }
      
      useEffect(() => {
-       getTravel();
-     }, []);
+        getTravel();
+     }, [selectedValue]);
    
    
     
@@ -73,19 +84,19 @@ export default function Recommend() {
                         <View style={{ height:Height/15, flexDirection: 'row', justifyContent: 'space-between', alignContent:'center', alignItems:'center' }}>
                             <Text style={{fontSize:20}}>지역별 여행지</Text>
                             <Picker selectedValue={selectedValue}
-                                style={{  width: 130, color:'blue'}}
-                                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                                style={{  width: 130, color:'black'}}
+                                itemStyle={{height: 30, transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }]}}
+                                onValueChange={(itemValue, itemIndex) => selectItem(itemValue)}
                             >
-                                <Picker.Item label="select" value="select" />
-                                <Picker.Item label="경기" value="경기" />
-                                <Picker.Item label="강원" value="강원" />
-                                <Picker.Item label="충북" value="충북" />
-                                <Picker.Item label="충남" value="충남" />
-                                <Picker.Item label="경북" value="경북" />
-                                <Picker.Item label="경남" value="경남" />
-                                <Picker.Item label="전북" value="전북" />
-                                <Picker.Item label="전남" value="전남" />
-                                <Picker.Item label="제주" value="제주" />
+                                <Picker.Item label="경기" value="경기도" />
+                                <Picker.Item label="강원" value="강원도" />
+                                <Picker.Item label="충북" value="충청북도" />
+                                <Picker.Item label="충남" value="충청남도" />
+                                <Picker.Item label="경북" value="경상북도" />
+                                <Picker.Item label="경남" value="경상남도" />
+                                <Picker.Item label="전북" value="전라북도" />
+                                <Picker.Item label="전남" value="전라남도" />
+                                <Picker.Item label="제주" value="제주도" />
                             </Picker>
                         </View>
                     </View>
@@ -208,3 +219,13 @@ export default function Recommend() {
         </NativeBaseProvider>
     );}
   
+
+
+
+const styles = StyleSheet.create({
+    activity: {
+        height: 120,
+        
+        marginTop:8
+    }
+});

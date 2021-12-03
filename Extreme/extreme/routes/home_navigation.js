@@ -29,7 +29,8 @@ import activity_list from "../activity_list";
 import search_activity_list from "../search_activity_list";
 
 
-const screens = { home:{
+const screens = {
+     home:{
     screen:home,
     navigationOptions: () => ({ headerShown: false, })
 },
