@@ -23,14 +23,23 @@ import IconM from 'react-native-vector-icons/MaterialIcons';
 import Loading from "./test";
 import Under from "./under";
 
+const IMAGES = {
+  image1: require('./images/cloud.png'),
+  image2: require('./images/snow.png'),
+  image3: require('./images/그림7.png'),
+  image4: require('./images/그림8.png'),
+  image5: require('./images/partlyClear.png'),
+  image6: require('./images/snowAndRaindy.png'),
+};
 export default function cart({ navigation }) {
+
 
 
   let [cart,setCart]=useState()
   let [checkindex,setCheckIndex]=useState()
 
   var send_index=[]
-
+  let today="눈";
   let zz=async()=>{
     let me=(await AsyncStorage.getItem('user_id'));
     const response = await fetch(`https://extreme-kor.herokuapp.com/cart?id=${me}`);
@@ -134,12 +143,36 @@ const delete_cart=(reservation_id)=>{
         <Text style={{fontSize:14}}>{item.Activity_time.date.slice(0,4)}.{item.Activity_time.date.slice(4,6)}.{item.Activity_time.date.slice(6,8)}</Text>
         <Text style={{fontSize:14}}>{item.Activity_time.hour}</Text>
 
-        <Image
-          source={{
-              uri: 'https://wallpaperaccess.com/full/317502.jpg',
-          }}
-          style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
-          alt="trans_1" />
+
+        {today=="맑음"&&<Image
+        source={ require('./images/그림8.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+
+        {today=="구름많음"&&<Image
+        source={ require('./images/cloud.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+
+        {today=="눈"&&<Image
+        source={ require('./images/snow.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+
+        {today=="비"&&<Image
+        source={ require('./images/그림7.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+      
+        {today=="흐림"&&<Image
+        source={ require('./images/cloud.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+
+        {today=="눈/비"&&<Image
+        source={ require('./images/snow.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
       </Box>
     </Box>
 

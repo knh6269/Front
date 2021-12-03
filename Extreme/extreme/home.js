@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useWindowDimensions, TouchableOpacity, ScrollView, TextInput, Dimensions, SafeAreaView} from 'react-native';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { TabView, TabBar,SceneMap } from 'react-native-tab-view';
 import Home_region from "./home_region";
 import Home_recommend from "./home_recommend";
 import Home_activity from "./home_activity";
@@ -18,6 +18,7 @@ import {
 import IconF from 'react-native-vector-icons/Feather';
 import IconA from 'react-native-vector-icons/AntDesign';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { backgroundColor } from 'styled-system';
 export default function Home({ navigation }) {
   const layout = useWindowDimensions();
 
@@ -31,9 +32,9 @@ export default function Home({ navigation }) {
   const renderScene = ({ route }) => {
     switch (route.key) {
       case 'activity':
-        return <Home_activity navigation={navigation} />
+        return <Home_activity  navigation={navigation} />
       case 'region':
-        return <Home_region navigation={navigation} />
+        return <Home_region  navigation={navigation} />
       case 'recommend':
         return <Home_recommend navigation={navigation} />
       case 'recommend1':
