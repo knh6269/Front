@@ -62,8 +62,6 @@ export default function heart({navigation}){
         const json=await response.json();       
         console.log(json);
         get_heart();
-
-
     }
     const delete_heart=(activity_id)=>{
         Alert.alert( "","정말 삭제하시겠습니까?",[{text:"네", onPress:()=>delete_item(activity_id)},{text:"아니요"}])

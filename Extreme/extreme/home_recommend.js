@@ -1,7 +1,7 @@
-import React, { Component,  useState } from "react";
-import { Image, ScrollView, Dimensions, Picker } from 'react-native';
+import React, { Component,  useState, useEffect } from "react";
+import { Image, ScrollView, Dimensions, } from 'react-native';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-//import Icon from 'react-native-vector-icons/AntDesign';
+import {Picker} from '@react-native-picker/picker';
 
 import {
     View,
@@ -18,8 +18,9 @@ import {
 
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import Loading from "./test";
-const { width } = Dimensions.get('window');
-// const [selectedLanguage, setSelectedLanguage] = useState();
+const width = Dimensions.get('window').width;
+const Height = Dimensions.get('window').height;
+
 
 const IMAGES = {
     image1: require('./images/1.jpg'),
@@ -33,6 +34,7 @@ const IMAGES = {
 
 
 export default function Recommend() {
+    const [travelData, settravelData] = useState();
 
     const [images, setImages] = useState([
         { id: '1', image: IMAGES.image1, activity_name: '구룡스포츠' },
@@ -44,19 +46,37 @@ export default function Recommend() {
         { id: '7', image: IMAGES.image7, activity_name: '구룡스포츠' }
     ]);
     const [selectedValue, setSelectedValue] = useState("select");
+    const getTravel= async () => {
+        try {
+         const response = await fetch(`https://extreme-kor.herokuapp.com/travel?location=경기도`);
+            const json = await response.json();
+            if (json.success) {
+               settravelData(json.data);
+               console.log(json.data)
+            }
+       } catch (error) {
+         console.error(error);
+       }
+     }
+     
+     useEffect(() => {
+       getTravel();
+     }, []);
+   
+   
     
     return (
         <NativeBaseProvider>
             <ScrollView>
-                <Box>
-                    <View style={{marginTop:16}}> 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={{marginLeft : 17, fontSize:20}}>지역별 여행지</Text>
+                <Box style={{marginLeft:'3%', marginRight:'3%'}}>
+                    <View style={{marginTop:'5%'}}> 
+                        <View style={{ height:Height/15, flexDirection: 'row', justifyContent: 'space-between', alignContent:'center', alignItems:'center' }}>
+                            <Text style={{fontSize:20}}>지역별 여행지</Text>
                             <Picker selectedValue={selectedValue}
-                                    style={{ height: 30, width: 130 }}
-                                    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                                style={{  width: 130, color:'blue'}}
+                                onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
                             >
-                                <Picker.Item label="지역선택" value="select" />
+                                <Picker.Item label="select" value="select" />
                                 <Picker.Item label="경기" value="경기" />
                                 <Picker.Item label="강원" value="강원" />
                                 <Picker.Item label="충북" value="충북" />
@@ -68,122 +88,121 @@ export default function Recommend() {
                                 <Picker.Item label="제주" value="제주" />
                             </Picker>
                         </View>
+                    </View>
+
+                    <View style={{flexDirection: 'row',justifyContent: 'center',alignItems: 'center',}}>
+                        <TouchableOpacity>
+                            <IconM name="navigate-before" size={25}></IconM>
+                        </TouchableOpacity>
                     
-                        <View style={styles.activity}>
-                            <TouchableOpacity>
-                                <IconM name="navigate-before" size={25} style={{ marginTop: '100%', flex: 1, }}></IconM>
-                            </TouchableOpacity>
-                        
-                            <Carousel
-                                layout='default'
-                                data={images}
-                                sliderWidth={width}
-                                itemWidth={width / 3}
-                                inactiveSlideScale={1} //슬라이드들 크기 같게
-                                inactiveSlideOpacity={1} //슬라이드 투명도
-                                activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-                                contentContainerCustomStyle={{ overflow: 'hidden', width: width / 3 * (7) }} //마지막 7은 원소의 개수
-                                renderItem={({ item, index }) => (
-                                    <View style={{ width: '80%', height: '100%', }}>
-                                        <Image
-                                            key={index}
-                                            style={{ width: '100%', height: '60%', borderRadius:50 }}
-                                            resizeMode='contain'
-                                            source={item.image}
-                                        />
-                                        <Text style={{ marginTop:'5%', textAlign:'center', color: 'black' }}>{item.activity_name}</Text>
-                                    </View>
+                        <Carousel
+                            layout='default'
+                            data={travelData}
+                            sliderWidth={width}
+                            itemWidth={width / 3}
+                            inactiveSlideScale={1} //슬라이드들 크기 같게
+                            inactiveSlideOpacity={1} //슬라이드 투명도
+                            activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                            contentContainerCustomStyle={{ overflow: 'hidden', width: width / 3 * (7) }} //마지막 7은 원소의 개수
+                            renderItem={({ item, index }) => (
+                                <View>
+                                    <TouchableOpacity style={{width: '100%', height: 150,}}>
+                                    <Image
+                                        key={item.travel_name}
+                                        style={{ width: '90%', height: '85%', borderRadius:10 }}
+                                        resizeMode='contain'
+                                        source={{uri:item.Travel_images[0].image_url}}
+                                        alt="profile"
+                                />
+                                    <Text>{item.travel_name}</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            )}
+                        />
 
-                                )}
-                            />
-
-                            <TouchableOpacity>
-                                <IconM name="navigate-next" size={25} style={{ marginTop: '100%', flex: 1, }}></IconM>
-                            </TouchableOpacity>
-                        </View>
+                        <TouchableOpacity>
+                            <IconM name="navigate-next" size={25}></IconM>
+                        </TouchableOpacity>
                     </View>
 
                     <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5} color={'#acacac'}></Box>
 
-                    <View style={{marginTop:16}}> 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={{marginLeft : 17, fontSize:20}}>내 주변 여행지</Text>
-                        </View>
+                    <Text style={{fontSize:20, marginTop:'3%'}}>내 주변 여행지</Text>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
+                        <TouchableOpacity>
+                            <IconM name="navigate-before" size={25}></IconM>
+                        </TouchableOpacity>
                     
-                        <View style={styles.activity}>
-                            <TouchableOpacity>
-                                <IconM name="navigate-before" size={25} style={{ marginTop: '100%', flex: 1, }}></IconM>
-                            </TouchableOpacity>
-                        
-                            <Carousel
-                                layout='default'
-                                data={images}
-                                sliderWidth={width}
-                                itemWidth={width / 3}
-                                inactiveSlideScale={1} //슬라이드들 크기 같게
-                                inactiveSlideOpacity={1} //슬라이드 투명도
-                                activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-                                contentContainerCustomStyle={{ overflow: 'hidden', width: width / 3 * (7) }} //마지막 7은 원소의 개수
-                                renderItem={({ item, index }) => (
-                                    <View style={{ width: '80%', height: '100%', }}>
-                                        <Image
-                                            key={index}
-                                            style={{ width: '100%', height: '60%', borderRadius:50 }}
+                        <Carousel
+                            layout='default'
+                            data={images}
+                            sliderWidth={width}
+                            itemWidth={width / 3}
+                            inactiveSlideScale={1} //슬라이드들 크기 같게
+                            inactiveSlideOpacity={1} //슬라이드 투명도
+                            activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                            contentContainerCustomStyle={{ overflow: 'hidden', width: width / 3 * (7) }} //마지막 7은 원소의 개수
+                            renderItem={({ item, index }) => (
+                                <View>
+                                    <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
+                                    <Image
+                                            key={item.activity_name}
+                                            style={{ width: '90%', height: '85%', borderRadius:10 }}
                                             resizeMode='contain'
                                             source={item.image}
-                                        />
-                                        <Text style={{ marginTop:'5%', textAlign:'center', color: 'black' }}>{item.activity_name}</Text>
-                                    </View>
+                                        alt="profile"
+                                    />
+                                    <Text>{item.activity_name}</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            )}
+                        />
 
-                                )}
-                            />
-
-                            <TouchableOpacity>
-                                <IconM name="navigate-next" size={25} style={{ marginTop: '100%', flex: 1, }}></IconM>
-                            </TouchableOpacity>
-                        </View>
+                        <TouchableOpacity>
+                            <IconM name="navigate-next" size={25}></IconM>
+                        </TouchableOpacity>
                     </View>
 
                     <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5} color={'#acacac'}></Box>
 
-                    <View style={{marginTop:16}}> 
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text style={{marginLeft : 17, fontSize:20}}>예약지 주변 여행지</Text>
-                        </View>
+                    <Text style={{fontSize:20, marginTop:'3%'}}>예약지 주변 여행지</Text>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
+                        <TouchableOpacity>
+                            <IconM name="navigate-before" size={25}></IconM>
+                        </TouchableOpacity>
                     
-                        <View style={styles.activity}>
-                            <TouchableOpacity>
-                                <IconM name="navigate-before" size={25} style={{ marginTop: '100%', flex: 1, }}></IconM>
-                            </TouchableOpacity>
-                        
-                            <Carousel
-                                layout='default'
-                                data={images}
-                                sliderWidth={width}
-                                itemWidth={width / 3}
-                                inactiveSlideScale={1} //슬라이드들 크기 같게
-                                inactiveSlideOpacity={1} //슬라이드 투명도
-                                activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
-                                contentContainerCustomStyle={{ overflow: 'hidden', width: width / 3 * (7) }} //마지막 7은 원소의 개수
-                                renderItem={({ item, index }) => (
-                                    <View style={{ width: '80%', height: '100%', }}>
-                                        <Image
-                                            key={index}
-                                            style={{ width: '100%', height: '60%', borderRadius:50 }}
+                        <Carousel
+                            layout='default'
+                            data={images}
+                            sliderWidth={width}
+                            itemWidth={width / 3}
+                            inactiveSlideScale={1} //슬라이드들 크기 같게
+                            inactiveSlideOpacity={1} //슬라이드 투명도
+                            activeSlideAlignment={'start'} //슬라이드 맨앞에서 시작
+                            contentContainerCustomStyle={{ overflow: 'hidden', width: width / 3 * (7) }} //마지막 7은 원소의 개수
+                            renderItem={({ item, index }) => (
+                                <View>
+                                    <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
+                                    <Image
+                                            key={item.activity_name}
+                                            style={{ width: '90%', height: '85%', borderRadius:10 }}
                                             resizeMode='contain'
                                             source={item.image}
-                                        />
-                                        <Text style={{ marginTop:'5%', textAlign:'center', color: 'black' }}>{item.activity_name}</Text>
-                                    </View>
+                                        alt="profile"
+                                    />
+                                    <Text>{item.activity_name}</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            )}
+                        />
 
-                                )}
-                            />
-
-                            <TouchableOpacity>
-                                <IconM name="navigate-next" size={25} style={{ marginTop: '100%', flex: 1, }}></IconM>
-                            </TouchableOpacity>
-                        </View>
+                        <TouchableOpacity>
+                            <IconM name="navigate-next" size={25}></IconM>
+                        </TouchableOpacity>
                     </View>
+
                 </Box>
             </ScrollView >
         </NativeBaseProvider>
@@ -195,9 +214,7 @@ export default function Recommend() {
 const styles = StyleSheet.create({
     activity: {
         height: 120,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+        
         marginTop:8
     }
 });

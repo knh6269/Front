@@ -36,11 +36,11 @@ const screens = {
         navigationOptions: () => ({ headerShown: false, })
     },
 
-        reservation_calender: {
+    reservation_calender: {
         screen: reservation_calender,
         navigationOptions: () => ({ headerShown: false, })
     },
-   
+
 
 
     login: {
