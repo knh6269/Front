@@ -107,8 +107,8 @@ export default function My_page({navigation}) {
                 
                 <Box style={{ marginTop: '10%', marginLeft: '5%', marginRight: '5%', flexDirection:'column'}}>
                     <Text>문의</Text>
-                    <Text style={{marginTop:'3%'}}>E-mail : aaa@aaa.com</Text>
-                    <Text style={{marginTop:'3%'}}>Tel : 000-0000-0000</Text>
+                    <Text style={{marginTop:'3%'}}>E-mail : qnrqjrm03@naver.com</Text>
+                    <Text style={{marginTop:'3%'}}>Tel : 010-2764-7036</Text>
                 </Box>
                 
             </ScrollView >
