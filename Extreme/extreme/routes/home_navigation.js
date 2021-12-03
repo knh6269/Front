@@ -29,22 +29,26 @@ import activity_list from "../activity_list";
 import search_activity_list from "../search_activity_list";
 
 
-const screens = {
-
-            home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-
-        reservation_calender: {
+const screens = { home:{
+    screen:home,
+    navigationOptions: () => ({ headerShown: false, })
+},
+    reservation_calender: {
         screen: reservation_calender,
         navigationOptions: () => ({ headerShown: false, })
     },
    
-
-
+      activity_detail: {
+        screen: activity_detail,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+   
     login: {
         screen: login,
+        navigationOptions: () => ({ headerShown: false, })
+    },
+            home:{
+        screen:home,
         navigationOptions: () => ({ headerShown: false, })
     },
     register_user:{
@@ -78,28 +82,13 @@ const screens = {
         screen:order_list,
         navigationOptions:()=>({headerShown:false,})
     },
-   
-   
-   
-    
-    activity_detail: {
-        screen: activity_detail,
-        navigationOptions: () => ({ headerShown: false, })
-    },
-   
-  
-  
-    
   
     weather_map:{
         screen:weather_map,
         navigationOptions: () => ({ headerShown: false, })
     }, 
    
-    home:{
-        screen:home,
-        navigationOptions: () => ({ headerShown: false, })
-    },
+  
     activity_list:{
         screen:activity_list,
         navigationOptions: () => ({ headerShown: false, })

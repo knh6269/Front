@@ -24,7 +24,7 @@ export default function purchase({ navigation }) {
     const coupon = () => {
         navigation.navigate('coupon');
     }
-    for(i=0;i<purchaseData.length;i++){
+    for(let i=0;i<purchaseData.length;i++){
         payment = payment + purchaseData[i].payment
         console.log(payment)
 
@@ -75,8 +75,29 @@ export default function purchase({ navigation }) {
           </Box>
 
           )
-    
-
+        const zz=()=>{
+            console.log(purchaseData[0])
+        }
+        const buy=async()=>{
+            let me=(await AsyncStorage.getItem('user_id'));
+            let sample={
+                'activity_id': purchaseData[0].Activity.id,
+                'activity_time_id':purchaseData[0].Activity_time.id,
+                'user_id': me,
+                'payment': purchaseData[0].payment,
+                'people': purchaseData[0].people 
+            }
+            let response1= await fetch('https://extreme-kor.herokuapp.com/reservation', {
+                method:'POST',
+                headers:{
+                    Accept: 'application/json',
+                    'Content-Type':"application/json",
+            },
+                body:JSON.stringify(sample)
+            }) 
+            const json=await response1.json();
+            console.log(JSON.stringify(json));
+        }
     return (
         <NativeBaseProvider>
             <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}} >
@@ -125,7 +146,7 @@ export default function purchase({ navigation }) {
 
                         <Box style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop:'3%'}}>
                             <Box>
-                                <Button style={{backgroundColor:'#a9a9a9', borderRadius:20 }}>
+                                <Button onPress={zz} style={{backgroundColor:'#a9a9a9', borderRadius:20 }}>
                                     <Text style={{fontSize:20, color:'white'}}>계좌 이체</Text>
                                 </Button>
                             </Box>
@@ -140,7 +161,7 @@ export default function purchase({ navigation }) {
             </ScrollView>
 
             <Box style={{backgroundColor:'white', paddingTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%',}}>
-                <Button style={{backgroundColor:'#4f8bc2', }}>
+                <Button onPress={buy}style={{backgroundColor:'#4f8bc2', }}>
                     <Text style={{fontSize:20, color:'white'}}>구매 완료</Text>
                 </Button>
             </Box>
