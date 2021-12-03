@@ -31,6 +31,7 @@ import IconA from 'react-native-vector-icons/AntDesign';
 import Loading from './test';
 
 export default function reservation_calender({ navigation }) {
+  const [calenderdata, setCalenderData] = useState(navigation.state.params.calender_data);
   const [data, setData] = useState();
   const [outputText, setoutputText] = useState('');
   const [outputactivity, setoutputactivity] = useState('');
@@ -44,7 +45,7 @@ export default function reservation_calender({ navigation }) {
   let calender = new Map();
   let timeoption = []
   const getData = async () => {
-    const response = await fetch(`https://extreme-kor.herokuapp.com/activity/times?id=15`);
+    const response = await fetch(`https://extreme-kor.herokuapp.com/activity/times?id=${calenderdata.id}`);
     const json = await response.json();
     setData(json.data);
     console.log(json.data)
@@ -96,7 +97,16 @@ export default function reservation_calender({ navigation }) {
     </Box>
   )
 
-
+  const purchasing=()=>{
+    if(selecthour)
+    console.log(data)
+    let payment=calenderdata.activity_price*people
+    let aa={purchase_Data:{Activity:{Activity_images:[{image_url:calenderdata.Activity_images[0].image_url}], Company:{company_name:calenderdata.Company.company_name}, activity_name:calenderdata.activity_name, activity_price:calenderdata.activity_price, id:calenderdata.id}, Activity_time:{date:outputactivity, hour:selecthour}, id:data.id, payment:payment, people:people}}
+    console.log(aa)
+    // navigation.navigate('purchase', {purchase_Data:{Activity:{Activity_images:[], Company:{company_name:calenderdata.company.company_name}}}})
+    // else Alert.alert( "","시간을 선택해주세요.",[{text:"확인"}])
+  }
+  
   if (data) {
     return (
       <NativeBaseProvider>  
@@ -140,7 +150,7 @@ export default function reservation_calender({ navigation }) {
           <Box style={{flexDirection:'row', justifyContent:'center',}}>
            <Button onPress={()=>setPeople((people)=>people+1)}><Text>+</Text></Button>
            <Text>{people}</Text>
-           <Button onPress={()=>people>0?setPeople((people)=>people-1):null}><Text>-</Text></Button>
+           <Button onPress={()=>people>1?setPeople((people)=>people-1):null}><Text>-</Text></Button>
            </Box>
           <Box style={{ flexDirection: 'row' }}>
             <FlatList
@@ -156,7 +166,7 @@ export default function reservation_calender({ navigation }) {
             <Button style={{backgroundColor:'#4f8bc2'}}>
                 <Text style={{color:'black'}}>장바구니</Text>
             </Button>
-            <Button onPress={()=>{navigation.navigate('purchase', {purchase_Data:{outputactivity,selecttime,people,user_id, selecthour}})}}style={{backgroundColor:'#4f8bc2'}}>
+            <Button onPress={purchasing} style={{backgroundColor:'#4f8bc2'}}>
                 <Text style={{color:'black'}}>바로구매</Text>
             </Button>
           </Box>

@@ -248,7 +248,7 @@ export default function Order_list_detail({ navigation }) {
                         <IconA name="heart" size={25}></IconA>
                     </TouchableOpacity>
                 </Box>
-                <Button style={{ borderRadius:10, width: '80%', borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2',  }} >
+                <Button style={{ borderRadius:10, width: '80%', borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2',  }} onPress={()=>navigation.navigate('reservation_calender', {calender_data:info})}>
                     <Text style={{ fontSize: 20, fontWeight:'bold', color:'white'}}>구매하기</Text>
                 </Button>
             </Box>
