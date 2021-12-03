@@ -19,7 +19,6 @@ const Height = Dimensions.get('window').height;
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import IconE from 'react-native-vector-icons/Entypo';
-
 export default function My_page({navigation}) {
     let [data,setData]=useState()
     

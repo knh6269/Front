@@ -17,7 +17,7 @@ const Height = Dimensions.get('window').height;
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+let today="눈";
 export default function purchase({ navigation }) {
     const [purchaseData, setPurchaseData] = useState(navigation.state.params.purchase_Data);
     var payment=0;
@@ -56,12 +56,35 @@ export default function purchase({ navigation }) {
           <Text style={{fontSize:14}}>{item.Activity_time.date}</Text>
           <Text style={{fontSize:14}}>{item.Activity_time.hour}</Text>
   
-          <Image
-            source={{
-                uri: 'https://wallpaperaccess.com/full/317502.jpg',
-            }}
-            style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
-            alt="trans_1" />
+          {today=="맑음"&&<Image
+        source={ require('./images/그림8.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+
+        {today=="구름많음"&&<Image
+        source={ require('./images/cloud.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+
+        {today=="눈"&&<Image
+        source={ require('./images/snow.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+
+        {today=="비"&&<Image
+        source={ require('./images/그림7.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+      
+        {today=="흐림"&&<Image
+        source={ require('./images/cloud.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
+
+        {today=="눈/비"&&<Image
+        source={ require('./images/snow.png')}
+        style={{borderRadius:10, marginLeft:'3%', width:40, height:40}}
+        alt="trans_1" />}
         </Box>
         </Box>
             <Box>

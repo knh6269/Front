@@ -30,6 +30,8 @@ LocaleConfig.defaultLocale = 'fr';
 import IconA from 'react-native-vector-icons/AntDesign';
 import Loading from './test';
 
+import IconM from 'react-native-vector-icons/MaterialIcons';
+import purchase from './purchase';
 export default function reservation_calender({ navigation }) {
   const [calenderdata, setCalenderData] = useState(navigation.state.params.calender_data);
   const [data, setData] = useState();
@@ -86,13 +88,13 @@ export default function reservation_calender({ navigation }) {
   const renderActivity = ({ item, index }) => (
     <Box style={{ flexDirection: 'row' }}>
       {item.reservation == true &&
-      <Button style={{ backgroundColor: 'darkgray', margin: 10 }} onPress={()=> Alert.alert( "","이미 예약된 시간입니다.",[{text:"확인"}])}><Text>{item.hour}</Text></Button>
+      <Button style={{ backgroundColor: 'darkgray', margin: 10 ,borderWidth:1,borderColor:'darkgray'}} onPress={()=> Alert.alert( "","이미 예약된 시간입니다.",[{text:"확인"}])}><Text>{item.hour}</Text></Button>
       }
       {(item.reservation != true&&selecttime!=index) &&
-      <Button style={{ backgroundColor: 'white', margin: 10 }} onPress={()=>selecttimefunctino(item, index)}><Text>{item.hour}</Text></Button>
+      <Button style={{ backgroundColor: 'white', margin: 10  ,borderWidth:1,borderColor:'darkgray'}} onPress={()=>selecttimefunctino(item, index)}><Text>{item.hour}</Text></Button>
       }
       {selecttime==index &&
-      <Button style={{ backgroundColor: 'powderblue', margin: 10 }}><Text>{item.hour}</Text></Button>
+      <Button style={{ backgroundColor: 'powderblue', margin: 10 ,borderWidth:1,borderColor:'darkgray' }}><Text>{item.hour}</Text></Button>
       }
 
     </Box>
@@ -115,7 +117,15 @@ export default function reservation_calender({ navigation }) {
   if (data) {
     return (
       <NativeBaseProvider>  
-        <Box style={{ paddingTop: 50 }}>
+        <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
+        <TouchableOpacity onPress={()=>navigation.goBack()}>
+            <IconM name="navigate-before" size={25} style={{}}></IconM>
+        </TouchableOpacity>
+          <Box style={{alignItems:'center',justifyContent:'center',alignContent:'center'}}>
+            <Text marginLeft={'3%'} fontSize={20}>{calenderdata.activity_name}의 캘린더</Text>
+          </Box>        
+        </Box>
+        <Box style={{backgroundColor:'white',marginTop:10}}>
 
           {/* const setoutputText = () */}
 
@@ -146,18 +156,14 @@ export default function reservation_calender({ navigation }) {
             disableAllTouchEventsForDisabledDays={true}
           />
         </Box>
-        <Box marginTop={'3%'} marginBottom={'5%'} borderWidth={0.5} borderColor={'#acacac'}>
-          <Box style={{flexDirection:'row', justifyContent:'center',}}>
-            <Text style={{ fontSize: 16, textAlign:'center' }}>선택된 날짜는</Text>
-            <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign:'center' }}>{outputactivity}</Text>
-            <Text style={{ fontSize: 16, textAlign:'center' }}> 입니다.</Text>
+        <ScrollView>
+        <Box backgroundColor={'white'}marginTop={'3%'} marginBottom={'5%'} borderWidth={0.5} borderColor={'#acacac'}>
+          <Box style={{padding:5,paddingTop:9,paddingBottom:9,  borderColor:'darkgray',borderBottomWidth:1,flexDirection:'row'}}>
+            <Text style={{ fontSize: 16, }}>선택된 날짜</Text>
+            <Text style={{ borderWidth:1,borderRadius:5,borderColor:'white',backgroundColor:'white',marginLeft:4,fontSize: 16, fontWeight: 'bold', textAlign:'center' }}>{outputactivity}</Text>
           </Box>
-          <Box style={{flexDirection:'row', justifyContent:'center',}}>
-           <Button onPress={()=>setPeople((people)=>people+1)}><Text>+</Text></Button>
-           <Text>{people}</Text>
-           <Button onPress={()=>people>1?setPeople((people)=>people-1):null}><Text>-</Text></Button>
-           </Box>
-          <Box style={{ flexDirection: 'row' }}>
+          <Box style={{padding:5 ,  borderColor:'darkgray',borderBottomWidth:1}}>
+            <Text style={{ fontSize: 16, }}>이용가능한 시간</Text>
             <FlatList
               data={filterdate}
               renderItem={renderActivity}
@@ -165,17 +171,31 @@ export default function reservation_calender({ navigation }) {
               extraData={data}
               alt={"Dd"}
               numColumns={5} />
+           </Box>
+           <Box style={{paddingLeft:5,paddingTop:5 , flexDirection:'row'}}>
+            <Text style={{ fontSize: 16, }}>인원수</Text>
+          </Box>
+          <Box style={{ flexDirection: 'row' }}>
+            
+          <Box style={{marginLeft:5,flexDirection:'row', justifyContent:'center',paddingBottom:10}}>
+           <Button style={{marginTop:10,height:43,width:43,backgroundColor:'white',borderWidth:1,borderColor:'darkgray',borderRadius:20}}onPress={()=>setPeople((people)=>people+1)}><Text>+</Text></Button>
+           <Text style={{padding:15}}>{people}</Text>
+           <Button style={{marginTop:10,height:43,width:43,backgroundColor:'white',borderWidth:1,borderColor:'darkgray',borderRadius:20}}onPress={()=>people>1?setPeople((people)=>people-1):null}><Text>-</Text></Button>
+           </Box>
+            
           </Box>
 
-          <Box style={{ flexDirection:'row' ,marginTop: '3%', }}>
-            <Button style={{backgroundColor:'#4f8bc2'}}>
+         
+        </Box>
+        </ScrollView>
+        <Box style={{ width:Width,flexDirection:'row'  }}>
+            <Button style={{height:Height/12,width:Width/2,backgroundColor:'#2CE0BC',borderColor:'white',borderRightWidth:1}}>
                 <Text style={{color:'black'}}>장바구니</Text>
             </Button>
-            <Button onPress={purchasing} style={{backgroundColor:'#4f8bc2'}}>
+            <Button onPress={purchasing} style={{width:Width/2,backgroundColor:'#2CE0BC'}}>
                 <Text style={{color:'black'}}>바로구매</Text>
             </Button>
           </Box>
-        </Box>
       </NativeBaseProvider>
     );
   }
