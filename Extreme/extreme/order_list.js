@@ -38,30 +38,28 @@ export default function order_list({ navigation }) {
         const response = await fetch(`https://extreme-kor.herokuapp.com/reservation/orderlist?id=${me}`);
         const json = await response.json();
         if (json.success) {
-            setOrderList(json.data);
+            let orderlist= json.data.sort((a, b)=> (a.Activity_time.date < b.Activity_time.date ? 1:-1))
+            setOrderList(orderlist);
             console.log(json.data)
             for (let i = 0; i < json.data.length; i++) {
                 let date = { year: Number(json.data[i].Activity_time.date.slice(0, 4)), month: Number(json.data[i].Activity_time.date.slice(4, 6)), day: Number(json.data[i].Activity_time.date.slice(6, 8)) }
                 dateob.push(date)
             }
-            console.log(getdate.getDay(), getdate.getFullYear(), getdate.getMonth())
-            // for (let i = 0; i < json.data.length; i++) {
-            //     if (getdate.getFullYear() >= dateob[i].year && getdate.getMonth() >= dateob[i].month && getdate.getDay() >= dateob[i].day) {
-            //         datepossible.push(1)
-            //     }
-            //     else {
-            //         datepossible.push(0)
-            //     }
-            // }
+            console.log(getdate.getDay(), getdate.getFullYear(), getdate.getMonth(), getdate.getHours(), getdate.getMinutes(), getdate.getSeconds())
+            let a = 1
+            if ( getdate.getHours()<15){
+                a +=1
+            }
+            console.log(getdate.getDay()-a, getdate.getFullYear(), getdate.getMonth()+1, getdate.getHours(), getdate.getMinutes(), getdate.getSeconds())
+
             for (let i = 0; i < json.data.length; i++) {
-                if (2021 >= dateob[i].year &&12>= dateob[i].month && 3 >= dateob[i].day) {
+                if (getdate.getFullYear() >= dateob[i].year && getdate.getMonth()+1 >= dateob[i].month && getdate.getDay()-a >= dateob[i].day) {
                     datepossible.push(1)
                 }
                 else {
                     datepossible.push(0)
                 }
             }
-
             setDatestatus(datepossible)
             console.log(datepossible)
 
@@ -106,12 +104,12 @@ export default function order_list({ navigation }) {
                     {datestatus[index] === 1 &&
                         <Box style={{ marginBottom: '5%', marginTop: '5%', justifyContent: 'space-around', flexDirection: 'row' }}>
                             <Button style={{ fontSize: 14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={() => navigation.navigate('review', { review_activity_id: item.Activity.id })} ><Text>리뷰쓰기</Text></Button>
-                            <Button style={{ fontSize: 14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'darkgray' }} onPress={() => Alert.alert("", "중복된 아이디입니다.", [{ text: "확인" }])}><Text>예약취소</Text></Button>
+                            <Button style={{ fontSize: 14, width: 100, height: 40, justifyContent: 'center', backgroundColor: '#DCDCDC' }} onPress={() => Alert.alert("", "이미 사용이 완료된 상품입니다.", [{ text: "확인" }])}><Text style={{color:'white'}}>예약취소</Text></Button>
                         </Box>
                     }
                     {datestatus[index] === 0 &&
                         <Box style={{ marginBottom: '5%', marginTop: '5%', justifyContent: 'space-around', flexDirection: 'row' }}>
-                            <Button style={{ fontSize: 14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'darkgray' }} onPress={() => Alert.alert("", "완료된 상품입니다.", [{ text: "확인" }])} ><Text>리뷰쓰기</Text></Button>
+                            <Button style={{ fontSize: 14, width: 100, height: 40, justifyContent: 'center', backgroundColor: '#DCDCDC' }} onPress={() => Alert.alert("", "아직 사용이 안 된 상품입니다.", [{ text: "확인" }])} ><Text style={{color:'white'}}>리뷰쓰기</Text></Button>
                             <Button style={{ fontSize: 14, width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={() => Alert.alert("", "중복된 아이디입니다.", [{ text: "확인" }])}><Text>예약취소</Text></Button>
                         </Box>
                     }

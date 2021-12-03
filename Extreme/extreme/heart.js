@@ -71,7 +71,7 @@ export default function heart({navigation}){
         <Box style={{borderColor:'#898989', borderWidth:0.5, backgroundColor:'white', width:Width/2, padding : '3%'}}>
             <Box style={{marginBottom:'3%'}}>
             <TouchableOpacity onPress={()=>delete_heart(item.activity_id)}>
-                <IconA name="close" size={25} style={{marginLeft:'5%'}}></IconA>
+                <IconA name="close" size={25} ></IconA>
                 </TouchableOpacity>
             </Box>
             <TouchableOpacity onPress={()=>navigation.navigate('activity_detail', {activity_id:item.activity_id})}>
@@ -79,10 +79,10 @@ export default function heart({navigation}){
                     source={{
                         uri: item.Activity.Activity_images[0].image_url
                     }}
-                    style={{ height:Height/6}}
+                    style={{ height:Height/6, borderRadius:3}}
                     alt="trans_1"
                     resizeMode='stretch'/>
-                <Text fontSize={18} marginTop={2} style={{fontWeight:'bold', textAlign:'center'}} >{item.Activity.activity_name}</Text>
+                <Text fontSize={15} marginTop={2} style={{fontWeight:'bold', textAlign:'center',  }} >{item.Activity.activity_name}</Text>
             </TouchableOpacity>
         </Box>
         )
@@ -95,9 +95,6 @@ export default function heart({navigation}){
         <NativeBaseProvider >
 
             <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
-                <TouchableOpacity onPress={()=>navigation.goBack()}>
-                    <IconM name="navigate-before" size={25} style={{}}></IconM>
-                </TouchableOpacity>
                 <Image
                     source={require('./images/cards-heart-outline.png')}
                     style={{width: 40, height: 40, }}
@@ -114,7 +111,7 @@ export default function heart({navigation}){
                 alt={"Dd"}
                 numColumns={2} />
             </ScrollView>
-            <View style={{ width: Width, height: '11%', }}>
+            <View style={{ width: Width, height: '10%', }}>
           <Under navigation={navigation}></Under>
         </View>
         </NativeBaseProvider>

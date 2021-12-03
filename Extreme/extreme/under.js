@@ -54,7 +54,7 @@ export default function Under({ navigation }) {
 
     return (
         <NativeBaseProvider>
-            <View style={{flexDirection: 'row', justifyContent: 'space-around',}}>
+            <View style={{flexDirection: 'row', justifyContent: 'space-around', backgroundColor:'white', paddingTop:5}}>
                 <View style={{flexDirection:'column', justifyContent:'center', alignItems:'center'}}>    
                     <TouchableOpacity onPress={cart}>
                         <Image

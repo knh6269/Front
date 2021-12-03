@@ -19,6 +19,8 @@ const Height = Dimensions.get('window').height;
 import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import IconE from 'react-native-vector-icons/Entypo';
+import Loading from "./test";
+
 
 export default function My_page({navigation}) {
     let [data,setData]=useState()
@@ -50,32 +52,32 @@ export default function My_page({navigation}) {
     {if(data!=null){
     return (
         <NativeBaseProvider>
-            <ScrollView>
+            <ScrollView style={{backgroundColor:'white'}}>
                 <Box style={{ marginTop: '10%', flexDirection:"row-reverse", alignItems:'center', justifyContent:'space-between', marginLeft:'10%', marginRight:'10%'}}>
                     <Image
                         source={{ uri: data.data.profile_image }}
                         style={{ width: 100, height: 100, borderRadius: 50 }} />
                     <Box>
-                        <Text style={{marginTop:'5%', fontSize:20}}>{data.data.nickname} 님</Text>
-                        <Text style={{marginTop:'5%', fontSize:18}}>반갑습니다.</Text>
+                        <Text style={{marginTop:'5%', fontSize:23, fontWeight:'bold'}}>{data.data.nickname} 님</Text>
+                        <Text style={{marginTop:'5%', fontSize:20}}>반갑습니다.</Text>
                     </Box>
                 </Box>
                 
                 <Box style={{ marginTop: '3%', marginLeft: '10%', marginRight: '10%', flexDirection: 'column'}}>
                     <Box style={{ flexDirection: 'row', alignContent:'center', alignItems:'center'}}>
-                        <Text style={{ fontSize: 18, textAlign: 'center' }}>전화번호</Text>
+                        <Text style={{ fontSize: 14, textAlign: 'center' }}>전화번호</Text>
                         <Text style={{ fontSize: 14, textAlign: 'center' }}> : </Text>
-                        <Text style={{marginLeft:'5%', fontSize:16, textAlign:'center'}}>{data.data.phone_number}</Text>
+                        <Text style={{marginLeft:'5%', fontSize:14, textAlign:'center'}}>{data.data.phone_number}</Text>
                     </Box>
                     <Box style={{ flexDirection: 'row', marginTop:'3%', alignContent:'center', alignItems:'center'}}>
-                        <Text style={{ fontSize: 18 }}>이메일</Text>
+                        <Text style={{ fontSize: 14 }}>이메일</Text>
                         <Text style={{ fontSize: 14, textAlign: 'center' }}> : </Text>
-                        <Text style={{marginLeft:'5%', fontSize:16}}>{data.data.email}</Text>
+                        <Text style={{marginLeft:'5%', fontSize:14}}>{data.data.email}</Text>
                     </Box>
                     <Box style={{ flexDirection: 'row', marginTop:'3%', alignContent:'center', alignItems:'center'}}>
-                        <Text style={{ fontSize: 18 }}>생년월일</Text>
+                        <Text style={{ fontSize: 14 }}>생년월일</Text>
                         <Text style={{ fontSize: 14, textAlign: 'center' }}> : </Text>
-                        <Text style={{marginLeft:'5%', fontSize:16}}>{data.data.birthday}</Text>
+                        <Text style={{marginLeft:'5%', fontSize:14}}>{data.data.birthday}</Text>
                     </Box>
                 </Box>
                 
@@ -113,14 +115,14 @@ export default function My_page({navigation}) {
                 
             </ScrollView >
 
-            <View style={{ width: Width, height: '11%', }}>
+            <View style={{ width: Width, height: '10%', }}>
                 <Under navigation={navigation}></Under>
             </View>
         </NativeBaseProvider>
     );}
     else 
        return(
-           <View><Text>dd</Text></View>
+        <Loading/>
        )}
 
 }

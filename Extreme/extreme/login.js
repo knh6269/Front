@@ -70,27 +70,29 @@ export default function login({navigation}) {
             <Box style={{marginLeft:'5%', marginRight:'5%'}}>
                 <Box style={{ flexDirection: 'column', justifyContent: 'center', height: Height / 3, }}>
                     <Box style={{flexDirection:'row', alignContent:'center', alignItems:'center'}}>
-                        <Text style={{fontSize:50, fontWeight:'bold', color:'#4f8bc2'}}>Extreme</Text>
+                        <Text style={{fontSize:50, fontWeight:'bold', color:'#2CE0BC'}}>Extreme</Text>
                         <Text style={{fontSize:30, fontWeight:'bold'}}>을</Text>
                     </Box>
                     <Text style={{fontSize:30, fontWeight:'bold'}}>즐길 준비가 되셨나요?</Text>
                 </Box>
 
-                <Box style={{flexDirection:'row', borderColor:'#898989', borderWidth:1,height:'10%', justifyContent:'center', alignItems:'center'}}>
+                <Box style={{width: '98%', flexDirection:'row', borderColor:'#898989', borderWidth:1, height:'10%', borderRadius:5,justifyContent:'center', alignItems:'center'}}>
                     <Icon name="user" size={24}></Icon>
                     <TextInput
                         placeholderTextSize={12}
+                        style={{width: '80%', marginLeft:"2%"}}
                         placeholder={'아이디'}
                         onChangeText={(text) => onChangeTextID(text)}
                         value={id}
                         maxLength={10}
                     />
                 </Box>
-
-                <Box style={{marignTop:'3%', flexDirection:'row', borderColor:'#898989', borderWidth:1,height:'10%', justifyContent:'center', alignItems:'center'}}>
+                <Box height={'2%'}></Box>
+                <Box style={{width: '98%', marignTop:'3%', flexDirection:'row', borderColor:'#898989', borderWidth:1,  borderRadius:5,height:'10%', justifyContent:'center', alignItems:'center'}}>
                     <Icon name="lock" size={24}></Icon>
                     <TextInput
                         placeholderTextSize={12}
+                        style={{width: '80%', marginLeft:"2%"}}
                         placeholder={'비밀번호'}
                         onChangeText={(text) => onChangeTextPW(text)}
                         value={password}
@@ -99,21 +101,15 @@ export default function login({navigation}) {
                     />
                 </Box>
 
-                <Box style={{marginTop:'3%', flexDirection:'row', justifyContent:'center', marginBottom:'5%', justifyContent:'center', alignItems:'center'}}>
-                    <Button style={{ backgroundColor: 'black' , marginRight:Width/10}} onPress={login_user}>
-                        <Text style={{color:'white', fontSize:20, fontWeight:'bold'}}>유저 로그인</Text>
-                    </Button>
-                    <Button style={{ backgroundColor: 'black' }} onPress={login_company}>
-                        <Text style={{color:'white', fontSize:20, fontWeight:'bold'}}>업체 로그인</Text>
+                <Box style={{marginTop:'4%', flexDirection:'row', justifyContent:'center', marginBottom:'5%', justifyContent:'center', alignItems:'center'}}>
+                    <Button style={{ width: '98%', height: 45, borderWidth: 1, borderColor:'#2CE0BC', justifyContent: 'center', backgroundColor: '#2CE0BC'}} onPress={login_user}>
+                        <Text style={{fontSize: 17, fontWeight:'bold', color:'white'}}>로그인</Text>
                     </Button>
                 </Box>
 
                 <Box style={{flexDirection:'row', justifyContent:'space-around', marginBottom:'5%'}}>
                     <Button style={{backgroundColor: 'transparent',  }} onPress={register_user}>
-                        <Text style={{color:'black', fontSize:14}}>사용자 회원 가입</Text>
-                    </Button>
-                    <Button style={{ backgroundColor: 'transparent',}} onPress={register_company}>
-                        <Text style={{color:'black', fontSize:14}}>관계자 회원 가입</Text>
+                        <Text style={{color:'black', fontSize:14,}}>회원 가입</Text>
                     </Button>
                 </Box>
             </Box>

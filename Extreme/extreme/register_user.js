@@ -106,9 +106,6 @@ export default function register_user({ navigation}) {
     }
 
     }
-    const cancel=()=>{
-        navigation.navigate('home')
-    }
     const same = async() => {
         const response = await fetch(`https://extreme-kor.herokuapp.com/user/check_id/${id}`);
         const json = await response.json();
@@ -172,20 +169,20 @@ export default function register_user({ navigation}) {
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
                             <TextInput placeholder="아이디를 입력하세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '70%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setid(text)} value={id}></TextInput>
-                            <Button style={{ backgroundColor: '#ced4da', width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={same}><Text style={{ fontSize: 16, height: 30 }}>중복확인</Text></Button>
+                            <Button style={{  backgroundColor: 'white',borderColor:'#2CE0BC', borderWidth:1, width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={same}><Text style={{fontSize: 16, color:'#2CE0BC' }}>중복확인</Text></Button>
                         </HStack>
                     </Box>
 
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="패스워드" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '90%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpw(text)} value={password}></TextInput>
+                            <TextInput placeholder="패스워드"  secureTextEntry={true} style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '90%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpw(text)} value={password}></TextInput>
                             <IconA name="lock" size={25} style={{ }}></IconA>
                         </HStack>
                     </Box>
                     
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="패스워드 확인" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '90%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpwc(text)} value={passwordconfirm}></TextInput>
+                            <TextInput placeholder="패스워드 확인"  secureTextEntry={true} style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '90%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpwc(text)} value={passwordconfirm}></TextInput>
                             <IconA name="lock" size={25} style={{ }}></IconA>
                         </HStack>
                     </Box>
@@ -227,15 +224,14 @@ export default function register_user({ navigation}) {
                         <HStack space={5} style={{ alignItems: 'center' }}>
                             <TextInput placeholder="환불계좌를 입력하세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '70%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setaccount(text)} value={account}></TextInput>
                             <TouchableOpacity onPress={select_bank}>
-                                <Button style={{ backgroundColor: '#ced4da', width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={select_bank}><Text style={{ fontSize: 16, height: 30 }}>은행 선택</Text></Button>
+                                <Button style={{ backgroundColor: 'white',borderColor:'#2CE0BC', borderWidth:1, width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={select_bank}><Text style={{ fontSize: 16, color:'#2CE0BC'  }}>은행 선택</Text></Button>
                             </TouchableOpacity>
                         </HStack>
                     </Box>
                 </Box>
 
-                <Box style={{marginTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
-                        <Button style={{ width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={submitBtn}><Text>확인</Text></Button>
-                        <Button style={{ width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={cancel}><Text>취소</Text></Button>
+                <Box  style={{marginTop:'3%',marginBottom:'3%', justifyContent: 'space-around', flexDirection:'row', backgroundColor:'white'}}>
+                <Button style={{ width: '95%', height: 45, borderWidth: 1, borderColor:'#2CE0BC', justifyContent: 'center', backgroundColor: '#2CE0BC'}} onPress={submitBtn}><Text style={{fontSize: 17, fontWeight:'bold', color:'white'}}>확인</Text></Button>
                 </Box>
             </ScrollView>
         </NativeBaseProvider>
@@ -244,40 +240,39 @@ export default function register_user({ navigation}) {
     
     return (
         <NativeBaseProvider>
-            <Box style={{flexDirection: 'row', marginTop:50}}>
-                <TouchableOpacity onPress={dd}>
-                    <IconM name="navigate-before" size={25} style={{ }}></IconM>
-                </TouchableOpacity>
-                <Text style={{fontSize: 20,}}>회원가입</Text>
-            </Box>
+        <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
+        <TouchableOpacity onPress={()=>navigation.goBack()}>
+            <IconM name="navigate-before" size={25} style={{}}></IconM>
+          </TouchableOpacity>
+          <Text marginLeft={'3%'} fontSize={20}>회원가입</Text>
+        </Box>
 
-            <Box marginTop={14} borderWidth={1}></Box>
 
-            <ScrollView>
-                <Box>
+            <ScrollView style={{backgroundColor:'white'}}>
+                <Box style={{backgroundColor: 'white'}}>
                     <Box style={{marginTop:'3%', textAlign:'center', alignItems:'center'}}>
                         <TouchableOpacity onPress={openImagePickerAsync}>
-                            <Box style={{ width: 80, height: 80, borderWidth: 1, borderRadius:50}}></Box>
+                            <Box style={{ width: 80, height: 80, borderWidth: 1, borderRadius:50, borderColor:'darkgray',}}></Box>
                         </TouchableOpacity>
                     </Box>
 
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="아이디를 입력하세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '70%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setid(text)} value={id}></TextInput>
-                            <Button style={{ backgroundColor: '#ced4da', width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={same}><Text style={{ fontSize: 16, height: 30 }}>중복확인</Text></Button>
+                            <TextInput placeholder="아이디를 입력하세요" style={{ borderColor:'darkgray', paddingLeft : '3%', placeholderTextColor: 'black', width: '70%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setid(text)} value={id}></TextInput>
+                            <Button style={{ backgroundColor: 'white',borderColor:'#2CE0BC', borderWidth:1, width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={same}><Text style={{ fontSize: 16, color:'#2CE0BC' }}>중복확인</Text></Button>
                         </HStack>
                     </Box>
 
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="패스워드" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '90%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpw(text)} value={password}></TextInput>
+                            <TextInput placeholder="패스워드" secureTextEntry={true} style={{ borderColor:'darkgray',paddingLeft : '3%', placeholderTextColor: 'black', width: '90%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpw(text)} value={password}></TextInput>
                             <IconA name="lock" size={25} style={{ }}></IconA>
                         </HStack>
                     </Box>
                     
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="패스워드 확인" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '90%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpwc(text)} value={passwordconfirm}></TextInput>
+                            <TextInput placeholder="패스워드 확인"  secureTextEntry={true} style={{ borderColor:'darkgray',paddingLeft : '3%', placeholderTextColor: 'black', width: '90%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setpwc(text)} value={passwordconfirm}></TextInput>
                             <IconA name="lock" size={25} style={{ }}></IconA>
                         </HStack>
                     </Box>
@@ -288,46 +283,45 @@ export default function register_user({ navigation}) {
 
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="이름을 입력해주세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setname(text)} value={name}></TextInput>
+                            <TextInput placeholder="이름을 입력해주세요" style={{ borderColor:'darkgray',paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setname(text)} value={name}></TextInput>
                         </HStack>
                     </Box>
 
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="닉네임을 입력해주세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setnic(text)} value={nic}></TextInput>
+                            <TextInput placeholder="닉네임을 입력해주세요" style={{ borderColor:'darkgray',paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setnic(text)} value={nic}></TextInput>
                         </HStack>
                     </Box>
 
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="연락처를 입력해주세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => settel(text)} value={tel}></TextInput>
+                            <TextInput placeholder="연락처를 입력해주세요" style={{ borderColor:'darkgray',paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => settel(text)} value={tel}></TextInput>
                         </HStack>
                     </Box>
 
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="이메일을 입력해주세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setemail(text)} value={email}></TextInput>
+                            <TextInput placeholder="이메일을 입력해주세요" style={{ borderColor:'darkgray',paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setemail(text)} value={email}></TextInput>
                         </HStack>
                     </Box>
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="생년월일을 입력해주세요 (ex.211116)" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setbirth(text)} value={birth}></TextInput>
+                            <TextInput placeholder="생년월일을 입력해주세요 (ex.211116)" style={{ borderColor:'darkgray',paddingLeft : '3%', placeholderTextColor: 'black', width: '100%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setbirth(text)} value={birth}></TextInput>
                         </HStack>
                     </Box>
 
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'3%'}}>
                         <HStack space={5} style={{ alignItems: 'center' }}>
-                            <TextInput placeholder="환불계좌를 입력하세요" style={{ paddingLeft : '3%', placeholderTextColor: 'black', width: '70%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setaccount(text)} value={account}></TextInput>
+                            <TextInput placeholder="환불계좌를 입력하세요" style={{ borderColor:'darkgray',paddingLeft : '3%', placeholderTextColor: 'black', width: '70%', height: 40, borderWidth: 1, borderRadius: 4, }} onChangeText={(text) => setaccount(text)} value={account}></TextInput>
                             <TouchableOpacity onPress={select_bank}>
-                                <Button style={{ backgroundColor: '#ced4da', width: 100, height: 40, alignItems: 'center', paddingBottom: 2 }} onPress={select_bank}><Text style={{ fontSize: 16, height: 30 }}>은행 선택</Text></Button>
+                                <Button style={{  backgroundColor: 'white',borderColor:'#2CE0BC', borderWidth:1, width: 100, height: 40, alignItems: 'center', paddingBottom: 2  }} onPress={select_bank}><Text style={{ fontSize: 16, color:'#2CE0BC' }}>은행 선택</Text></Button>
                             </TouchableOpacity>
                         </HStack>
                     </Box>
                 </Box>
 
-                <Box style={{marginTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
-                        <Button style={{ width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={submitBtn}><Text>확인</Text></Button>
-                        <Button style={{ width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={cancel}><Text>취소</Text></Button>
+                <Box style={{marginTop:'3%',marginBottom:'3%', justifyContent: 'space-around', flexDirection:'row', backgroundColor:'white'}}>
+                        <Button style={{ width: '95%', height: 45, borderWidth: 1, borderColor:'#2CE0BC', justifyContent: 'center', backgroundColor: '#2CE0BC'}} onPress={submitBtn}><Text style={{fontSize: 17, fontWeight:'bold', color:'white'}}>확인</Text></Button>
                 </Box>
             </ScrollView>
         </NativeBaseProvider>

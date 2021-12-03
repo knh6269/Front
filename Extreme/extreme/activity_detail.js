@@ -110,6 +110,12 @@ export default function Order_list_detail({ navigation }) {
     {if(info!=null){
     return(
         <NativeBaseProvider>
+            <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
+                    <IconM name="navigate-before" size={25} style={{}}></IconM>
+                </TouchableOpacity>
+                <Text marginLeft={'3%'} fontSize={20}>{info.activity_name}</Text>
+            </Box>
             <ScrollView> 
                 <Box>
                     <Carousel
@@ -140,16 +146,18 @@ export default function Order_list_detail({ navigation }) {
                 <Box style={{ backgroundColor: 'white' }}>
                 
                     <Box>
-                        <Box style={{paddingTop:'3%', marginLeft:'3%', marginRight:'3%', flexDirection:'row', justifyContent:'space-between'}}>
+                        <Box style={{paddingTop:'5%', marginLeft:'3%', marginRight:'3%', flexDirection:'row', justifyContent:'space-between'}}>
                             <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{info.activity_name}</Text>
-                            <Text>{info.star}점</Text>
+                            <Box style={{flexDirection:'row'}}><IconA name="star" color={'#f1ec6f'} size={20} ></IconA>
+                            <Text style={{marginLeft:3}}>{info.star}점</Text>
+                            </Box>
                         </Box>
                     </Box>
 
 
                     <Box style={{ marginTop:'5%', marginBottom:'5%', marginLeft:'3%', marginRight:'3%',}}>
-                        <Button onPress={()=>navigation.navigate('reservation_calender', {activity_id:info.activity_id})} style={{ borderRadius:10, width: '100%', height: 60, borderWidth: 0.5, justifyContent: 'center', backgroundColor: 'white' }}>
-                            <Text style={{ fontSize: 20, fontWeight: 'bold', }}>날짜 및 시간 선택</Text>
+                        <Button onPress={()=>navigation.navigate('reservation_calender', {activity_id:info.activity_id})} onPress={()=>navigation.navigate('reservation_calender', {calender_data:info})} style={{ borderRadius:10, width: '100%', height: 60, borderWidth: 1, justifyContent: 'center', borderColor:'#2CE0BC',backgroundColor: 'white' }}>
+                            <Text style={{ fontSize: 17, fontWeight: 'bold',  color:'#2CE0BC' }}>날짜 및 시간 선택</Text>
                         </Button>
                     </Box>
                 </Box>
@@ -165,7 +173,7 @@ export default function Order_list_detail({ navigation }) {
                         <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>상품 정보</Text>
                     </Box>
 
-                    <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={0.5}></Box>
+                    <Box marginTop='3%' marginLeft='3%' marginRight='3%' borderWidth={0.5}></Box>
 
                     <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'10%', flexDirection:'row', justifyContent:'space-between'}}>
                         <Text style={{color:'#acacac'}}>업체명</Text>
@@ -181,7 +189,7 @@ export default function Order_list_detail({ navigation }) {
 
                 <Box marginTop='3%'></Box>
 
-                <Box onPress={console.log(review)} style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
+                <Box onPress={console.log(review)} style={{ paddingTop:'5%',  backgroundColor: 'white' }}>
                     <Box style={{marginLeft: '5%', marginRight:'5%',}}>
                         <Text style={{ marginTop:'3%', fontWeight: 'bold', fontSize: 16 }}>고객 리뷰</Text>
                     </Box>
@@ -192,9 +200,9 @@ export default function Order_list_detail({ navigation }) {
                 {(review)&&review.map((review)=>{
                     return(
                         
-                    <View>
-                        <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
-                        <Box style={{marginTop:'3%', marginLeft:'3%', marginRight:'40%', flexDirection:'column', }}>
+                    <View  backgroundColor={'white'} >
+                        <Box marginTop='5%' marginLeft='5%' marginRight='5%' borderWidth={0.5} ></Box>
+                        <Box style={{marginTop:'3%', marginLeft:'5%', marginRight:'40%', flexDirection:'column', }}>
                             <Box  style={{flexDirection:'row',}}>
                                 <Image
                                 source={{
@@ -204,7 +212,7 @@ export default function Order_list_detail({ navigation }) {
                                 alt="trans_1" />
                                 <Box style={{flexDirection:'column', marginLeft:'5%'}}>
                                         <Text style={{ fontSize: 12 }}>{review.User.nickname}</Text>
-                                        <Box style={{flexDirection:'row'}}>
+                                        <Box style={{flexDirection:'row', marginTop:"2%"}}>
                                             <Text>
                                                 {
                                                     review.star == 1
@@ -233,7 +241,7 @@ export default function Order_list_detail({ navigation }) {
                                 </Box>
                             </Box>
                         </Box>
-                        <Box style={{ marginTop: '3%', marginLeft: '3%', marginRight: '3%' }}>
+                        <Box style={{ marginTop: '3%', marginLeft: '5%', marginRight: '3%' }}>
                             <Text>{review.content}</Text>
                         </Box>
                         </View>);
@@ -242,14 +250,14 @@ export default function Order_list_detail({ navigation }) {
                             
             </ScrollView >
 
-            <Box style={{ paddingLeft:'3%', paddingRight:'3%', height: '15%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
-                <Box style={{ borderRadius:10, width : '20%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white', alignContent:'center', alignItems:'center'}}>
+            <Box style={{ paddingLeft:'3%', paddingRight:'3%', height: '12%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
+                <Box style={{ borderRadius:10, width : '16%', borderWidth: 1, borderColor:'darkgray',justifyContent: 'center', backgroundColor: 'white', alignContent:'center', alignItems:'center', marginRight:10}}>
                     <TouchableOpacity onPress={() => heart(info.id)}>
-                        <IconA name="heart" size={25}></IconA>
+                        <IconA name="heart" size={25} color='#FF6666'></IconA>
                     </TouchableOpacity>
                 </Box>
-                <Button style={{ borderRadius:10, width: '80%', borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2',  }} onPress={()=>navigation.navigate('reservation_calender', {calender_data:info})}>
-                    <Text style={{ fontSize: 20, fontWeight:'bold', color:'white'}}>구매하기</Text>
+                <Button style={{ borderRadius:10, width: '80%', justifyContent: 'center', backgroundColor: '#2CE0BC',  }} onPress={()=>navigation.navigate('reservation_calender', {calender_data:info})}>
+                    <Text style={{ fontSize: 17, fontWeight:'bold', color:'white'}}>날짜 및 시간 선택</Text>
                 </Button>
             </Box>
         </NativeBaseProvider>

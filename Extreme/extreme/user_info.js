@@ -67,7 +67,7 @@ export default function user_info({ navigation }) {
     return (
         <NativeBaseProvider>
             <ScrollView style={{backgroundColor:'white'}}>
-                <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom: '5%', paddingLeft: '5%', borderWidth: 0.5 }}>
+            <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <IconM name="navigate-before" size={25} style={{}}></IconM>
                     </TouchableOpacity>
@@ -111,17 +111,11 @@ export default function user_info({ navigation }) {
                 </Box>
             </ScrollView>
 
-                <Box style={{ marginTop:'10%', paddingLeft:'3%', paddingRight:'3%', height: '15%', borderWidth: 1, backgroundColor:'white', paddingBottom:'3%', paddingTop:'3%', justifyContent: 'space-around', flexDirection:'row'}}>
-                <Button style={{ borderRadius: 20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} onPress={() => navigation.goBack()}>
-                        <Text style={{ fontSize: 20, fontWeight:'bold'}}>취소하기</Text>
-                    </Button>
-                    <Button style={{ borderRadius:20, width: '45%', borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2' }} onPress={modify} >
-                        <Text style={{ fontSize: 20, fontWeight:'bold'}}>수정완료</Text>
+            <Box  style={{ height:'11%',justifyContent: 'space-around', flexDirection:'row', backgroundColor:'white'}}>
+                    <Button style={{ width: '95%', height:'90%', borderWidth: 1, borderColor:'#2CE0BC', justifyContent: 'center', borderRadius:10, backgroundColor: '#2CE0BC'}} onPress={modify} >
+                        <Text style={{fontSize: 17, fontWeight:'bold', color:'white'}}>수정완료</Text>
                     </Button>
             </Box>
-             <View style={{ width: Width, height: '11%', }}>
-          <Under navigation={navigation}></Under>
-        </View>
         </NativeBaseProvider>
   );}
   else 

@@ -12,6 +12,8 @@ import {
     View
 } from 'native-base';
 import { TouchableOpacity, ScrollView } from "react-native";
+import IconA from 'react-native-vector-icons/AntDesign';
+
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
@@ -99,14 +101,15 @@ export default function home_region({ navigation }) {
                 <Box style={{ flexDirection: 'column', }}>
                     <Image
                         source={{ uri: item.Activity_images[0].image_url }}  
-                        style={{ height:Height/6, width:Width/4}}
+                        style={{ height:Height/7.5, width:Width/4.5, borderRadius:10}}
                         alt="trans_1"
                         resizeMode='stretch'/>
                 </Box>
-                <Box style={{flexDirection: 'column', justifyContent:'space-around', marginLeft:'5%'}}>
-                    <Text numberOfLines={1} style={{ fontSize:14, fontWeight:'bold'}}>{item.activity_name}</Text>
-                    <Text style={{ fontSize:14,}}>{item.star}</Text>
-                    <Text style={{ fontSize:14, }}>{item.activity_price}</Text>
+                <Box style={{flexDirection: 'column', marginLeft:'5%'}}>
+                    <Text numberOfLines={1} style={{ fontSize:12, fontWeight:'bold', width:Width/4.5 }} >{item.activity_name}</Text>
+                    <Box style={{flexDirection:'row', alignItems:'center' , marginTop:'20%'}}><IconA name="star" color={'#f1ec6f'} size={15} ></IconA>
+                    <Text style={{ fontSize:11,}}>{item.star}</Text></Box>
+                    <Text style={{ fontSize:11, }}>{item.activity_price}원</Text>
                 </Box>
             </Box>
         </TouchableOpacity>

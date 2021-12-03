@@ -107,31 +107,31 @@ const delete_cart=(reservation_id)=>{
 
 
   const renderActivity = ({ item, index }) => (
-    <Box style={{ backgroundColor:'white', marginTop: '3%', paddingTop:'5%', paddingBottom:'5%', paddingLeft:'5%', paddingRight:'5%', borderWidth:1}}>
+    <Box style={{ backgroundColor:'white', marginTop: '3%', borderWidth:1}}>
     <Box style={{flexDirection:'row-reverse',}}>
     <TouchableOpacity onPress={()=>delete_cart(item.id)}>
-      <IconA marginLeft={'5%'} name="close" size={25}></IconA>
+      <IconA margin={'7%'} name="close" size={25}></IconA>
       </TouchableOpacity>
     </Box>
-    <Box style={{flexDirection:'row', marginTop:'3%'}}>
+    <Box style={{flexDirection:'row', }}>
       <Box style={{ flexDirection: 'row', justifyContent:'center', alignItems:'center'}}>
-        <Checkbox borderWidth={1} fontSize={10} style={{ fontWeight: 'bold' }} defaultIsChecked={true} onPress={()=>checkbox_data(index)}></Checkbox>
+        <Checkbox borderWidth={2} fontSize={5} style={{   marginRight:"5%", borderRadius:10 ,}}onCheckColor='#2CE0BC' defaultIsChecked={true} onPress={()=>checkbox_data(index)}></Checkbox>
         <Image
           source={{
               uri: item.Activity.Activity_images[0].image_url
           }}
-          style={{borderRadius:10, marginLeft:'3%', width:70, height:70}}
+          style={{borderRadius:10, marginLeft:'5%', width:70, height:70}}
           alt="trans_1" />
       </Box>
       
-      <Box style={{height:70, flexDirection:'column', marginLeft:'5%', justifyContent:'space-between'}}>
-        <Text style={{fontSize:14}}>{item.Activity.activity_name}</Text>
+      <Box style={{height:70, flexDirection:'column', marginLeft:'4%', justifyContent:'space-between'}}>
+        <Text style={{fontSize:14, fontWeight:'bold',}}>{item.Activity.activity_name}</Text>
         <Text style={{fontSize:14}}>{item.Activity.activity_price}원</Text>
         <Text style={{fontSize:14}}>{item.people}인</Text>
       </Box>
 
       <Box style={{height:70, flexDirection:'column', marginLeft:'20%', justifyContent:'space-between'}}>
-        <Text style={{fontSize:14}}>{item.Activity_time.date}</Text>
+        <Text style={{fontSize:14}}>{item.Activity_time.date.slice(0,4)}.{item.Activity_time.date.slice(4,6)}.{item.Activity_time.date.slice(6,8)}</Text>
         <Text style={{fontSize:14}}>{item.Activity_time.hour}</Text>
 
         <Image
@@ -154,7 +154,7 @@ const delete_cart=(reservation_id)=>{
       </HStack>
     </Box>
 
-    <Box style={{marginBottom:'5%', marginTop:'5%', justifyContent: 'space-around', flexDirection:'row'}}>
+    <Box style={{marginTop:'5%',marginBottom:'5%', justifyContent: 'space-around', flexDirection:'row'}}>
       <Button style={{ width: 100, height: 40, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white' }} >
         <Text style={{ fontSize: 14, }}>날짜변경</Text>
       </Button>
@@ -189,16 +189,12 @@ const delete_cart=(reservation_id)=>{
           alt={"Dd"}
           numColumns={1} />
     </ScrollView>
-        <Box style={{backgroundColor:'white', paddingTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%',}}>
-          <Button style={{backgroundColor:'#4f8bc2', }} onPress={go_purchase}>
+        <Box style={{backgroundColor:'white', paddingTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%', height: '11%',}}>
+          <Button style={{borderRadius:10,   height: '100%',alignItems:'center' , justifyContent: 'center', backgroundColor: '#2CE0BC', }} onPress={go_purchase}>
             <Text style={{fontSize:20, color:'white'}}>구매하기</Text>
           </Button>
         </Box>
-      
-        <View style={{ width: Width, height: '11%', }}>
-          <Under navigation={navigation}></Under>
-        </View>
-    </NativeBaseProvider>
+          </NativeBaseProvider>
   )}
 
 

@@ -61,7 +61,7 @@ export default function Home({ navigation }) {
           />
         </View>
   
-        <View style={{ width: layout.width, height: '11%', }}>
+        <View style={{ width: layout.width, height: '10%', }}>
           <Under navigation={navigation}></Under>
         </View>
       </Box>

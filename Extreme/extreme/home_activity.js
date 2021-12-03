@@ -156,7 +156,7 @@ export default function home_activity({ navigation , route}) {
         </Box>
         <Box marginLeft='5%' marginRight='5%' borderWidth={0.5}></Box>
         <Box marginTop={5} marginLeft={'5%'} >
-          <Text fontSize={20}>추천 액티비티</Text>
+          <Text fontSize={20} marginBottom={'3%'}>추천 액티비티</Text>
             <View>
               <Carousel
                 layout='default'
@@ -172,14 +172,16 @@ export default function home_activity({ navigation , route}) {
                     <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
                       <Image
                             key={item.activity_name}
-                            style={{ width: '90%', height: '85%', borderRadius:10 }}
+                            style={{ width: '90%', height: '70%', borderRadius:10 }}
                             resizeMode='stretch'
                         source={{uri:item.Activity_images[0].image_url}}
                         alt="profile"
                       />
-                      <View style={{marginTop:'3%', flexDirection:'row', justifyContent:'center',}}>
-                          <Text style={{ color: 'white', backgroundColor:'#4f8bc2' }}>추천</Text>
-                          <Text style={{ marginLeft : '3%', fontSoze:10}}>{item.activity_name}</Text>
+                      <View style={{marginTop:'3%', flexDirection:'row',}}>
+                        <Box style={{width:28, height:20, backgroundColor:'#2CE0BC', borderRadius:5, alignItems:'center', }}>
+                          <Text style={{ color: 'white', fontSize:10 }}>추천</Text>
+                          </Box>
+                          <Text style={{ marginLeft : '2%', fontSoze:10}}>{item.activity_name}</Text>
                       </View>
                       </TouchableOpacity>
                   </View>
@@ -188,7 +190,7 @@ export default function home_activity({ navigation , route}) {
             </View>        
         </Box>
         <Box marginTop={5} marginLeft={'5%'} >
-          <Text fontSize={20}>인기 액티비티</Text>
+          <Text fontSize={20} marginBottom={'3%'}>인기 액티비티</Text>
             <View>
               <Carousel
                 layout='default'
@@ -204,14 +206,16 @@ export default function home_activity({ navigation , route}) {
                     <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
                       <Image
                             key={item.activity_name}
-                            style={{ width: '90%', height: '85%', borderRadius:10 }}
+                            style={{ width: '90%', height: '75%', borderRadius:10 }}
                             resizeMode='stretch'
                             source={{uri:item.Activity_images[0].image_url}}
                             alt="profile"
                       />
-                      <View style={{marginTop:'3%', flexDirection:'row', justifyContent:'center',}}>
-                          <Text style={{ color: 'white', backgroundColor:'#4f8bc2' }}>인기</Text>
-                          <Text style={{ marginLeft : '3%', fontSoze:10}}>{item.activity_name}</Text>
+                      <View style={{marginTop:'3%', flexDirection:'row',}}>
+                        <Box style={{width:28, height:20, backgroundColor:'#2CE0BC', borderRadius:5, alignItems:'center', }}>
+                          <Text style={{ color: 'white', fontSize:10 }}>인기</Text>
+                          </Box>
+                          <Text style={{ marginLeft : '2%', fontSoze:10}}>{item.activity_name}</Text>
                       </View>
                       </TouchableOpacity>
                   </View>
@@ -220,7 +224,7 @@ export default function home_activity({ navigation , route}) {
             </View>        
         </Box>
         <Box marginTop={5} marginLeft={'5%'} >
-          <Text fontSize={20}>최신 액티비티</Text>
+          <Text fontSize={20} marginBottom={'3%'}>최신 액티비티</Text>
             <View>
               <Carousel
                 layout='default'
@@ -236,14 +240,16 @@ export default function home_activity({ navigation , route}) {
                     <TouchableOpacity style={{width: '100%', height: 150,}}  onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
                       <Image
                             key={item.activity_name}
-                            style={{ width: '90%', height: '85%', borderRadius:10 }}
+                            style={{ width: '90%', height: '75%', borderRadius:10 }}
                             resizeMode='stretch'
                             source={{uri:item.Activity_images[0].image_url}}
                             alt="profile"
                       />
-                      <View style={{marginTop:'3%', flexDirection:'row', justifyContent:'center',}}>
-                          <Text style={{ color: 'white', backgroundColor:'#ff3e3e' }}>인기</Text>
-                          <Text style={{ marginLeft : '3%', fontSoze:10}}>{item.activity_name}</Text>
+                      <View style={{marginTop:'3%', flexDirection:'row',}}>
+                        <Box style={{width:28, height:20, backgroundColor:'#13C7A3', borderRadius:5, alignItems:'center', }}>
+                          <Text style={{ color: 'white', fontSize:10 }}>최신</Text>
+                          </Box>
+                          <Text style={{ marginLeft : '2%', fontSoze:10,}}>{item.activity_name}</Text>
                       </View>
                       </TouchableOpacity>
                   </View>

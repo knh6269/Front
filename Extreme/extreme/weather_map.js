@@ -27,11 +27,10 @@ import IconA from 'react-native-vector-icons/AntDesign';
 import IconM from 'react-native-vector-icons/MaterialIcons';
 import Loading from './test';
 
-export default function AppleMap(){
+export default function AppleMap({navigation}){
   const [zooms, setzooms] = useState(6);
   let data=[];
   let data_detail=[];
-  let status;
   const [locations,setlocation]=useState([
       { coordinate:{latitude:37.470407483804394,longitude: 126.95072514199354},title:"서울/경기",a:'',tem:''}, //서울,경기
       { coordinate:{latitude:35.62917303057579,longitude: 127.45632936923715} ,title:"충북",a:'',tem:''}, //충북
@@ -138,7 +137,6 @@ export default function AppleMap(){
 
           locations_detail[l].tem=data_detail[l].data.tem;
           }
-          status=1;
       } 
 
       catch (error) {
@@ -160,21 +158,20 @@ export default function AppleMap(){
   };
 
   const map = useRef(null) ; 
-    if(status==1){
    return (
     <NativeBaseProvider onPress={getWeather}>
-      <Box style={{backgroundColor:'white', flexDirection: 'row', paddingTop: '5%', paddingLeft:'5%'}}>
-      <TouchableOpacity onPress={()=>navigation.goBack()}>
-                <IconM name="navigate-before" size={25} style={{}}></IconM>
-            </TouchableOpacity>
-            <Text marginLeft={'3%'} fontSize={20}>현재 날씨 지도</Text>
-        </Box>
-      <Box style={{marginTop:'3%', height:Height/2}}  > 
+            <Box style={{ backgroundColor: 'white', flexDirection: 'row', paddingTop: '5%', paddingBottom:'5%', paddingLeft: '5%', height: '10%', alignContent: 'center', alignItems:'center'}}>
+            <TouchableOpacity onPress={()=>navigation.goBack()}>
+                    <IconM name="navigate-before" size={25} style={{}}></IconM>
+                </TouchableOpacity>
+                <Text marginLeft={'3%'} fontSize={20}>현재 날씨 지도</Text>
+            </Box>
+      <Box style={{height:Height}}  > 
         <Container>
-          <HStack>
-            <Button width={Width/2}onPress={zooming}><Text>전국 날씨 보기</Text></Button>
-            <Button width={Width/2}onPress={zoomout}><Text>자세한 날씨보기</Text></Button>
-          </HStack>
+          <View style={{paddingBottom:'3%', paddingTop:'3%',backgroundColor:'white',flexDirection:'row', justifyContent: 'space-around', height:'11%'}}>
+            <Button style={{ borderRadius:10, justifyContent: 'center', backgroundColor: '#2CE0BC' ,}} width={'46%'} onPress={zooming}><Text style={{fontSize: 17, fontWeight:'bold', color:'white'}}>전국 날씨 보기</Text></Button>
+            <Button style={{ borderRadius:10, justifyContent: 'center', backgroundColor: '#2CE0BC',   }} width={'46%'} onPress={zoomout}><Text style={{fontSize: 17, fontWeight:'bold', color:'white'}}>자세한 날씨 보기</Text></Button>
+          </View>
           <MapView 
             zoomEnabled={false}
             style={{flex: 1,backgroundColor:'red'}} provider={PROVIDER_GOOGLE} 
@@ -220,8 +217,3 @@ export default function AppleMap(){
       </Box>
     </NativeBaseProvider>
   );}
-  else{
-    return(<Loading/>)
-    
-  }
-}
