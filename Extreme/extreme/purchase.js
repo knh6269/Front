@@ -53,7 +53,7 @@ export default function purchase({ navigation }) {
         </Box>
   
         <Box style={{height:70, flexDirection:'column', marginLeft:'20%', justifyContent:'space-between'}}>
-          <Text style={{fontSize:14}}>{item.Activity_time.date}</Text>
+          <Text style={{fontSize:14}}>{item.Activity_time.date.slice(0,4)}.{item.Activity_time.date.slice(4,6)}.{item.Activity_time.date.slice(6,8)}</Text>
           <Text style={{fontSize:14}}>{item.Activity_time.hour}</Text>
   
           {today=="맑음"&&<Image
@@ -142,21 +142,6 @@ export default function purchase({ navigation }) {
             <ScrollView>
                 <Box style={{backgroundColor:'white',}}>
                     <Box marginTop='5%' borderWidth={3} borderColor={'#eeeeee'}></Box>
-
-                    <Box style={{ flexDirection: 'column', marginTop: '5%' }}>
-                        <Box style={{ flexDirection: 'column', borderWidth : 0.5}}>
-                            <Text fontSize={20}>쿠폰</Text>
-                            <Box style={{ flexDirection: 'row', justifyContent:'space-between' }}>
-                                <TouchableOpacity onPress={coupon}>
-                                    <Text fontSize={16}>사용</Text>
-                                </TouchableOpacity>
-                                <Text fontSize={18}>1111원</Text>
-                            </Box>
-                        </Box>
-                    </Box>
-
-                    <Box marginTop='5%' borderWidth={3} borderColor={'#eeeeee'}></Box>
-
                     <Box style={{ flexDirection: 'row', marginTop: '5%', borderWidth:0.5, justifyContent:'space-between' }}>
                         <Text fontSize={20}>총 결제 금액</Text>
                         <Text fontSize={18} style={{ fontWeight: 'bold' }} >{payment}원</Text>

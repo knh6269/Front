@@ -71,9 +71,9 @@ export default function order_list({ navigation }) {
 
     const renderActivity = ({ item, index }) => (
         <Box>
-            <Box style={{ backgroundColor: 'white', marginTop: '5%', borderWidth: 1, paddingLeft: '3%', paddingRight: '3%' }}>
-                <Box style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={{ color: '#c4c4c4', fontSize: 14, fontWeight: 'bold' }}>{item.Activity_time.date}</Text>
+            <Box style={{ backgroundColor: 'white', borderColor:'darkgray', marginTop: '5%', borderWidth: 1, paddingLeft: '3%', paddingRight: '3%' }}>
+                <Box style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop:"3%" }}>
+                    <Text style={{ color: '#c4c4c4', fontSize: 14, fontWeight: 'bold' }}>{item.Activity_time.date.slice(0,4)}.{item.Activity_time.date.slice(4,6)}.{item.Activity_time.date.slice(6,8)}</Text>
                     <TouchableOpacity onPress={() => navigation.navigate('order_list_detail', { orderListData: item })}>
                         <Box style={{ flexDirection: 'row', alignContent: 'center', alignItems: 'center' }}>
                             <Text fontSize={14} style={{ color: '#4f8bc2', justifyContent: 'center', textAlign: 'center' }}>주문 상세보기</Text>
@@ -93,13 +93,13 @@ export default function order_list({ navigation }) {
                             alt="trans_1" />
                         <Box style={{ flexDirection: 'column', justifyContent: 'space-around', marginLeft: '3%', }}>
                             <Text style={{ fontSize: 14 }}>{item.Activity.activity_name}</Text>
-                            <Text style={{ fontSize: 14 }}>{item.payment}원</Text>
-                            <Text style={{ fontSize: 14 }}>{item.Activity.activity_price}원</Text>
-                            <Text style={{ fontSize: 14 }}>{item.people}인</Text>
+                                                        <Text style={{ fontSize: 14 }}>{item.people}인</Text>
+
+                            <Text style={{ fontSize: 14 }}>총 결제 금액 : {item.payment}원</Text>
                         </Box>
                     </Box>
 
-                    <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={1}></Box>
+                    <Box marginTop='5%' marginLeft='3%' marginRight='3%' borderWidth={1} borderColor={'darkgray'}></Box>
 
                     {datestatus[index] === 1 &&
                         <Box style={{ marginBottom: '5%', marginTop: '5%', justifyContent: 'space-around', flexDirection: 'row' }}>

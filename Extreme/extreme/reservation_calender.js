@@ -122,7 +122,7 @@ export default function reservation_calender({ navigation }) {
             <IconM name="navigate-before" size={25} style={{}}></IconM>
         </TouchableOpacity>
           <Box style={{alignItems:'center',justifyContent:'center',alignContent:'center'}}>
-            <Text marginLeft={'3%'} fontSize={20}>{calenderdata.activity_name}의 캘린더</Text>
+            <Text marginLeft={'3%'} fontSize={20}>{calenderdata.activity_name} 예약하기</Text>
           </Box>        
         </Box>
         <Box style={{backgroundColor:'white',marginTop:10}}>
@@ -156,11 +156,11 @@ export default function reservation_calender({ navigation }) {
             disableAllTouchEventsForDisabledDays={true}
           />
         </Box>
-        <ScrollView>
+        <ScrollView backgroundColor={'white'}>
         <Box backgroundColor={'white'}marginTop={'3%'} marginBottom={'5%'} borderWidth={0.5} borderColor={'#acacac'}>
           <Box style={{padding:5,paddingTop:9,paddingBottom:9,  borderColor:'darkgray',borderBottomWidth:1,flexDirection:'row'}}>
             <Text style={{ fontSize: 16, }}>선택된 날짜</Text>
-            <Text style={{ borderWidth:1,borderRadius:5,borderColor:'white',backgroundColor:'white',marginLeft:4,fontSize: 16, fontWeight: 'bold', textAlign:'center' }}>{outputactivity}</Text>
+              {outputactivity && <Text style={{ borderWidth: 1, borderRadius: 5, borderColor: 'white', backgroundColor: 'white', marginLeft: 4, fontSize: 16, fontWeight: 'bold', textAlign: 'center' }}>{outputactivity.slice(0, 4)}.{outputactivity.slice(4, 6)}.{outputactivity.slice(6, 8)}</Text>}
           </Box>
           <Box style={{padding:5 ,  borderColor:'darkgray',borderBottomWidth:1}}>
             <Text style={{ fontSize: 16, }}>이용가능한 시간</Text>
@@ -188,12 +188,12 @@ export default function reservation_calender({ navigation }) {
          
         </Box>
         </ScrollView>
-        <Box style={{ width:Width,flexDirection:'row'  }}>
-            <Button style={{height:Height/12,width:Width/2,backgroundColor:'#2CE0BC',borderColor:'white',borderRightWidth:1}}>
-                <Text style={{color:'black'}}>장바구니</Text>
+        <Box style={{ width:Width,flexDirection:'row', backgroundColor:'white', padding:'3%'}}>
+            <Button style={{height:Height/12,width:(Width/2)-10,backgroundColor:'#2CE0BC',borderColor:'white',borderRightWidth:1, borderRadius:10}}>
+                <Text style={{color:'white', fontWeight:'bold'}}>장바구니</Text>
             </Button>
-            <Button onPress={purchasing} style={{width:Width/2,backgroundColor:'#2CE0BC'}}>
-                <Text style={{color:'black'}}>바로구매</Text>
+            <Button onPress={purchasing} style={{width:(Width/2)-10,backgroundColor:'#2CE0BC', borderRadius:10}}>
+                <Text style={{color:'white', fontWeight:'bold'}}>바로구매</Text>
             </Button>
           </Box>
       </NativeBaseProvider>

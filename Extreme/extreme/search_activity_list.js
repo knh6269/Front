@@ -80,9 +80,6 @@ export default function search_activity_list({ route, navigation }) {
                         numColumns={1} />
                 </Box>
             </ScrollView>
-            <View style={{ width: layout.width, height: '11%', }}>
-                <Under navigation={navigation}></Under>
-            </View>
         </NativeBaseProvider>
     )
 }

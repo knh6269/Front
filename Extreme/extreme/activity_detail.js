@@ -188,6 +188,16 @@ export default function Order_list_detail({ navigation }) {
                 </Box>
 
                 <Box marginTop='3%'></Box>
+                                <Box style={{ paddingTop:'5%', paddingBottom:'5%', backgroundColor: 'white' }}>
+                                    <Image
+                        style={{ width: '100%', height: 300 }}
+                                                                    resizeMode='contain'
+
+                                            source={{uri:info.Activity_images[1].image_url}}
+                                            alt="profile"
+                                    />
+                </Box>
+
 
                 <Box onPress={console.log(review)} style={{ paddingTop:'5%',  backgroundColor: 'white' }}>
                     <Box style={{marginLeft: '5%', marginRight:'5%',}}>

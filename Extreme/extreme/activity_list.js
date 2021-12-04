@@ -84,9 +84,6 @@ export default function activity_list({ navigation }) {
                         numColumns={1} />
                 </Box>
             </ScrollView>
-            <View style={{ width: layout.width, height: '11%', }}>
-                <Under navigation={navigation}></Under>
-            </View>
         </NativeBaseProvider>
     )
 }

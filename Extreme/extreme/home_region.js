@@ -97,7 +97,7 @@ export default function home_region({ navigation }) {
 
     const renderActivity = ({ item }) => (
         <TouchableOpacity onPress={()=>navigation.navigate('activity_detail', {activity_id:item.id})}>
-            <Box style={{padding:'3%', width:Width/2, borderWidth:0.5, flexDirection: 'row', alignItems:'center',}}>
+            <Box style={{padding:'3%', width:Width/2, borderWidth:0.5, flexDirection: 'row', alignItems:'center',backgroundColor:'white'}}>
                 <Box style={{ flexDirection: 'column', }}>
                     <Image
                         source={{ uri: item.Activity_images[0].image_url }}  
@@ -118,7 +118,7 @@ export default function home_region({ navigation }) {
    
     return (
         <NativeBaseProvider >
-            <Box style={{ marginTop: '3%', justifyContent: 'center', flexDirection: 'column', alignItems:'center'}} >
+            <Box style={{ paddingTop: '3%', justifyContent: 'center', flexDirection: 'column', alignItems:'center', backgroundColor:'white'}} >
                 <Box>
                     <Box style={{flexDirection:'row'}}>
                         {region.map((region) => {
@@ -160,7 +160,7 @@ export default function home_region({ navigation }) {
                 </Box>
             </Box>
 
-            <Box style={{marginTop:'3%'}}>
+            <Box style={{paddingTop:'3%', backgroundColor:'white'}}>
                 <FlatList
                     data={data}
                     renderItem={renderActivity}

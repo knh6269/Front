@@ -59,15 +59,10 @@ export default function activity_detail({ navigation }) {
                                 <Box style={{ flexDirection: 'column', marginLeft: '3%', }}>
                                     <Box style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                         <Text style={{ fontSize: 14, fontWeight: 'bold' }}>{orderDetail.payment}원</Text>
-                                        <Text style={{ fontSize: 18, fontWeight: 'bold', marginLeft: '50%' }}>D-31</Text>
                                     </Box>
                                     <Box style={{ flexDirection: 'row', marginTop: '5%', }}>
                                         <Text style={{ fontSize: 14 }}>사용 일시 : </Text>
-                                        <Text style={{ fontSize: 16, fontWeight: 'bold', marginLeft: '3%' }}>{orderDetail.Activity_time.date}</Text>
-                                    </Box>
-                                    <Box style={{ flexDirection: 'row', marginTop: '3%', }}>
-                                        <Text style={{ fontSize: 14 }}>예상 날씨 : </Text>
-                                        <Text style={{ fontSize: 18, color: '#4f8bc2', fontWeight: 'bold', marginLeft: '3%' }}>맑음</Text>
+                                        <Text style={{ fontSize: 16, fontWeight: 'bold', marginLeft: '3%' }}>{orderDetail.Activity_time.date.slice(0,4)}.{orderDetail.Activity_time.date.slice(4,6)}.{orderDetail.Activity_time.date.slice(6,8)}</Text>
                                     </Box>
                                 </Box>
                             </Box>
@@ -85,10 +80,6 @@ export default function activity_detail({ navigation }) {
                                     <Text style={{ marginLeft: '10%' }}>{userInfo.data.phone_number}</Text>
                                 </Box>
                                 <Box style={{ flexDirection: 'row', }}>
-                                    <Text style={{ width: '20%', color: '#898989' }}>할인 금액</Text>
-                                    <Text style={{ marginLeft: '10%' }}>10,000원</Text>
-                                </Box>
-                                <Box style={{ flexDirection: 'row', }}>
                                     <Text style={{ width: '20%', color: '#898989' }}>결제 금액</Text>
                                     <Text style={{ marginLeft: '10%' }}>{orderDetail.payment}</Text>
                                 </Box>
@@ -99,14 +90,12 @@ export default function activity_detail({ navigation }) {
                             </Box>
                         </Box>
                     </ScrollView>
-                    <Box style={{ backgroundColor: 'white', paddingTop: '5%', paddingBottom: '5%', justifyContent: 'space-around', flexDirection: 'row', borderWidth: 0.5 }}>
-                        <Button style={{ width: 150, height: 50, borderWidth: 1, justifyContent: 'center', backgroundColor: 'white', borderRadius: 10 }} >
-                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>취소 요청</Text>
-                        </Button>
-                        <Button style={{ width: 150, height: 50, borderWidth: 1, justifyContent: 'center', backgroundColor: '#4f8bc2', borderRadius: 10 }} onPress={() => navigation.goBack()}>
-                            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>확인</Text>
+                    <Box style={{backgroundColor:'white', paddingTop:'3%', paddingBottom:'3%', paddingLeft:'5%', paddingRight:'5%', height: '11%',}}>
+                        <Button style={{borderRadius:10,   height: '100%',alignItems:'center' , justifyContent: 'center', backgroundColor: '#2CE0BC', }} onPress={() => navigation.goBack()}>
+                            <Text style={{fontSize:20, color:'white'}}>확인</Text>
                         </Button>
                     </Box>
+                    
                 </NativeBaseProvider>
                 
             )

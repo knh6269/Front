@@ -45,6 +45,15 @@ export default function Home({ navigation }) {
     }
   };
 
+  const renderTabBar = props => (
+  <TabBar
+    {...props}
+    indicatorStyle={{ backgroundColor: 'white', borderWidth:1, borderColor:'white' }}
+    style={{ backgroundColor: '#00B2CE' }}
+  />
+);
+
+
   return (
     <NativeBaseProvider>
       <Box>
@@ -58,6 +67,7 @@ export default function Home({ navigation }) {
             renderScene={renderScene}
             onIndexChange={setIndex}
             initialLayout={{ width: layout.width }}
+            renderTabBar={renderTabBar}
             
           />
         </View>
