@@ -4,7 +4,7 @@
 ## 팀 구성
 | 권낙현 | 정연휘 | 허다은 |
 |---|---|---|
-|[knh6269](https://github.com/knh6269)|[JungYeonHwi](https://github.com/JungYeonHwi)|(qor4)[https://github.com/qor4]|
+|[knh6269](https://github.com/knh6269)|[JungYeonHwi](https://github.com/JungYeonHwi)|[qor4](https://github.com/qor4)|
 
 
 ## 주요 기능
