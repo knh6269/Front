@@ -16,7 +16,7 @@
 - 날씨 지도(전국 날씨 정보 제공)
 
 ## Stack
-- React
+- ReactNative
 - HTML
 - CSS
 
